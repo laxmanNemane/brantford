@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { Fragment } from "react";
+import { NavLink } from "react-router-dom";
 import "../Styles/loginpage.css";
 
 const Login = () => {
@@ -56,7 +57,11 @@ const Login = () => {
                     <p className="ms-5 ps-2 text-danger">
                       <ErrorMessage name="password" />
                     </p>
-                    <p className="ms-5 ps-2">Having trouble in sign in?</p>
+                    <p className="ms-5 ps-2">
+                      <NavLink to="/forgetpassword" className="text-dark text-decoration-none ">
+                        Forget Password
+                      </NavLink>
+                    </p>
                     <button
                       type="submit"
                       className="form-control border-none w-75 mx-auto my-5 "

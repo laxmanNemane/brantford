@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white">
       <div className="container">
-        <a className="navbar-brand fw-bold" href="#">
+        <NavLink className="navbar-brand fw-bold" to="/">
           <img
             src="https://thumbs.dreamstime.com/b/city-vector-logo-home-simple-design-building-skyline-house-apartment-template-188251128.jpg"
             alt=""
@@ -14,7 +14,7 @@ const Navbar = () => {
             className="rounded-3 me-2"
           />
           BrantFord
-        </a>
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -45,7 +45,7 @@ const Navbar = () => {
             </li>
           </ul>
 
-          <NavLink to="/forgetpassword" className="btn border text-white">
+          <NavLink to="/login" className="btn border text-white">
             Login
           </NavLink>
 

@@ -63,6 +63,8 @@ const ForgetPassword = () => {
                   <NavLink to="/login" className="btn border  w-50  form-control">
                     Login with Google
                   </NavLink>
+
+                  <p className="mt-5">Return to <NavLink to="/login" className=" text-decoration-none"  style={{ color: "#ffa64d" }}>Sign In</NavLink></p>
                 </Form>
               )}
             </Formik>
