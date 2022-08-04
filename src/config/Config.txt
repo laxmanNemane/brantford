@@ -1,0 +1,3 @@
+admin
+u_name=
+u_pwd= 

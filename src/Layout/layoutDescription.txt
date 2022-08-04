@@ -1,0 +1,6 @@
+1 . Header 
+2 . footer
+3 . Sidebar
+
+
+// this all things conatins this layout folder
