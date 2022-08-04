@@ -12,7 +12,7 @@ const Routing = () => {
         <Route path="/" element={"This is Home Page"} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
-        {/* <Route path="*" element={<h1>Page is Not Found</h1>} /> */}
+        <Route path="*" element={<h1>Page is Not Found</h1>} />
       </Routes>
     </BrowserRouter>
   );
