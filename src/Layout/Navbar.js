@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light ">
       <div className="container">
         <NavLink className="navbar-brand fw-bold" to="/">
           <img
@@ -45,7 +45,7 @@ const Navbar = () => {
             </li>
           </ul>
 
-          <NavLink to="/login" className="btn border text-white">
+          <NavLink to="/login" className="btn border bg-dark text-white">
             Login
           </NavLink>
 

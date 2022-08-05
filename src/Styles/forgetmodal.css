@@ -1,0 +1,10 @@
+.send_email_btn {
+  background: var(--primary);
+  /* color: ; */
+  margin: 0 0 0 60px;
+}
+
+.forget_password_description {
+  font-size: 18px;
+  color: var(--paragraph);
+}

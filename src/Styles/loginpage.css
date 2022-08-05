@@ -1,6 +1,43 @@
-.login_Card{
-    width:30rem;
-    border-radius: 10px;
-    /* height: 65vh; */
-    
+.login_Card {
+  width: 30rem;
+  border-radius: 10px;
+  /* height: 65vh; */
+  font-family: "Open Sans", sans-serif;
+}
+
+.fa-google {
+  background: conic-gradient(
+      from -45deg,
+      #ea4335 110deg,
+      #4285f4 90deg 180deg,
+      #34a853 180deg 270deg,
+      #fbbc05 270deg
+    )
+    73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 25px;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-image-section {
+  width: 60%;
+}
+
+.login_form_section {
+  width: 40%;
+  /* color: var(--primary); */
+}
+
+.sign-in {
+  color: var(--paragraph);
+}
+
+.SignIn_btn {
+  background-color: var(--primary);
+}
+
+.forget_password_line {
+  color: var(--warning);
 }

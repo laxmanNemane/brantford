@@ -1,0 +1,22 @@
+:root {
+    --primary: #A951A5;
+    --secondary: #1a2224; 
+    --success:#F2BEEC;
+    --paragraph:#768D95;
+    --warning:#ff9966;
+    
+  }
+
+h4{
+    color: var(--secondary);
+}
+
+p , label {
+    font-size: 18px;
+    
+}
+
+li{
+  color: var(--secondary); 
+  font-size: 16px; 
+}
