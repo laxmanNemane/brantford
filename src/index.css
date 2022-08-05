@@ -1,22 +1,23 @@
 :root {
-    --primary: #A951A5;
-    --secondary: #1a2224; 
-    --success:#F2BEEC;
-    --paragraph:#768D95;
-    --warning:#ff9966;
-    
-  }
-
-h4{
-    color: var(--secondary);
+  --primary: #a951a5;
+  --secondary: #1a2224;
+  --success: #f2beec;
+  --paragraph: #768d95;
+  --warning: #ff9966;
+  --btntxt: white
 }
 
-p , label {
-    font-size: 18px;
-    
+h4 {
+  color: var(--secondary);
 }
 
-li{
-  color: var(--secondary); 
-  font-size: 16px; 
+p,
+label {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+li {
+  color: var(--secondary);
+  font-size: 16px;
 }

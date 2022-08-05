@@ -36,6 +36,7 @@
 
 .SignIn_btn {
   background-color: var(--primary);
+  color: var(--btntxt);
 }
 
 .forget_password_line {

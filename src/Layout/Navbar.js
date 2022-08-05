@@ -7,10 +7,10 @@ const Navbar = () => {
       <div className="container">
         <NavLink className="navbar-brand fw-bold" to="/">
           <img
-            src="https://thumbs.dreamstime.com/b/city-vector-logo-home-simple-design-building-skyline-house-apartment-template-188251128.jpg"
+            src="https://previews.123rf.com/images/haris99/haris991807/haris99180700198/103850953-simple-pink-house-outline-logo-template-vector.jpg"
             alt=""
-            width="40"
-            height="34"
+            width="48"
+            height="40"
             className="rounded-3 me-2"
           />
           BrantFord
@@ -45,24 +45,13 @@ const Navbar = () => {
             </li>
           </ul>
 
-          <NavLink to="/login" className="btn border bg-dark text-white">
+          <NavLink
+            to="/login"
+            className="btn border text-white "
+            style={{ background: "#a951a5", color: "white" }}
+          >
             Login
           </NavLink>
-
-          {/* <avtar
-            navLink
-            color="stylish"
-            slot="toggle"
-            waves-fixed
-            // className="dropdown-toggle"
-          >
-            <img
-              src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg"
-              className="rounded-circle z-depth-0"
-              alt="avatar image"
-              height="35"
-            />
-          </avtar> */}
         </div>
       </div>
     </nav>

@@ -79,7 +79,7 @@ const Login = () => {
                           className="ps-3 forget_password_line"
                           onClick={() => setIsModalVisible(true)}
                         >
-                          Forgot Password ?
+                          Forgot Password?
                         </p>
                       </div>
                       <button

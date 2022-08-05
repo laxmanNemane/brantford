@@ -24,7 +24,7 @@ const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
         destroyOnClose
       >
         <div className="text-center mt-4">
-          <h4 className="fw-bold">Forget Your Password?</h4>
+          <h4 className="fw-bold">Forgot your Password?</h4>
           <p className="forget_password_description">
             Enter your registerd email below to recive <br />
             password reset instruction
