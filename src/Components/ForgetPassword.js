@@ -2,7 +2,7 @@ import { Modal } from "antd";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import "../Styles/forgetmodal.css";
-import ficon from "../Assets/Icons/forgetIcon.svg"
+import ficon from "../Assets/Icons/forgetIcon.svg";
 
 const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
   const handleSubmit = (values) => console.log(values);
@@ -29,12 +29,7 @@ const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
             Enter your registerd email below to recive <br />
             password reset instruction
           </p>
-          <img
-            src={ficon}
-            alt=""
-            width={230}
-            className="py-3"
-          />
+          <img src={ficon} alt="" width={230} className="py-3" />
         </div>
         <Formik
           initialValues={{ email: "" }}
@@ -64,7 +59,11 @@ const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
                 <ErrorMessage name="email" />
               </p>
               <label className="ms-5 ps-3 mb-2">
-                <Field type="checkbox" name="remember me" />
+                <Field
+                  type="checkbox"
+                  name="remember me"
+                  style={{ border: "1px solid black" }}
+                />
                 &nbsp; Remember me
               </label>
 

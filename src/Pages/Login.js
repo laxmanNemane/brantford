@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { Fragment, useState } from "react";
 import ForgetPassword from "../Components/ForgetPassword";
 import "../Styles/loginpage.css";
+import loginPage_image from "../Assets/Images/login.jpg";
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -14,11 +15,7 @@ const Login = () => {
           <div className="d-flex">
             <div className="login-image-section">
               <div className="text-center ">
-                <img
-                  src="https://img.freepik.com/free-vector/secure-login-concept-illustration_114360-4511.jpg?w=740&t=st=1659671509~exp=1659672109~hmac=5b7b86bb676a67b877a7ac37ba9684f3376aff2b8658d4ecbd7439fe1c9969de"
-                  alt=""
-                  width={650}
-                />
+                <img src={loginPage_image} alt="" width={650} />
               </div>
             </div>
             <div className="shadow py-3 login_form_section">
