@@ -1,0 +1,12 @@
+.dashbord_footer{
+    background-color: #e9d9e0;
+}
+
+.footer_menu_option{
+    font-size: 16px;
+    color: var(--secondary);
+}
+
+.footer_menu_option:hover{
+    color: var(--paragraph);
+}
