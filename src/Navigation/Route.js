@@ -5,6 +5,7 @@ import ForgetPassword from "../Components/ForgetPassword";
 import Login from "../Pages/Login";
 import Sidebar from "../Layout/Sidebar";
 import DasbordPage from "../Pages/DasbordPage";
+import Properties from "../AdminPanel/Properties";
 
 const Routing = () => {
   return (
@@ -17,6 +18,7 @@ const Routing = () => {
 
         {/* admin panel */}
         <Route path="/"  element={<DasbordPage />}/>
+        <Route path="/pr"  element={<Properties />}/>
 
         {/* <Route path="*" element={<h1>Page is Not Found</h1>} /> */}
       </Routes>

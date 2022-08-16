@@ -7,7 +7,7 @@ import "../Styles/adminDashbordFooter.css";
 
 const AdminDashbordFooter = () => {
   return (
-    <div className="row dashbord_footer ms-1 py-3 mt-5 ">
+    <div className="row dashbord_footer ms-1 mt-5  ">
       <div className="col-9  d-flex">
         <span className="text-center ">
           <span className="nav-item mt  dropdown-3" style={{ border: "none" }}>
@@ -150,25 +150,23 @@ const AdminDashbordFooter = () => {
           </span>
         </span>
       </div>
-      <div className="col-3">
+      <div className="col-3 text-center">
         <span>
           <span className="nav-item mt  dropdown-3" style={{ border: "none" }}>
             <Link
-              className="nav-link dropdown-toggle footer_menu_option text-decoration-none"
+              className="nav-link dropdown-toggle footer_menu_option text-decoration-none "
               to="/"
               id="navbarDropdown"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <AiOutlineGift className="fs-5" />
-              Footer menu
+              Privacy Policy
             </Link>
             <span
-              className="dropdown-menu"
+              className="dropdown-menu px-3 my-2"
               aria-labelledby="navbarDropdown"
-              style={{ width: "350px", height: "400px" }}
             >
-              hello
+              Add Terms&Conditions
             </span>
           </span>
         </span>

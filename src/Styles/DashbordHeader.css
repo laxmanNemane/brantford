@@ -1,0 +1,48 @@
+.header_admin{
+    height: 90px;
+    /* border-bottom: 1px solid grey; */
+}
+.header_icons {
+  font-size: 25px;
+  margin: 0 10px;
+}
+
+.Serach_icon {
+  position: relative;
+  left: 29px;
+  top: 5px;
+  z-index: 1;
+  font-size: 23px;
+}
+
+
+.list_item_header{
+    margin: 30px 0;
+}
+
+
+
+.badge_count{
+    width:20px;
+    height: 20px;
+    background-color: var(--success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: relative;
+    right: 20px;
+    bottom: 8px;
+}
+
+.count{
+    /* align-items: center;
+    justify-content: center; */
+    margin: 5px 5px;
+}
+
+
+/* .header_list{
+    
+} */

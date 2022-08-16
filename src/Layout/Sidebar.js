@@ -17,26 +17,26 @@ const Sidebar = () => {
       <h5 className="Logo_admin fw-bold text-center"><AiOutlineHome /></h5>
       <div className=" Sidebar_otption_section">
         <ul className="list-unstyled">
-          <li className="my-3">
+          <li className="my-3    list-sidebar-menu">
             <TiChartBar className="Sidebar_icons" />
             Dashbord
           </li>
-          <li className="my-3">
+          <li className="my-3   list-sidebar-menu">
             <BsBuilding  className="Sidebar_icons"/> properties
           </li>
-          <li className="my-3">
+          <li className="my-3   list-sidebar-menu">
             <AiOutlineUsergroupAdd  className="Sidebar_icons"/>
             Tenants
           </li>
-          <li className="my-3">
+          <li className="my-3   list-sidebar-menu">
             <AiOutlineInsurance  className="Sidebar_icons"/>
             Insurance
           </li>
-          <li className="my-3">
+          <li className="my-3  list-sidebar-menu">
             <AiOutlineCreditCard  className="Sidebar_icons"/>
             Income
           </li>
-          <li className="my-3">
+          <li className="my-3 list-sidebar-menu">
             <AiOutlineWechat  className="Sidebar_icons" />
             Chat
           </li>

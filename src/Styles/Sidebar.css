@@ -11,6 +11,10 @@
 .ListGroup.li {
   background-color: "red";
 }
+.list-sidebar-menu{
+  font-size: 20px;
+  color: var(--secondary);
+}
 
 .dashbord_section_Header {
   /* margin-left: 18%; */
@@ -18,7 +22,7 @@
 }
 
 .dashbord_section_page {
-  margin-top: 130px;
+  margin-top: 40px;
 }
 
 .collpse-item {
@@ -60,11 +64,12 @@
 .Sidebar_icons{
   font-size: 26px;
   margin-right: 8px;
+  color: var(--primary);
 }
 
 .setting_icon {
   animation: rotation 2s infinite linear;
-  font-size: 20px;
+  font-size: 26px;
 }
 
 
