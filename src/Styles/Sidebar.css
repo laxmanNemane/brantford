@@ -30,21 +30,49 @@
 
 .collapse_item_list {
   margin: 0 0 0 20px;
-  line-height: 2;
+  line-height: 2.5;
 }
 
 .Logo_admin {
-  margin: 10% 60px;
+  font-size: 30px;
+  /* text-align: center; */
+  margin: 23px 0 0 0;
+  font-weight: 700;
 }
 
 .Sidebar_otption_section {
-  margin: 60px 0 0 60px;
+  margin: 80px 0 0 60px;
+  line-height: 2.5;
 }
 
-.Sidebar_otption_section_2{
+.Sidebar_otption_section_2 {
   margin: 0px 0 0 60px;
 }
 
-.arrow_indication_collapse{
-  margin:0 0 10px 130px
+.arrow_indication_collapse {
+  margin: 0 0 0 130px;
+}
+
+.sidebar-setting {
+  position: absolute;
+  bottom: 10px;
+}
+.Sidebar_icons{
+  font-size: 26px;
+  margin-right: 8px;
+}
+
+.setting_icon {
+  animation: rotation 2s infinite linear;
+  font-size: 20px;
+}
+
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
