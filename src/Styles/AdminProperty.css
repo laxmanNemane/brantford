@@ -1,0 +1,13 @@
+.Main_card_usertenants_properties{
+    width: 350px;
+    border-radius: 5px;
+}
+
+.properties-sectionCard_headeing{
+    font-size: 20px;
+}
+
+.tabs_property{
+    font-size: 18px;
+    color: var(--secondary);
+}

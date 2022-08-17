@@ -1,0 +1,31 @@
+.Main_card_usertenants {
+  width: 300px;
+  border-radius: 15px;
+  /* background-color: "#424D59"; */
+}
+
+.tenents_card-heading {
+  font-size: 18px;
+  margin-top: 35px;
+  line-height: 0.2;
+  color: var(--paragraph);;
+}
+
+.People_tenant {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.AdvBox{
+    background-image: url('https://img.freepik.com/free-vector/gradient-wavy-background_79603-2092.jpg?w=1060&t=st=1660726154~exp=1660726754~hmac=5e1f464f1bbcf842c386505d3fc710b9b52c6495ed200634bae1ed1c98e041dd');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border:none
+}
+
+
+.User_Name_table{
+  font-size: 16px ;
+  color: var(--paragraph);
+}

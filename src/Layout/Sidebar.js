@@ -8,40 +8,57 @@ import {
   AiOutlineCreditCard,
   AiOutlineWechat,
   AiOutlineSetting,
-  AiOutlineHome
+  AiOutlineHome,
 } from "react-icons/ai";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <div className="sidebar_main shadow ">
-      <h5 className="Logo_admin fw-bold text-center"><AiOutlineHome /></h5>
+      <h5 className="Logo_admin fw-bold text-center">
+        <AiOutlineHome />
+      </h5>
       <div className=" Sidebar_otption_section">
         <ul className="list-unstyled">
           <li className="my-3    list-sidebar-menu">
-            <TiChartBar className="Sidebar_icons" />
-            Dashbord
+            <NavLink to="/dashbord" className="text-dark">
+              <TiChartBar className="Sidebar_icons" />
+              Dashbord
+            </NavLink>
           </li>
           <li className="my-3   list-sidebar-menu">
-            <BsBuilding  className="Sidebar_icons"/> properties
+            <NavLink to="/properties" className="text-dark">
+              <BsBuilding className="Sidebar_icons" /> properties
+            </NavLink>
           </li>
           <li className="my-3   list-sidebar-menu">
-            <AiOutlineUsergroupAdd  className="Sidebar_icons"/>
-            Tenants
+            <NavLink to="/tenants" className="text-dark">
+              <AiOutlineUsergroupAdd className="Sidebar_icons" />
+              Tenants
+            </NavLink>
           </li>
           <li className="my-3   list-sidebar-menu">
-            <AiOutlineInsurance  className="Sidebar_icons"/>
+            {/* <NavLink to="/dashbord" className="text-dark"> */}
+            <AiOutlineInsurance className="Sidebar_icons" />
             Insurance
+            {/* </NavLink> */}
           </li>
           <li className="my-3  list-sidebar-menu">
-            <AiOutlineCreditCard  className="Sidebar_icons"/>
-            Income
+            <NavLink to="/revenu" className="text-dark">
+              <AiOutlineCreditCard className="Sidebar_icons" />
+              Income
+            </NavLink>
           </li>
           <li className="my-3 list-sidebar-menu">
-            <AiOutlineWechat  className="Sidebar_icons" />
+            {/* <NavLink to="/dashbord" className="text-dark"> */}
+            <AiOutlineWechat className="Sidebar_icons" />
             Chat
+            {/* </NavLink> */}
           </li>
         </ul>
-        <p className="sidebar-setting"><AiOutlineSetting className="setting_icon" /></p>
+        <p className="sidebar-setting">
+          <AiOutlineSetting className="setting_icon" />
+        </p>
       </div>
     </div>
   );

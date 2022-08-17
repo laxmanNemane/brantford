@@ -1,0 +1,48 @@
+.booking_card_notification{
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 10px 0;
+    
+}
+.headinofBookingNotificatonTab{
+    color:var(--secondary);
+    font-size:20px;
+    font-weight: 700;
+}
+
+.card-booking{
+    line-height: 1;
+}
+
+.status_office{
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.status_office-notificaton{
+    font-size: 16px;
+    line-height: 0.3;
+}
+
+.location_booking-notification{
+    color: var(--paragraph);
+    font-size: 14px;
+    padding: 15px 0 0 0;
+}
+
+.accept_booking{
+    background-color: var(--primary);
+    color: white;
+    padding: 5px 25px;
+    width: 140px;
+    font-size: 16px;
+}
+
+
+.accept_booking:hover{
+    background-color: var(--success);
+    color: var(--secondary);
+    padding: 5px 25px;
+    width: 140px;
+}

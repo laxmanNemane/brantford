@@ -4,20 +4,40 @@
   --success: #f2beec;
   --paragraph: #768d95;
   --warning: #ff9966;
-  --btntxt: white
+  --btntxt: white;
 }
 
-h4 {
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  background: #f0c3e3;
+  /* padding: 1rem; */
+}
+
+a ,NavLink {
   color: var(--secondary);
+  text-decoration: none;
 }
 
-p,
-label {
-  font-size: 18px;
-  line-height: 1.7;
+* {
+  box-sizing: border-box;
 }
 
-li {
-  color: var(--secondary);
-  font-size: 16px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0 0 0.5rem 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }

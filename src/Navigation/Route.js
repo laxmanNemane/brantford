@@ -6,6 +6,8 @@ import Login from "../Pages/Login";
 import Sidebar from "../Layout/Sidebar";
 import DasbordPage from "../Pages/DasbordPage";
 import Properties from "../AdminPanel/Properties";
+import RevenuAdmin from "../AdminPanel/RevenuAdmin";
+import AdminTenants from "../AdminPanel/AdminTenants";
 
 const Routing = () => {
   return (
@@ -17,8 +19,10 @@ const Routing = () => {
         <Route path="/forgetpassword" element={<ForgetPassword />} />
 
         {/* admin panel */}
-        <Route path="/"  element={<DasbordPage />}/>
-        <Route path="/pr"  element={<Properties />}/>
+        <Route path="/dashbord" element={<DasbordPage />} />
+        <Route path="/properties" element={<Properties />} />
+        <Route path="/revenu" element={<RevenuAdmin />} />
+        <Route path="/tenants" element={<AdminTenants />} />
 
         {/* <Route path="*" element={<h1>Page is Not Found</h1>} /> */}
       </Routes>

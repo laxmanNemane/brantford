@@ -1,0 +1,47 @@
+.new_listed_cardtabs{
+    border-radius: 15px;
+    margin: 15px 0;
+    
+}
+
+.property_imageTabs{
+    width: 320px;
+    height: 260px;
+    padding: 13px 0;
+    border-radius: 15px;
+}
+
+.NewListed_propert-description{
+    position: relative;
+    left:27px;
+    text-align: start;
+    line-height: 1;
+    ;
+    
+}
+
+.office_name-newListed{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 0.4;
+    padding-top: 10px;
+}
+
+.description_new_listedtabs{
+    font-size: 16px;
+    color: var(--paragraph);
+}
+
+.price_newListedtabs{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 20px 0 10px 0;
+    
+
+}
+
+.viewIcon{
+    margin-top: 18px;
+    font-size: 20px;
+}
+

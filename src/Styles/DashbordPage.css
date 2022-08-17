@@ -49,6 +49,12 @@
 }
 
 .Buttons_dashbord {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+
+.Buttons_dashbord:hover {
   background-color: var(--success);
   font-weight: 600;
 }

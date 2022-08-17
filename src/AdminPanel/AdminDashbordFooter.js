@@ -7,7 +7,7 @@ import "../Styles/adminDashbordFooter.css";
 
 const AdminDashbordFooter = () => {
   return (
-    <div className="row dashbord_footer ms-1 mt-5  ">
+    <div className="row dashbord_footer ms-1  ">
       <div className="col-9  d-flex">
         <span className="text-center ">
           <span className="nav-item mt  dropdown-3" style={{ border: "none" }}>
