@@ -39,7 +39,7 @@ const PropertyDetailPage = () => {
               Elite premio, Balewadi, Baner, Pune, 411045
             </p>
           </div>
-          <Carousel>
+          <Carousel >
             <div>
               <img src={office1} alt="" className="main-image" />
               <p className="legend">Office </p>
