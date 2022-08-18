@@ -20,7 +20,7 @@ const AdminTenants = () => {
     >
       <div className="row  mx-3  d-flex">
         <div className="col-12 my-2">
-          <h4>Connected Users </h4>
+        <h5 className="Analytic_heading">Connected Users</h5>
         </div>
         <div className="ms-2" style={{ width: "65%" }}>
           <div className="d-flex justify-content-between ">

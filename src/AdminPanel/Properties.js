@@ -25,7 +25,7 @@ const Properties = () => {
     >
       <div className="row  mx-3  ">
         <div className="col-12 my-2">
-          <h4>Quick Stats</h4>
+        <h5 className="Analytic_heading">Quick Staks </h5>
         </div>
 
         <div className="ms-2" style={{ width: "99%" }}>

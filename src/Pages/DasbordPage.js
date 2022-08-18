@@ -5,12 +5,21 @@ import { FcRating, FcPlus, FcApproval, FcBullish } from "react-icons/fc";
 import "../Styles/DashbordPage.css";
 import { RiBuildingLine } from "react-icons/ri";
 import { Divider } from "antd";
+import { BsPatchPlus } from "react-icons/bs";
 import MidSectionCards from "../AdminPanel/MidSectionCards";
 import AdminDashbordFooter from "../AdminPanel/AdminDashbordFooter";
+import { NavLink } from "react-router-dom";
 
 const DasbordPage = () => {
   return (
-    <div className="dashbord_section_page">
+    <div
+      className="dashbord_section_page "
+      style={{
+        background: "rgb(244, 240, 242)",
+        padding: "0",
+        height: "100vh",
+      }}
+    >
       <div className="container-fluid mx-3 ">
         <div
           className="row  me-2  mb-3 align-items-center"
@@ -30,8 +39,9 @@ const DasbordPage = () => {
             </p>
           </div>
           <div className="col-lg-3 text-end">
+          <BsPatchPlus  className="fs-2 text-dark"/>
             <button className="ms-3 btn border Buttons_dashbord">
-              &nbsp;Create one
+              &nbsp;Create  Category
             </button>
           </div>
         </div>
@@ -40,8 +50,10 @@ const DasbordPage = () => {
           <div className="col-12  ">
             <div className="card pt-2">
               <div className="mx-3 d-flex pb-3">
-                <h6 className="pt-3 me-auto card_heading_dashbord_heading">All Detail</h6>
-                <button className="btn border Buttons_dashbord mt-2">
+                <h6 className="pt-3 me-auto card_heading_dashbord_heading">
+                  All Detail
+                </h6>
+                <button className="btn border Buttons_dashbord btn-view-all-dashbord mt-2">
                   View All
                 </button>
               </div>
@@ -55,11 +67,15 @@ const DasbordPage = () => {
                     />
                   </div>
                   <div className="col-right ms-3">
-                    <span className="title_overiew_dashbord_page">All Property</span>
+                    <span className="title_overiew_dashbord_page">
+                      All Property
+                    </span>
                     <br />
                     <span className="dashbord_page_overview_number">1k</span>
                     <br />
-                    <span className="dashbord_page_overview_description">grow rate 1%</span>
+                    <span className="dashbord_page_overview_description">
+                      grow rate 1%
+                    </span>
                   </div>
                 </div>
                 <div className="col-4 d-flex algn-items-center">
@@ -78,11 +94,15 @@ const DasbordPage = () => {
                     />
                   </div>
                   <div className="col-right ms-3 booked_section">
-                    <span className="title_overiew_dashbord_page">Booked Properties</span>
+                    <span className="title_overiew_dashbord_page">
+                      Booked Properties
+                    </span>
                     <br />
                     <span className="dashbord_page_overview_number">574</span>
                     <br />
-                    <span className="dashbord_page_overview_description">Incresed By 1%</span>
+                    <span className="dashbord_page_overview_description">
+                      Incresed By 1%
+                    </span>
                   </div>
                 </div>
                 <div className="col-4 d-flex">
@@ -93,31 +113,39 @@ const DasbordPage = () => {
                     />
                   </div>
                   <div className="col-right ms-3">
-                    <span className="title_overiew_dashbord_page"> Revenu (Profit)</span>
+                    <span className="title_overiew_dashbord_page">
+                      {" "}
+                      Revenu (Profit)
+                    </span>
                     <br />
                     <span className="dashbord_page_overview_number">3K</span>
                     <br />
-                    <span className="dashbord_page_overview_description">hello</span>
+                    <span className="dashbord_page_overview_description">
+                      hello
+                    </span>
                   </div>
                 </div>
               </div>
               <Divider style={{ margin: "0", padding: "0" }} />
               <div className="row text-center">
                 <div className="col-12 py-2">
+                  <NavLink to="/properties" className="text-dark">
+
                   <button
                     className="btn Buttons_dashbord view_all_btn "
-                    style={{ borderRadius: "50px" }}
+                    style={{ borderRadius: "40px" , margin:"20px 0" }}
                   >
                     Overview Page
                   </button>
+                  </NavLink>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <MidSectionCards />
-      <AdminDashbordFooter />
+      {/* <MidSectionCards /> */}
+      {/* <AdminDashbordFooter /> */}
     </div>
   );
 };

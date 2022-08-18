@@ -75,7 +75,7 @@ const RevenuAdmin = () => {
     <div style={{ background: "rgb(244, 240, 242)", padding: "0" , height:"100vh" }}>
       <div className="row  mx-3 ">
         <div className="col-12 my-2  ">
-          <h4>Revenu (Profit)</h4>
+        <h5 className="Analytic_heading">Revenu (Profit)</h5>
           <div className=" card ms-2" style={{ width: "99%" }}>
             <ReactEcharts option={{ ...option }} />
             {/* <ReactEcharts option={{ ...option3 }} /> */}

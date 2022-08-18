@@ -41,7 +41,7 @@ const Header = () => {
                 aria-expanded={open}
               >
                 <img
-                  src="https://cdn.pixabay.com/photo/2020/11/22/22/17/male-5768177_960_720.png"
+                  src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
                   alt=""
                   width={40}
                   height={40}

@@ -107,7 +107,7 @@ const AdminProfilePage = () => {
                               name="firstName"
                               placeholder="firstName"
                               className="form-control"
-                              defaultvalue={values.firstName}
+                              defaultValue={values.firstName}
                             />
 
                             <label htmlFor="Email " className="label-user">
@@ -118,7 +118,7 @@ const AdminProfilePage = () => {
                               name="email"
                               placeholder="email"
                               className="form-control"
-                              defaultvalue={values.email}
+                              defaultValue={values.email}
                             />
                           </div>
                           <div className="col-6">
@@ -130,7 +130,7 @@ const AdminProfilePage = () => {
                               name="lastName"
                               placeholder="lastName"
                               className="form-control"
-                              defaultvalue={values.lastName}
+                              defaultValue={values.lastName}
                             />
 
                             <label htmlFor="Password " className="label-user">
@@ -141,7 +141,7 @@ const AdminProfilePage = () => {
                               name="password"
                               placeholder="password"
                               className="form-control "
-                              defaultvalue={values.password}
+                              defaultValue={values.password}
                             />
                           </div>
                           <div className="col-12">
@@ -153,7 +153,7 @@ const AdminProfilePage = () => {
                               name="address"
                               placeholder="address"
                               className="form-control "
-                              defaultvalue={values.address}
+                              defaultValue={values.address}
                             />
                           </div>
 
@@ -166,7 +166,7 @@ const AdminProfilePage = () => {
                               name="city"
                               placeholder="city"
                               className="form-control "
-                              defaultvalue={values.city}
+                              defaultValue={values.city}
                             />
                           </div>
                           <div className="col-3">

@@ -32,7 +32,7 @@ const AdminUserTable = () => {
 
   return (
     <div className="mt-4 ms-2">
-      <h4>Users</h4>
+    <h5 className="Analytic_heading"> Users</h5>
       <div
         className="table table-responsive me-auto ms-2"
         style={{ width: "99%", margin: "0 20px 0 0" }}
