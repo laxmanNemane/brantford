@@ -4,7 +4,7 @@ import "./StyleTabs/BookingProperty.css";
 
 const PropertyBookings = () => {
   return (
-    <div className="container-fluid my-2  ">
+    <div className=" my-2  ">
       <div className="row">
         <div className="col-3">
           <div className="card booking_card_notification shadow">

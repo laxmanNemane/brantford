@@ -25,7 +25,7 @@ const Properties = () => {
     >
       <div className="row  mx-3  ">
         <div className="col-12 my-2">
-        <h5 className="Analytic_heading">Quick Staks </h5>
+          <h5 className="Analytic_heading">Quick Staks </h5>
         </div>
 
         <div className="ms-2" style={{ width: "99%" }}>
@@ -36,7 +36,7 @@ const Properties = () => {
                 style={{ height: "180px" }}
               >
                 <div className="me-2">
-                <div className="property-section-icon-background first-icon">
+                  <div className="property-section-icon-background first-icon">
                     <BsBuilding className="property-section-icons" />
                   </div>
                 </div>
@@ -54,7 +54,7 @@ const Properties = () => {
                 style={{ height: "180px" }}
               >
                 <div className="me-2">
-                <div className="property-section-icon-background second-icon">
+                  <div className="property-section-icon-background second-icon">
                     <FiCheckSquare className="property-section-icons" />
                   </div>
                 </div>
@@ -72,7 +72,7 @@ const Properties = () => {
                 style={{ height: "180px" }}
               >
                 <div className="me-2">
-                <div className="property-section-icon-background third-icon">
+                  <div className="property-section-icon-background third-icon">
                     <FiCheck className="property-section-icons" />
                   </div>
                 </div>
@@ -112,13 +112,13 @@ const Properties = () => {
             id="uncontrolled-tab-example"
             className="mb-3 tabs_property"
           >
-            <Tab eventKey="Booking" title="Booking"  tabClassName="profile-tabitem">
+            <Tab eventKey="Booking" title="Booking" tabClassName="profile-tabitem">
               <PropertyBookings />
             </Tab>
-            <Tab eventKey="New Listed Properties" title="New Listed Properties"  tabClassName="profile-tabitem">
+            <Tab eventKey="New Listed Properties" title="New Listed Properties" tabClassName="profile-tabitem">
               <NewListedProperty />
             </Tab>
-            <Tab eventKey="Services" title="Services"  tabClassName="profile-tabitem">
+            <Tab eventKey="Services" title="Services" tabClassName="profile-tabitem">
               <Services />
             </Tab>
           </Tabs>

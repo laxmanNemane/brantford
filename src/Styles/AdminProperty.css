@@ -14,16 +14,16 @@
   background-color: blueviolet;
 }
 .first-icon {
-  background-color: rgb(236, 71, 220);
+  background-color: rgb(249, 88, 73);
 }
 .second-icon {
-  background-color: rgb(67, 69, 71);
+  background-color: rgb(44, 70, 95);
 }
 .third-icon {
-  background-color: aqua;
+  background-color: rgb(12, 178, 87);
 }
 .fourth-icon {
-  background-color: rgb(59, 60, 59);
+  background-color: rgb(236, 206, 87);
 }
 
 .property-section-icons {
@@ -51,13 +51,13 @@
 .profile-tabitem {
   font-family: Source Sans Pro;
   font-size: 20px;
-  font-weight: bold;
+  /* font-weight: bold; */
   font-stretch: normal;
   font-style: normal;
   line-height: 0.77;
   letter-spacing: -0.6px;
   text-align: left;
-  color: #f0b1eb;
+  color: #0f0f0f;
 }
 
 .profile-tabitem:active {
