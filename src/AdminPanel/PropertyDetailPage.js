@@ -62,7 +62,7 @@ const PropertyDetailPage = () => {
             </div>
           </Carousel>
 
-          <div className="card py-4 px-5">
+          <div className="card py-4 px-5 shadow">
             <div>
               <h4>Details</h4>
             </div>
@@ -103,7 +103,7 @@ const PropertyDetailPage = () => {
         </div>
         <div className="col-4 ">
           <h3 className="property-price-detailPage">$64.99/Seats/Month</h3>
-          <div className="card featurs-card ">
+          <div className="card featurs-card  shadow">
             <div className="mx-3 py-2">
               <div>
                 <h4>Features</h4>
@@ -168,7 +168,7 @@ const PropertyDetailPage = () => {
               </div>
             </div>
           </div>
-          <div className="card mt-4">
+          <div className="card mt-4 shadow">
             <div className="mx-3 py-2">
               <div>
                 <h4>Description</h4>

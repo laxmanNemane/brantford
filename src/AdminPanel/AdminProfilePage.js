@@ -18,7 +18,7 @@ const AdminProfilePage = () => {
     >
       <div className="heading-page-profile">
         <p className="overview-user-profile_page">Overview</p>
-        <h4 className="user-profile-page-heading">User Profile</h4>
+        <h5 className="Analytic_heading">Your Profile</h5>
       </div>
       <div className="row mx-3  ">
         <div className="col-4 gx-5 ">

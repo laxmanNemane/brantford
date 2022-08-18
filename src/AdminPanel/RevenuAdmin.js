@@ -93,14 +93,14 @@ const RevenuAdmin = () => {
               className="d-flex align-items-center "
               style={{ height: "280px" }}
             >
-              <div className="w-25 ms-3">
+              <div className="w-50 ms-3">
                 <h3 className="text-center Heading-revnu-cards">Yearly</h3>
-                <p className="text-center">
+                <p className="text-end">
                   Lorem ipsum dolor sit amet consectetur adipisicing.
                 </p>
-                <span>increased by 1%</span>
+               
               </div>
-              <div className="w-75">
+              <div className="w-50">
                 <ReactEcharts option={{ ...option3 }} />
               </div>
             </div>
@@ -110,14 +110,14 @@ const RevenuAdmin = () => {
               className="d-flex align-items-center"
               style={{ height: "280px" }}
             >
-              <div className="w-25 ms-3">
+              <div className="w-50 ms-3">
                 <h3 className="text-center Heading-revnu-cards">Monthly</h3>
-                <p className="text-center">
+                <p className="text-end ">
                   Lorem ipsum dolor sit amet consectetur adipisicing.
                 </p>
-                <span>increased by 1%</span>
+             
               </div>
-              <div className="w-75">
+              <div className="w-50">
                 <ReactEcharts option={{ ...option3 }} />
               </div>
             </div>
@@ -127,14 +127,14 @@ const RevenuAdmin = () => {
               className="d-flex align-items-center"
               style={{ height: "280px" }}
             >
-              <div className="w-25 ms-3">
+              <div className="w-50 ms-3">
                 <h3 className="text-center Heading-revnu-cards">Daily</h3>
-                <p className="text-center">
+                <p className="text-end">
                   Lorem ipsum dolor sit amet consectetur adipisicing.
                 </p>
-                <span>increased by 1%</span>
+               
               </div>
-              <div className="w-75">
+              <div className="w-50">
                 <ReactEcharts option={{ ...option3 }} />
               </div>
             </div>
