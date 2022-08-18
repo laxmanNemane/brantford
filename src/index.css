@@ -14,11 +14,12 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
-  background: #f0c3e3;
+  /* background: #f0c3e3; */
   /* padding: 1rem; */
 }
 
-a ,NavLink {
+a,
+NavLink {
   color: var(--secondary);
   text-decoration: none;
 }
@@ -41,3 +42,5 @@ p {
   margin: 0;
   padding: 0;
 }
+
+

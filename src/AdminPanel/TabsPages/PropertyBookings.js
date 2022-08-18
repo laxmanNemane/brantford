@@ -7,7 +7,7 @@ const PropertyBookings = () => {
     <div className="container-fluid my-2  ">
       <div className="row">
         <div className="col-3">
-          <div className="card booking_card_notification">
+          <div className="card booking_card_notification shadow">
             <div className="mx-1 card-booking">
               <h4 className="headinofBookingNotificatonTab">Lakhan Nemane</h4>
               <p className="status_office-notificaton">

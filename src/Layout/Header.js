@@ -9,7 +9,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   return (
     <div className=" w-100 header_admin ">
-      <div className=" mx-3" style={{ margin: "-10px 0 25px 0" }}>
+      <div className=" mx-3" style={{ margin: "-10px 0 5px 0" }}>
         <div className="d-flex align-items-center mb-2">
           <div className=" d-flex me-auto" style={{ width: "320px" }}>
             <BsSearch className="Serach_icon" />

@@ -11,9 +11,9 @@ import AdminDashbordFooter from "../AdminPanel/AdminDashbordFooter";
 const DasbordPage = () => {
   return (
     <div className="dashbord_section_page">
-      <div className="container-fluid mx-3 mt-4">
+      <div className="container-fluid mx-3 ">
         <div
-          className="row  me-2  my-3 align-items-center"
+          className="row  me-2  mb-3 align-items-center"
           style={{ height: "120px" }}
         >
           <div className="col-lg-1 text-center ">

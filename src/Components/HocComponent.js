@@ -13,7 +13,7 @@ const HocComponent = (Component) => {
         </div>
         <div  style={{width:"82%" , marginLeft:"18%"}}>
           <Header />
-          <Component />
+          <Component  />
         </div>
       </div>
     );

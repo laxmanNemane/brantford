@@ -1,0 +1,110 @@
+.user-detail-overview {
+  width: 500px;
+  border-radius: 20px;
+  height: 650px;
+}
+.profile-image-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 320px;
+  line-height: 0.6;
+  margin: 10px 0 0 0;
+}
+.profile-image {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.user-name {
+  font-size: 30px;
+  margin: 20px 0;
+  font-weight: 600;
+}
+
+.user-position {
+  font-size: 18px;
+}
+
+.follow-btn {
+  border: 1px solid rgb(45, 136, 239);
+  border-radius: 20px;
+  width: 150px;
+  padding: 8px 17px;
+  font-size: 16px;
+}
+.follow-user-icon {
+  font-size: 16px;
+}
+
+.Description_heading-user {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.description_paragraph {
+  font-size: 14px;
+  color: var(--paragraph);
+}
+
+.account-deatil {
+  width: 950px;
+  border-radius: 20px;
+  height: 750px;
+  margin-left: 25px;
+  line-height: 3;
+}
+
+.account-deatil-heading {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--secondary);
+}
+
+.label-user {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.update-account-btn {
+  border: 1px solid rgb(45, 136, 239);
+  border-radius: 8px;
+  width: 150px;
+  margin-top: 25px;
+  padding: 5px 17px;
+  font-size: 16px;
+}
+
+.formGroup input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--paragraph);
+}
+
+
+.overview-user-profile_page{
+  color: var(--paragraph);
+  font-size: 14px;
+  line-height: 0;
+  padding-top: 15px;
+}
+
+.formGroup input:focus {
+  outline: none;
+}
+
+.user-profile-page-heading{
+  font-size: 20px;
+  margin-top: 15px;
+  line-height: 0.5;
+  margin-bottom: 30px;
+}
+
+.heading-page-profile{
+  margin: 0 0 0 45px;
+}

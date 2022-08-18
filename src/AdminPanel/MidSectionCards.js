@@ -9,7 +9,7 @@ const MidSectionCards = () => {
   return (
     <div className="row  mx-3  mt-4 ">
       <div className="col-6   ">
-        <div className=" shadow border-none ">
+        <div className="shadow border-none ">
           <div className="card-body">
             <div className="card_header  d-flex">
               <h6 className="me-auto heading_cards_midSection">

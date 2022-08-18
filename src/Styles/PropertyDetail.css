@@ -1,0 +1,93 @@
+.main-image{
+    width: 100%;
+    height: 600px;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.carousel .slider-wrapper{
+    width: 50%;
+}
+
+.property-name-detailpage{
+    font-size: 22px;
+    line-height: 0.3;
+    margin-top: 20px;
+}
+
+.property-status-badge{
+    color: var(--secondary);
+    background-color: pink;
+    width: 120px;
+    padding: 9px 20px;
+    font-size: 14px;
+    margin-top: 15px;
+    text-transform: capitalize;
+}
+
+.location-detailPage{
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.tumbs{
+    margin-block-start: 0;
+    display: none !important;
+}
+
+.carousel .thumb{
+    width: 130px !important;
+    height: 120px;  
+    margin: 0 0 0 20px !important;
+}
+
+.featurs-detail{
+    font-size: 18px;
+    color: var(--paragraph);
+
+}
+
+.featues-icons{
+    color: var(--primary);
+}
+
+.property-price-detailPage{
+    margin-top: 20px;
+    font-size: 22px
+}
+
+.featurs-card{
+    margin-top: 110px;
+    border-radius: 0;
+}
+
+.description-paragraph{
+    font-size: 18px;
+    color: var(--paragraph);
+}
+
+
+.border-detail-page{
+    border: 1px solid var(--secondary);
+    padding: 25px 35px;
+    border-radius: 10px;
+    
+}
+
+.heading-proprty-detail{
+    font-size: 16px;
+    font-weight: 600
+}
+
+.one{
+    border-bottom: 1px solid var(--paragraph);
+    margin: 0;
+    height:27px
+}
+
+.property-details-value{
+    color: var(--paragraph);
+    font-size: 16px;
+    margin-right: 5px;
+}

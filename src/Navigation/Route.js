@@ -8,6 +8,8 @@ import DasbordPage from "../Pages/DasbordPage";
 import Properties from "../AdminPanel/Properties";
 import RevenuAdmin from "../AdminPanel/RevenuAdmin";
 import AdminTenants from "../AdminPanel/AdminTenants";
+import AdminProfilePage from "../AdminPanel/AdminProfilePage";
+import PropertyDetailPage from "../AdminPanel/PropertyDetailPage";
 
 const Routing = () => {
   return (
@@ -23,6 +25,8 @@ const Routing = () => {
         <Route path="/properties" element={<Properties />} />
         <Route path="/revenu" element={<RevenuAdmin />} />
         <Route path="/tenants" element={<AdminTenants />} />
+        <Route path="/profile" element={<AdminProfilePage />} />
+        <Route path="/detail" element={<PropertyDetailPage />} />
 
         {/* <Route path="*" element={<h1>Page is Not Found</h1>} /> */}
       </Routes>

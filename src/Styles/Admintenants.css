@@ -11,6 +11,31 @@
   color: var(--paragraph);;
 }
 
+.tenants-section-icon{
+  font-size: 30px;
+ 
+}
+
+.icon-backgound-tenants{
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  /* background-color: aqua; */
+
+}
+.first-icon{
+  background-color: rgb(236, 71, 220);
+}
+.second-icon{
+  background-color: rgb(67, 69, 71);
+}
+.third-icon{
+  background-color: aqua;
+}
+
 .People_tenant {
   font-size: 30px;
   font-weight: 800;
@@ -28,4 +53,9 @@
 .User_Name_table{
   font-size: 16px ;
   color: var(--paragraph);
+}
+
+
+table tr td{
+  padding: 10px 5px !important;
 }

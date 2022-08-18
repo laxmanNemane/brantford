@@ -1,13 +1,79 @@
-.Main_card_usertenants_properties{
-    width: 350px;
-    border-radius: 5px;
+.Main_card_usertenants_properties {
+  width: 350px;
+  border-radius: 5px;
 }
 
-.properties-sectionCard_headeing{
-    font-size: 20px;
+/* set icons card background */
+.property-section-icon-background {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: blueviolet;
+}
+.first-icon {
+  background-color: rgb(236, 71, 220);
+}
+.second-icon {
+  background-color: rgb(67, 69, 71);
+}
+.third-icon {
+  background-color: aqua;
+}
+.fourth-icon {
+  background-color: rgb(59, 60, 59);
 }
 
-.tabs_property{
-    font-size: 18px;
-    color: var(--secondary);
+.property-section-icons {
+  font-size: 30px;
+  color: white;
+}
+
+.properties-sectionCard_headeing {
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.property-tab-section {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.property-tab-section {
+  width: 60%;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-tabitem {
+  font-family: Source Sans Pro;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.77;
+  letter-spacing: -0.6px;
+  text-align: left;
+  color: #f0b1eb;
+}
+
+.profile-tabitem:active {
+  font-family: Source Sans Pro;
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.77;
+  letter-spacing: -0.6px;
+  text-align: left;
+  color: #2a2a2a;
+}
+
+.tabs_property {
+  font-size: 18px;
+  color: var(--secondary);
+  /* border: none; */
 }
