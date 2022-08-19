@@ -1,6 +1,6 @@
 .user-detail-overview {
   width: 500px;
-  border-radius: 20px;
+  border-radius: 10px;
   height: 650px;
 }
 .profile-image-name {
@@ -52,7 +52,7 @@
 
 .account-deatil {
   width: 950px;
-  border-radius: 20px;
+  border-radius: 10px;
   height: 750px;
   margin-left: 25px;
   line-height: 3;
@@ -86,8 +86,7 @@
   border-bottom: 1px solid var(--paragraph);
 }
 
-
-.overview-user-profile_page{
+.overview-user-profile_page {
   color: var(--paragraph);
   font-size: 14px;
   line-height: 0;
@@ -98,13 +97,13 @@
   outline: none;
 }
 
-.user-profile-page-heading{
+.user-profile-page-heading {
   font-size: 20px;
   margin-top: 15px;
   line-height: 0.5;
   margin-bottom: 30px;
 }
 
-.heading-page-profile{
+.heading-page-profile {
   margin: 0 0 0 45px;
 }

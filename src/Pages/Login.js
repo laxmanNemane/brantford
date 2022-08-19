@@ -3,13 +3,15 @@ import React, { Fragment, useState } from "react";
 import ForgetPassword from "../Components/ForgetPassword";
 import "../Styles/loginpage.css";
 import loginPage_image from "../Assets/Images/login.jpg";
+import Navbar from "../Layout/Navbar";
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const handleSubmit = (values) => console.log(values);
 
   return (
-    <Fragment>
+    <div >
+      <Navbar />
       <div className="container d-flex justify-content-center mt-3 ">
         <div className="login_Card  w-100 py-3 ">
           <div className="d-flex">
@@ -20,7 +22,7 @@ const Login = () => {
             </div>
             <div className="shadow py-3 login_form_section">
               {/* <div className=""> */}
-              <h4 className="text-center me-2 mt-3 fw-bold body">Login</h4>
+              <h4 className="text-center me-2 mt-3 fw-bold body login-text">Login</h4>
               <p className="text-center my-3 body-1 sign-in">
                 Hey, Enter your details to get sign in <br />
                 to your account
@@ -85,7 +87,7 @@ const Login = () => {
                       >
                         Sign in
                       </button>
-                      <p className="text-center py-2">
+                      <p className="text-center py-2 fs-5">
                         &ndash;&ndash; or sign in with &ndash;&ndash;
                       </p>
 
@@ -99,7 +101,7 @@ const Login = () => {
                             <li className="btn border rounded-2 ">
                             <i className="fab fa-instagram"></i>Instagram</li> */}
 
-                      <p className="text-center mt-4">
+                      <p className="text-center mt-4 fs-5">
                         Don't have account?{" "}
                         <a href="#" className="ms-2 text-dark">
                           Click here
@@ -118,7 +120,7 @@ const Login = () => {
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
       />
-    </Fragment>
+    </div>
   );
 };
 

@@ -1,12 +1,42 @@
-import { Badge, Divider, Input, Modal } from "antd";
+import { Badge, Divider, Dropdown, Input, Menu, Modal } from "antd";
 import React, { useState } from "react";
 import { BsSearch, BsBell, BsBookmarkStar } from "react-icons/bs";
-import { Collapse } from "react-bootstrap";
 import "../Styles/DashbordHeader.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { AiOutlinePoweroff, AiOutlineUser } from "react-icons/ai";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+
+  const menu = (
+    <Menu
+      style={{ width: "150px" }}
+      items={[
+        {
+          key: "1",
+          label: (
+            <NavLink to="/profile" className="fs-5">
+              <AiOutlineUser className="mx-2" />
+              Profile
+            </NavLink>
+          ),
+        },
+
+        {
+          type: "divider",
+        },
+        {
+          key: "3",
+          label: (
+            <NavLink to="/" className="fs-5">
+              <AiOutlinePoweroff className="mx-2" />
+              Logout
+            </NavLink>
+          ),
+        },
+      ]}
+    />
+  );
   return (
     <div className=" w-100 header_admin ">
       <div className=" mx-3" style={{ margin: "-10px 0 5px 0" }}>
@@ -40,17 +70,16 @@ const Header = () => {
                 aria-controls="example-collapse-text"
                 aria-expanded={open}
               >
-                <img
-                  src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                  alt=""
-                  width={40}
-                  height={40}
-                  className="mb"
-                  style={{ borderRadius: "50%" }}
-                />
-                <Collapse in={open}>
-                  <div id="example-collapse-text">hdehd</div>
-                </Collapse>
+                <Dropdown overlay={menu} placement="bottomRight" arrow>
+                  <img
+                    src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="mb"
+                    style={{ borderRadius: "50%" }}
+                  />
+                </Dropdown>
               </li>
             </ul>
           </div>

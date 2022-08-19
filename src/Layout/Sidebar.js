@@ -9,10 +9,39 @@ import {
   AiOutlineWechat,
   AiOutlineSetting,
   AiOutlineHome,
+  AiFillQuestionCircle
 } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
-
+import { Dropdown, Menu } from "antd";
+import { MdNoteAdd } from "react-icons/md";
 const Sidebar = () => {
+
+  // this is dropdown option
+  const menu = (
+    <Menu
+      style={{ width: "250px" }}
+      items={[
+        {
+          key: "1",
+          label: <NavLink to="/privacy-policy" className="fs-5"><MdNoteAdd className="mx-2" />Privacy Policy</NavLink>,
+        },
+        {
+          key: "2",
+          label: <NavLink to="/" className="fs-5"><AiOutlineSetting  className="mx-2"/>Setting</NavLink>,
+        },
+      
+        {
+          type: "divider",
+        },
+        {
+          key: "3",
+          label: <NavLink to="/" className="fs-5"><AiFillQuestionCircle className="mx-2" />Help</NavLink>,
+        },
+      ]}
+    />
+  );
+
+
   return (
     <div className="sidebar_main shadow ">
       <h5 className="Logo_admin fw-bold text-center">
@@ -57,7 +86,9 @@ const Sidebar = () => {
           </li>
         </ul>
         <p className="sidebar-setting">
-          <AiOutlineSetting className="setting_icon" />
+          <Dropdown overlay={menu} placement="topLeft" arrow>
+            <AiOutlineSetting className="setting_icon" />
+          </Dropdown>
         </p>
       </div>
     </div>

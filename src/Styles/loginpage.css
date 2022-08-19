@@ -5,6 +5,10 @@
   font-family: "Open Sans", sans-serif;
 }
 
+.login-text{
+  font-size: 22px;
+}
+
 .fa-google {
   background: conic-gradient(
       from -45deg,
@@ -32,6 +36,7 @@
 
 .sign-in {
   color: var(--paragraph);
+  font-size: 18px;
 }
 
 .SignIn_btn {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HocComponent from "../Components/HocComponent";
 import { IoIosAirplane } from "react-icons/io";
 import { FcRating, FcPlus, FcApproval, FcBullish } from "react-icons/fc";
@@ -9,8 +9,10 @@ import { BsPatchPlus } from "react-icons/bs";
 import MidSectionCards from "../AdminPanel/MidSectionCards";
 import AdminDashbordFooter from "../AdminPanel/AdminDashbordFooter";
 import { NavLink } from "react-router-dom";
+import AddCategoryModel from "../AdminPanel/Modals/AddCategoryModel";
 
 const DasbordPage = () => {
+  const [showStatus, setshowStatus] = useState(false);
   return (
     <div
       className="dashbord_section_page "
@@ -40,7 +42,7 @@ const DasbordPage = () => {
           </div>
           <div className="col-lg-3 text-end">
           <BsPatchPlus  className="fs-2 text-dark"/>
-            <button className="ms-3 btn border Buttons_dashbord">
+            <button className="ms-3 btn border Buttons_dashbord" onClick={()=>setshowStatus(true)}>
               &nbsp;Create  Category
             </button>
           </div>
@@ -146,6 +148,7 @@ const DasbordPage = () => {
       </div>
       {/* <MidSectionCards /> */}
       {/* <AdminDashbordFooter /> */}
+      <AddCategoryModel showStatus={showStatus} setshowStatus={setshowStatus} />
     </div>
   );
 };
