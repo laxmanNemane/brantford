@@ -42,27 +42,29 @@ const AddCategoryModel = ({ showStatus, setshowStatus }) => {
           >
             {({ values, errors, handleSubmit }) => (
               <Form onSubmit={handleSubmit} className="">
-                <label htmlFor="category" className=" mb-2 label-user">
-                  Category
-                </label>
-                <Field
-                  type="text"
-                  name="category"
-                  placeholder="category"
-                  className="form-control  mx-auto "
-                />
-                <p className="error-message">
-                  <ErrorMessage name="category" />
-                </p>
+                <div className="formGroup">
+                  <label htmlFor="category" className=" mb-2 label-user">
+                    Category :
+                  </label>
+                  <Field
+                    type="text"
+                    name="category"
+                    placeholder="category"
+                    className="form-control  mx-auto "
+                  />
+                  <p className="error-message">
+                    <ErrorMessage name="category" />
+                  </p>
 
-                <div className="d-flex  mt-3">
-                  <button
-                    className="btn  btn-create-category "
-                    type="button"
-                    onClick={handleSubmit}
-                  >
-                    Create New
-                  </button>
+                  <div className="d-flex  mt-3">
+                    <button
+                      className="btn btn-privacy-policy"
+                      type="button"
+                      onClick={handleSubmit}
+                    >
+                      Create New
+                    </button>
+                  </div>
                 </div>
               </Form>
             )}

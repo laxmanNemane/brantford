@@ -4,14 +4,6 @@
   margin-top: 8px;
 }
 
-.btn-create-category {
-  border: 1px solid var(--primary);
-  width: 120px;
-  position: relative;
-  left: 75%;
-  font-size: 14px;
-}
-
 .btn-close-category {
   border: 1px solid var(--paragraph);
   width: 100px;

@@ -9,13 +9,12 @@ import {
   AiOutlineWechat,
   AiOutlineSetting,
   AiOutlineHome,
-  AiFillQuestionCircle
+  AiFillQuestionCircle,
 } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import { Dropdown, Menu } from "antd";
 import { MdNoteAdd } from "react-icons/md";
 const Sidebar = () => {
-
   // this is dropdown option
   const menu = (
     <Menu
@@ -23,24 +22,38 @@ const Sidebar = () => {
       items={[
         {
           key: "1",
-          label: <NavLink to="/privacy-policy" className="fs-5"><MdNoteAdd className="mx-2" />Privacy Policy</NavLink>,
+          label: (
+            <NavLink to="/privacy-policy" className="fs-5">
+              <MdNoteAdd className="mx-2" />
+              Privacy Policy
+            </NavLink>
+          ),
         },
         {
           key: "2",
-          label: <NavLink to="/" className="fs-5"><AiOutlineSetting  className="mx-2"/>Setting</NavLink>,
+          label: (
+            <NavLink to="/" className="fs-5">
+              <AiOutlineSetting className="mx-2" />
+              Setting
+            </NavLink>
+          ),
         },
-      
+
         {
           type: "divider",
         },
         {
           key: "3",
-          label: <NavLink to="/" className="fs-5"><AiFillQuestionCircle className="mx-2" />Help</NavLink>,
+          label: (
+            <NavLink to="/" className="fs-5">
+              <AiFillQuestionCircle className="mx-2" />
+              Help
+            </NavLink>
+          ),
         },
       ]}
     />
   );
-
 
   return (
     <div className="sidebar_main shadow ">
@@ -67,10 +80,10 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li className="my-3   list-sidebar-menu">
-            {/* <NavLink to="/dashbord" className="text-dark"> */}
-            <AiOutlineInsurance className="Sidebar_icons" />
-            Insurance
-            {/* </NavLink> */}
+            <NavLink to="/categories" className="text-dark">
+              <AiOutlineInsurance className="Sidebar_icons" />
+              Categories
+            </NavLink>
           </li>
           <li className="my-3  list-sidebar-menu">
             <NavLink to="/revenu" className="text-dark">

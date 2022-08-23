@@ -1,0 +1,6 @@
+.client {
+  display: flex;
+  gap: 135px;
+  height: 100px;
+  align-items: center;
+}
