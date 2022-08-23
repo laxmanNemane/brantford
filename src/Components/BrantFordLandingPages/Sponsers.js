@@ -8,25 +8,28 @@ import "../../Styles/LandingPage/Client.css"
 
 const Sponsers = () => {
   return (
-    <div className="container">
-      <div className="row">
-        <ul className="list-unstyled client">
-          <li>
-            <img src={first} alt="" />
-          </li>
-          <li>
-            <img src={second} alt="" />
-          </li>
-          <li>
-            <img src={third} alt="" />
-          </li>
-          <li>
-            <img src={fourth} alt="" />
-          </li>
-          <li>
-            <img src={fifth} alt="" />
-          </li>
-        </ul>
+    <div className="client-page">
+
+      <div className="container">
+        <div className="row">
+          <ul className="list-unstyled client">
+            <li>
+              <img src={first} alt="" />
+            </li>
+            <li>
+              <img src={second} alt="" />
+            </li>
+            <li>
+              <img src={third} alt="" />
+            </li>
+            <li>
+              <img src={fourth} alt="" />
+            </li>
+            <li>
+              <img src={fifth} alt="" />
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
