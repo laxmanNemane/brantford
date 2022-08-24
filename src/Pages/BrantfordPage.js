@@ -10,6 +10,8 @@ import Footer from "../Layout/Footer";
 import ".././Styles/LandingPage/brantFord.css";
 import Sponsers from "../Components/BrantFordLandingPages/Sponsers";
 import FindsProperty from "../Components/BrantFordLandingPages/FindsProperty";
+import PostAddFree from "../Components/BrantFordLandingPages/PostAddFree";
+import Cities from "../Components/BrantFordLandingPages/Cities";
 
 const BrantfordPage = () => {
   return (
@@ -20,7 +22,9 @@ const BrantfordPage = () => {
       <div className="">
         <FindsProperty />
         <PropertySection />
-        {/* <PromiseSection /> */}
+        <PostAddFree />
+        <PromiseSection />
+        <Cities />
         <CallToActionSection />
         <TestimonialSection />
         <Sponsers />

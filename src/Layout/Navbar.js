@@ -45,11 +45,7 @@ const Navbar = () => {
             </li>
           </ul>
 
-          <NavLink
-            to="/login"
-            className="btn border text-white "
-            style={{ background: "#a951a5", color: "white" }}
-          >
+          <NavLink to="/login" className="btn-for-all-landpage ">
             Login
           </NavLink>
         </div>

@@ -12,7 +12,7 @@
 }
 
 .testimonials-section p {
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .section-intro {
@@ -34,7 +34,7 @@
 }
 .name {
   color: var(--secondary);
-  font-size: 19px;
+  font-size: 18px;
   font-weight: bold;
 }
 .profile {
@@ -86,7 +86,7 @@
 }
 
 .view-all-testimonial {
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .react-multiple-carousel__arrow--left {
