@@ -6,8 +6,8 @@ const HeroSection = () => {
   return (
     <div className="hero-section">
       <div className="">
-        <h2 className="hero-heading">
-          Buy, rent or sell your without <br /> any issues
+        <h2 className="main-heading">
+          Buy, rent or sell your without <br /> any issues.
         </h2>
         {/* <p className="expant-paragraph">Expand. Renew. Relocate</p> */}
         <div className="serach-section">

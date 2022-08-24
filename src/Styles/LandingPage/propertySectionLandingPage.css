@@ -2,66 +2,32 @@
   width: 100%;
 }
 
+.property-section-headings {
+  line-height: 0.4;
+}
+
+.pr-heading-main {
+  font-size: 20px !important;
+}
+.properties {
+  /* border: 1px solid black; */
+  border-radius: 15px;
+  box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.1);
+  padding: 8px 5px 25px 5px;
+}
+
+.pr-heading-sub {
+  text-transform: none !important;
+  font-size: 14px;
+}
+
+.properties-image-land {
+  width: 406px;
+  height: 320px;
+  border-radius: 15px 15px 0 0;
+}
+
 .price-section {
-  position: absolute;
-  top: 20px;
-}
-
-.text-start-heading {
-  /* height: 200px; */
-  display: flex;
-  margin-top: 30px;
-  align-items: center;
-  flex-direction: column;
-  text-align: start;
-}
-
-.text-start-heading h1 {
-  color: var(--secondary);
-  font-size: 36px;
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -1;
-  font-family: "Inter", sans-serif;
-}
-
-.landing-page-card {
-  width: 400px;
-}
-
-.property-land_imageTabs {
-  width: 500px;
-}
-
-.propertyImage {
-  width: 421px;
-  border-radius: 5px;
-}
-
-.buttons-group {
-  display: none;
-}
-
-.col-second:hover + .buttons-group {
-  display: block;
-  color: red;
   position: relative;
-  bottom: 50px;
-}
-
-.buttons-icons {
-  list-style: none;
-  display: flex;
-  gap: 10px;
-  position: absolute;
-  bottom: 170px;
-  right: 20px;
-  cursor: pointer;
-}
-
-.icon1 {
-  background-color: white;
-  padding: 6px 10px;
-  border-radius: 5px;
-  color: rgb(79, 79, 79);
+  bottom: 30px;
 }

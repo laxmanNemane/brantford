@@ -7,15 +7,18 @@ import TestimonialSection from "../Components/BrantFordLandingPages/TestimonialS
 import Navbar from "../Layout/Navbar";
 import videoBg from ".././Assets/video/pexels-alena-darmel-7646596.mp4";
 import Footer from "../Layout/Footer";
+import ".././Styles/LandingPage/brantFord.css";
 import Sponsers from "../Components/BrantFordLandingPages/Sponsers";
+import FindsProperty from "../Components/BrantFordLandingPages/FindsProperty";
 
 const BrantfordPage = () => {
   return (
-    <div className=" brantford-landing-page">
+    <div className="brantford-landing-page">
       <Navbar />
       <video src={videoBg} autoPlay loop muted></video>
       <HeroSection />
       <div className="">
+        <FindsProperty />
         <PropertySection />
         {/* <PromiseSection /> */}
         <CallToActionSection />
