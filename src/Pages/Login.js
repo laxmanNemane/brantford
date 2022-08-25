@@ -1,16 +1,47 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import axios from "axios";
 import React, { Fragment, useState } from "react";
 import ForgetPassword from "../Components/ForgetPassword";
 import "../Styles/loginpage.css";
 import loginPage_image from "../Assets/Images/login.jpg";
 import Navbar from "../Layout/Navbar";
+import LoginWithGoogle from "./LoginWithGoogle";
+import LogoutFromGoogle from "./LogoutFromGoogle";
+import SignUp from "./SignUp";
+import { Link } from "react-router-dom";
+
+const BaseUrl = "localhost:3000";
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const handleSubmit = (values) => console.log(values);
+
+  const handleSubmit = (values) => {
+    console.log(values);
+
+    //login user
+    
+    // var axios = require("axios");
+    var data = values;
+    var config = {
+      method: "post",
+      url: `${BaseUrl}/admin/admin-login`,
+      headers: {},
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+       
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        
+        console.log(error);
+      });
+  };
 
   return (
-    <div >
+    <div>
       <Navbar />
       <div className="container d-flex justify-content-center mt-3 ">
         <div className="login_Card  w-100 py-3 ">
@@ -22,7 +53,9 @@ const Login = () => {
             </div>
             <div className="shadow py-3 login_form_section">
               {/* <div className=""> */}
-              <h4 className="text-center me-2 mt-3 fw-bold body login-text">Login</h4>
+              <h4 className="text-center me-2 mt-3 fw-bold body login-text">
+                Login
+              </h4>
               <p className="text-center my-3 body-1 sign-in">
                 Hey, Enter your details to get sign in <br />
                 to your account
@@ -74,7 +107,8 @@ const Login = () => {
                           <Field type="checkbox" name="remember me" />
                           &nbsp; Remember me
                         </label>
-                        <p
+                        <p 
+                        style={{cursor:"pointer"}}
                           className="ps-3 forget_password_line"
                           onClick={() => setIsModalVisible(true)}
                         >
@@ -91,10 +125,13 @@ const Login = () => {
                         &ndash;&ndash; or sign in with &ndash;&ndash;
                       </p>
 
-                      <p className="form-control w-75  mx-auto  ">
+                      {/* <p className="form-control w-75  mx-auto  ">
                         <i className="fab fa-google fa-x mx-5"></i> Continue
                         with Google
-                      </p>
+                      </p> */}
+                      <LoginWithGoogle />
+
+                      {/* <LogoutFromGoogle/> */}
                       {/* <li className="btn border rounded-2 me-4">
                             <i className="fab fa-facebook-f"></i> facebook
                             </li>
@@ -103,9 +140,9 @@ const Login = () => {
 
                       <p className="text-center mt-4 fs-5">
                         Don't have account?{" "}
-                        <a href="#" className="ms-2 text-dark">
+                        <Link to="/signup" className="ms-2 text-dark">
                           Click here
-                        </a>
+                        </Link>
                       </p>
                     </Form>
                   )}

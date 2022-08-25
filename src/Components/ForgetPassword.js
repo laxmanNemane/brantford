@@ -1,11 +1,24 @@
 import { Modal } from "antd";
+import axios from "axios";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import "../Styles/forgetmodal.css";
 import ficon from "../Assets/Icons/forgetIcon.svg";
 
+const BaseUrl = "localhost:3000";
+
 const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
-  const handleSubmit = (values) => console.log(values);
+
+
+  const handleSubmit = (values) => {
+
+    axios.post(`${BaseUrl}/admin/forgot-password`,values)
+    .then((res)=> {console.log(res)})
+    .catch((err)=> {console.log(err)})
+    console.log(values);
+
+
+  } 
 
   const handleOk = () => {
     setIsModalVisible(false);

@@ -13,6 +13,7 @@ import PropertyDetailPage from "../AdminPanel/PropertyDetailPage";
 import AdminPrivacyPolicy from "../AdminPanel/AdminPrivacyPolicy";
 import AdminCategories from "../AdminPanel/AdminCategories";
 import BrantfordPage from "../Pages/BrantfordPage";
+import SignUp from "../Pages/SignUp";
 
 const Routing = () => {
   return (
@@ -21,6 +22,7 @@ const Routing = () => {
       <Routes>
         {/* <Route path="/" element={<p className="container mt-5">Home Page</p>} /> */}
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
 
         {/* langding page  */}
