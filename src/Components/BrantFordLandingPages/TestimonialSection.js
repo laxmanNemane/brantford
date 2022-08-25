@@ -46,7 +46,7 @@ const TestimonialSection = () => {
                 </div>
                 <div className="profile-name-location align-items-center">
                   <p className="name">lakhan Nemane</p>
-                  <p className="profile">owners, Pune</p>
+                  <p className="profile fw-light">owners, Pune</p>
                 </div>
               </div>
               <div className="user-reviews">
@@ -69,7 +69,7 @@ const TestimonialSection = () => {
                 </div>
                 <div className="profile-name-location align-items-center">
                   <p className="name">lakhan Nemane</p>
-                  <p className="profile">owners , Pune</p>
+                  <p className="profile fw-light">owners , Pune</p>
                 </div>
               </div>
               <div className="user-reviews">
@@ -92,7 +92,7 @@ const TestimonialSection = () => {
                 </div>
                 <div className="profile-name-location align-items-center">
                   <p className="name">lakhan Nemane</p>
-                  <p className="profile">owners , Pune</p>
+                  <p className="profile fw-light">owners , Pune</p>
                 </div>
               </div>
               <div className="user-reviews">
@@ -129,7 +129,7 @@ const TestimonialSection = () => {
         </Carousel>
 
         <div>
-          <button className="btn view-all-testimonial">
+          <button className="btn btn-view-all">
             View all testimonial
             <BsArrowRight className="ms-2" />
           </button>

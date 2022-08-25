@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="container pt-5">
         <div className="row">
           <div className="col-lg-3 col-md-6 col-sm-12">
-            <ul className="list-unstyled list-of-footer">
+            <ul className="list-unstyled list-of-footer d-flex text-light flex-column">
               <li className="brand-heading-footer">Brantford</li>
               <li>
                 <BsChevronRight /> Mobile App
@@ -36,7 +36,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12">
-            <ul className="list-unstyled list-of-footer">
+            <ul className="list-unstyled list-of-footer d-flex text-light flex-column">
               <li className="brand-heading-footer">Coworking Space</li>
               <li>
                 <BsChevronRight /> Coworking Space In Pune
@@ -58,7 +58,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12">
-            <ul className="list-unstyled list-of-footer">
+            <ul className="list-unstyled list-of-footer d-flex text-light flex-column">
               <li className="brand-heading-footer">Conventional Space</li>
               <li>
                 <BsChevronRight /> Conventional Space In Pune
@@ -83,7 +83,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12">
-            <ul className="list-unstyled list-of-footer">
+            <ul className="list-unstyled list-of-footer d-flex text-light flex-column">
               <li className="brand-heading-footer">Contact Us</li>
               <li>
                 Toll Free -0392163876 <br />
@@ -97,7 +97,7 @@ const Footer = () => {
               </li>
               <li>
                 Connect with us
-                <ul className="list-unstyled social-icons">
+                <ul className="list-unstyled social-icons d-flex">
                   <li>
                     <img src={twitter} alt="twitter" />
                   </li>
@@ -111,7 +111,7 @@ const Footer = () => {
               </li>
               <li>
                 Download the App
-                <ul className="list-unstyled download-option">
+                <ul className="list-unstyled download-option d-flex">
                   <li>
                     <img src={gpay} alt="google Pay" />
                   </li>
@@ -125,9 +125,9 @@ const Footer = () => {
         </div>
         <div className="row">
           <div className="col-12 ">
-            <p className="">
-              <span className="text-white  ms-2">©</span> Brantford India - All
-              rights reserved
+            <p className="text-white ">
+              <span className=" ms-2">©</span> Brantford India - All rights
+              reserved
             </p>
           </div>
         </div>

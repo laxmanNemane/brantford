@@ -13,7 +13,7 @@ const CallToActionSection = () => {
             We ensure the best experience for your office space.
           </p>
         </div>
-        <div className=" row-why-page">
+        <div className="row-why-page">
           <div className="row ">
             <div className="col-lg-4 col-md-6 col-sm-12">
               <div>

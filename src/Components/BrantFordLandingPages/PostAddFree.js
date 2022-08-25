@@ -5,7 +5,7 @@ const PostAddFree = () => {
     <div className="property-owner-section">
       <div className="container mb-3 py-5">
         <div className="heading-section-findsection text-center mb-5">
-          <p className="sub-heading">Are you property owner?</p>
+          <p className="sub-heading text-uppercase">Are you property owner?</p>
           <h1 className="main-heading">
             Sell or Rent your property faster
             <br /> with Brantford
@@ -23,7 +23,7 @@ const PostAddFree = () => {
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12">
             <div className="discription-findpage  my-5  ">
-              <p className="sub-heading ">Post you property</p>
+              <p className="sub-heading text-uppercase">Post you property</p>
               <h4 className="sub-main-heading">
                 Property owners get free <br />
                 posting when they <br />

@@ -14,6 +14,7 @@ const FindsProperty = () => {
         </div>
         <div className="row">
           <div className="col-lg-6 col-md-6 col-sm-12">
+
             <div className="image-section w-100">
               <img
                 src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -24,8 +25,8 @@ const FindsProperty = () => {
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12">
             <div className="discription-findpage  my-5  ">
-              <p className="sub-heading ">Buy A Office</p>
-              <h4 className="sub-main-heading">
+              <p className="sub-heading text-uppercase">Buy A Office</p>
+              <h4 className="sub-main-heading  ">
                 Find, Buy & Own Your <br /> Dream Office
               </h4>
               <p className="description-find-page">
@@ -35,6 +36,7 @@ const FindsProperty = () => {
               <button className="btn-for-all-landpage">Explore Buying</button>
             </div>
           </div>
+
         </div>
       </div>
     </div>

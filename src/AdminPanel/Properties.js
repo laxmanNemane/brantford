@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styles/AdminProperty.css";
 import HocComponent from "../Components/HocComponent";
 import allPrperty from "../Assets/Images/propertiesIcon.svg";
@@ -106,19 +106,34 @@ const Properties = () => {
           </div>
         </div>
 
-        <div className="ms-2 mt-5 property-tab-section" style={{ width: "99%" }}>
+        <div
+          className="ms-2 mt-5 property-tab-section"
+          style={{ width: "99%" }}
+        >
           <Tabs
             defaultActiveKey="Booking"
             id="uncontrolled-tab-example"
             className="mb-3 tabs_property"
           >
-            <Tab eventKey="Booking" title="Booking" tabClassName="profile-tabitem">
+            <Tab
+              eventKey="Booking"
+              title="Booking"
+              tabClassName="profile-tabitem"
+            >
               <PropertyBookings />
             </Tab>
-            <Tab eventKey="New Listed Properties" title="New Listed Properties" tabClassName="profile-tabitem">
+            <Tab
+              eventKey="New Listed Properties"
+              title="New Listed Properties"
+              tabClassName="profile-tabitem"
+            >
               <NewListedProperty />
             </Tab>
-            <Tab eventKey="Services" title="Services" tabClassName="profile-tabitem">
+            <Tab
+              eventKey="Services"
+              title="Services"
+              tabClassName="profile-tabitem"
+            >
               <Services />
             </Tab>
           </Tabs>

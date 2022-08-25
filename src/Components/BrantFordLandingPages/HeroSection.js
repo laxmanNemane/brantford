@@ -6,7 +6,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 const HeroSection = () => {
   return (
-    <div className="hero-section">
+    <div className="hero-section d-flex align-items-center justify-content-center flex-column">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col col-xl-8 col-md-10 col-12">
