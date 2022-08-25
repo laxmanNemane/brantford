@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import "../../Styles/LandingPage/testimonials.css";
+// import "../../Styles/LandingPage/testimonials.css";
 import { BsArrowRight } from "react-icons/bs";
 
 const responsive = {
@@ -127,7 +127,7 @@ const TestimonialSection = () => {
             </div>
           </div>
         </Carousel>
-        ;
+
         <div>
           <button className="btn view-all-testimonial">
             View all testimonial

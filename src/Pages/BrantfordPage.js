@@ -17,8 +17,10 @@ const BrantfordPage = () => {
   return (
     <div className="brantford-landing-page">
       <Navbar />
-      <video src={videoBg} autoPlay loop muted></video>
-      <HeroSection />
+      <div className="landing_section">
+        <video src={videoBg} autoPlay loop muted></video>
+        <HeroSection />
+      </div>
       <div className="">
         <FindsProperty />
         <PropertySection />

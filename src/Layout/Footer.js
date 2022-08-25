@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/LandingPage/Footer.css";
+// import "../Styles/LandingPage/Footer.css";
 import gpay from ".././Assets/Icons/googlepay.svg";
 import appstore from ".././Assets/Icons/appstore.svg";
 import insta from ".././Assets/Icons/insta.svg";
@@ -9,8 +9,8 @@ import { BsChevronRight } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <div className="footer-section">
-      <div className="container">
+    <div className="footer-section pt-5">
+      <div className="container pt-5">
         <div className="row">
           <div className="col-lg-3 col-md-6 col-sm-12">
             <ul className="list-unstyled list-of-footer">
@@ -123,9 +123,9 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="row   mb-5">
-          <div className="col-12 my-3">
-            <p className="mb-2">
+        <div className="row">
+          <div className="col-12 ">
+            <p className="">
               <span className="text-white  ms-2">©</span> Brantford India - All
               rights reserved
             </p>
