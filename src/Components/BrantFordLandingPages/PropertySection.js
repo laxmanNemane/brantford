@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsHeart, BsPlusCircle } from "react-icons/bs";
 import { BsArrowRight } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 import PropertyOverview from "../../EndUserPanel/PropertyOverview";
 
 const PropertySection = () => {
@@ -56,7 +57,9 @@ const PropertySection = () => {
                   </p>
                   <div className="button-space d-flex justify-content-between btn-area">
                     <p className=" fw-bold">Co-working</p>
-                    <button className="btn-for-all-landpage">Detail</button>
+                    <NavLink to="/office-detail">
+                      <button className="btn-for-all-landpage">Detail</button>
+                    </NavLink>
                   </div>
                 </div>
               </div>

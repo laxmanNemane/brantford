@@ -13,31 +13,33 @@ import PropertyDetailPage from "../AdminPanel/PropertyDetailPage";
 import AdminPrivacyPolicy from "../AdminPanel/AdminPrivacyPolicy";
 import AdminCategories from "../AdminPanel/AdminCategories";
 import BrantfordPage from "../Pages/BrantfordPage";
+import OfficesDetailPage from "../EndUserPanel/OfficesDetailPage";
+import Footer from "../Layout/Footer";
 
 const Routing = () => {
   return (
     <BrowserRouter>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         {/* <Route path="/" element={<p className="container mt-5">Home Page</p>} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
-
+        <Route path="/office-detail" element={<OfficesDetailPage />} />
         {/* langding page  */}
         <Route path="/" element={<BrantfordPage />} />
 
         {/* admin panel */}
-        <Route path="/dashbord" element={<DasbordPage />} />
+        {/* <Route path="/dashbord" element={<DasbordPage />} />
         <Route path="/properties" element={<Properties />} />
         <Route path="/revenu" element={<RevenuAdmin />} />
         <Route path="/tenants" element={<AdminTenants />} />
         <Route path="/profile" element={<AdminProfilePage />} />
         <Route path="/detail" element={<PropertyDetailPage />} />
         <Route path="/privacy-policy" element={<AdminPrivacyPolicy />} />
-        <Route path="/categories" element={<AdminCategories />} />
-
+        <Route path="/categories" element={<AdminCategories />} /> */}
         {/* <Route path="*" element={<h1>Page is Not Found</h1>} /> */}
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

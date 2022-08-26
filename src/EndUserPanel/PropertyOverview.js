@@ -33,19 +33,19 @@ const PropertyOverview = ({ isModalVisible, setIsModalVisible }) => {
               <div className="carousel-description">
                 <Carousel>
                   <div>
-                    <img src={office1} alt="" className="main-image" />
+                    <img src={office1} alt="ofice1" className="main-image" />
                     <p className="legend">Office </p>
                   </div>
                   <div>
-                    <img src={office2} alt="" className="main-image" />
+                    <img src={office2} alt="office-image2" className="main-image" />
                     <p className="legend">Office </p>
                   </div>
                   <div>
-                    <img src={office3} alt="" className="main-image" />
+                    <img src={office3} alt="office-image3" className="main-image" />
                     <p className="legend">Office </p>
                   </div>
                   <div>
-                    <img src={meetingRoom} alt="" className="main-image" />
+                    <img src={meetingRoom} alt="office-image4" className="main-image" />
                     <p className="legend">Meeting Room </p>
                   </div>
                   <div>
@@ -72,10 +72,11 @@ const PropertyOverview = ({ isModalVisible, setIsModalVisible }) => {
                     space. It gives a 360-degree view of Noida and creates a
                     fourth-generation ambiance...
                   </p>
-
-                  <button className="btn-for-all-landpage mt-5 ">
-                    Detail <BsArrowRight className="ms-2" />
-                  </button>
+                  <div className="button text-end mt-5">
+                    <button className="btn-for-all-landpage mt-5  ">
+                      Detail <BsArrowRight className="ms-2" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
