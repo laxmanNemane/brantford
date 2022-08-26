@@ -10,7 +10,7 @@ import LogoutFromGoogle from "./LogoutFromGoogle";
 import SignUp from "./SignUp";
 import { Link } from "react-router-dom";
 
-const BaseUrl = "localhost:3000";
+// const BaseUrl = "bantford.prometteur.in";
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -24,7 +24,7 @@ const Login = () => {
     var data = values;
     var config = {
       method: "post",
-      url: `${BaseUrl}/admin/admin-login`,
+      url: "http://bantford.prometteur.in/admin/admin-login",
       headers: {},
       data: data,
     };
@@ -32,8 +32,8 @@ const Login = () => {
     axios(config)
       .then(function (response) {
         console.log(response.status)
-       
         console.log(JSON.stringify(response.data));
+        console.log("token " , JSON.stringify(response.data.token));
       })
       .catch(function (error) {
         

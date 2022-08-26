@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import "../Styles/forgetmodal.css";
 import ficon from "../Assets/Icons/forgetIcon.svg";
 
-const BaseUrl = "localhost:3000";
+const BaseUrl = "http://bantford.prometteur.in";
 
 const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
 
@@ -13,10 +13,16 @@ const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
   const handleSubmit = (values) => {
 
     axios.post(`${BaseUrl}/admin/forgot-password`,values)
-    .then((res)=> {console.log(res)})
+    .then((res)=> {
+      console.log(res)
+    if(res.status==200){
+      console.log("success status");
+
+    }
+    })
     .catch((err)=> {console.log(err)})
     console.log(values);
-
+    
 
   } 
 

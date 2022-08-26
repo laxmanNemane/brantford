@@ -1,12 +1,34 @@
 import { Badge, Divider, Dropdown, Input, Menu, Modal } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsSearch, BsBell, BsBookmarkStar } from "react-icons/bs";
 import "../Styles/DashbordHeader.css";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlinePoweroff, AiOutlineUser } from "react-icons/ai";
+import axios from "axios";
+
+
+const BaseUrl = "localhost:3000";
+const AuthToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heG1lbGFuc2hydHlAZ21haWwuY29tIiwicGFzc3dvcmQiOiJQcm9AODA4NyIsInByb2ZpbGUiOiJwcm9wZXJ0eS1vd25lciIsImlkIjoyLCJpYXQiOjE2NjA2NDMwMTksImV4cCI6MTY2MDY1MDIxOX0.sjJhsrqo30lmfYXtH1sbBmVLft0NGfYvTLOnuV3jdg8";
+
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [isLogout, setIsLogout] = useState(false);
+
+
+  const checkStatus = (e) => {
+    e.preventDefault();
+    setIsLogout(true);
+
+    axios.post(`${BaseUrl}/admin/admin-logout`, {
+      headers:{
+        'Authorization': `${AuthToken}`
+      }
+    })
+    .then((res) => {console.log(res)})
+    .catch((err)=> {console.log(err)})
+     console.log("clicked",e);
+  }
 
   const menu = (
     <Menu
@@ -28,15 +50,20 @@ const Header = () => {
         {
           key: "3",
           label: (
+              <button onClick={checkStatus}>
             <NavLink to="/" className="fs-5">
               <AiOutlinePoweroff className="mx-2" />
-              Logout
+                Logout
             </NavLink>
+              </button>
           ),
         },
       ]}
     />
   );
+
+  console.log(isLogout);
+
   return (
     <div className=" w-100 header_admin ">
       <div className=" mx-3" style={{ margin: "-10px 0 5px 0" }}>

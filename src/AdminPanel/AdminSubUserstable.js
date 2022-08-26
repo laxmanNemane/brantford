@@ -54,8 +54,9 @@ const AdminUserTable = () => {
           <tbody>
             {paginatePosts &&
               paginatePosts.map((ele, index) => (
+                
                 <tr className="" key={index}>
-                  <td  className="table-td">{ele.id}</td>
+                  <td  className="table-td" >{ele.id}</td>
                   <td className="table-td">{ele.title}</td>
                   <td className="table-td">{ele.userId}</td>
                 </tr>

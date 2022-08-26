@@ -8,10 +8,10 @@ import loginPage_image from "../Assets/Images/login.jpg";
 import Navbar from "../Layout/Navbar";
 import LoginWithGoogle from "./LoginWithGoogle";
 import LogoutFromGoogle from "./LogoutFromGoogle";
-import { Link } from "react-router-dom";
+import { Link, NavLink, Route, Router } from "react-router-dom";
 
 
-const BaseUrl = "localhost:3000";
+const BaseUrl = "http://bantford.prometteur.in";
 
 function SignUp() {
 
@@ -22,7 +22,8 @@ function SignUp() {
       "address":"pune , maharashtra, 411101",
       "profile":"property-owner"}];
       
-      console.log(newvalues[0]);
+      console.log(newvalues[0]);  
+      
      
     //   Formik.resetForm({status:tr})
     //login user
@@ -152,6 +153,7 @@ function SignUp() {
                         type="submit"
                         className="form-control border-none w-75 mx-auto my-5 fw-bold SignIn_btn "
                       >
+                        
                         Sign Up
                       </button>
                       <p className="text-center py-2 fs-5">

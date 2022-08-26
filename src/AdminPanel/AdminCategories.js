@@ -6,6 +6,7 @@ import AddCategoryModel from "./Modals/AddCategoryModel";
 const AdminCategories = () => {
   const [showStatus, setshowStatus] = useState(false);
 
+
   return (
     <div
       style={{
@@ -17,11 +18,14 @@ const AdminCategories = () => {
       <div className="row  mx-3  ">
         <div className="col-12  mx-2 d-flex justify-content-between my-3 mb-5">
           <h5 className="Analytic_heading ">Categories : </h5>
-          <butto className="btn btn-privacy-policy me-3 mb-3">
+          <button className="btn btn-privacy-policy me-3 mb-3" onClick={()=>setshowStatus(true)}>
             {" "}
             <AiFillPlusCircle className="mx-2 fs-5" />
             Add Category
-          </butto>
+          </button>
+          {/* <AddCategoryModel/> */}
+
+          
         </div>
 
         <div
@@ -43,6 +47,7 @@ const AdminCategories = () => {
               </tr>
             </thead>
             <tbody>
+
               <tr className="">
                 <td className="table-td px-2 mx-3" style={{ width: "10%" }}>
                   1
@@ -50,6 +55,7 @@ const AdminCategories = () => {
                 <td className="table-td " style={{ width: "80%" }}>
                   Co-working Office
                 </td>
+                
                 {/* <td className="table-td w-25" style={{ width: "10%" }}> */}
                 {/* <AiOutlineMore onClick={() => setshowStatus(true)} /> */}
                 {/* <AiOutlineMore className="fs-4" />
@@ -85,11 +91,12 @@ const AdminCategories = () => {
                   </div>
                 </td>
               </tr>
+
             </tbody>
           </table>
         </div>
       </div>
-      <AddCategoryModel showStatus={showStatus} setshowStatus={setshowStatus} />
+      <AddCategoryModel showStatus={showStatus} setshowStatus={setshowStatus}  />
     </div>
   );
 };

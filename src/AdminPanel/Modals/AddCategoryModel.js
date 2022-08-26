@@ -1,13 +1,32 @@
 import { Modal } from "antd";
+import axios from "axios";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import "./categoryModal.css";
 
-const AddCategoryModel = ({ showStatus, setshowStatus }) => {
+const BaseUrl = "localhost:3000";
+
+const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
+  
+  const [categary, setCategary] = useState("");
+  
   const handleSubmit = (values) => {
     // setshowStatus(true);
+    setCategary(values);
     console.log(values);
+    console.log(categary);
+
+    axios.post(`${BaseUrl}admin/add-categary`,values)
+    .then((res)=> {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
   };
+
+  // console.log('categories', categary);
 
   const handleOk = () => {
     setshowStatus(false);
@@ -50,7 +69,8 @@ const AddCategoryModel = ({ showStatus, setshowStatus }) => {
                     type="text"
                     name="category"
                     placeholder="category"
-                    className="form-control  mx-auto "
+                    className="form-control  mx-auto"
+                    onFocus = {(e)=> console.log('clicked')}
                   />
                   <p className="error-message">
                     <ErrorMessage name="category" />
