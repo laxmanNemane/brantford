@@ -7,22 +7,22 @@ import { AiOutlinePoweroff, AiOutlineUser } from "react-icons/ai";
 import axios from "axios";
 
 
-const BaseUrl = "localhost:3000";
-const AuthToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heG1lbGFuc2hydHlAZ21haWwuY29tIiwicGFzc3dvcmQiOiJQcm9AODA4NyIsInByb2ZpbGUiOiJwcm9wZXJ0eS1vd25lciIsImlkIjoyLCJpYXQiOjE2NjA2NDMwMTksImV4cCI6MTY2MDY1MDIxOX0.sjJhsrqo30lmfYXtH1sbBmVLft0NGfYvTLOnuV3jdg8";
+const BaseUrl = "http://bantford.prometteur.in";
+const AuthToken = localStorage.getItem("admin_token");
 
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const [isLogout, setIsLogout] = useState(false);
+  // const [isLogout, setIsLogout] = useState(false);
 
 
-  const checkStatus = (e) => {
+  const logOutHandler = (e) => {
     e.preventDefault();
-    setIsLogout(true);
+    // setIsLogout(true);
 
     axios.post(`${BaseUrl}/admin/admin-logout`, {
       headers:{
-        'Authorization': `${AuthToken}`
+        Authorization: localStorage.getItem("admin_token")
       }
     })
     .then((res) => {console.log(res)})
@@ -50,7 +50,7 @@ const Header = () => {
         {
           key: "3",
           label: (
-              <button onClick={checkStatus}>
+              <button onClick={logOutHandler}>
             <NavLink to="/" className="fs-5">
               <AiOutlinePoweroff className="mx-2" />
                 Logout
@@ -62,7 +62,7 @@ const Header = () => {
     />
   );
 
-  console.log(isLogout);
+  // console.log(isLogout);
 
   return (
     <div className=" w-100 header_admin ">

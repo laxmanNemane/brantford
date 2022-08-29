@@ -6,6 +6,7 @@ import "../Styles/forgetmodal.css";
 import ficon from "../Assets/Icons/forgetIcon.svg";
 
 const BaseUrl = "http://bantford.prometteur.in";
+let token = localStorage.getItem("admin_token");
 
 const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
 
@@ -15,10 +16,13 @@ const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
     axios.post(`${BaseUrl}/admin/forgot-password`,values)
     .then((res)=> {
       console.log(res)
-    if(res.status==200){
-      console.log("success status");
+    // if(res.statusText==="OK"){
+    //   console.log("success status");
+    //   axios.patch(`${BaseUrl}/reset-password/${token}`)
+    //   .then((res)=> {console.log(res)})
+    //   .catch((err) => {console.log(err)})
 
-    }
+    // }
     })
     .catch((err)=> {console.log(err)})
     console.log(values);

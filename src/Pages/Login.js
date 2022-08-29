@@ -41,6 +41,12 @@ const Login = () => {
           localStorage.setItem("property_owner_token",res.data.token);
           navigate("/");
         }
+
+        else if(res.data.admin.profile === "endUser"){
+
+          localStorage.setItem("endUser_token",res.data.token);
+          navigate("/");
+        }
       })
       .catch((err) => {
 

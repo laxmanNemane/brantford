@@ -6,6 +6,10 @@ import AddCategoryModel from "./Modals/AddCategoryModel";
 const AdminCategories = () => {
   const [showStatus, setshowStatus] = useState(false);
 
+  // const OnupdateMessage = (id,message) => {
+  //   console.log("updte",id, message);
+  // }
+
 
   return (
     <div
