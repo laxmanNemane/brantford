@@ -4,7 +4,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import "./categoryModal.css";
 
-const BaseUrl = "localhost:3000";
+const BaseUrl = "http://bantford.prometteur.in";
 
 const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
   
@@ -16,7 +16,16 @@ const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
     console.log(values);
     console.log(categary);
 
-    axios.post(`${BaseUrl}admin/add-categary`,values)
+    let auth_token = localStorage.getItem("Login_token");
+
+    console.log(auth_token);
+
+    axios.post(`${BaseUrl}/admin/add-categary`,values, {
+      headers:{
+          'Content-Type': 'appliction/json',
+          'Authorization': `'${auth_token}'`
+      }
+    })
     .then((res)=> {
       console.log(res);
     })

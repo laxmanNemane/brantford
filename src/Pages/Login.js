@@ -34,6 +34,7 @@ const Login = () => {
         console.log(response.status)
         console.log(JSON.stringify(response.data));
         console.log("token " , JSON.stringify(response.data.token));
+        localStorage.setItem("Login_token", response.data.token);
       })
       .catch(function (error) {
         
@@ -41,6 +42,8 @@ const Login = () => {
 
       });
   };
+
+  localStorage.getItem("Login_token")
 
   return (
     <div>
