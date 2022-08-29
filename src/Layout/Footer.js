@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/LandingPage/Footer.css";
+// import "../Styles/LandingPage/Footer.css";
 import gpay from ".././Assets/Icons/googlepay.svg";
 import appstore from ".././Assets/Icons/appstore.svg";
 import insta from ".././Assets/Icons/insta.svg";
@@ -9,11 +9,11 @@ import { BsChevronRight } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <div className="footer-section">
-      <div className="container">
+    <div className="footer-section pt-5">
+      <div className="container pt-5">
         <div className="row">
           <div className="col-lg-3 col-md-6 col-sm-12">
-            <ul className="list-unstyled list-of-footer">
+            <ul className="list-unstyled list-of-footer d-flex text-light flex-column">
               <li className="brand-heading-footer">Brantford</li>
               <li>
                 <BsChevronRight /> Mobile App
@@ -36,7 +36,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12">
-            <ul className="list-unstyled list-of-footer">
+            <ul className="list-unstyled list-of-footer d-flex text-light flex-column">
               <li className="brand-heading-footer">Coworking Space</li>
               <li>
                 <BsChevronRight /> Coworking Space In Pune
@@ -58,7 +58,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12">
-            <ul className="list-unstyled list-of-footer">
+            <ul className="list-unstyled list-of-footer d-flex text-light flex-column">
               <li className="brand-heading-footer">Conventional Space</li>
               <li>
                 <BsChevronRight /> Conventional Space In Pune
@@ -83,7 +83,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-12">
-            <ul className="list-unstyled list-of-footer">
+            <ul className="list-unstyled list-of-footer d-flex text-light flex-column">
               <li className="brand-heading-footer">Contact Us</li>
               <li>
                 Toll Free -0392163876 <br />
@@ -97,7 +97,7 @@ const Footer = () => {
               </li>
               <li>
                 Connect with us
-                <ul className="list-unstyled social-icons">
+                <ul className="list-unstyled social-icons d-flex">
                   <li>
                     <img src={twitter} alt="twitter" />
                   </li>
@@ -111,7 +111,7 @@ const Footer = () => {
               </li>
               <li>
                 Download the App
-                <ul className="list-unstyled download-option">
+                <ul className="list-unstyled download-option d-flex">
                   <li>
                     <img src={gpay} alt="google Pay" />
                   </li>
@@ -123,11 +123,11 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="row   mb-5">
-          <div className="col-12 my-3">
-            <p className="mb-2">
-              <span className="text-white  ms-2">©</span> Brantford India - All
-              rights reserved
+        <div className="row">
+          <div className="col-12 ">
+            <p className="text-white ">
+              <span className=" ms-2">©</span> Brantford India - All rights
+              reserved
             </p>
           </div>
         </div>

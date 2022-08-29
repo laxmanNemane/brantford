@@ -8,46 +8,54 @@ import Navbar from "../Layout/Navbar";
 import LoginWithGoogle from "./LoginWithGoogle";
 import LogoutFromGoogle from "./LogoutFromGoogle";
 import SignUp from "./SignUp";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
-// const BaseUrl = "bantford.prometteur.in";
+const BaseUrl = "http://bantford.prometteur.in";
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const navigate =useNavigate();
 
   const handleSubmit = (values) => {
     console.log(values);
 
+   
+
+
     //login user
-    
-    // var axios = require("axios");
-    var data = values;
-    var config = {
-      method: "post",
-      url: "http://bantford.prometteur.in/admin/admin-login",
-      headers: {},
-      data: data,
-    };
 
-    axios(config)
-      .then(function (response) {
-        console.log(response.status)
-        console.log(JSON.stringify(response.data));
-        console.log("token " , JSON.stringify(response.data.token));
-        localStorage.setItem("Login_token", response.data.token);
+    axios
+      .post(`${BaseUrl}/admin/admin-login`, values)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data.admin.profile);
+        console.log("token",res.data.token);
+        if(res.data.admin.profile === "admin"){
+
+          localStorage.setItem("admin_token",res.data.token);
+
+          navigate("/dashbord")
+        }
+        else if(res.data.admin.profile === "property-owner"){
+
+          localStorage.setItem("property_owner_token",res.data.token);
+          navigate("/");
+        }
       })
-      .catch(function (error) {
-        
-        console.log(error);
+      .catch((err) => {
 
+        
+        console.log(err);
       });
+
+   
   };
 
-  localStorage.getItem("Login_token")
+  localStorage.getItem("Admin_token");
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="container d-flex justify-content-center mt-3 ">
         <div className="login_Card  w-100 py-3 ">
           <div className="d-flex">
@@ -67,6 +75,7 @@ const Login = () => {
               </p>
               <div>
                 <Formik
+                  
                   initialValues={{ email: "", password: "" }}
                   validate={(values) => {
                     let errors = {};
@@ -81,6 +90,10 @@ const Login = () => {
                     }
                     if (!values.password) {
                       errors.password = "required*";
+                    }else if(values.password.length < 7){
+                      errors.password = "enter valid password";
+                      // console.log("enter valid password");
+
                     }
                     return errors;
                   }}
@@ -112,8 +125,8 @@ const Login = () => {
                           <Field type="checkbox" name="remember me" />
                           &nbsp; Remember me
                         </label>
-                        <p 
-                        style={{cursor:"pointer"}}
+                        <p
+                          style={{ cursor: "pointer" }}
                           className="ps-3 forget_password_line"
                           onClick={() => setIsModalVisible(true)}
                         >
@@ -130,11 +143,11 @@ const Login = () => {
                         &ndash;&ndash; or sign in with &ndash;&ndash;
                       </p>
 
-                      {/* <p className="form-control w-75  mx-auto  ">
+                      <p className="form-control w-75  mx-auto  ">
                         <i className="fab fa-google fa-x mx-5"></i> Continue
                         with Google
-                      </p> */}
-                      <LoginWithGoogle />
+                      </p>
+                      {/* <LoginWithGoogle /> */}
 
                       {/* <LogoutFromGoogle/> */}
                       {/* <li className="btn border rounded-2 me-4">

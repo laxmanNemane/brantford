@@ -13,7 +13,12 @@ import PropertyDetailPage from "../AdminPanel/PropertyDetailPage";
 import AdminPrivacyPolicy from "../AdminPanel/AdminPrivacyPolicy";
 import AdminCategories from "../AdminPanel/AdminCategories";
 import BrantfordPage from "../Pages/BrantfordPage";
+
 import SignUp from "../Pages/SignUp";
+
+import OfficesDetailPage from "../EndUserPanel/OfficesDetailPage";
+import Footer from "../Layout/Footer";
+
 
 const Routing = () => {
   return (
@@ -24,7 +29,7 @@ const Routing = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
-
+        <Route path="/office-detail" element={<OfficesDetailPage />} />
         {/* langding page  */}
         <Route path="/" element={<BrantfordPage />} />
 
@@ -37,9 +42,9 @@ const Routing = () => {
         <Route path="/detail" element={<PropertyDetailPage />} />
         <Route path="/privacy-policy" element={<AdminPrivacyPolicy />} />
         <Route path="/categories" element={<AdminCategories />} />
-
         {/* <Route path="*" element={<h1>Page is Not Found</h1>} /> */}
       </Routes>
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 };

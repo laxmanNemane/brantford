@@ -1,0 +1,105 @@
+.office-detail-section {
+  padding: 80px 0;
+}
+
+.tag {
+  width: 90px;
+  height: 25px;
+  transform: translateY(-50%);
+  /* font-size: large; */
+  font-weight: 600;
+  padding: 2px 12px;
+  background-color: #91a7ff;
+}
+
+.description-offices,
+.detail-property-owner,
+.features-setion-offices {
+  /* border: 2px solid red; */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 30%);
+  padding: 40px;
+  margin-top: 30px;
+  /* margin-bottom: 40px; */
+}
+
+.end-user-requirement-setion {
+  padding: 40px 10px;
+  width: 100%;
+}
+
+.similar-offices,
+.end-user-requirement-setion {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 30%);
+}
+
+.decription-paragraph p {
+  font-size: 15px;
+}
+
+.office-sub-heading {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.property-owner-detail {
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  padding: 20px 20px;
+}
+
+.icon-offices {
+  width: 40px;
+  height: 40x;
+  margin: 0 2px;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  background: var(--success);
+  display: inline-block;
+  text-align: center;
+  font-size: 15px;
+}
+
+.price1 {
+  color: var(--primary);
+  margin: 0 2px;
+}
+.icon-offices:hover {
+  color: var(--paragraph);
+}
+
+.icon-featured {
+  color: var(--primary);
+}
+
+.avtar-section {
+  width: 100%;
+  background-color: #f1f3f5;
+  height: 75px;
+  display: inline-block;
+  text-align: center;
+  font-size: 36px;
+
+  border-radius: 10px;
+}
+
+.brantford-team {
+  color: var(--secondary);
+  line-height: 0.5;
+  margin-top: 15px;
+}
+
+.view-listing {
+  color: var(--primary);
+}
+
+.offices-similar-heading {
+  font-size: 16px;
+}
+
+.offices-similar-heading:hover {
+  color: var(--primary);
+}
+
+.last-update {
+  color: var(--paragraph);
+}

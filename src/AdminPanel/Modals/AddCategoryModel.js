@@ -16,14 +16,14 @@ const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
     console.log(values);
     console.log(categary);
 
-    let auth_token = localStorage.getItem("Login_token");
+    // let auth_token = localStorage.getItem("Login_token");
 
-    console.log(auth_token);
+    // console.log(auth_token);
 
     axios.post(`${BaseUrl}/admin/add-categary`,values, {
       headers:{
           'Content-Type': 'appliction/json',
-          'Authorization': `'${auth_token}'`
+          'Authorization': localStorage.getItem("admin_token")
       }
     })
     .then((res)=> {

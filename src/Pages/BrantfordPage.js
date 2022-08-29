@@ -10,21 +10,27 @@ import Footer from "../Layout/Footer";
 import ".././Styles/LandingPage/brantFord.css";
 import Sponsers from "../Components/BrantFordLandingPages/Sponsers";
 import FindsProperty from "../Components/BrantFordLandingPages/FindsProperty";
+import PostAddFree from "../Components/BrantFordLandingPages/PostAddFree";
+import Cities from "../Components/BrantFordLandingPages/Cities";
 
 const BrantfordPage = () => {
   return (
     <div className="brantford-landing-page">
-      <Navbar />
-      <video src={videoBg} autoPlay loop muted></video>
-      <HeroSection />
+      {/* <Navbar /> */}
+      <div className="landing_section">
+        <video src={videoBg} autoPlay loop muted></video>
+        <HeroSection />
+      </div>
       <div className="">
         <FindsProperty />
         <PropertySection />
-        {/* <PromiseSection /> */}
+        <PostAddFree />
+        <PromiseSection />
+        <Cities />
         <CallToActionSection />
         <TestimonialSection />
         <Sponsers />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );
