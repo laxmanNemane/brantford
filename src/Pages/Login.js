@@ -30,6 +30,7 @@ const Login = () => {
         console.log(res);
         console.log(res.data.admin.profile);
         console.log("token",res.data.token);
+        console.log("token-length",res.data.token.length);
         if(res.data.admin.profile === "admin"){
 
           localStorage.setItem("admin_token",res.data.token);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HocComponent from "../Components/HocComponent";
 import { IoIosAirplane } from "react-icons/io";
 import { FcRating, FcPlus, FcApproval, FcBullish } from "react-icons/fc";
@@ -10,9 +10,86 @@ import MidSectionCards from "../AdminPanel/MidSectionCards";
 import AdminDashbordFooter from "../AdminPanel/AdminDashbordFooter";
 import { NavLink } from "react-router-dom";
 import AddCategoryModel from "../AdminPanel/Modals/AddCategoryModel";
+import axios from "axios";
+
+const BaseUrl = "http://bantford.prometteur.in";
+const Admin_token = localStorage.getItem("admin_token");
 
 const DasbordPage = () => {
+  const [revenue, setRevenue] = useState();
   const [showStatus, setshowStatus] = useState(false);
+  const [allPropertiesCount, setAllPropertiesCount] = useState();
+  const [bookedCount, setBookedCount] = useState({});
+  // const [propertyBookedCount, setPropertyBookedCount] = useState(0);
+
+  const revenueCategory = "monthly";
+
+  const getRevenue = () => {
+    axios
+      .get(`${BaseUrl}/adminDashboard/get-revenue?revenue=${revenueCategory}`, {
+        headers: {
+          Authorization: Admin_token,
+        },
+      })
+      .then((res) => {
+        setRevenue(res.data.total_revenue);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  //  //All Properties
+  const getallProperties = () => {
+    axios
+      .get(`${BaseUrl}/adminDashboard/all-properties`, {
+        headers: {
+          Authorization: Admin_token,
+        },
+      })
+      .then((res) => {
+        setAllPropertiesCount(res.data.spaces.length);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const getBookedProperties = () => {
+    axios
+      .get(`${BaseUrl}/adminDashboard/all-booked-properties`, {
+        headers: {
+          Authorization: Admin_token,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.length);
+        console.log(res.data);
+      
+
+        setBookedCount(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // bookedCount.map((item)=> {
+  //   setPropertyBookedCount(propertyBookedCount++);
+  // })
+  console.log(bookedCount);
+  console.log(Object.keys(bookedCount).length)
+
+
+  useEffect(() => {
+    getBookedProperties();
+    getallProperties();
+    getRevenue();
+  }, []);
+
+  // console.log(bookedCount);
+
   return (
     <div
       className="dashbord_section_page "
@@ -41,9 +118,12 @@ const DasbordPage = () => {
             </p>
           </div>
           <div className="col-lg-3 text-end">
-          <BsPatchPlus  className="fs-2 text-dark"/>
-            <button className="ms-3 btn border Buttons_dashbord" onClick={()=>setshowStatus(true)}>
-              &nbsp;Create  Category
+            <BsPatchPlus className="fs-2 text-dark" />
+            <button
+              className="ms-3 btn border Buttons_dashbord"
+              onClick={() => setshowStatus(true)}
+            >
+              &nbsp;Create Category
             </button>
           </div>
         </div>
@@ -73,7 +153,9 @@ const DasbordPage = () => {
                       All Property
                     </span>
                     <br />
-                    <span className="dashbord_page_overview_number">1k</span>
+                    <span className="dashbord_page_overview_number">
+                      {allPropertiesCount}
+                    </span>
                     <br />
                     <span className="dashbord_page_overview_description">
                       grow rate 1%
@@ -100,7 +182,9 @@ const DasbordPage = () => {
                       Booked Properties
                     </span>
                     <br />
-                    <span className="dashbord_page_overview_number">574</span>
+                    <span className="dashbord_page_overview_number">
+                      {Object.keys(bookedCount).length}
+                    </span>
                     <br />
                     <span className="dashbord_page_overview_description">
                       Incresed By 1%
@@ -120,7 +204,9 @@ const DasbordPage = () => {
                       Revenu (Profit)
                     </span>
                     <br />
-                    <span className="dashbord_page_overview_number">3K</span>
+                    <span className="dashbord_page_overview_number">
+                      {revenue}
+                    </span>
                     <br />
                     <span className="dashbord_page_overview_description">
                       hello
@@ -132,13 +218,12 @@ const DasbordPage = () => {
               <div className="row text-center">
                 <div className="col-12 py-2">
                   <NavLink to="/properties" className="text-dark">
-
-                  <button
-                    className="btn Buttons_dashbord view_all_btn "
-                    style={{ borderRadius: "40px" , margin:"20px 0" }}
-                  >
-                    Overview Page
-                  </button>
+                    <button
+                      className="btn Buttons_dashbord view_all_btn "
+                      style={{ borderRadius: "40px", margin: "20px 0" }}
+                    >
+                      Overview Page
+                    </button>
                   </NavLink>
                 </div>
               </div>
