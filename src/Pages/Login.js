@@ -4,15 +4,22 @@ import ForgetPassword from "../Components/ForgetPassword";
 import "../Styles/loginpage.css";
 import loginPage_image from "../Assets/Images/login.jpg";
 import Navbar from "../Layout/Navbar";
+import { adminLogin } from "../AdminPanel/AdminApi/Index";
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const handleSubmit = (values) => console.log(values);
+  const handleSubmit = (values) => {
+    try {
+      adminLogin(values);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <div >
-      <Navbar />
-      <div className="container d-flex justify-content-center mt-3 ">
+    <div className="py-5">
+      {/* <Navbar /> */}
+      <div className="container d-flex justify-content-center mt-3 py-5 ">
         <div className="login_Card  w-100 py-3 ">
           <div className="d-flex">
             <div className="login-image-section">
@@ -22,7 +29,9 @@ const Login = () => {
             </div>
             <div className="shadow py-3 login_form_section">
               {/* <div className=""> */}
-              <h4 className="text-center me-2 mt-3 fw-bold body login-text">Login</h4>
+              <h4 className="text-center me-2 mt-3 fw-bold body login-text">
+                Login
+              </h4>
               <p className="text-center my-3 body-1 sign-in">
                 Hey, Enter your details to get sign in <br />
                 to your account
@@ -71,7 +80,7 @@ const Login = () => {
                       </p>
                       <div className="d-flex mx-auto justify-content-between w-75">
                         <label className="  mb-2">
-                          <Field type="checkbox" name="remember me" />
+                          <Field type="checkbox" />
                           &nbsp; Remember me
                         </label>
                         <p

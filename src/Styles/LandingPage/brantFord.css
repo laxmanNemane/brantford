@@ -658,3 +658,20 @@ video {
   font-size: 14px;
   color: #ced4da;
 }
+
+/* terms and conditions */
+
+.terms-conditions-section {
+  background-color: rgba(94, 106, 112, 0.1);
+}
+.descriptive-term-conditions {
+  background-color: white;
+  padding: 20px 40px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.descriptive-term-conditions p {
+  font-size: 15px;
+  line-height: 1.7;
+}

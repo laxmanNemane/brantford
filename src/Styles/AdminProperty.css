@@ -1,5 +1,5 @@
 .Main_card_usertenants_properties {
-  width: 350px;
+  width: 315px;
   border-radius: 5px;
 }
 
@@ -13,6 +13,7 @@
   border-radius: 50%;
   background-color: blueviolet;
 }
+
 .first-icon {
   background-color: rgb(249, 88, 73);
 }

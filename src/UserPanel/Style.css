@@ -1,0 +1,137 @@
+.property-owner {
+  background-color: #e7e5e5;
+}
+
+.dash-icons {
+  height: 70px;
+  width: 70px;
+  background-color: rgb(169, 169, 169);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  border-radius: 15px;
+}
+
+.space-one {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 30%);
+  padding: 8px 5px;
+  border-radius: 15px;
+  background-color: white;
+}
+
+/* .decsiption-user-dashbord {
+} */
+.user-dash-heading {
+  font-size: 15px;
+  color: #92989a;
+}
+
+.right-arrow {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 30%;
+  font-size: 30px;
+}
+
+.value-number {
+  font-size: 28px !important;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.space-number {
+  font-size: 40px !important;
+}
+
+.space-icon {
+  font-size: 20px;
+  margin-bottom: 0;
+  /* align-items: center; */
+  /* stroke: var(--primmary); */
+}
+
+.card-welcome-card {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 30%);
+}
+
+.this-week-section {
+  width: 100%;
+  /* border: 1px solid red; */
+  box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
+  line-height: 1;
+  padding: 10px 20px;
+}
+
+.icons-sections-this {
+  position: relative;
+}
+
+.icn {
+  height: 45px;
+  width: 45px;
+  background-color: var(--primary);
+  border-radius: 15px;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.first-icon {
+  background-color: var(--paragraph);
+  color: white;
+}
+
+.second-icon {
+  background-color: var(--primary);
+  color: white;
+}
+
+.third-icon {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.heading-summery {
+  font-size: 20px;
+}
+
+.return-value {
+  font-size: 16px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.slope-value {
+  color: #92989a;
+  font-size: 14px;
+}
+
+.upgrade-package {
+  width: 80%;
+  /* border: 1px solid red; */
+  padding: 29px 40px;
+  line-height: 1.5;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 30%);
+}
+
+.upgrade-package img {
+  margin: 40px 0;
+}
+
+.upgrade-heading {
+  font-size: 20px;
+  font-family: rubik;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+/* HiOutlineArrowTrendingUp */
+/* BsLightningCharge */
+
+/* FiUsers */
+/* MdOutlineCancel */
+/* MdOutlinePendingActions */

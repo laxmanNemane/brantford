@@ -62,6 +62,8 @@
 .price1 {
   color: var(--primary);
   margin: 0 2px;
+  /* font-weight: 600; */
+  /* font-size: 22; */
 }
 .icon-offices:hover {
   color: var(--paragraph);
