@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HocComponent from "../Components/HocComponent";
 import tenantsUser from "../Assets/Images/tenates.svg";
 import Users from "../Assets/Images/user.svg";
@@ -7,9 +7,23 @@ import "../Styles/Admintenants.css";
 import AdminUserTable from "./AdminSubUserstable";
 import { AiOutlineUserSwitch, AiOutlineTeam } from "react-icons/ai";
 import { BsArrowDownLeftCircle } from "react-icons/bs";
+import axios from "axios";
 
+const BaseUrl = "http://bantford.prometteur.in";
 
 const AdminTenants = () => {
+
+  const [userCount, setUserCount] = useState();
+
+  useEffect(()=>{
+    axios.get(`${BaseUrl}/adminDashboard/all-users`,{headers:{
+      Authorization: localStorage.getItem("admin_token")
+    }}).then((res) => {
+      console.log(res.data);
+      setUserCount(res.data.length)
+    });
+  },[])
+
   return (
     <div
       style={{
@@ -56,7 +70,9 @@ const AdminTenants = () => {
                   <p className=" tenents_card-heading" style={{}}>
                     All users
                   </p>
-                  <p className="People_tenant ">23</p>
+                  <p className="People_tenant ">
+                    {userCount}
+                  </p>
                 </div>
               </div>
             </div>
