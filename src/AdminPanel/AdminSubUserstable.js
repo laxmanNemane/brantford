@@ -4,15 +4,22 @@ import axios from "axios";
 import "../Styles/Admintenants.css";
 import { useEffect, useState } from "react";
 
+
+const BaseUrl = "http://bantford.prometteur.in";
 const AdminUserTable = () => {
   const pageSize = 13;
-  const [post, setPost] = useState("");
+  const [post, setPost] = useState([]);
   const [paginatePosts, setPaginatePosts] = useState();
   const [currentPage, setCurrentPage] = useState(1);
 
+ 
+
   useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/todos").then((res) => {
-      // console.log(res.data);
+
+    axios.get(`${BaseUrl}/adminDashboard/all-users`,{headers:{
+      Authorization: localStorage.getItem("admin_token")
+    }}).then((res) => {
+      console.log(res.data);
       setPost(res.data);
       setPaginatePosts(_(res.data).slice(0).take(pageSize).value());
     });
@@ -52,13 +59,13 @@ const AdminUserTable = () => {
             </tr>
           </thead>
           <tbody>
-            {paginatePosts &&
-              paginatePosts.map((ele, index) => (
+            {
+             post.map((ele, index) => (
                 
-                <tr className="" key={index}>
-                  <td  className="table-td" >{ele.id}</td>
-                  <td className="table-td">{ele.title}</td>
-                  <td className="table-td">{ele.userId}</td>
+                <tr className=""  key={index}>
+                  <td  className="table-td" >{post.id}</td>
+                  <td className="table-td">{post.name}</td>
+                  <td className="table-td">{post.email}</td>
                 </tr>
               ))}
             <tr></tr>

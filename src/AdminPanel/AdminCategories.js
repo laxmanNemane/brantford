@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HocComponent from "../Components/HocComponent";
 import { AiOutlineMore, AiFillPlusCircle } from "react-icons/ai";
 import AddCategoryModel from "./Modals/AddCategoryModel";
+import UpdateCategoryModel from "./Modals/UpdateCategoryModel";
 import axios from "axios";
 import { useEffect } from "react";
 
@@ -10,11 +11,23 @@ const BaseUrl = "http://bantford.prometteur.in";
 const AdminCategories = () => {
   const [showStatus, setshowStatus] = useState(false);
   const [categaries, setCategaries] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false,0);
+  const [updateId, setUpdateId] = useState();
+
+ 
 
   //update category
   const OnupdateMessage = (id, categary) => {
-    console.log("update", id, categary);
+    // console.log("update", id, categary);
+    
+    const categary_update = "update value"
+    setUpdateId(id, categary);
+    const updatedValue = {categary:`${categary_update}`}
+    axios.patch(`${BaseUrl}/admin/update-categary?id=${id}`,updatedValue, {headers:{
+      Authorization: localStorage.getItem("admin_token")
+    }})
 
+    adminCategory();
   };
 
   //delete category
@@ -23,18 +36,22 @@ const AdminCategories = () => {
     axios.delete(`${BaseUrl}/admin/delete-categary?id=${id}`, {headers:{
       Authorization:Admin_token
     }})
-    .then((res)=> { console.log(res)})
+    .then((res)=> { 
+      adminCategory()
+      console.log(res)
+    
+    })
     .catch((err)=> { console.log(err)})
     console.log(id);
   };
 
-  //enduser category
+  //Admin category
+const adminCategory = () => {
 
-  useEffect(() => {
-    axios
-      .get(`${BaseUrl}/endUser/all-categaries`, {
+  axios
+      .get(`${BaseUrl}/adminDashboard/all-categaries`, {
         headers: {
-          Authorization: localStorage.getItem("endUser_token"),
+          Authorization: localStorage.getItem("admin_token"),
         },
       })
       .then((res) => {
@@ -44,6 +61,12 @@ const AdminCategories = () => {
       .catch((err) => {
         console.log(err);
       });
+
+}
+  
+
+  useEffect(() => {
+    adminCategory()
   }, []);
 
   return (
@@ -65,7 +88,7 @@ const AdminCategories = () => {
             <AiFillPlusCircle className="mx-2 fs-5" />
             Add Category
           </button>
-          {/* <AddCategoryModel/> */}
+
         </div>
 
         <div
@@ -124,8 +147,9 @@ const AdminCategories = () => {
                           <li
                             style={{ cursor: "pointer" }}
                             className="my-2 mx-2"
-                            onClick={() =>
+                            onClick={function (event) {
                               OnupdateMessage(item.id, item.categary)
+                              setIsModalVisible(true) }
                             }
                           >
                             <i className="fas fa-pencil-alt mx-2"></i> Update
@@ -148,6 +172,7 @@ const AdminCategories = () => {
         </div>
       </div>
       <AddCategoryModel showStatus={showStatus} setshowStatus={setshowStatus} />
+      <UpdateCategoryModel isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}  id={updateId}/>
     </div>
   );
 };

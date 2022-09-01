@@ -6,12 +6,14 @@ import "./categoryModal.css";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
-const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
-  const [categary, setCategary] = useState("");
+const UpdateCategoryModel = ({ isModalVisible, setIsModalVisible, id, adminCategory }) => {
+  const [updateCategary, setUpdateCategary] = useState("");
+
+  console.log(id);
 
   const handleSubmit = (values) => {
-    setshowStatus(true);
-    setCategary(values);
+    setIsModalVisible(true);
+    setUpdateCategary(values);
     console.log(values);
     // console.log(categary);
 
@@ -24,32 +26,34 @@ const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
     // console.log(auth_token);
 
     axios
-      .post(`${BaseUrl}/admin/add-categary`, values, {
+      .patch(`${BaseUrl}/admin/update-categary?id=${id}`, values, {
         headers: {
           Authorization: admin_token,
         },
       })
       .then((res) => {
         console.log(res);
-        setshowStatus(false);
+        setIsModalVisible(false)
+        
       })
       .catch((err) => {
         console.log(err);
+
       });
   };
 
   const handleOk = () => {
-    setshowStatus(false);
+    setIsModalVisible(false);
   };
 
   const handleCancel = () => {
-    setshowStatus(false);
+    setIsModalVisible(false);
   };
   return (
     <>
       <Modal
         title="New Category"
-        visible={showStatus}
+        visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={false}
@@ -92,7 +96,7 @@ const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
                       type="button"
                       onClick={handleSubmit}
                     >
-                      Create New
+                      update Category
                     </button>
                   </div>
                 </div>
@@ -105,4 +109,4 @@ const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
   );
 };
 
-export default AddCategoryModel;
+export default UpdateCategoryModel;
