@@ -6,6 +6,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
     const handleSubmit = (values) => {
         // setshowStatus(true);
         console.log(values);
+        setshowStatus(false)
     };
 
     const handleOk = () => {
@@ -56,11 +57,11 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                         className=""
                     >
                         {({ values, errors, handleSubmit }) => (
-                            <Form onSubmit={handleSubmit} className="">
+                            < Form onSubmit={handleSubmit} className="">
                                 <div className="formGroup">
                                     <div className="row">
                                         <div className="col-6">
-                                            <label htmlFor="Space Name" className="label-user">
+                                            <label htmlFor="Space Name" className="label">
                                                 Space Name:{" "}
                                             </label>
                                             <Field
@@ -69,7 +70,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                                                 placeholder="space"
                                                 className="form-control  mb-3   "
                                             />
-                                            <label htmlFor="manager_email" className="label-user">
+                                            <label htmlFor="manager_email" className="label">
                                                 Manager Email:{" "}
                                             </label>
                                             <Field
@@ -78,7 +79,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                                                 placeholder="manager_email"
                                                 className="form-control  mb-3 m "
                                             />
-                                            <label htmlFor="Seating capacity " className="label-user">
+                                            <label htmlFor="Seating capacity " className="label">
                                                 Seating Capacity:{" "}
                                             </label>
 
@@ -88,7 +89,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                                                 placeholder="seating_capacity"
                                                 className="form-control  mb-3  m"
                                             />
-                                            <label htmlFor="Cabins" className="label-user">
+                                            <label htmlFor="Cabins" className="label">
                                                 Cabin:{" "}
                                             </label>
 
@@ -98,7 +99,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                                                 placeholder="cabin_capacity"
                                                 className="form-control  mb-3  m"
                                             />
-                                            <label htmlFor="desk" className="label-user">
+                                            <label htmlFor="desk" className="label">
                                                 Total Desk:{" "}
                                             </label>
 
@@ -108,7 +109,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                                                 placeholder="total_desks"
                                                 className="form-control  mb-3  m"
                                             />
-                                            <label htmlFor="Property-id" className="label-user">
+                                            <label htmlFor="Property-id" className="label">
                                                 Property id:{" "}
                                             </label>
 
@@ -121,7 +122,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
 
                                         </div>
                                         <div className="col-6">
-                                            <label htmlFor="manager_name" className="label-user">
+                                            <label htmlFor="manager_name" className="label">
                                                 manager name:{" "}
                                             </label>
                                             <Field
@@ -132,7 +133,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                                             />
                                             <label
                                                 htmlFor="manager_contactNumber"
-                                                className="label-user"
+                                                className="label"
                                             >
                                                 Manager Contact:{" "}
                                             </label>
@@ -142,7 +143,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                                                 placeholder="manager_contactNumber"
                                                 className="form-control  mb-3  m"
                                             />
-                                            <label htmlFor="price" className="label-user">
+                                            <label htmlFor="price" className="label">
                                                 Price :
                                             </label>
                                             <Field
@@ -152,7 +153,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                                                 className="form-control  mb-3  m"
                                             />
 
-                                            <label htmlFor="status" className="label-user">
+                                            <label htmlFor="status" className="label">
                                                 Property Status
                                             </label>
                                             <Field
@@ -161,7 +162,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                                                 placeholder="property_status"
                                                 className="form-control  mb-3  m"
                                             />
-                                            <label htmlFor="Working Days" className="label-user">
+                                            <label htmlFor="Working Days" className="label">
                                                 Working Days:
                                             </label>
                                             <Field
@@ -171,7 +172,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                                                 className="form-control  mb-3  m"
                                             />
 
-                                            <label htmlFor="city" className="label-user">
+                                            <label htmlFor="city" className="label">
                                                 City:{" "}
                                             </label>
 
@@ -184,7 +185,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                                         </div>
 
                                         <div className="col-12">
-                                            <label htmlFor="Address" className="label-user">
+                                            <label htmlFor="Address" className="label">
                                                 Address
                                             </label>
                                             <Field
@@ -196,7 +197,7 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                                         </div>
 
                                         <div className="col-12">
-                                            <label htmlFor="description" className="label-user">
+                                            <label htmlFor="description" className="label">
                                                 Description
                                             </label>
                                             <Field

@@ -4,9 +4,12 @@ import HocComponent from "../Components/HocComponent";
 import ".././Styles/AdminProfile.css";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { RiCoinsLine } from "react-icons/ri";
 
 const AdminProfilePage = () => {
-  const handleSubmit = () => {};
+  const handleSubmit = (values) => {
+    console.log(values);
+  };
   return (
     <div
       className=""
@@ -68,12 +71,12 @@ const AdminProfilePage = () => {
                     firstName: "Lakhan ",
                     lastName: "Nemane",
                     email: "lakhan@gmail.com",
-                    password: "******",
+                    password: "123456",
                     address: "baner balewadi",
                     city: "pune",
                     state: "maharastra",
                     zip: "411045",
-                    description: "",
+                    description: "hello we have big surprize",
                   }}
                   validate={(values) => {
                     let errors = {};
@@ -107,7 +110,6 @@ const AdminProfilePage = () => {
                               name="firstName"
                               placeholder="firstName"
                               className="form-control"
-                              defaultValue={values.firstName}
                             />
 
                             <label htmlFor="Email " className="label-user">
@@ -118,7 +120,6 @@ const AdminProfilePage = () => {
                               name="email"
                               placeholder="email"
                               className="form-control"
-                              defaultValue={values.email}
                             />
                           </div>
                           <div className="col-6">
@@ -130,7 +131,6 @@ const AdminProfilePage = () => {
                               name="lastName"
                               placeholder="lastName"
                               className="form-control"
-                              defaultValue={values.lastName}
                             />
 
                             <label htmlFor="Password " className="label-user">
@@ -141,7 +141,6 @@ const AdminProfilePage = () => {
                               name="password"
                               placeholder="password"
                               className="form-control "
-                              defaultValue={values.password}
                             />
                           </div>
                           <div className="col-12">
@@ -153,7 +152,6 @@ const AdminProfilePage = () => {
                               name="address"
                               placeholder="address"
                               className="form-control "
-                              defaultValue={values.address}
                             />
                           </div>
 
@@ -166,7 +164,6 @@ const AdminProfilePage = () => {
                               name="city"
                               placeholder="city"
                               className="form-control "
-                              defaultValue={values.city}
                             />
                           </div>
                           <div className="col-3">
@@ -206,7 +203,10 @@ const AdminProfilePage = () => {
                           </div>
                         </div>
                         <div>
-                          <button className="btn update-account-btn">
+                          <button
+                            className="btn update-account-btn"
+                            type="submit"
+                          >
                             Update Account
                           </button>
                         </div>
