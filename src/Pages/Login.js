@@ -4,16 +4,16 @@ import ForgetPassword from "../Components/ForgetPassword";
 import "../Styles/loginpage.css";
 import loginPage_image from "../Assets/Images/login.jpg";
 import Navbar from "../Layout/Navbar";
-import { adminLogin } from "../AdminPanel/AdminApi/Index";
+// import { adminLogin } from "../AdminPanel/AdminApi/Index";
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const handleSubmit = (values) => {
-    try {
-      adminLogin(values);
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   adminLogin(values);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (

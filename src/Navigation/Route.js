@@ -16,15 +16,19 @@ import BrantfordPage from "../Pages/BrantfordPage";
 import OfficesDetailPage from "../EndUserPanel/OfficesDetailPage";
 import Footer from "../Layout/Footer";
 import TermsCondition from "../EndUserPanel/TermsCondition";
-import Index from "../UserPanel/DashbordUser/Index";
+import UserDashbord from "../UserPanel/DashbordUser/UserDashbord";
+import Spaces from "../UserPanel/DashbordUser/Spaces";
+import Visitors from "../UserPanel/DashbordUser/Visitors";
 
 const Routing = () => {
   return (
     <BrowserRouter>
       {/* <Navbar /> */}
       <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/po" element={<Index />} />
+        <Route path="/" element={<UserDashbord />} />
+        <Route path="/spaces" element={<Spaces />} />
+        <Route path="/visitors" element={<Visitors />} />
+        {/* <Route path="/" element={<userDash />} /> */}
         {/* <Route path="/" element={<p className="container mt-5">Home Page</p>} /> */}
         {/* <Route path="/login" element={<Login />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
