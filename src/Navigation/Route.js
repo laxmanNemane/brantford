@@ -22,6 +22,9 @@ import TermsCondition from "../EndUserPanel/TermsCondition";
 import UserDashbord from "../UserPanel/DashbordUser/UserDashbord";
 import Spaces from "../UserPanel/DashbordUser/Spaces";
 import Visitors from "../UserPanel/DashbordUser/Visitors";
+import AddAmenity from "../UserPanel/DashbordUser/ModelPropertyOwner/AddAmenity";
+import AddImages from "../UserPanel/DashbordUser/ModelPropertyOwner/AddImages";
+import AddLocation from "../UserPanel/DashbordUser/ModelPropertyOwner/AddLocation";
 
 
 const Routing = () => {
@@ -32,7 +35,13 @@ const Routing = () => {
         <Route path="/" element={<UserDashbord />} />
         <Route path="/spaces" element={<Spaces />} />
         <Route path="/visitors" element={<Visitors />} />
-       
+
+        <Route path="/amenity" element={<AddAmenity />} />
+        <Route path="/image" element={<AddImages />} />
+        <Route path="/map" element={<AddLocation />} />
+
+        {/* <Route path="/" element={<userDash />} /> */}
+
         {/* <Route path="/" element={<p className="container mt-5">Home Page</p>} /> */}
 
         <Route path="/login" element={<Login />} />

@@ -9,7 +9,20 @@ const BaseUrl = "http://bantford.prometteur.in";
 
 const Spaces = () => {
     const [showStatus, setshowStatus] = useState(false)
-    const [spacesDisplay, setSpacesDisplay] = useState({});
+    const [spacesDisplay, setSpacesDisplay] = useState([]);
+
+
+    const deletespace = (id) => {
+        console.log(id);
+        axios.delete(`${BaseUrl}/admin/delete-space?id=${id}`,{headers:{
+            Authorization : localStorage.getItem("property_owner_token")
+        }})
+        .then((res)=> {
+            console.log(res.data)
+            showSpacesPropertyOwner()
+        })
+        .catch((err)=> {console.log(err)})
+    }
 
     const showSpacesAdmin = () =>{
         axios.get(`${BaseUrl}/adminDashboard/all-properties`,{headers:{
@@ -35,7 +48,7 @@ const Spaces = () => {
         .then((res)=> {
             console.log(res.data)
             console.log(res.data)
-            setSpacesDisplay(res.data.spaces)
+            setSpacesDisplay(res.data)
         })
         .catch((err)=> {
             
@@ -44,11 +57,14 @@ const Spaces = () => {
         })
     } 
 
+    console.log("stete " , spacesDisplay)
+
     
     useEffect(()=>{
         // showSpacesAdmin();
+        deletespace()
         showSpacesPropertyOwner();
-    },[setshowStatus])
+    },[showStatus])
 
     return (
         <div className="mx-5">
@@ -72,14 +88,15 @@ const Spaces = () => {
                         </thead>
                         <tbody>
 
-                    {Object.keys(spacesDisplay).map((item,index)=>{ return(
+                    {spacesDisplay.map((item,index)=>{ return(
                             <tr key={index}>
-                                <td>{spacesDisplay[item].id}</td>
-                                <td>{spacesDisplay[item].space}</td>
-                                <td>{spacesDisplay[item].address}</td>
+                                <td>{item.id}</td>
+                                <td>{item.space}</td>
+                                <td>{item.address}</td>
                                 <td>View</td>
-                                <td > <button className="btn-success" style={{ color: "white", padding: "6px 12px", borderRadius: "12px", border: "none" }}>{spacesDisplay[item].approve_status}
+                                <td > <button className="btn-success" style={{ color: "white", padding: "6px 12px", borderRadius: "12px", border: "none" }}>{item.approve_status}
                                 </button></td>
+                                <td><button onClick={()=>deletespace(item.id)}>Delete</button></td>
                             </tr> )
                             })}
                             {/* <tr>
@@ -101,7 +118,7 @@ const Spaces = () => {
                         </tbody>
                     </Table>
                 </div>
-                <SpacesModal setshowStatus={setshowStatus} showStatus={showStatus} />
+                <SpacesModal setshowStatus={setshowStatus} showStatus={showStatus} showSpacesPropertyOwner={showSpacesPropertyOwner}/>
             </div>
         </div >
     );

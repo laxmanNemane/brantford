@@ -72,7 +72,7 @@ const UserDashbord = () => {
         <div className="row py-5">
           <div className="col-lg-12">
             <div className="user-right-esction">
-              <div className="row ">
+              <div className="row">
                 <div className="col-3">
                   <div className="space-one">
                     <div className="row">
@@ -89,7 +89,9 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-2">
                         <div className="right-arrow">
-                          <IoIosArrowForward />
+                          <NavLink to="/spaces">
+                            <IoIosArrowForward />
+                          </NavLink>
                         </div>
                       </div>
                     </div>
@@ -112,7 +114,9 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-2">
                         <div className="right-arrow">
-                          <IoIosArrowForward />
+                          <NavLink to="/spaces">
+                            <IoIosArrowForward />
+                          </NavLink>
                         </div>
                       </div>
                     </div>
@@ -135,7 +139,9 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-2">
                         <div className="right-arrow">
-                          <IoIosArrowForward />
+                          <NavLink to="/spaces">
+                            <IoIosArrowForward />
+                          </NavLink>
                         </div>
                       </div>
                     </div>
@@ -158,7 +164,9 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-2">
                         <div className="right-arrow">
-                          <IoIosArrowForward />
+                          <NavLink to="/visitors">
+                            <IoIosArrowForward />
+                          </NavLink>
                         </div>
                       </div>
                     </div>

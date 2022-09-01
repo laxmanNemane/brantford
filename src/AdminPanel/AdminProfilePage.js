@@ -1,12 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 import HocComponent from "../Components/HocComponent";
 import ".././Styles/AdminProfile.css";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { RiCoinsLine } from "react-icons/ri";
+import axios from "axios";
+
+const BaseUrl = "http://bantford.prometteur.in";
 
 const AdminProfilePage = () => {
-  const handleSubmit = () => {};
+  const [profileDetail, setProfileDetail] = useState();
+
+
+
+  const handleSubmit = (values) => {
+    console.log(values);
+
+  };
+
+  const getadminProfile = () => {
+    axios.get(`${BaseUrl}/admin/admin-profile`,{headers:{
+      Authorization : localStorage.getItem("property_owner_token")
+  }})
+  .then((res)=> {
+      console.log(res.data)
+      console.log(res.data)
+      // console.log(res.data.)
+      setProfileDetail(res.data)
+
+      
+  })
+  .catch((err)=> {console.log(err)})
+}
+
+
+useEffect(()=>{
+  getadminProfile();
+},[])
+
+console.log(profileDetail)
+
+
+// const setinitialValues= {
+//   firstName: profileDetail.name,
+//   lastName: profileDetail.name,
+//   email: profileDetail.email,
+//   password:profileDetail.password,
+//   address: profileDetail.address,
+//   city: profileDetail.address,
+//   state: profileDetail.address,
+//   zip: profileDetail.contact,
+//   description: profileDetail.email
+// }
+  
+
+ 
+
+
   return (
     <div
       className=""
@@ -63,17 +114,17 @@ const AdminProfilePage = () => {
               <p className="account-deatil-heading">Account Detail</p>
               <hr />
               <div>
-                <Formik
+                <Formik 
                   initialValues={{
-                    firstName: "Lakhan ",
+                    firstName: ``,
                     lastName: "Nemane",
                     email: "lakhan@gmail.com",
-                    password: "******",
+                    password: "123456",
                     address: "baner balewadi",
                     city: "pune",
                     state: "maharastra",
                     zip: "411045",
-                    description: "",
+                    description: "hello we have big surprize",
                   }}
                   validate={(values) => {
                     let errors = {};
@@ -107,7 +158,6 @@ const AdminProfilePage = () => {
                               name="firstName"
                               placeholder="firstName"
                               className="form-control"
-                              defaultValue={values.firstName}
                             />
 
                             <label htmlFor="Email " className="label-user">
@@ -118,7 +168,6 @@ const AdminProfilePage = () => {
                               name="email"
                               placeholder="email"
                               className="form-control"
-                              defaultValue={values.email}
                             />
                           </div>
                           <div className="col-6">
@@ -130,7 +179,6 @@ const AdminProfilePage = () => {
                               name="lastName"
                               placeholder="lastName"
                               className="form-control"
-                              defaultValue={values.lastName}
                             />
 
                             <label htmlFor="Password " className="label-user">
@@ -141,7 +189,6 @@ const AdminProfilePage = () => {
                               name="password"
                               placeholder="password"
                               className="form-control "
-                              defaultValue={values.password}
                             />
                           </div>
                           <div className="col-12">
@@ -153,7 +200,6 @@ const AdminProfilePage = () => {
                               name="address"
                               placeholder="address"
                               className="form-control "
-                              defaultValue={values.address}
                             />
                           </div>
 
@@ -166,7 +212,6 @@ const AdminProfilePage = () => {
                               name="city"
                               placeholder="city"
                               className="form-control "
-                              defaultValue={values.city}
                             />
                           </div>
                           <div className="col-3">
@@ -206,7 +251,10 @@ const AdminProfilePage = () => {
                           </div>
                         </div>
                         <div>
-                          <button className="btn update-account-btn">
+                          <button
+                            className="btn update-account-btn"
+                            type="submit"
+                          >
                             Update Account
                           </button>
                         </div>

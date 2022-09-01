@@ -6,7 +6,7 @@ import axios from "axios";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
-const SpacesModal = ({ showStatus, setshowStatus }) => {
+const SpacesModal = ({ showStatus, setshowStatus, showSpacesPropertyOwner }) => {
     const handleSubmit = (values) => {
         // setshowStatus(true);
         console.log(values);
@@ -14,11 +14,13 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
 
         //add spaces
         axios.post(`${BaseUrl}/admin/add-space?categaryId=${id}`,values,{headers:{
-            Authorization : localStorage.getItem("admin_token")
+            Authorization : localStorage.getItem("property_owner_token")
         }})
         .then((res)=> {
             console.log(res.data)
             console.log(res.data.spaces)
+            showSpacesPropertyOwner()
+            setshowStatus(false)
         })
         .catch((err)=> {console.log(err)})
     };
@@ -64,16 +66,14 @@ const SpacesModal = ({ showStatus, setshowStatus }) => {
                         validate={(values) => {
                             let errors = {};
 
-                            if (!values.space) {
-                                errors.category = "required*";
-                            }
+                          
                             return errors;
                         }}
                         onSubmit={handleSubmit}
-                        className=""
+                       
                     >
                         {({ values, errors, handleSubmit }) => (
-                            <Form onSubmit={handleSubmit} className="">
+                            <Form onSubmit={handleSubmit}>
                                 <div className="formGroup">
                                     <div className="row">
                                         <div className="col-6">
