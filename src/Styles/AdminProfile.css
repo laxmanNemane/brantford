@@ -1,5 +1,5 @@
 .user-detail-overview {
-  width: 500px;
+  width: 450px;
   border-radius: 10px;
   height: 650px;
 }
@@ -51,7 +51,7 @@
 }
 
 .account-deatil {
-  width: 950px;
+  width: 97.5%;
   border-radius: 10px;
   height: 750px;
   margin-left: 25px;

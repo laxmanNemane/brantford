@@ -1,5 +1,5 @@
 .Main_card_usertenants {
-  width: 300px;
+  width: 274px;
   border-radius: 15px;
   /* background-color: "#424D59"; */
 }
@@ -8,15 +8,14 @@
   font-size: 18px;
   margin-top: 35px;
   line-height: 0.2;
-  color: var(--paragraph);;
+  color: var(--paragraph);
 }
 
-.tenants-section-icon{
+.tenants-section-icon {
   font-size: 30px;
- 
 }
 
-.icon-backgound-tenants{
+.icon-backgound-tenants {
   width: 60px;
   height: 60px;
   display: flex;
@@ -24,15 +23,14 @@
   justify-content: center;
   border-radius: 50%;
   /* background-color: aqua; */
-
 }
-.first-icon{
+.first-icon {
   background-color: rgb(236, 71, 220);
 }
-.second-icon{
+.second-icon {
   background-color: rgb(67, 69, 71);
 }
-.third-icon{
+.third-icon {
   background-color: aqua;
 }
 
@@ -41,22 +39,20 @@
   font-weight: 800;
 }
 
-.AdvBox{
-    background-image: url('https://img.freepik.com/free-vector/gradient-wavy-background_79603-2092.jpg?w=1060&t=st=1660726154~exp=1660726754~hmac=5e1f464f1bbcf842c386505d3fc710b9b52c6495ed200634bae1ed1c98e041dd');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border:none
+.AdvBox {
+  background-image: url("https://img.freepik.com/free-vector/gradient-wavy-background_79603-2092.jpg?w=1060&t=st=1660726154~exp=1660726754~hmac=5e1f464f1bbcf842c386505d3fc710b9b52c6495ed200634bae1ed1c98e041dd");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
 }
 
-
-.User_Name_table{
-  font-size: 16px ;
+.User_Name_table {
+  font-size: 16px;
   color: var(--paragraph);
 }
 
-
-table tr td{
+table tr td {
   padding: 10px 10px !important;
   font-size: 16px;
   color: var(--secondary);

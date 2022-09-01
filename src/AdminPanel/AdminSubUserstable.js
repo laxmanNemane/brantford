@@ -7,9 +7,11 @@ import { useEffect, useState } from "react";
 
 const BaseUrl = "http://bantford.prometteur.in";
 const AdminUserTable = () => {
+
   // const pageSize = 13;
   const [post, setPost] = useState([]);
   // const [paginatePosts, setPaginatePosts] = useState();
+
   const [currentPage, setCurrentPage] = useState(1);
   const [userCount, setUserCount] = useState()
 
@@ -41,7 +43,7 @@ const AdminUserTable = () => {
 
   return (
     <div className="mt-4 ms-2">
-    <h5 className="Analytic_heading"> Users</h5>
+      <h5 className="Analytic_heading"> Users</h5>
       <div
         className="table table-responsive me-auto ms-2"
         style={{ width: "99%", margin: "0 20px 0 0" }}
@@ -62,6 +64,7 @@ const AdminUserTable = () => {
             </tr>
           </thead>
           <tbody>
+
             {
              post.map((ele, index) => (
                 <tr className=""  key={index}>
@@ -69,13 +72,14 @@ const AdminUserTable = () => {
                   <td className="table-td">{ele.name}</td>
                   <td className="table-td">{ele.email}</td>
                   {/* <td className="table-td">{ele.profile}</td> */}
+                 
+                  
                 </tr>
               ))}
-            <tr></tr>
+           
           </tbody>
         </table>
       </div>
-      
     </div>
   );
 };

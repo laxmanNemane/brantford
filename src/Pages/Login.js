@@ -5,6 +5,7 @@ import ForgetPassword from "../Components/ForgetPassword";
 import "../Styles/loginpage.css";
 import loginPage_image from "../Assets/Images/login.jpg";
 import Navbar from "../Layout/Navbar";
+
 import LoginWithGoogle from "./LoginWithGoogle";
 import LogoutFromGoogle from "./LogoutFromGoogle";
 import SignUp from "./SignUp";
@@ -64,6 +65,7 @@ const Login = () => {
     <div>
       {/* <Navbar /> */}
       <div className="container d-flex justify-content-center mt-3 ">
+
         <div className="login_Card  w-100 py-3 ">
           <div className="d-flex">
             <div className="login-image-section">
@@ -129,7 +131,7 @@ const Login = () => {
                       </p>
                       <div className="d-flex mx-auto justify-content-between w-75">
                         <label className="  mb-2">
-                          <Field type="checkbox" name="remember me" />
+                          <Field type="checkbox" />
                           &nbsp; Remember me
                         </label>
                         <p

@@ -94,7 +94,6 @@ const Properties = () => {
       if(bookedProperties[key].approve_status == "pending"){
         
       }
-      
 
     });
   }

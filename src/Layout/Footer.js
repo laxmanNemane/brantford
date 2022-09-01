@@ -6,6 +6,7 @@ import insta from ".././Assets/Icons/insta.svg";
 import twitter from ".././Assets/Icons/twitter.svg";
 import facebook from ".././Assets/Icons/fc.svg";
 import { BsChevronRight } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -31,7 +32,9 @@ const Footer = () => {
                 <BsChevronRight /> Builders in India
               </li>
               <li>
-                <BsChevronRight /> price trends
+                <NavLink to="/terms&conditions " className="text-light">
+                  <BsChevronRight /> Privacy Policy
+                </NavLink>
               </li>
             </ul>
           </div>

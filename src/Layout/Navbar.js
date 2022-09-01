@@ -47,7 +47,11 @@ const Navbar = () => {
           </ul>
 
           <div className="user-icon">
-            <p className="user-icons-tag"><BiUser className="fs-4 text-light" /></p>
+            <NavLink to="/login">
+              <p className="user-icons-tag">
+                <BiUser className="fs-4 text-light" />
+              </p>
+            </NavLink>
           </div>
         </div>
       </div>
