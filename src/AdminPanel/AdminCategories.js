@@ -13,7 +13,7 @@ const AdminCategories = () => {
   const [categaries, setCategaries] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false,0);
   const [updateId, setUpdateId] = useState();
-
+  const [updatecategary, setUpdatecategary] = useState();
  
 
   //update category
@@ -21,7 +21,8 @@ const AdminCategories = () => {
     // console.log("update", id, categary);
     
     const categary_update = "update value"
-    setUpdateId(id, categary);
+    setUpdateId(id);
+    setUpdatecategary(categary)
     const updatedValue = {categary:`${categary_update}`}
     axios.patch(`${BaseUrl}/admin/update-categary?id=${id}`,updatedValue, {headers:{
       Authorization: localStorage.getItem("admin_token")
@@ -67,7 +68,8 @@ const adminCategory = () => {
 
   useEffect(() => {
     adminCategory()
-  }, []);
+
+  }, [isModalVisible]);
 
   return (
     <div
@@ -172,7 +174,7 @@ const adminCategory = () => {
         </div>
       </div>
       <AddCategoryModel showStatus={showStatus} setshowStatus={setshowStatus} />
-      <UpdateCategoryModel isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}  id={updateId}/>
+      <UpdateCategoryModel isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}  id={updateId} categary={updatecategary}/>
     </div>
   );
 };

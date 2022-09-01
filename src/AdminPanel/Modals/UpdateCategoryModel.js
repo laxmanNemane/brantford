@@ -6,10 +6,11 @@ import "./categoryModal.css";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
-const UpdateCategoryModel = ({ isModalVisible, setIsModalVisible, id, adminCategory }) => {
+const UpdateCategoryModel = ({ isModalVisible, setIsModalVisible, id, categary }) => {
   const [updateCategary, setUpdateCategary] = useState("");
 
   console.log(id);
+  console.log(categary);
 
   const handleSubmit = (values) => {
     setIsModalVisible(true);
