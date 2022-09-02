@@ -33,7 +33,7 @@ const PostAddFree = () => {
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptatibus enim excepturi facere.
               </p>
-              <button className="btn-for-all-landpage">
+              <button className="btn-second">
                 Post Your Property for FREE
               </button>
             </div>

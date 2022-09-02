@@ -82,15 +82,14 @@ const AdminProfilePage = () => {
               <div>
                 <Formik
                   initialValues={{
-                    firstName: userData.name,
-                    lastName: "Nemane",
-                    email: "lakhan@gmail.com",
-                    password: "123456",
-                    address: "baner balewadi",
-                    city: "pune",
-                    state: "maharastra",
-                    zip: "411045",
-                    description: "hello we have big surprize",
+                    id: 4,
+                    name: "maxemelan",
+                    email: "maxmelanshsf@gmail.com",
+                    password:
+                      "$2a$10$ls7cuwUJIgTmNtQX4Q8mle3PwUaBw6.ohy3rU6ZDmN4M5Zmo8TONe",
+                    contact: 8537452001,
+                    address: "pune , maharashtra, 411101",
+                    profile: "admin",
                   }}
                   validate={(values) => {
                     let errors = {};
@@ -121,8 +120,8 @@ const AdminProfilePage = () => {
                             </label>
                             <Field
                               type="text"
-                              name="firstName"
-                              placeholder="firstName"
+                              name="name"
+                              placeholder="name"
                               className="form-control"
                             />
 
@@ -135,18 +134,27 @@ const AdminProfilePage = () => {
                               placeholder="email"
                               className="form-control"
                             />
-                          </div>
-                          <div className="col-6">
-                            <label htmlFor="Last Name" className="label-user">
-                              Last Name
+
+                            <label htmlFor="Contact " className="label-user">
+                              Contact{" "}
                             </label>
                             <Field
-                              type="lastName"
-                              name="lastName"
-                              placeholder="lastName"
+                              type="number"
+                              name="contact"
+                              placeholder="contact"
                               className="form-control"
                             />
-
+                          </div>
+                          <div className="col-6">
+                            <label htmlFor="First Name" className="label-user">
+                              Your Profile
+                            </label>
+                            <Field
+                              type="text"
+                              name="profile"
+                              placeholder="profile"
+                              className="form-control"
+                            />
                             <label htmlFor="Password " className="label-user">
                               Password{" "}
                             </label>
@@ -169,40 +177,6 @@ const AdminProfilePage = () => {
                             />
                           </div>
 
-                          <div className="col-6">
-                            <label htmlFor="City " className="label-user">
-                              City{" "}
-                            </label>
-                            <Field
-                              type="text"
-                              name="city"
-                              placeholder="city"
-                              className="form-control "
-                            />
-                          </div>
-                          <div className="col-3">
-                            <label htmlFor="State " className="label-user">
-                              State{" "}
-                            </label>
-                            <Field
-                              type="text"
-                              name="state"
-                              placeholder="state"
-                              className="form-control "
-                            />
-                          </div>
-                          <div className="col-3">
-                            <label htmlFor="Zip " className="label-user">
-                              Zip{" "}
-                            </label>
-                            <Field
-                              type="number"
-                              name="zip"
-                              placeholder="zip"
-                              className="form-control "
-                            />
-                          </div>
-
                           <div className="col-12">
                             <label htmlFor="Zip " className="label-user">
                               Description{" "}
@@ -218,7 +192,7 @@ const AdminProfilePage = () => {
                         </div>
                         <div>
                           <button
-                            className="btn update-account-btn"
+                            className="btn update-account-btn mt-5"
                             type="submit"
                           >
                             Update Account

@@ -5,6 +5,8 @@ import React from "react";
 const AddAmenity = ({ showStatus, setshowStatus }) => {
     const handleSubmit = (values) => {
         console.log(values);
+        setshowStatus(false)
+
     };
 
     const handleOk = () => {

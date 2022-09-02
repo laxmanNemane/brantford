@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import GoogleMapReact from "google-map-react";
 import { Field, Form, Formik } from "formik";
 import { Modal } from "antd";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
-const AddLocation = ({ addlocationShow,
-  setAddLocationShow }) => {
+const AddLocation = ({ addlocationShow, setAddLocationShow }) => {
   const handleSubmit = (values) => {
     console.log(values);
+    setAddLocationShow(false)
   };
 
   const handleOk = () => {
@@ -21,7 +18,7 @@ const AddLocation = ({ addlocationShow,
   return (
     <>
       <Modal
-        title="Add Amenity"
+        title="Add Location Detail"
         visible={addlocationShow}
         onOk={handleOk}
         // width={650}
@@ -33,7 +30,7 @@ const AddLocation = ({ addlocationShow,
           initialValues={{
             latitude: 123345,
             longitude: 433411,
-            spaceId: 1
+            spaceId: 1,
           }}
           validate={(values) => {
             let errors = {};
@@ -92,7 +89,6 @@ const AddLocation = ({ addlocationShow,
       </Modal>
     </>
   );
-
 };
 
 export default AddLocation;

@@ -1,66 +1,77 @@
-import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
+
+import { Formik, Form, Field } from "formik";
+
+import { Input, Select } from "antd";
 
 const AddImages = () => {
     const [img, setImg] = useState({
         selected: null,
     });
 
-    const fileSelectedHandler = (e) => {
+    const { Option } = Select;
+
+    const fileSelectedHandler = (e, setFieldValue) => {
         setImg({ selected: e.target.files[0] });
-        console.log("hello", e.target.files[0]);
+
+        setFieldValue("selected_file", e.target.files[0]);
+    };
+
+    const hanglechangetype = (e, setFieldValue) => {
+        console.log(e);
+
+        setFieldValue("selected_type", e);
     };
 
     // console.log(img);
 
     const handleSubmit = (values) => {
         console.log(values);
-        console.log("image ", img)
 
+        console.log("image ", img);
     };
 
     return (
         <div>
-            <div className="">
-                <Formik
-                    initialValues={{ main_type: "Select type", sub_type: "Select type" }}
-                    onSubmit={(values) => {
-                        console.log(values);
-                    }}
-                >
-                    {(values, setFieldValue) => (
-                        <Form>
-                            <Field as="select" name="main_type">
-                                <option value="photos">photos</option>
-                                <option value="floor plans">floor plans</option>
-                            </Field>
+            <Formik
+                initialValues={{
+                    selected_type: "",
+                    selected_file: "",
+                }}
+                onSubmit={handleSubmit}
+            >
+                {({ values, setFieldValue }) => {
+                    return (
+                        <>
+                            <Form>
+                                <Select
+                                    placeholder="select type"
+                                    id="selected_ type"
+                                    onChange={(e) => hanglechangetype(e, setFieldValue)}
+                                >
+                                    <Option value="photos">photos</Option>
+                                    <Option value="floor plans">floor plans</Option>
+                                </Select>
 
-                            <Field as="select" name="sub_type">
-                                <option value="photos_images">photos_images</option>
-                                <option value="photos_outdoor">photos_outdoor</option>
-                                <option value="photos_indoor">photos_indoor</option>
-                                <option value="photos_video">photos_video</option>
-                                <option value="photos_cover">photos_cover</option>
-                                <option value="floor_plan_photos">floor_plan_photos</option>
-                                <option value="floor_plans_introdocument">
-                                    floor_plans_introdocument
-                                </option>
-                                <option value="floor_plans_videolink">
-                                    floor_plans_videolink
-                                </option>
-                            </Field>
+                                <label htmlFor="file">File upload</label>
 
-                            <label htmlFor="file">File upload</label>
-                            <input type="file" onChange={fileSelectedHandler} />
-                            {/* <Thumb file={values.file} /> */}
+                                <Input
+                                    type="file"
+                                    id="selected_file"
+                                    value={""}
+                                    onChange={(e) => fileSelectedHandler(e, setFieldValue)}
+                                />
 
-                            <button type="submit" onSubmit={handleSubmit}>
-                                Submit
-                            </button>
-                        </Form>
-                    )}
-                </Formik>
-            </div>
+                                {/* <Thumb file={values.file} /> */}
+
+                                <button type="submit" onSubmit={handleSubmit}>
+                                    Submit
+                                </button>
+                            </Form>
+                        </>
+                    );
+                }}
+            </Formik>
         </div>
     );
 };

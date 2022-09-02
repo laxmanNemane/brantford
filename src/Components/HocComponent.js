@@ -1,4 +1,3 @@
-import { Divider } from "antd";
 import React from "react";
 import Header from "../Layout/Header";
 import Sidebar from "../Layout/Sidebar";

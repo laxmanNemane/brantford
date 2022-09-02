@@ -2,6 +2,8 @@ import React from "react";
 import "../Style.css";
 import { NavLink } from "react-router-dom";
 import { FiUsers, FiWatch } from "react-icons/fi";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 import {
   MdIncompleteCircle,
   MdOutlineCancel,
@@ -185,16 +187,7 @@ const UserDashbord = () => {
                 <div className="row">
                   <div className="col-4">
                     <div className="this-week-section bg-white">
-                      <div className="icons-sections-this">
-                        <p className="icn first-icon">
-                          <BsLightningCharge />
-                        </p>
-                      </div>
-                      <p className="heading-summery fw-bold">This Month</p>
-                      <p className="return-value">
-                        3.54k <BsArrowDown className="text-danger" />
-                      </p>
-                      <p className="slope-value">+3.1 icon</p>
+                      <div className="icons-sections-this"></div>
                     </div>
                   </div>
 
