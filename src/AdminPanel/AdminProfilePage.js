@@ -30,7 +30,6 @@ const AdminProfilePage = () => {
     
 
   };
-
   const getadminProfile = () => {
     axios.get(`${BaseUrl}/admin/admin-profile`,{headers:{
       Authorization : localStorage.getItem("admin_token")
@@ -81,6 +80,7 @@ const setinitialValues= {
 // console.log(setinitialValues);
 // console.log(setinitialValues.firstName);
  console.log(profileDetail.name)
+
 
 
   return (
@@ -143,15 +143,16 @@ const setinitialValues= {
                 <Formik 
                 enableReinitialize
                   initialValues={{
-                    firstName:setinitialValues.firstName,
-                    lastName: `${setinitialValues.lastName}`,
+                    name:`${profileDetail.name}`,
+                    lastName: `${profileDetail.name}`,
                     email: `${setinitialValues.email}`,
-                    password: `${setinitialValues.password}`,
-                    address: `${setinitialValues.address}`,
-                    city: `${setinitialValues.city}`,
+                    contact: `${profileDetail.contact}`,
+                    password: `${profileDetail.password}`,
+                    profile: `${profileDetail.profile}`,
+                    description: `${profileDetail.description}`,
+                    address: `${profileDetail.address}`,
                     state: `${setinitialValues.state}`,
-                    zip: `${setinitialValues.firstName}`,
-                    description: `${setinitialValues.description}`,
+
                   }}
                   validate={(values) => {
                     let errors = {};
@@ -182,8 +183,8 @@ const setinitialValues= {
                             </label>
                             <Field
                               type="text"
-                              name="firstName"
-                              placeholder="firstName"
+                              name="name"
+                              placeholder="name"
                               className="form-control"
                               defautvalue={values.firstName}
                             />
@@ -197,18 +198,27 @@ const setinitialValues= {
                               placeholder="email"
                               className="form-control"
                             />
-                          </div>
-                          <div className="col-6">
-                            <label htmlFor="Last Name" className="label-user">
-                              Last Name
+
+                            <label htmlFor="Contact " className="label-user">
+                              Contact{" "}
                             </label>
                             <Field
-                              type="lastName"
-                              name="lastName"
-                              placeholder="lastName"
+                              type="number"
+                              name="contact"
+                              placeholder="contact"
                               className="form-control"
                             />
-
+                          </div>
+                          <div className="col-6">
+                            <label htmlFor="First Name" className="label-user">
+                              Your Profile
+                            </label>
+                            <Field
+                              type="text"
+                              name="profile"
+                              placeholder="profile"
+                              className="form-control"
+                            />
                             <label htmlFor="Password " className="label-user">
                               Password{" "}
                             </label>
@@ -231,40 +241,6 @@ const setinitialValues= {
                             />
                           </div>
 
-                          <div className="col-6">
-                            <label htmlFor="City " className="label-user">
-                              City{" "}
-                            </label>
-                            <Field
-                              type="text"
-                              name="city"
-                              placeholder="city"
-                              className="form-control "
-                            />
-                          </div>
-                          <div className="col-3">
-                            <label htmlFor="State " className="label-user">
-                              State{" "}
-                            </label>
-                            <Field
-                              type="text"
-                              name="state"
-                              placeholder="state"
-                              className="form-control "
-                            />
-                          </div>
-                          <div className="col-3">
-                            <label htmlFor="Zip " className="label-user">
-                              Zip{" "}
-                            </label>
-                            <Field
-                              type="number"
-                              name="zip"
-                              placeholder="zip"
-                              className="form-control "
-                            />
-                          </div>
-
                           <div className="col-12">
                             <label htmlFor="Zip " className="label-user">
                               Description{" "}
@@ -280,7 +256,7 @@ const setinitialValues= {
                         </div>
                         <div>
                           <button
-                            className="btn update-account-btn"
+                            className="btn update-account-btn mt-5"
                             type="submit"
                           >
                             Update Account

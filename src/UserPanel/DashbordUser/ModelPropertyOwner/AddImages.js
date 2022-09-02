@@ -1,52 +1,79 @@
-import { Field, Form, Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
+
+import { Formik, Form, Field } from "formik";
+
+import { Input, Select } from "antd";
 
 const AddImages = () => {
+    const [img, setImg] = useState({
+        selected: null,
+    });
+
+    const { Option } = Select;
+
+    const fileSelectedHandler = (e, setFieldValue) => {
+        setImg({ selected: e.target.files[0] });
+
+        setFieldValue("selected_file", e.target.files[0]);
+    };
+
+    const hanglechangetype = (e, setFieldValue) => {
+        console.log(e);
+
+        setFieldValue("selected_type", e);
+    };
+
+    // console.log(img);
 
     const handleSubmit = (values) => {
-        console.log(values)
-    }
+        console.log(values);
 
+        console.log("image ", img);
+    };
 
     return (
         <div>
-            <div className="">
-                <Formik
-                    initialValues={{ main_type: 'red', sub_type: 'red' }}
-                    onSubmit={(values) => {
-                        console.log(values)
-                    }}
-                >
-                    {(values) => (
-                        <Form>
-                            <Field as="select" name="main_type">
-                                <option value="photos">photos</option>
-                                <option value="floor plans">floor plans</option>
-                            </Field>
+            <Formik
+                initialValues={{
+                    selected_type: "",
+                    selected_file: "",
+                }}
+                onSubmit={handleSubmit}
+            >
+                {({ values, setFieldValue }) => {
+                    return (
+                        <>
+                            <Form>
+                                <Select
+                                    placeholder="select type"
+                                    id="selected_ type"
+                                    onChange={(e) => hanglechangetype(e, setFieldValue)}
+                                >
+                                    <Option value="photos">photos</Option>
+                                    <Option value="floor plans">floor plans</Option>
+                                </Select>
 
-                            <Field as="select" name="sub_type">
-                                <option value="photos_images">photos_images</option>
-                                <option value="photos_outdoor">photos_outdoor</option>
-                                <option value="photos_indoor">photos_indoor</option>
-                                <option value="photos_video">photos_video</option>
-                                <option value="photos_cover">photos_cover</option>
-                                <option value="floor_plan_photos">floor_plan_photos</option>
-                                <option value="floor_plans_introdocument">floor_plans_introdocument</option>
-                                <option value="floor_plans_videolink">floor_plans_videolink</option>
+                                <label htmlFor="file">File upload</label>
 
-                            </Field>
+                                <Input
+                                    type="file"
+                                    id="selected_file"
+                                    value={""}
+                                    onChange={(e) => fileSelectedHandler(e, setFieldValue)}
+                                />
 
+                                {/* <Thumb file={values.file} /> */}
 
-
-
-                            <button type="submit" onSubmit={handleSubmit}>Submit</button>
-                        </Form>
-                    )}
-                </Formik>
-
-            </div>
+                                <button type="submit" onSubmit={handleSubmit}>
+                                    Submit
+                                </button>
+                            </Form>
+                        </>
+                    );
+                }}
+            </Formik>
         </div>
-    )
+    );
 };
 
 export default AddImages;

@@ -1,74 +1,115 @@
+import { Modal } from "antd";
 import { Field, Form, Formik } from "formik";
 import React from "react";
+import axios from "axios";
 
-const AddAmenity = () => {
 
+const BaseUrl="http://bantford.prometteur.in";
+
+const AddAmenity = ({ showStatus, setshowStatus }) => {
     const handleSubmit = (values) => {
-        console.log(values)
-        
-    }
-    return <div>
-        <Formik
-            enableReinitialize
-            initialValues={{
-                amenities_type: "other",
-                Internet_Speed: "2mbps",
-                Parking_available: "available"
-            }}
-            validate={(values) => {
-                let errors = {};
+        console.log(values);
 
-                return errors;
-            }}
-            onSubmit={handleSubmit}
-            className=""
-        >
-            {({ values, errors, handleSubmit }) => (
-                < Form onSubmit={handleSubmit} className="">
-                    <div className="formGroup">
-                        <div className="row">
-                            <div className="col-6">
-                                <label htmlFor="Space Name" className="label">
-                                    amenities_type :{" "}
-                                </label>
-                                <Field
-                                    type="text"
-                                    name="amenities_type"
-                                    placeholder="amenities_type"
-                                    className="form-control  mb-3   "
-                                />
-                                <label htmlFor="manager_email" className="label">
-                                    Internet_Speed :{" "}
-                                </label>
-                                <Field
-                                    type="text"
-                                    name="Internet_Speed"
-                                    placeholder="Internet_Speed"
-                                    className="form-control  mb-3 m "
-                                />
-                                <label htmlFor="Seating capacity " className="label">
-                                    Parking_available :{" "}
-                                </label>
+        const id = 2;
 
-                                <Field
-                                    type="text"
-                                    name="Parking_available"
-                                    placeholder="Parking_available"
-                                    className="form-control  mb-3  m"
-                                />
+        axios.post(`${BaseUrl}/admin/add-amenity?spaceId=${id}`,values, {
+        headers: {
+          Authorization:localStorage.getItem("property_owner_token")
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-                                <button type="submit" onClick={handleSubmit}>Add New Ammenity</button>
+        setshowStatus(false)
 
+    };
 
+    const handleOk = () => {
+        setshowStatus(false);
+    };
+
+    const handleCancel = () => {
+        setshowStatus(false);
+    };
+    return (
+        <>
+            <Modal
+                title="Add Amenity"
+                visible={showStatus}
+                onOk={handleOk}
+                // width={650}
+                onCancel={handleCancel}
+                footer={false}
+                destroyOnClose
+            >
+                <Formik
+                    initialValues={{
+                        amenities_type: "other",
+                        Internet_Speed: "2mbps",
+                        Parking_available: "available",
+                    }}
+                    validate={(values) => {
+                        let errors = {};
+
+                        return errors;
+                    }}
+                    onSubmit={handleSubmit}
+                    className=""
+                >
+                    {({ values, errors, handleSubmit }) => (
+                        <Form onSubmit={handleSubmit} className="">
+                            <div className="formGroup">
+                                <div className="row">
+                                    <div className="col-12">
+                                        <label htmlFor="Space Name" className="label">
+                                            amenities_type :{" "}
+                                        </label>
+                                        <Field
+                                            type="text"
+                                            name="amenities_type"
+                                            placeholder="amenities_type"
+                                            className="form-control  mb-3   "
+                                        />
+                                        <label htmlFor="manager_email" className="label">
+                                            Internet_Speed :{" "}
+                                        </label>
+                                        <Field
+                                            type="text"
+                                            name="Internet_Speed"
+                                            placeholder="Internet_Speed"
+                                            className="form-control  mb-3 m "
+                                        />
+                                        <label htmlFor="Seating capacity " className="label">
+                                            Parking_available :{" "}
+                                        </label>
+
+                                        <Field
+                                            type="text"
+                                            name="Parking_available"
+                                            placeholder="Parking_available"
+                                            className="form-control  mb-3  m"
+                                        />
+
+                                        <button
+                                            type="submit "
+                                            className="btn-first pt-2 my-3"
+                                            onClick={handleSubmit}
+                                        >
+                                            Add New Ammenity
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-
-                    </div>
-                </Form>
-            )}
-        </Formik>
-    </div>;
+                        </Form>
+                    )}
+                </Formik>
+            </Modal>
+        </>
+    );
 };
 
 export default AddAmenity;

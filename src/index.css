@@ -14,7 +14,8 @@ body {
   font-family: "Inter", sans-serif;
   font-size: 14px;
   color: #343a40;
-  /* background: #f0c3e3; */
+  background-position: center;
+  /* background-color: #eeeeee; */
   /* padding: 1rem; */
 }
 
@@ -41,4 +42,43 @@ h6 {
 p {
   margin: 0;
   padding: 0;
+}
+
+.heading-first,
+.heading-second,
+.heading-fourth,
+.heading-third,
+.heading-fifth,
+.heading-Six {
+  color: #1a2224;
+}
+
+.heading-first {
+  font-size: 36px;
+  letter-spacing: -1px;
+  font-weight: 600;
+}
+
+.heading-second {
+  font-size: 33px;
+  letter-spacing: -1px;
+  line-height: 1;
+  font-weight: 600;
+}
+.heading-third {
+  font-size: 28px;
+}
+.heading-fourth {
+  font-size: 24px;
+}
+.heading-fifth {
+  font-size: 22px;
+}
+.heading-Six {
+  font-size: 20px;
+}
+
+.paragraph {
+  font-size: 16px;
+  line-height: 1.7;
 }

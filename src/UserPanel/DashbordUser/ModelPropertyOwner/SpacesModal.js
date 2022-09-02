@@ -229,7 +229,7 @@ const SpacesModal = ({ showStatus, setshowStatus, showSpacesPropertyOwner }) => 
 
                                     <div className="d-flex  mt-3">
                                         <button
-                                            className="btn btn-privacy-policy"
+                                            className="btn btn-first"
                                             type="button"
                                             onClick={handleSubmit}
                                         >

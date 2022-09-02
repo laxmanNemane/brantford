@@ -40,7 +40,7 @@ const NewListedProperty = () => {
                 <img
                   src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-441948,resizemode-1,msid-78487988/industry/services/property-/-cstruction/india-office-property-market-shows-resilience-q3-absorption-up-64-on-quarter.jpg"
                   alt=""
-                  className="property_imageTabs"
+                  className="property_imageTabs img-fluid"
                 />
                 <div className="NewListed_propert-description">
                   <h4 className="office_name-newListed">{item.city}</h4>
