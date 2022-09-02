@@ -5,7 +5,7 @@ import { Modal } from "antd";
 const AddLocation = ({ addlocationShow, setAddLocationShow }) => {
   const handleSubmit = (values) => {
     console.log(values);
-    setAddLocationShow(false)
+    setAddLocationShow(false);
   };
 
   const handleOk = () => {
@@ -78,7 +78,7 @@ const AddLocation = ({ addlocationShow, setAddLocationShow }) => {
                       className="btn-first pt-2 my-3"
                       onClick={handleSubmit}
                     >
-                      Add New Ammenity
+                      Add New Location
                     </button>
                   </div>
                 </div>

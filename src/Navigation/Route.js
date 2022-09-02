@@ -30,7 +30,7 @@ const Routing = () => {
     <BrowserRouter>
       {/* <Navbar /> */}
       <Routes>
-        {/* <Route path="/" element={<UserDashbord />} /> */}
+        <Route path="/" element={<UserDashbord />} />
         <Route path="/spaces" element={<Spaces />} />
         <Route path="/visitors" element={<Visitors />} />
         <Route path="/amenity" element={<AddAmenity />} />
@@ -42,7 +42,7 @@ const Routing = () => {
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/office-detail" element={<OfficesDetailPage />} /> */}
         {/* langding page  */}
-        <Route path="/" element={<BrantfordPage />} />
+        {/* <Route path="/" element={<BrantfordPage />} /> */}
         <Route path="/terms&conditions" element={<TermsCondition />} />
         {/* admin panel */}
         {/* <Route element={<PrivateRoute />}> */}
