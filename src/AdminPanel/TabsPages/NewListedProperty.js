@@ -50,7 +50,8 @@ const NewListedProperty = () => {
                   <div className="w-75 d-flex justify-content-between">
                     <p className="price_newListedtabs">Price : {item.price}</p>
                     <p className="viewIcon">
-                      <NavLink to="/detail" className="text-dark">
+                      <NavLink to="/detail" className="text-dark" >
+                        
                         <AiOutlineFolderOpen />
                       </NavLink>
                     </p>

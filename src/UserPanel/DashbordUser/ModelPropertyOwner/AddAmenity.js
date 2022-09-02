@@ -5,6 +5,7 @@ const AddAmenity = () => {
 
     const handleSubmit = (values) => {
         console.log(values)
+        
     }
     return <div>
         <Formik
@@ -16,7 +17,6 @@ const AddAmenity = () => {
             }}
             validate={(values) => {
                 let errors = {};
-
 
                 return errors;
             }}
