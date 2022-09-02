@@ -11,11 +11,12 @@ const AddImages = () => {
         console.log("hello", e.target.files[0]);
     };
 
-    console.log(img);
+    // console.log(img);
 
     const handleSubmit = (values) => {
         console.log(values);
-        console.log(img)
+        console.log("image ", img)
+
     };
 
     return (

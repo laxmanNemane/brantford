@@ -7,13 +7,13 @@ import { DasbordPage } from "../Pages/DasbordPage";
 const HocComponent = (Component) => {
   return (props) => {
     return (
-      <div className="d-flex" style={{ height: "100vh"}}>
-        <div style={{widtth:"18%"}}>
-        <Sidebar />
+      <div className="d-flex" style={{ height: "100vh" }}>
+        <div style={{ widtth: "18%" }}>
+          <Sidebar />
         </div>
-        <div  style={{width:"82%" , marginLeft:"18%"}}>
+        <div style={{ width: "82%", marginLeft: "18%" }}>
           <Header />
-          <Component  />
+          <Component />
         </div>
       </div>
     );

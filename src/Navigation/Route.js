@@ -22,6 +22,7 @@ import Visitors from "../UserPanel/DashbordUser/Visitors";
 import AddAmenity from "../UserPanel/DashbordUser/ModelPropertyOwner/AddAmenity";
 import AddImages from "../UserPanel/DashbordUser/ModelPropertyOwner/AddImages";
 import AddLocation from "../UserPanel/DashbordUser/ModelPropertyOwner/AddLocation";
+import PropertyOwnerPropertyDetail from "../UserPanel/DashbordUser/PropertyOwnerPropertyDetail";
 
 const Routing = () => {
   return (
@@ -34,6 +35,7 @@ const Routing = () => {
         <Route path="/amenity" element={<AddAmenity />} />
         <Route path="/image" element={<AddImages />} />
         <Route path="/map" element={<AddLocation />} />
+        <Route path="/property" element={<PropertyOwnerPropertyDetail />} />
 
         {/* <Route path="/" element={<userDash />} /> */}
         {/* <Route path="/" element={<p className="container mt-5">Home Page</p>} /> */}

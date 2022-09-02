@@ -10,7 +10,7 @@ const Spaces = () => {
             <div className="row">
                 <div className="col-12 d-flex align-items-center justify-content-between">
                     <h5>All Spaces</h5>
-                    <button onClick={() => setshowStatus(true)} className="btn-for-all-landpage">Add Space</button>
+                    <button onClick={() => setshowStatus(true)} className="btn-first">Add Space</button>
                 </div>
             </div>
             <div className="col-12">
