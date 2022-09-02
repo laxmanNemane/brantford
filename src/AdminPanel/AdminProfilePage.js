@@ -10,25 +10,38 @@ import axios from "axios";
 const BaseUrl = "http://bantford.prometteur.in";
 
 const AdminProfilePage = () => {
-  const [profileDetail, setProfileDetail] = useState();
-
+  const [profileDetail, setProfileDetail] = useState([]);
+  const [initialValues, setIntialvalue] = useState()
 
 
   const handleSubmit = (values) => {
     console.log(values);
 
+    axios.patch(`${BaseUrl}/admin/update-profile`,values, {headers:{
+      Authorization:localStorage.getItem("admin_token")
+    }})
+    .then((res)=> {
+
+      console.log(res)
+      setProfileDetail(res.data)
+    })
+    .catch((err)=> console.log(err))
+
+    
+
   };
 
   const getadminProfile = () => {
     axios.get(`${BaseUrl}/admin/admin-profile`,{headers:{
-      Authorization : localStorage.getItem("property_owner_token")
+      Authorization : localStorage.getItem("admin_token")
   }})
   .then((res)=> {
       console.log(res.data)
       console.log(res.data)
       // console.log(res.data.)
       setProfileDetail(res.data)
-
+      setIntialvalue(res.data)
+       
       
   })
   .catch((err)=> {console.log(err)})
@@ -41,21 +54,33 @@ useEffect(()=>{
 
 console.log(profileDetail)
 
+// Object.keys(profileDetail).map((key,index)=>{
+//   console.log(profileDetail[key])
+//   const profileData = profileDetail[key];
+// })
 
-// const setinitialValues= {
-//   firstName: profileDetail.name,
-//   lastName: profileDetail.name,
-//   email: profileDetail.email,
-//   password:profileDetail.password,
-//   address: profileDetail.address,
-//   city: profileDetail.address,
-//   state: profileDetail.address,
-//   zip: profileDetail.contact,
-//   description: profileDetail.email
-// }
+
+
+
+
+
+const setinitialValues= {
+  firstName: profileDetail.name,
+  lastName: profileDetail.name,
+  email: profileDetail.email,
+  password:profileDetail.password,
+  address: profileDetail.address,
+  city: profileDetail.address,
+  state: profileDetail.address,
+  zip: profileDetail.contact,
+  description: profileDetail.email
+}
+
+
   
-
- 
+// console.log(setinitialValues);
+// console.log(setinitialValues.firstName);
+ console.log(profileDetail.name)
 
 
   return (
@@ -82,8 +107,8 @@ console.log(profileDetail)
                   className="profile-image"
                 />
               </div>
-              <p className="user-name">Lakhan Nemane</p>
-              <p className="user-position">Project Manager</p>
+              <p className="user-name">{profileDetail.name}</p>
+              <p className="user-position">{profileDetail.profile}</p>
               <button className="btn follow-btn">
                 {" "}
                 <AiOutlineUserAdd className="mx-2 follow-user-icon" />
@@ -114,17 +139,19 @@ console.log(profileDetail)
               <p className="account-deatil-heading">Account Detail</p>
               <hr />
               <div>
+                { console.log(setinitialValues.firstName)}
                 <Formik 
+                enableReinitialize
                   initialValues={{
-                    firstName: ``,
-                    lastName: "Nemane",
-                    email: "lakhan@gmail.com",
-                    password: "123456",
-                    address: "baner balewadi",
-                    city: "pune",
-                    state: "maharastra",
-                    zip: "411045",
-                    description: "hello we have big surprize",
+                    firstName:setinitialValues.firstName,
+                    lastName: `${setinitialValues.lastName}`,
+                    email: `${setinitialValues.email}`,
+                    password: `${setinitialValues.password}`,
+                    address: `${setinitialValues.address}`,
+                    city: `${setinitialValues.city}`,
+                    state: `${setinitialValues.state}`,
+                    zip: `${setinitialValues.firstName}`,
+                    description: `${setinitialValues.description}`,
                   }}
                   validate={(values) => {
                     let errors = {};
@@ -158,6 +185,7 @@ console.log(profileDetail)
                               name="firstName"
                               placeholder="firstName"
                               className="form-control"
+                              defautvalue={values.firstName}
                             />
 
                             <label htmlFor="Email " className="label-user">

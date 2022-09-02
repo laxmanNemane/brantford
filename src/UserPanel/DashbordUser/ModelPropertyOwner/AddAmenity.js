@@ -8,6 +8,7 @@ const AddAmenity = () => {
     }
     return <div>
         <Formik
+            enableReinitialize
             initialValues={{
                 amenities_type: "other",
                 Internet_Speed: "2mbps",

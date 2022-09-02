@@ -16,8 +16,8 @@ const Header = () => {
   // const [isLogout, setIsLogout] = useState(false);
 
 
-  const logOutHandler = (e) => {
-    e.preventDefault();
+  const logOutHandler = () => {
+    // e.preventDefault();
     // setIsLogout(true);
 
     axios.post(`${BaseUrl}/admin/admin-logout`, {
@@ -27,7 +27,7 @@ const Header = () => {
     })
     .then((res) => {console.log(res)})
     .catch((err)=> {console.log(err)})
-     console.log("clicked",e);
+     console.log("clicked");
   }
 
   const menu = (
