@@ -57,9 +57,7 @@ const UserDashbord = () => {
       title: "Propertis Status",
       left: "center",
     },
-    tooltip: {
-      trigger: "item",
-    },
+    tooltip: {},
     legend: {
       orient: "vertical",
       bottom: "bottom",
@@ -211,7 +209,7 @@ const UserDashbord = () => {
             </div>
           </div>
 
-          <div className="col-12 mt-5">
+          <div className="col-12 mt-5 ">
             <h5 className="name mt-4">Account Summary</h5>
             <hr />
             <div className="col-12">
