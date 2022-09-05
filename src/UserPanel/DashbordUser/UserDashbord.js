@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../Style.css";
 import { NavLink } from "react-router-dom";
 import { FiUsers, FiWatch } from "react-icons/fi";
@@ -30,8 +30,11 @@ import { FcCancel } from "react-icons/fc";
 import { IoIosArrowForward } from "react-icons/io";
 import { TiMediaFastForward } from "react-icons/ti";
 import HocComponent from "../../Components/HocComponent";
+import { usersContext } from "../../Context/UserContext";
 
 const UserDashbord = () => {
+  const { users } = useContext(usersContext);
+  console.log(users);
   const option1 = {
     xAxis: {
       type: "category",
