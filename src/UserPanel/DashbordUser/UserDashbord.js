@@ -34,6 +34,7 @@ const UserDashbord = () => {
   // const { users } = useContext(usersContext);
   // console.log(users);
   const option1 = {
+    color: "#c2255c",
     xAxis: {
       type: "category",
       data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -51,6 +52,7 @@ const UserDashbord = () => {
   };
 
   const option = {
+    color: ["#c2255c", "#4263eb"],
     title: {
       title: "Propertis Status",
       left: "center",
