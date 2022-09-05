@@ -1,3 +1,4 @@
+
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import axios from "axios";
 import React, { Fragment, useState } from "react";
@@ -5,67 +6,52 @@ import ForgetPassword from "../Components/ForgetPassword";
 import "../Styles/loginpage.css";
 import loginPage_image from "../Assets/Images/login.jpg";
 import Navbar from "../Layout/Navbar";
-
 import LoginWithGoogle from "./LoginWithGoogle";
 import LogoutFromGoogle from "./LogoutFromGoogle";
-import SignUp from "./SignUp";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, NavLink, Route, Router } from "react-router-dom";
+
 
 const BaseUrl = "http://bantford.prometteur.in";
 
-const Login = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const navigate =useNavigate();
+function SignUp() {
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleSubmit = (values) => {
-    console.log(values);
-
-   
-
-
+      const newvalues = [ {...values,
+      "address":"pune , maharashtra, 411101",
+      "profile":"property-owner"}];
+      
+      console.log(newvalues[0]);  
+      
+     
+    //   Formik.resetForm({status:tr})
     //login user
+    
+    // var axios = require("axios");
+    var data = values;
+    var config = {
+      method: "post",
+      url: `${BaseUrl}/admin/create-admin`,
+      headers: {},
+      data: data,
+    };
 
-    axios
-      .post(`${BaseUrl}/admin/admin-login`, values)
-      .then((res) => {
-        console.log(res);
-        console.log(res.data.admin.profile);
-        console.log("token",res.data.token);
-        console.log("token-length",res.data.token.length);
-        if(res.data.admin.profile === "admin"){
-
-          localStorage.setItem("admin_token",res.data.token);
-
-          navigate("/dashbord")
-        }
-        else if(res.data.admin.profile === "property-owner"){
-
-          localStorage.setItem("property_owner_token",res.data.token);
-          navigate("/");
-        }
-
-        else if(res.data.admin.profile === "endUser"){
-
-          localStorage.setItem("endUser_token",res.data.token);
-          navigate("/");
-        }
+    axios(config)
+      .then(function (response) {
+       
+        console.log(JSON.stringify(response.data));
       })
-      .catch((err) => {
-
+      .catch(function (error) {
         
-        console.log(err);
+        console.log(error);
       });
-
-   
   };
-
-  localStorage.getItem("Admin_token");
 
   return (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="container d-flex justify-content-center mt-3 ">
-
         <div className="login_Card  w-100 py-3 ">
           <div className="d-flex">
             <div className="login-image-section">
@@ -76,7 +62,7 @@ const Login = () => {
             <div className="shadow py-3 login_form_section">
               {/* <div className=""> */}
               <h4 className="text-center me-2 mt-3 fw-bold body login-text">
-                Login
+                SignUp
               </h4>
               <p className="text-center my-3 body-1 sign-in">
                 Hey, Enter your details to get sign in <br />
@@ -84,8 +70,7 @@ const Login = () => {
               </p>
               <div>
                 <Formik
-                  
-                  initialValues={{ email: "", password: "" }}
+                  initialValues={{ name: "", contact:"", email: "", password: "" }}
                   validate={(values) => {
                     let errors = {};
                     if (!values.email) {
@@ -97,20 +82,42 @@ const Login = () => {
                     ) {
                       errors.email = "Invalid email address";
                     }
+                    if(!values.name){
+                        errors.name = "required*";
+                    }
+                    if(!values.contact){
+                        errors.contact = "required*";
+                    }
                     if (!values.password) {
                       errors.password = "required*";
-                    }else if(values.password.length < 7){
-                      errors.password = "enter valid password";
-                      // console.log("enter valid password");
-
                     }
                     return errors;
                   }}
                   onSubmit={handleSubmit}
                   className="mt-4"
                 >
-                  {({ values, errors, handleSubmit }) => (
+                  {({ values, errors, handleSubmit }) => ( 
                     <Form onSubmit={handleSubmit} className="mt-5">
+                        
+                        <Field
+                        type="name"
+                        name="name"
+                        placeholder="name"
+                        className="form-control w-75 mx-auto my-3"
+                      />
+                      <p className="ms-5 ps-2 text-danger">
+                        <ErrorMessage name="name" />
+                      </p>
+                      <Field
+                        type="number"
+                        name="contact"
+                        placeholder="contact"
+                        className="form-control w-75 mx-auto my-3"
+                      />
+                      <p className="ms-5 ps-2 text-danger">
+                        <ErrorMessage name="contact" />
+                      </p>
+                       
                       <Field
                         type="email"
                         name="email"
@@ -131,32 +138,33 @@ const Login = () => {
                       </p>
                       <div className="d-flex mx-auto justify-content-between w-75">
                         <label className="  mb-2">
-                          <Field type="checkbox" />
+                          <Field type="checkbox" name="remember me" />
                           &nbsp; Remember me
                         </label>
-                        <p
-                          style={{ cursor: "pointer" }}
+                        {/* <p 
+                        style={{cursor:"pointer"}}
                           className="ps-3 forget_password_line"
                           onClick={() => setIsModalVisible(true)}
                         >
                           Forgot Password?
-                        </p>
+                        </p> */}
                       </div>
                       <button
                         type="submit"
                         className="form-control border-none w-75 mx-auto my-5 fw-bold SignIn_btn "
                       >
-                        Sign in
+                        
+                        Sign Up
                       </button>
                       <p className="text-center py-2 fs-5">
                         &ndash;&ndash; or sign in with &ndash;&ndash;
                       </p>
 
-                      <p className="form-control w-75  mx-auto  ">
+                      {/* <p className="form-control w-75  mx-auto  ">
                         <i className="fab fa-google fa-x mx-5"></i> Continue
                         with Google
-                      </p>
-                      {/* <LoginWithGoogle /> */}
+                      </p> */}
+                      <LoginWithGoogle />
 
                       {/* <LogoutFromGoogle/> */}
                       {/* <li className="btn border rounded-2 me-4">
@@ -185,7 +193,7 @@ const Login = () => {
         setIsModalVisible={setIsModalVisible}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default SignUp

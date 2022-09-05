@@ -14,6 +14,7 @@ const AdminPrivacyPolicy = () => {
 
   const handleSubmit = (values, resetForm) => {
     console.log(values);
+
     resetForm();
   };
 
@@ -81,7 +82,7 @@ const AdminPrivacyPolicy = () => {
                           Title :
                         </label>
                         <Field
-                          type="title"
+                          type="text"
                           name="title"
                           placeholder="Title"
                           className="form-control  "
@@ -108,6 +109,7 @@ const AdminPrivacyPolicy = () => {
                           <ErrorMessage name="description" />
                         </p>
                         <button
+                        type="submit"
                           className="btn   btn-privacy-policy "
                           onClick={resetForm}
                         >

@@ -1,10 +1,29 @@
 import { Modal } from "antd";
 import { Field, Form, Formik } from "formik";
 import React from "react";
+import axios from "axios";
+
+
+const BaseUrl="http://bantford.prometteur.in";
 
 const AddAmenity = ({ showStatus, setshowStatus }) => {
     const handleSubmit = (values) => {
         console.log(values);
+
+        const id = 2;
+
+        axios.post(`${BaseUrl}/admin/add-amenity?spaceId=${id}`,values, {
+        headers: {
+          Authorization:localStorage.getItem("property_owner_token")
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
         setshowStatus(false)
 
     };

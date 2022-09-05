@@ -1,15 +1,89 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 import HocComponent from "../Components/HocComponent";
 import ".././Styles/AdminProfile.css";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { RiCoinsLine } from "react-icons/ri";
+import axios from "axios";
+
+const BaseUrl = "http://bantford.prometteur.in";
 
 const AdminProfilePage = () => {
+  const [profileDetail, setProfileDetail] = useState([]);
+  const [initialValues, setIntialvalue] = useState()
+
+
   const handleSubmit = (values) => {
     console.log(values);
+
+
+    axios.patch(`${BaseUrl}/admin/update-profile`,values, {headers:{
+      Authorization:localStorage.getItem("admin_token")
+    }})
+    .then((res)=> {
+
+      console.log(res)
+      setProfileDetail(res.data)
+    })
+    .catch((err)=> console.log(err))
+
+    
+
   };
+  const getadminProfile = () => {
+    axios.get(`${BaseUrl}/admin/admin-profile`,{headers:{
+      Authorization : localStorage.getItem("admin_token")
+  }})
+  .then((res)=> {
+      console.log(res.data)
+      console.log(res.data)
+      // console.log(res.data.)
+      setProfileDetail(res.data)
+      setIntialvalue(res.data)
+       
+      
+  })
+  .catch((err)=> {console.log(err)})
+}
+
+
+useEffect(()=>{
+  getadminProfile();
+},[])
+
+console.log(profileDetail)
+
+// Object.keys(profileDetail).map((key,index)=>{
+//   console.log(profileDetail[key])
+//   const profileData = profileDetail[key];
+// })
+
+
+
+
+
+
+const setinitialValues= {
+  firstName: profileDetail.name,
+  lastName: profileDetail.name,
+  email: profileDetail.email,
+  password:profileDetail.password,
+  address: profileDetail.address,
+  city: profileDetail.address,
+  state: profileDetail.address,
+  zip: profileDetail.contact,
+  description: profileDetail.email
+}
+
+
+  
+// console.log(setinitialValues);
+// console.log(setinitialValues.firstName);
+ console.log(profileDetail.name)
+
+
+
 
   return (
     <div
@@ -35,8 +109,8 @@ const AdminProfilePage = () => {
                   className="profile-image"
                 />
               </div>
-              <p className="user-name">Lakhan Nemane</p>
-              <p className="user-position">Project Manager</p>
+              <p className="user-name">{profileDetail.name}</p>
+              <p className="user-position">{profileDetail.profile}</p>
               <button className="btn follow-btn">
                 {" "}
                 <AiOutlineUserAdd className="mx-2 follow-user-icon" />
@@ -67,16 +141,20 @@ const AdminProfilePage = () => {
               <p className="account-deatil-heading">Account Detail</p>
               <hr />
               <div>
-                <Formik
+                { console.log(setinitialValues.firstName)}
+                <Formik 
+                enableReinitialize
                   initialValues={{
-                    id: 4,
-                    name: "maxemelan",
-                    email: "maxmelanshsf@gmail.com",
-                    password:
-                      "$2a$10$ls7cuwUJIgTmNtQX4Q8mle3PwUaBw6.ohy3rU6ZDmN4M5Zmo8TONe",
-                    contact: 8537452001,
-                    address: "pune , maharashtra, 411101",
-                    profile: "admin",
+                    name:`${profileDetail.name}`,
+                    lastName: `${profileDetail.name}`,
+                    email: `${setinitialValues.email}`,
+                    contact: `${profileDetail.contact}`,
+                    password: `${profileDetail.password}`,
+                    profile: `${profileDetail.profile}`,
+                    description: `${profileDetail.description}`,
+                    address: `${profileDetail.address}`,
+                    state: `${setinitialValues.state}`,
+
                   }}
                   validate={(values) => {
                     let errors = {};
@@ -110,6 +188,7 @@ const AdminProfilePage = () => {
                               name="name"
                               placeholder="name"
                               className="form-control"
+                              defautvalue={values.firstName}
                             />
 
                             <label htmlFor="Email " className="label-user">

@@ -1,10 +1,29 @@
 import React, { useState } from "react";
+
 import { Field, Form, Formik } from "formik";
 import { Modal } from "antd";
+import axios from "axios";
+
+const BaseUrl = "http://bantford.prometteur.in";
 
 const AddLocation = ({ addlocationShow, setAddLocationShow }) => {
   const handleSubmit = (values) => {
     console.log(values);
+
+    const id = 3;
+
+    axios
+      .post(`${BaseUrl}/admin/add-location?spaceId=${id}}`, values, {
+        headers: {
+          Authorization: localStorage.getItem("property_owner_token"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+
+
     setAddLocationShow(false);
   };
 

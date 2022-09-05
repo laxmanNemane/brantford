@@ -13,6 +13,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FiCheckCircle } from "react-icons/fi";
 
 const PropertyDetailPage = () => {
+
   return (
     <div
       style={{

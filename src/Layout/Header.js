@@ -1,12 +1,34 @@
 import { Badge, Divider, Dropdown, Input, Menu, Modal } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsSearch, BsBell, BsBookmarkStar } from "react-icons/bs";
 import "../Styles/DashbordHeader.css";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlinePoweroff, AiOutlineUser } from "react-icons/ai";
+import axios from "axios";
+
+
+const BaseUrl = "http://bantford.prometteur.in";
+const AuthToken = localStorage.getItem("admin_token");
+
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  // const [isLogout, setIsLogout] = useState(false);
+
+
+  const logOutHandler = () => {
+    // e.preventDefault();
+    // setIsLogout(true);
+
+    axios.post(`${BaseUrl}/admin/admin-logout`, {
+      headers:{
+        Authorization: localStorage.getItem("admin_token")
+      }
+    })
+    .then((res) => {console.log(res)})
+    .catch((err)=> {console.log(err)})
+     console.log("clicked");
+  }
 
   const menu = (
     <Menu
@@ -28,15 +50,20 @@ const Header = () => {
         {
           key: "3",
           label: (
+              <button onClick={logOutHandler}>
             <NavLink to="/" className="fs-5">
               <AiOutlinePoweroff className="mx-2" />
-              Logout
+                Logout
             </NavLink>
+              </button>
           ),
         },
       ]}
     />
   );
+
+  // console.log(isLogout);
+
   return (
     <div className=" w-100 header_admin ">
       <div className=" mx-3" style={{ margin: "-10px 0 5px 0" }}>

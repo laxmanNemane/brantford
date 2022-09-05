@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Styles/AdminProperty.css";
 import HocComponent from "../Components/HocComponent";
 import allPrperty from "../Assets/Images/propertiesIcon.svg";
@@ -12,8 +12,95 @@ import NewListedProperty from "./TabsPages/NewListedProperty";
 import PropertyBookings from "./TabsPages/PropertyBookings";
 import { BsBuilding } from "react-icons/bs";
 import { FiCheckSquare, FiCheck, FiList } from "react-icons/fi";
+import axios from "axios";
+
+const BaseUrl = "http://bantford.prometteur.in";
+const Admin_token = localStorage.getItem("admin_token");
 
 const Properties = () => {
+  const [properties, setProperties] = useState();
+  const [bookedProperties, setBookedProperties] = useState({});
+  const [propertyCount, setPropertyCount] = useState(0);
+  const [newListedCount, setNewListedCount] = useState();
+  const [countAproved, setCountAproved] = useState(0);
+
+
+  // allProperties
+  const allProperties = () => {
+    axios
+      .get(`${BaseUrl}/adminDashboard/all-properties`, {
+        headers: {
+          Authorization: Admin_token,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.spaces.length);
+        setProperties(res.data.spaces);
+        setPropertyCount(res.data.spaces.length);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // allProperties booked properties
+  const allbookedProperties = () => {
+    axios
+      .get(`${BaseUrl}/adminDashboard/all-booked-properties`, {
+        headers: {
+          Authorization: Admin_token,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setBookedProperties(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  //new listed
+  const newListed = () => {
+    axios.get(`${BaseUrl}/adminDashboard/all-newlistedpropertirs`,{headers:{
+      Authorization: Admin_token,
+    }})
+    .then((res)=> {
+      setNewListedCount(res.data.spaces.length)
+      console.log(res)
+      console.log(res.data.spaces);
+    }
+    )
+    .catch((err)=>console.log(err))
+  }
+
+  useEffect(() => {
+    allbookedProperties();
+    allProperties();
+    newListed();
+  }, []);
+
+  console.log(Object.keys(bookedProperties).length);
+
+  // console.log(properties.spaces.length);
+
+  console.log(newListedCount);
+
+  {
+    Object.keys(bookedProperties).map((key, index) => {
+      console.log(key, index);
+      console.log(bookedProperties[key]);
+      console.log(bookedProperties[key].approve_status);
+      if(bookedProperties[key].approve_status == "pending"){
+        
+      }
+
+    });
+  }
+
+  console.log(countAproved);
+
+
   return (
     <div
       className=""
@@ -44,7 +131,7 @@ const Properties = () => {
                   <p className=" properties-sectionCard_headeing" style={{}}>
                     Total Properties
                   </p>
-                  <p className="People_tenant ">1K</p>
+                  <p className="People_tenant ">{propertyCount}</p>
                 </div>
               </div>
             </div>
@@ -62,7 +149,9 @@ const Properties = () => {
                   <p className=" properties-sectionCard_headeing" style={{}}>
                     Total Booking
                   </p>
-                  <p className="People_tenant ">574</p>
+                  <p className="People_tenant ">
+                    {Object.keys(bookedProperties).length}
+                  </p>
                 </div>
               </div>
             </div>
@@ -99,7 +188,9 @@ const Properties = () => {
                   <p className=" properties-sectionCard_headeing" style={{}}>
                     New Listed
                   </p>
-                  <p className="People_tenant ">20</p>
+                  <p className="People_tenant ">
+                    {newListedCount}
+                  </p>
                 </div>
               </div>
             </div>
