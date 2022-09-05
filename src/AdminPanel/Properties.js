@@ -30,7 +30,7 @@ const Properties = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-properties`, {
         headers: {
-          Authorization: Admin_token,
+          Authorization: localStorage.getItem("admin_token"),
         },
       })
       .then((res) => {
@@ -48,7 +48,7 @@ const Properties = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-booked-properties`, {
         headers: {
-          Authorization: Admin_token,
+          Authorization: localStorage.getItem("admin_token"),
         },
       })
       .then((res) => {
@@ -63,7 +63,7 @@ const Properties = () => {
   //new listed
   const newListed = () => {
     axios.get(`${BaseUrl}/adminDashboard/all-newlistedpropertirs`,{headers:{
-      Authorization: Admin_token,
+      Authorization: localStorage.getItem("admin_token"),
     }})
     .then((res)=> {
       setNewListedCount(res.data.spaces.length)

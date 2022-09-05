@@ -16,8 +16,8 @@ const Header = () => {
   // const [isLogout, setIsLogout] = useState(false);
 
 
-  const logOutHandler = () => {
-    // e.preventDefault();
+  const logOutHandler = (e) => {
+    e.preventDefault();
     // setIsLogout(true);
 
     axios.post(`${BaseUrl}/admin/admin-logout`, {

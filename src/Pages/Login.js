@@ -15,6 +15,7 @@ const BaseUrl = "http://bantford.prometteur.in";
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [error, setError] = useState();
   const navigate =useNavigate();
 
   const handleSubmit = (values) => {
@@ -32,9 +33,17 @@ const Login = () => {
         console.log(res.data.admin.profile);
         console.log("token",res.data.token);
         console.log("token-length",res.data.token.length);
+
+        const LoginStatus = `[{'token':${res.data.token}}, {'user':${res.data.admin.profile},}]`
+
+        localStorage.setItem('LoginStatus',LoginStatus);
+
+        console.log(localStorage.getItem('LoginStatus'));
+
         if(res.data.admin.profile === "admin"){
 
           localStorage.setItem("admin_token",res.data.token);
+          
 
           navigate("/dashbord")
         }
@@ -52,8 +61,9 @@ const Login = () => {
       })
       .catch((err) => {
 
-        
         console.log(err);
+        console.log("Enter Valid Details");
+        setError("Enter Valid Details");
       });
 
    
@@ -126,6 +136,7 @@ const Login = () => {
                         placeholder="Password"
                         className="form-control w-75 mx-auto my-3"
                       />
+                       {<p style={{color:"red", paddingLeft:'50px'}}>{error}</p>}
                       <p className="ms-5 ps-2 text-danger">
                         <ErrorMessage name="password" />
                       </p>

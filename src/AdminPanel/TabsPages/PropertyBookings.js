@@ -45,7 +45,7 @@ const PropertyBookings = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-booked-properties`, {
         headers: {
-          Authorization: admin_token,
+          Authorization: localStorage.getItem("admin_token"),
         },
       })
       .then((res) => {

@@ -8,9 +8,10 @@ import { Divider } from "antd";
 import { BsPatchPlus } from "react-icons/bs";
 import MidSectionCards from "../AdminPanel/MidSectionCards";
 import AdminDashbordFooter from "../AdminPanel/AdminDashbordFooter";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AddCategoryModel from "../AdminPanel/Modals/AddCategoryModel";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 const BaseUrl = "http://bantford.prometteur.in";
 const Admin_token = localStorage.getItem("admin_token");
@@ -21,6 +22,8 @@ const DasbordPage = () => {
   const [allPropertiesCount, setAllPropertiesCount] = useState();
   const [bookedCount, setBookedCount] = useState({});
   // const [propertyBookedCount, setPropertyBookedCount] = useState(0);
+  const navigate = useNavigate();
+
 
   const revenueCategory = "monthly";
 
@@ -28,7 +31,7 @@ const DasbordPage = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/get-revenue?revenue=${revenueCategory}`, {
         headers: {
-          Authorization: Admin_token,
+          Authorization:localStorage.getItem("admin_token"),
         },
       })
       .then((res) => {
@@ -37,6 +40,7 @@ const DasbordPage = () => {
       })
       .catch((err) => {
         console.log(err);
+        navigate("/dashbord", { replace: true });
       });
   };
   //  //All Properties
@@ -44,7 +48,7 @@ const DasbordPage = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-properties`, {
         headers: {
-          Authorization: Admin_token,
+          Authorization: localStorage.getItem("admin_token"),
         },
       })
       .then((res) => {
@@ -60,7 +64,7 @@ const DasbordPage = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-booked-properties`, {
         headers: {
-          Authorization: Admin_token,
+          Authorization: localStorage.getItem("admin_token"),
         },
       })
       .then((res) => {

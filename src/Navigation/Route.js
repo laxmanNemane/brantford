@@ -51,13 +51,13 @@ const Routing = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 
-b
+
         {/* <Route path="/login" element={<Login />} />
 >>>>>>> 2fb3f2cbdea26ce8d8d4f7e5cc86f329853afcd4
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/office-detail" element={<OfficesDetailPage />} /> */}
         {/* langding page  */}
-        {/* <Route path="/" element={<BrantfordPage />} /> */}
+        <Route path="/" element={<BrantfordPage />} />
         <Route path="/terms&conditions" element={<TermsCondition />} />
         {/* admin panel */}
         {/* <Route element={<PrivateRoute />}> */}
