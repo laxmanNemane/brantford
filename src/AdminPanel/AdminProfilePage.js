@@ -11,19 +11,6 @@ const AdminProfilePage = () => {
     console.log(values);
   };
 
-  const userData = {
-    id: 4,
-    name: "maxemelan",
-    email: "maxmelanshsf@gmail.com",
-    password: "$2a$10$ls7cuwUJIgTmNtQX4Q8mle3PwUaBw6.ohy3rU6ZDmN4M5Zmo8TONe",
-    contact: 8537452001,
-    address: "pune , maharashtra, 411101",
-    profile: "admin",
-    createdAt: "2022-08-26T10:55:30.000Z",
-    updatedAt: "2022-08-26T10:55:30.000Z",
-  };
-  console.log(userData.name);
-
   return (
     <div
       className=""

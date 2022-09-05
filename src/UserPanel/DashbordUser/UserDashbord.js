@@ -31,8 +31,8 @@ import HocComponent from "../../Components/HocComponent";
 import { usersContext } from "../../Context/UserContext";
 
 const UserDashbord = () => {
-  const { users } = useContext(usersContext);
-  console.log(users);
+  // const { users } = useContext(usersContext);
+  // console.log(users);
   const option1 = {
     xAxis: {
       type: "category",
