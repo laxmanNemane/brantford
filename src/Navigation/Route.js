@@ -34,7 +34,7 @@ const Routing = () => {
     <BrowserRouter>
       {/* <Navbar /> */}
       <Routes>
-        {/* <Route path="/" element={<UserDashbord />} /> */}
+        <Route path="/" element={<UserDashbord />} />
         <Route path="/spaces" element={<Spaces />} />
         <Route path="/visitors" element={<Visitors />} />
 
@@ -53,12 +53,13 @@ const Routing = () => {
 
 b
         {/* <Route path="/login" element={<Login />} />
->>>>>>> 2fb3f2cbdea26ce8d8d4f7e5cc86f329853afcd4
+
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/office-detail" element={<OfficesDetailPage />} /> */}
         {/* langding page  */}
         {/* <Route path="/" element={<BrantfordPage />} /> */}
         <Route path="/terms&conditions" element={<TermsCondition />} />
+
         {/* admin panel */}
         {/* <Route element={<PrivateRoute />}> */}
         <Route path="/dashbord" element={<DasbordPage />} />
@@ -70,6 +71,19 @@ b
       <Route path="/categories" element={<AdminCategories />} />
         <Route path="/profile" element={<AdminProfilePage />} />
         {/* </Route> */}
+
+        <Route element={<PrivateRoute />}>
+          <Route path="/dashbord" element={<DasbordPage />} />
+          <Route path="/properties" element={<Properties />} />
+          <Route path="/revenu" element={<RevenuAdmin />} />
+          <Route path="/tenants" element={<AdminTenants />} />
+          <Route path="/detail" element={<PropertyDetailPage />} />
+          <Route path="/privacy-policy" element={<AdminPrivacyPolicy />} />
+          <Route path="/categories" element={<AdminCategories />} />
+          {/* admin panel */}
+          <Route path="/profile" element={<AdminProfilePage />} />
+        </Route>
+
         {/* <Route path="*" element={<h1>Page is Not Found</h1>} /> */}
       </Routes>
       {/* <Footer /> */}

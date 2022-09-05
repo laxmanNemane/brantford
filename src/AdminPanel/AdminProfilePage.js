@@ -17,6 +17,7 @@ const AdminProfilePage = () => {
   const handleSubmit = (values) => {
     console.log(values);
 
+
     axios.patch(`${BaseUrl}/admin/update-profile`,values, {headers:{
       Authorization:localStorage.getItem("admin_token")
     }})
@@ -80,6 +81,7 @@ const setinitialValues= {
 // console.log(setinitialValues);
 // console.log(setinitialValues.firstName);
  console.log(profileDetail.name)
+
 
 
 

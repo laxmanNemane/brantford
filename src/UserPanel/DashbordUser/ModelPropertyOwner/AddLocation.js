@@ -9,6 +9,7 @@ const BaseUrl = "http://bantford.prometteur.in";
 const AddLocation = ({ addlocationShow, setAddLocationShow }) => {
   const handleSubmit = (values) => {
     console.log(values);
+
     const id = 3;
 
     axios
@@ -21,6 +22,7 @@ const AddLocation = ({ addlocationShow, setAddLocationShow }) => {
         console.log(res);
       })
       .catch((err) => console.log(err));
+
 
     setAddLocationShow(false);
   };
@@ -95,7 +97,7 @@ const AddLocation = ({ addlocationShow, setAddLocationShow }) => {
                       className="btn-first pt-2 my-3"
                       onClick={handleSubmit}
                     >
-                      Add New Ammenity
+                      Add New Location
                     </button>
                   </div>
                 </div>
