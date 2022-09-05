@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const FetchAllPendingProperties = createAsyncThunk(
+export const FetchAllPendingProperties = createAsyncThunk(
   "pendingProperty/FetchAllPendingProperties",
   async () => {
     const response = await axios.get(
-      "bantford.prometteur.in/propertyOwner/all-pnedingProperties",
+      "http://bantford.prometteur.in/propertyOwner/all-pnedingProperties",
       {
         headers: {
           Authorization: localStorage.getItem("token"),

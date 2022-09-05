@@ -1,17 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const FetchAllSpaces = createAsyncThunk("space/FetchAllSpaces", async () => {
-  const response = axios.get(
-    "bantford.prometteur.in/propertyOwner/all-venues",
-    {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-    }
-  );
-  return response.data;
-});
+export const FetchAllSpaces = createAsyncThunk(
+  "space/FetchAllSpaces",
+  async () => {
+    const response = axios.get(
+      "http://bantford.prometteur.in/propertyOwner/all-venues",
+      {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    return response.data;
+  }
+);
 
 const allSpcaesSlice = createSlice({
   name: "spaces",
