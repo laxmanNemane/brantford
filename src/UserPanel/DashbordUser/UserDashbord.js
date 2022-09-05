@@ -31,10 +31,14 @@ import {
 import { IoIosArrowForward } from "react-icons/io";
 import HocComponent from "../../Components/HocComponent";
 import { usersContext } from "../../Context/UserContext";
+import { useSelector } from "react-redux";
 
 const UserDashbord = () => {
   // const { users } = useContext(usersContext);
+
   // console.log(users);
+  const spaces = useSelector((state) => state.Allvenue);
+  console.log(spaces);
   const option1 = {
     color: "#c2255c",
     xAxis: {

@@ -6,8 +6,8 @@ import "../Styles/loginpage.css";
 import loginPage_image from "../Assets/Images/login.jpg";
 import Navbar from "../Layout/Navbar";
 
-import LoginWithGoogle from "./LoginWithGoogle";
-import LogoutFromGoogle from "./LogoutFromGoogle";
+// import LoginWithGoogle from "./LoginWithGoogle";
+// import LogoutFromGoogle from "./LogoutFromGoogle";
 import SignUp from "./SignUp";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
@@ -15,57 +15,34 @@ const BaseUrl = "http://bantford.prometteur.in";
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const navigate =useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (values) => {
     console.log(values);
-
-   
-
 
     //login user
 
     axios
       .post(`${BaseUrl}/admin/admin-login`, values)
       .then((res) => {
-        console.log(res);
-        console.log(res.data.admin.profile);
-        console.log("token",res.data.token);
-        console.log("token-length",res.data.token.length);
-        if(res.data.admin.profile === "admin"){
+        // console.log(res);
+        // console.log(res.data.admin.profile);
+        console.log("token", res.data.token);
+        localStorage.setItem("user", res.data);
+        localStorage.setItem("token", res.data.token);
+        navigate("/userDashbord");
 
-          localStorage.setItem("admin_token",res.data.token);
-
-          navigate("/dashbord")
-        }
-        else if(res.data.admin.profile === "property-owner"){
-
-          localStorage.setItem("property_owner_token",res.data.token);
-          navigate("/");
-        }
-
-        else if(res.data.admin.profile === "endUser"){
-
-          localStorage.setItem("endUser_token",res.data.token);
-          navigate("/");
-        }
+        // console.log("token-length", res.data.token.length);
       })
       .catch((err) => {
-
-        
         console.log(err);
       });
-
-   
   };
-
-  localStorage.getItem("Admin_token");
 
   return (
     <div>
       {/* <Navbar /> */}
       <div className="container d-flex justify-content-center mt-3 ">
-
         <div className="login_Card  w-100 py-3 ">
           <div className="d-flex">
             <div className="login-image-section">
@@ -84,7 +61,6 @@ const Login = () => {
               </p>
               <div>
                 <Formik
-                  
                   initialValues={{ email: "", password: "" }}
                   validate={(values) => {
                     let errors = {};
@@ -99,10 +75,9 @@ const Login = () => {
                     }
                     if (!values.password) {
                       errors.password = "required*";
-                    }else if(values.password.length < 7){
+                    } else if (values.password.length < 7) {
                       errors.password = "enter valid password";
                       // console.log("enter valid password");
-
                     }
                     return errors;
                   }}

@@ -8,9 +8,10 @@ import { Divider } from "antd";
 import { BsPatchPlus } from "react-icons/bs";
 import MidSectionCards from "../AdminPanel/MidSectionCards";
 import AdminDashbordFooter from "../AdminPanel/AdminDashbordFooter";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import AddCategoryModel from "../AdminPanel/Modals/AddCategoryModel";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 const BaseUrl = "http://bantford.prometteur.in";
 const Admin_token = localStorage.getItem("admin_token");
@@ -24,11 +25,13 @@ const DasbordPage = () => {
 
   const revenueCategory = "monthly";
 
+  const navigate = useNavigate();
+
   const getRevenue = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/get-revenue?revenue=${revenueCategory}`, {
         headers: {
-          Authorization: Admin_token,
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -44,7 +47,7 @@ const DasbordPage = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-properties`, {
         headers: {
-          Authorization: Admin_token,
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -53,6 +56,7 @@ const DasbordPage = () => {
       })
       .catch((err) => {
         console.log(err);
+        navigate("/login");
       });
   };
 
@@ -60,13 +64,12 @@ const DasbordPage = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-booked-properties`, {
         headers: {
-          Authorization: Admin_token,
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
         console.log(res.data.length);
         console.log(res.data);
-      
 
         setBookedCount(res.data);
       })
@@ -79,8 +82,7 @@ const DasbordPage = () => {
   //   setPropertyBookedCount(propertyBookedCount++);
   // })
   console.log(bookedCount);
-  console.log(Object.keys(bookedCount).length)
-
+  console.log(Object.keys(bookedCount).length);
 
   useEffect(() => {
     getBookedProperties();
@@ -143,10 +145,12 @@ const DasbordPage = () => {
               <div className="row py-4 px-3">
                 <div className="col-4 d-flex ">
                   <div className="col-left mt-">
-                    <RiBuildingLine
-                      className="icons_dashbord"
-                      style={{ fontSize: "90px" }}
-                    />
+                    <Link to="/all-properties">
+                      <RiBuildingLine
+                        className="icons_dashbord"
+                        style={{ fontSize: "90px" }}
+                      />
+                    </Link>
                   </div>
                   <div className="col-right ms-3">
                     <span className="title_overiew_dashbord_page">

@@ -24,13 +24,12 @@ const Properties = () => {
   const [newListedCount, setNewListedCount] = useState();
   const [countAproved, setCountAproved] = useState(0);
 
-
   // allProperties
   const allProperties = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-properties`, {
         headers: {
-          Authorization: Admin_token,
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -48,7 +47,7 @@ const Properties = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-booked-properties`, {
         headers: {
-          Authorization: Admin_token,
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -62,17 +61,19 @@ const Properties = () => {
 
   //new listed
   const newListed = () => {
-    axios.get(`${BaseUrl}/adminDashboard/all-newlistedpropertirs`,{headers:{
-      Authorization: Admin_token,
-    }})
-    .then((res)=> {
-      setNewListedCount(res.data.spaces.length)
-      console.log(res)
-      console.log(res.data.spaces);
-    }
-    )
-    .catch((err)=>console.log(err))
-  }
+    axios
+      .get(`${BaseUrl}/adminDashboard/all-newlistedpropertirs`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setNewListedCount(res.data.spaces.length);
+        console.log(res);
+        console.log(res.data.spaces);
+      })
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     allbookedProperties();
@@ -91,15 +92,12 @@ const Properties = () => {
       console.log(key, index);
       console.log(bookedProperties[key]);
       console.log(bookedProperties[key].approve_status);
-      if(bookedProperties[key].approve_status == "pending"){
-        
+      if (bookedProperties[key].approve_status == "pending") {
       }
-
     });
   }
 
   console.log(countAproved);
-
 
   return (
     <div
@@ -188,9 +186,7 @@ const Properties = () => {
                   <p className=" properties-sectionCard_headeing" style={{}}>
                     New Listed
                   </p>
-                  <p className="People_tenant ">
-                    {newListedCount}
-                  </p>
+                  <p className="People_tenant ">{newListedCount}</p>
                 </div>
               </div>
             </div>

@@ -16,7 +16,7 @@ import Cities from "../Components/BrantFordLandingPages/Cities";
 const BrantfordPage = () => {
   return (
     <div className="brantford-landing-page">
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="landing_section">
         <video src={videoBg} autoPlay loop muted></video>
         <HeroSection />
@@ -30,7 +30,7 @@ const BrantfordPage = () => {
         <CallToActionSection />
         <TestimonialSection />
         <Sponsers />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </div>
   );
