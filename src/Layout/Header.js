@@ -25,7 +25,12 @@ const Header = () => {
         Authorization: localStorage.getItem("admin_token")
       }
     })
-    .then((res) => {console.log(res)})
+    .then((res) => {
+      
+      console.log(res)
+      localStorage.removeItem("LoginStatus");
+      
+    })
     .catch((err)=> {console.log(err)})
      console.log("clicked");
   }

@@ -40,7 +40,7 @@ const DasbordPage = () => {
       })
       .catch((err) => {
         console.log(err);
-        navigate("/dashbord", { replace: true });
+        navigate("/dashbord");
       });
   };
   //  //All Properties

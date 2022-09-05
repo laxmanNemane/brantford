@@ -91,6 +91,12 @@ const Sidebar = () => {
               Income
             </NavLink>
           </li>
+          <li className="my-3  list-sidebar-menu">
+            <NavLink to="/requirements" className="text-dark">
+              <AiOutlineCreditCard className="Sidebar_icons" />
+              Requirements
+            </NavLink>
+          </li>
           <li className="my-3 list-sidebar-menu">
             {/* <NavLink to="/dashbord" className="text-dark"> */}
             <AiOutlineWechat className="Sidebar_icons" />

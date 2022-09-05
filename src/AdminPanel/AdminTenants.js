@@ -8,12 +8,13 @@ import AdminUserTable from "./AdminSubUserstable";
 import { AiOutlineUserSwitch, AiOutlineTeam } from "react-icons/ai";
 import { BsArrowDownLeftCircle } from "react-icons/bs";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
 const AdminTenants = () => {
 
-  const [userCount, setUserCount] = useState();
+  const [userCount, setUserCount] = useState(0);
 
   useEffect(()=>{
     axios.get(`${BaseUrl}/adminDashboard/all-users`,{headers:{
@@ -97,6 +98,7 @@ const AdminTenants = () => {
             </div>
           </div>
         </div>
+        
         <AdminUserTable />
       </div>
     </div>

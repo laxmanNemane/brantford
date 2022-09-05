@@ -13,6 +13,7 @@ import PropertyDetailPage from "../AdminPanel/PropertyDetailPage";
 import AdminPrivacyPolicy from "../AdminPanel/AdminPrivacyPolicy";
 import AdminCategories from "../AdminPanel/AdminCategories";
 import BrantfordPage from "../Pages/BrantfordPage";
+import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 import SignUp from "../Pages/SignUp";
 
@@ -27,7 +28,7 @@ import AddImages from "../UserPanel/DashbordUser/ModelPropertyOwner/AddImages";
 import AddLocation from "../UserPanel/DashbordUser/ModelPropertyOwner/AddLocation";
 import PropertyOwnerPropertyDetail from "../UserPanel/DashbordUser/PropertyOwnerPropertyDetail";
 import PrivateRoute from "./PrivateRoute";
-
+import AdminUserTable from "../AdminPanel/AdminSubUserstable";
 
 const Routing = () => {
   return (
@@ -58,21 +59,24 @@ const Routing = () => {
         <Route path="/office-detail" element={<OfficesDetailPage />} /> */}
         {/* langding page  */}
         <Route path="/" element={<BrantfordPage />} />
+        <Route path="/*" element={<BrantfordPage />} />
         <Route path="/terms&conditions" element={<TermsCondition />} />
         {/* admin panel */}
         {/* <Route element={<PrivateRoute />}> */}
         <Route path="/dashbord" element={<DasbordPage />} />
         <Route path="/properties" element={<Properties />} />
         <Route path="/revenu" element={<RevenuAdmin />} />
+        <Route path="/requirements" element={<AdminRequirements />} />
         <Route path="/tenants" element={<AdminTenants />} />
         <Route path="/detail" element={<PropertyDetailPage />} />
         <Route path="/privacy-policy" element={<AdminPrivacyPolicy />} />
       <Route path="/categories" element={<AdminCategories />} />
         <Route path="/profile" element={<AdminProfilePage />} />
+        <Route path="/allusers" element={<AdminUserTable />} />
         {/* </Route> */}
         {/* <Route path="*" element={<h1>Page is Not Found</h1>} /> */}
       </Routes>
-      {/* <Footer /> */}
+   
     </BrowserRouter>
   );
 };
