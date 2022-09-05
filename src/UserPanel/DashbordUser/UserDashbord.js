@@ -26,9 +26,7 @@ import {
   BsWatch,
 } from "react-icons/bs";
 // import { HiArrowTrendingUp } from "react-icons/hi";
-import { FcCancel } from "react-icons/fc";
 import { IoIosArrowForward } from "react-icons/io";
-import { TiMediaFastForward } from "react-icons/ti";
 import HocComponent from "../../Components/HocComponent";
 import { usersContext } from "../../Context/UserContext";
 
@@ -72,7 +70,6 @@ const UserDashbord = () => {
         data: [
           { value: 1048, name: "Booked Properties" },
           { value: 735, name: "Rejected Properties" },
-
         ],
         emphasis: {
           itemStyle: {
@@ -233,8 +230,10 @@ const UserDashbord = () => {
                     </div>
                   </div>
                   <div className="col-4">
-                    <div className="this-week-section bg-white pt-5"
-                      style={{ borderRadius: "15px" }} >
+                    <div
+                      className="this-week-section bg-white pt-5"
+                      style={{ borderRadius: "15px" }}
+                    >
                       <ReactEcharts option={{ ...option }} />
                     </div>
                   </div>
