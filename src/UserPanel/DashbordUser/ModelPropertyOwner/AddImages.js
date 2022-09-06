@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-
 import { Formik, Form, Field } from "formik";
-
 import { Input, Select } from "antd";
+import axios from "axios";
+
+
+
+const BaseUrl = 'http://bantford.prometteur.in'
 
 const AddImages = () => {
     const [img, setImg] = useState({
@@ -20,6 +23,7 @@ const AddImages = () => {
     const hanglechangetype = (e, setFieldValue) => {
         console.log(e);
 
+
         setFieldValue("selected_type", e);
     };
 
@@ -27,8 +31,31 @@ const AddImages = () => {
 
     const handleSubmit = (values) => {
         console.log(values);
+        console.log(values.selected_file.name);
 
-        console.log("image ", img);
+                // var data = new FormData(values);
+                // data.append('main_type', 'floor-plans');
+                // data.append('sub_type', 'floor_plans_photos');
+                // data.append('spaceId', '2');
+                // data.append('image', fs.createReadStream('/home/prometteur/Pictures/red-zeppelin-AYkJ0-uFq60-unsplash.jpg'));
+                
+                // var config = {
+                // method: 'post',
+                // url: 'bantford.prometteur.in/admin/add-image',
+                // headers: { 
+                //     'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heG1lbGFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJQcm9AODA4NyIsInByb2ZpbGUiOiJwcm9wZXJ0eS1vd25lciIsImlkIjo0LCJpYXQiOjE2NjI0NTQ5NjQsImV4cCI6MTY2MjQ2MjE2NH0.1wiRtAO3W3zsp7V0COdHXQv4WJIhRWhkkPFZ63_HKEk', 
+                //     ...data.getHeaders()
+                // },
+                // data : data
+                // };
+                
+                // axios(config)
+                // .then(function (response) {
+                // console.log(JSON.stringify(response.data));
+                // })
+                // .catch(function (error) {
+                // console.log(error);
+                // });
     };
 
     return (

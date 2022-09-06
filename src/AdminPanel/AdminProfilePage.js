@@ -15,14 +15,14 @@ const AdminProfilePage = () => {
 
 
   const handleSubmit = (values) => {
-    console.log(values);
+    // console.log(values);
 
     axios.patch(`${BaseUrl}/admin/update-profile`,values, {headers:{
       Authorization:localStorage.getItem("admin_token")
     }})
     .then((res)=> {
 
-      console.log(res)
+      // console.log(res)
       setProfileDetail(res.data)
     })
     .catch((err)=> console.log(err))
@@ -35,8 +35,8 @@ const AdminProfilePage = () => {
       Authorization : localStorage.getItem("admin_token")
   }})
   .then((res)=> {
-      console.log(res.data)
-      console.log(res.data)
+      // console.log(res.data)
+      // console.log(res.data)
       // console.log(res.data.)
       setProfileDetail(res.data)
       setIntialvalue(res.data)
@@ -51,7 +51,7 @@ useEffect(()=>{
   getadminProfile();
 },[])
 
-console.log(profileDetail)
+// console.log(profileDetail)
 
 // Object.keys(profileDetail).map((key,index)=>{
 //   console.log(profileDetail[key])
@@ -79,7 +79,7 @@ const setinitialValues= {
   
 // console.log(setinitialValues);
 // console.log(setinitialValues.firstName);
- console.log(profileDetail.name)
+//  console.log(profileDetail.name)
 
 
 
@@ -139,7 +139,7 @@ const setinitialValues= {
               <p className="account-deatil-heading">Account Detail</p>
               <hr />
               <div>
-                { console.log(setinitialValues.firstName)}
+               
                 <Formik 
                 enableReinitialize
                   initialValues={{

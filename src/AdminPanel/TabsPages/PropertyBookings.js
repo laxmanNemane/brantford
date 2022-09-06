@@ -12,10 +12,10 @@ const PropertyBookings = () => {
 
   const acceptHandler = (bookedProp) =>{
     const value = { "approve_status":"approved"}
-    console.log("Aproved")
-    console.log(bookedProp)
-    console.log(bookedProp[0].admininfoId)
-    console.log(value)
+    // console.log("Aproved")
+    // console.log(bookedProp)
+    // console.log(bookedProp[0].admininfoId)
+    // console.log(value)
 
     // axios
     // .patch(`${BaseUrl}/adminDashboard/approveOrreject-property?id=${bookedProp[0].admininfoId}`,value, {
@@ -36,7 +36,7 @@ const PropertyBookings = () => {
   const declineHandler = () => {
     const value = { "approve_status":"Reject"}
 
-    console.log("Reject")
+    // console.log("Reject")
 
   }
 
@@ -49,22 +49,22 @@ const PropertyBookings = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setBookedProperties(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);  
       });
   }, []);
 
-  console.log(bookedProperties);
+  // console.log(bookedProperties);
   // {bookedProperties.map((item, index)=>{
   //   console.log(item);
   // })}
 
   {
     Object.keys(bookedProperties).map((key, index) => {
-      console.log(key, index);
+      // console.log(key, index);
     });
   }
 

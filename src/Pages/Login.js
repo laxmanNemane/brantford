@@ -19,7 +19,7 @@ const Login = () => {
   const navigate =useNavigate();
 
   const handleSubmit = (values) => {
-    console.log(values);
+    // console.log(values);
 
    
 
@@ -29,16 +29,16 @@ const Login = () => {
     axios
       .post(`${BaseUrl}/admin/admin-login`, values)
       .then((res) => {
-        console.log(res);
-        console.log(res.data.admin.profile);
-        console.log("token",res.data.token);
-        console.log("token-length",res.data.token.length);
+        // console.log(res);
+        // console.log(res.data.admin.profile);
+        // console.log("token",res.data.token);
+        // console.log("token-length",res.data.token.length);
 
         const LoginStatus = `[{'token':${res.data.token}}, {'user':${res.data.admin.profile},}]`
 
         localStorage.setItem('LoginStatus',LoginStatus);
 
-        console.log(localStorage.getItem('LoginStatus'));
+        // console.log(localStorage.getItem('LoginStatus'));
 
         if(res.data.admin.profile === "admin"){
 
@@ -53,7 +53,7 @@ const Login = () => {
           navigate("/");
         }
 
-        else if(res.data.admin.profile === "endUser"){
+        else{
 
           localStorage.setItem("endUser_token",res.data.token);
           navigate("/");

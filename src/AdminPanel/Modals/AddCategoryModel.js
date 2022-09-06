@@ -12,10 +12,10 @@ const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
   const handleSubmit = (values) => {
     setshowStatus(true);
     setCategary(values);
-    console.log(values);
+    // console.log(values);
     // console.log(categary);
 
-    console.log(localStorage.getItem("admin_token"));
+    // console.log(localStorage.getItem("admin_token"));
 
     const admin_token = localStorage.getItem("admin_token");
     const property_owner_token = localStorage.getItem("property_owner_token");
@@ -30,7 +30,7 @@ const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
         },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setshowStatus(false);
       })
       .catch((err) => {

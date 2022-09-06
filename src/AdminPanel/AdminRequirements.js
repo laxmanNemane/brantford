@@ -22,7 +22,7 @@ function AdminRequirements() {
         axios.get(`${BaseUrl}/adminDashboard/all-requirements`,{headers:{
           Authorization: localStorage.getItem("admin_token")
         }}).then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setPost(res.data);
           setUserCount(res.data.length)
           // setPaginatePosts(_(res.data).slice(0).take(pageSize).value());

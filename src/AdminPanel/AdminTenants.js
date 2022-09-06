@@ -20,7 +20,7 @@ const AdminTenants = () => {
     axios.get(`${BaseUrl}/adminDashboard/all-users`,{headers:{
       Authorization: localStorage.getItem("admin_token")
     }}).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setUserCount(res.data.length)
     });
   },[])

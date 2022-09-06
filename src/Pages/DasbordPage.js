@@ -36,10 +36,10 @@ const DasbordPage = () => {
       })
       .then((res) => {
         setRevenue(res.data.total_revenue);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         navigate("/dashbord");
       });
   };
@@ -53,10 +53,10 @@ const DasbordPage = () => {
       })
       .then((res) => {
         setAllPropertiesCount(res.data.spaces.length);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
@@ -68,22 +68,22 @@ const DasbordPage = () => {
         },
       })
       .then((res) => {
-        console.log(res.data.length);
-        console.log(res.data);
+        // console.log(res.data.length);
+        // console.log(res.data);
       
 
         setBookedCount(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
   // bookedCount.map((item)=> {
   //   setPropertyBookedCount(propertyBookedCount++);
   // })
-  console.log(bookedCount);
-  console.log(Object.keys(bookedCount).length)
+  // console.log(bookedCount);
+  // console.log(Object.keys(bookedCount).length)
 
 
   useEffect(() => {

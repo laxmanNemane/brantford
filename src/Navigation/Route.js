@@ -57,6 +57,7 @@ const Routing = () => {
 >>>>>>> 2fb3f2cbdea26ce8d8d4f7e5cc86f329853afcd4
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/office-detail" element={<OfficesDetailPage />} /> */}
+        <Route path="/office-detail" element={<OfficesDetailPage />} />
         {/* langding page  */}
         <Route path="/" element={<BrantfordPage />} />
         <Route path="/*" element={<BrantfordPage />} />

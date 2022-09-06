@@ -34,12 +34,12 @@ const Properties = () => {
         },
       })
       .then((res) => {
-        console.log(res.data.spaces.length);
+        // console.log(res.data.spaces.length);
         setProperties(res.data.spaces);
         setPropertyCount(res.data.spaces.length);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
@@ -52,11 +52,11 @@ const Properties = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setBookedProperties(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
@@ -67,11 +67,13 @@ const Properties = () => {
     }})
     .then((res)=> {
       setNewListedCount(res.data.spaces.length)
-      console.log(res)
-      console.log(res.data.spaces);
+      // console.log(res)
+      // console.log(res.data.spaces);
     }
     )
-    .catch((err)=>console.log(err))
+    .catch((err)=>{
+      // console.log(err)
+    })
   }
 
   useEffect(() => {
@@ -80,16 +82,16 @@ const Properties = () => {
     newListed();
   }, []);
 
-  console.log(Object.keys(bookedProperties).length);
+  // console.log(Object.keys(bookedProperties).length);
 
   // console.log(properties.spaces.length);
 
-  console.log(newListedCount);
+  // console.log(newListedCount);
 
   {
     Object.keys(bookedProperties).map((key, index) => {
-      console.log(key, index);
-      console.log(bookedProperties[key]);
+      // console.log(key, index);
+      // console.log(bookedProperties[key]);
       // console.log(bookedProperties[key].approve_status);
       // if(bookedProperties[key].approve_status == "pending"){
         
@@ -98,7 +100,7 @@ const Properties = () => {
     });
   }
 
-  console.log(countAproved);
+  // console.log(countAproved);
 
 
   return (

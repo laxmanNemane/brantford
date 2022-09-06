@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import office1 from "../Assets/Images/office.avif";
@@ -15,13 +15,40 @@ import { BiCalendar, BiUser } from "react-icons/bi";
 import { FiCheckCircle } from "react-icons/fi";
 import { FaUserAlt } from "react-icons/fa";
 import { GrAttachment } from "react-icons/gr";
+import axios from "axios";
+
+const BaseUrl = "http://bantford.prometteur.in";
+// const token = localStorage.getItem("endUser_token");
 
 // --------fs-3----
 
 const OfficesDetailPage = () => {
+  // console.log(localStorage.getItem("endUser_token"));
+
+  const handleReset = (values) => {};
+
   const handleSubmit = (values) => {
-    console.log("hello lakhan ");
+    // console.log("hello lakhan ");
+    // console.log(values);
+
+    axios
+      .post(`${BaseUrl}/endUser/send-requirement`, values, {
+        headers: {
+          Authorization: localStorage.getItem("endUser_token"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
+  // useEffect(()=>{
+  //   handleSubmit();
+  // },[])
+
   return (
     <div className="office-detail-section hj py-5 position-relative">
       <div className="container ">
@@ -352,29 +379,52 @@ const OfficesDetailPage = () => {
 
                     <div className="form-end-user">
                       <Formik
+                        onReset={handleReset}
                         initialValues={{
                           name: "",
-                          email: "",
-                          contact: "",
-                          requirement:
-                            "Hello, I am interested in [Coworking Office Space In Ahmedabad-13323]",
+                          contact_number: "",
+                          email_id: "",
+                          number_of_persons: "",
+                          company: "",
+                          city_of_workspace: "",
+                          categary_of_workspace: "",
+                          start_date: "",
+                          message: "",
                         }}
                         validate={(values) => {
                           let errors = {};
-                          if (!values.email) {
-                            errors.email = "required*";
+                          if (!values.email_id) {
+                            errors.email_id = "required*";
                           } else if (
                             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
-                              values.email
+                              values.email_id
                             )
                           ) {
-                            errors.email = "Invalid email address";
+                            errors.email_id = "Invalid email address";
                           }
-                          if (!values.password) {
-                            errors.password = "required*";
+                          if (!values.name) {
+                            errors.name = "required*";
                           }
-                          if (!values.contact) {
-                            errors.contact = "contact is required";
+                          if (!values.contact_number) {
+                            errors.contact_number = "required*";
+                          }
+                          if (!values.number_of_persons) {
+                            errors.number_of_persons = "required*";
+                          }
+                          if (!values.categary_of_workspace) {
+                            errors.categary_of_workspace = "required*";
+                          }
+                          if (!values.city_of_workspace) {
+                            errors.city_of_workspace = "required*";
+                          }
+                          if (!values.start_date) {
+                            errors.start_date = "required*";
+                          }
+                          if (!values.company) {
+                            errors.company = "required*";
+                          }
+                          if (!values.message) {
+                            errors.message = "required*";
                           }
                           return errors;
                         }}
@@ -383,66 +433,116 @@ const OfficesDetailPage = () => {
                       >
                         {({ values, errors, handleSubmit }) => (
                           <Form onSubmit={handleSubmit} className="mt-5">
-                            <div className="formGroup">
-                              <Field
-                                type="name"
-                                name="name"
-                                placeholder="Full Name"
-                                className="form-control  mx-auto my-4"
-                              />
-                              <p className="ms-5 ps-2 text-danger">
-                                <ErrorMessage name="name" />
-                              </p>
-                              <Field
-                                type="email"
-                                name="email"
-                                placeholder="Email"
-                                className="form-control  mx-auto my-4"
-                              />
-                              <p className="ms-5 ps-2 text-danger">
-                                <ErrorMessage name="email" />
-                              </p>
-                              <Field
-                                type="contact"
-                                name="contact"
-                                placeholder="contact"
-                                className="form-control  mx-auto my-4"
-                              />
-                              <p className="ms-5 ps-2 text-danger">
-                                <ErrorMessage name="contact" />
-                              </p>
+                            <Field
+                              type="name"
+                              name="name"
+                              placeholder="name"
+                              className="form-control w-100 mx-auto my-3"
+                            />
+                            <p className="ms-5 ps-2 text-danger">
+                              <ErrorMessage name="name" />
+                            </p>
+                            <Field
+                              type="number"
+                              name="contact_number"
+                              placeholder="contact"
+                              className="form-control w-100 mx-auto my-3"
+                            />
+                            <p className="ms-5 ps-2 text-danger">
+                              <ErrorMessage name="contact_number" />
+                            </p>
 
-                              <Field
-                                type="reuirement"
-                                as="Textarea"
-                                row="8"
-                                name="requirement"
-                                placeholder="contact"
-                                defaultValue={values.requirement}
-                                className="form-control  mx-auto my-4"
-                              />
-                              <p className="ms-5 ps-2 text-danger">
-                                <ErrorMessage name="requirement" />
-                              </p>
-                              {/* <div className="d-flex mx-auto justify-content-between ">
-                                                                <label className="mb-2">
-                                                                    <Field type="checkbox" name="remember me" />
-                                                                    &nbsp; By submitting this form I agree to{" "}
-                                                                    <span className="terms--of-use">
-                                                                        Terms of Use
-                                                                    </span>
-                                                                </label>
-                                                            </div> */}
-                              <div className="button-sending-email mt-5">
-                                <button
-                                  className="btn-for-all-landpage w-100 mt-3"
-                                  type="submit"
-                                  onClick={handleSubmit}
-                                >
-                                  Send email
-                                </button>
-                              </div>
-                            </div>
+                            <Field
+                              type="email"
+                              name="email_id"
+                              placeholder="Email"
+                              className="form-control w-100 mx-auto my-3"
+                            />
+                            <p className="ms-5 ps-2 text-danger">
+                              <ErrorMessage name="email_id" />
+                            </p>
+
+                            <Field
+                              type="number"
+                              name="number_of_persons"
+                              placeholder="no of persons"
+                              className="form-control w-100 mx-auto my-3"
+                            />
+                            <p className="ms-5 ps-2 text-danger">
+                              <ErrorMessage name="number_of_persons" />
+                            </p>
+
+                            <Field
+                              type="name"
+                              name="company"
+                              placeholder="comapny name"
+                              className="form-control w-100 mx-auto my-3"
+                            />
+                            <p className="ms-5 ps-2 text-danger">
+                              <ErrorMessage name="company" />
+                            </p>
+
+                            <Field
+                              type="name"
+                              name="city_of_workspace"
+                              placeholder="city name"
+                              className="form-control w-100 mx-auto my-3"
+                            />
+                            <p className="ms-5 ps-2 text-danger">
+                              <ErrorMessage name="city_of_workspace" />
+                            </p>
+
+                            {/* <Field
+                              type="categary"
+                              name="categary_of_workspace"
+                              placeholder="categary name"
+                              className="form-control w-100 mx-auto my-3"
+                            /> */}
+                            
+
+                            <Field
+                              as="select"
+                              className="my-select w-100"
+                              component="select"
+                              id="workspace"
+                              name="categary_of_workspace"
+                            >
+                              <option value="working spaces">Co working spaces</option>
+                              <option value="private office">private office</option>
+                              <option value="flexi desk">Flexi Desk</option>
+                              <option value="free spaces">Free space</option>
+                              <option value="others">Other</option>
+                            </Field>
+
+                            <Field
+                              type="date"
+                              name="start_date"
+                              placeholder="start date"
+                              className="form-control w-100 mx-auto my-3"
+                            />
+                            <p className="ms-5 ps-2 text-danger">
+                              <ErrorMessage name="start_date" />
+                            </p>
+
+                            <Field
+                              type="name"
+                              name="message"
+                              placeholder="message"
+                              className="form-control w-100 mx-auto my-3"
+                            />
+                            <p className="ms-5 ps-2 text-danger">
+                              <ErrorMessage name="message" />
+                            </p>
+
+                           
+
+                            <button
+                              onClick={handleReset}
+                              type="submit"
+                              className="form-control border-none w-75 mx-auto my-5 fw-bold SignIn_btn "
+                            >
+                              Send Email
+                            </button>
                           </Form>
                         )}
                       </Formik>

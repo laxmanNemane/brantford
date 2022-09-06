@@ -19,8 +19,12 @@ const AdminUserTable = () => {
     axios.get(`${BaseUrl}/adminDashboard/single-propertyOwner?id=${id}`, {headers: {
       Authorization: localStorage.getItem("admin_token")
 
-    }}).then((res)=>{console.log(res)})
-    .catch((err)=> {console.log(err)})
+    }}).then((res)=>{
+      // console.log(res)
+    })
+    .catch((err)=> {
+      // console.log(err)
+    })
   }
 
 
@@ -33,11 +37,11 @@ const AdminUserTable = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         SetPropertyOwner(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }
 
@@ -50,11 +54,11 @@ const AdminUserTable = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         SetEndUser(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
@@ -67,7 +71,7 @@ const AdminUserTable = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setPost(res.data);
         setUserCount(res.data.length);
         // setPaginatePosts(_(res.data).slice(0).take(pageSize).value());

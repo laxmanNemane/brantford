@@ -9,13 +9,13 @@ const BaseUrl = "http://bantford.prometteur.in";
 const UpdateCategoryModel = ({ isModalVisible, setIsModalVisible, id, categary }) => {
   const [updateCategary, setUpdateCategary] = useState("");
 
-  console.log(id);
-  console.log(categary);
+  // console.log(id);
+  // console.log(categary);
 
   const handleSubmit = (values) => {
     setIsModalVisible(true);
     setUpdateCategary(values);
-    console.log(values);
+    // console.log(values);
     // console.log(categary);
 
     console.log(localStorage.getItem("admin_token"));
@@ -33,7 +33,7 @@ const UpdateCategoryModel = ({ isModalVisible, setIsModalVisible, id, categary }
         },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setIsModalVisible(false)
         
       })
