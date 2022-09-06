@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../Styles/Sidebar.css";
 import { TiChartBar } from "react-icons/ti";
 import { BsBuilding } from "react-icons/bs";

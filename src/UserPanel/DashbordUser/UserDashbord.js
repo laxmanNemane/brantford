@@ -1,36 +1,15 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../Style.css";
 import { NavLink } from "react-router-dom";
-import { FiUsers, FiWatch } from "react-icons/fi";
 
 import ReactEcharts from "echarts-for-react";
-import { CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
 
-import {
-  MdIncompleteCircle,
-  MdOutlineCancel,
-  MdOutlineWatch,
-} from "react-icons/md";
-import {
-  BiBuildingHouse,
-  BiHome,
-  BiHomeAlt,
-  BiTime,
-  BiTimeFive,
-} from "react-icons/bi";
-import {
-  BsArrowBarUp,
-  BsArrowDown,
-  BsArrowLeft,
-  BsArrowUp,
-  BsLightningCharge,
-  BsWatch,
-} from "react-icons/bs";
+import { BiBuildingHouse } from "react-icons/bi";
+
 // import { HiArrowTrendingUp } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
 import HocComponent from "../../Components/HocComponent";
-import { usersContext } from "../../Context/UserContext";
+// import { usersContext } from "../../Context/UserContext";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileUser } from "../../Redux/PropertyOwnerSlices/profileSlice";
 import { FetchAllApproveProperties } from "../../Redux/PropertyOwnerSlices/allapprovedSlice";
@@ -47,6 +26,7 @@ const UserDashbord = () => {
 
   // console.log(users);
   const data = useSelector((state) => state);
+  console.log(data);
   const bookedProperties = useSelector(
     (state) => state.POBookings.ApprovepropertiesPO
   );

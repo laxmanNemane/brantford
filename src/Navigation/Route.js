@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "../Layout/Navbar";
-import ForgetPassword from "../Components/ForgetPassword";
+// import Navbar from "../Layout/Navbar";
+// import ForgetPassword from "../Components/ForgetPassword";
 import Login from "../Pages/Login";
-import Sidebar from "../Layout/Sidebar";
+// import Sidebar from "../Layout/Sidebar";
 import DasbordPage from "../Pages/DasbordPage";
 import Properties from "../AdminPanel/Properties";
 import RevenuAdmin from "../AdminPanel/RevenuAdmin";
@@ -16,8 +16,8 @@ import BrantfordPage from "../Pages/BrantfordPage";
 
 import SignUp from "../Pages/SignUp";
 
-import OfficesDetailPage from "../EndUserPanel/OfficesDetailPage";
-import Footer from "../Layout/Footer";
+// import OfficesDetailPage from "../EndUserPanel/OfficesDetailPage";
+// import Footer from "../Layout/Footer";
 import TermsCondition from "../EndUserPanel/TermsCondition";
 import UserDashbord from "../UserPanel/DashbordUser/UserDashbord";
 import Spaces from "../UserPanel/DashbordUser/Spaces";

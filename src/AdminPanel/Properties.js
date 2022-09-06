@@ -41,6 +41,7 @@ const Properties = () => {
       .catch((err) => {
         console.log(err);
       });
+    setCountAproved("");
   };
 
   // allProperties booked properties

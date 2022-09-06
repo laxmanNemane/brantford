@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import HocComponent from "../../Components/HocComponent";
 import SpacesModal from "./ModelPropertyOwner/SpacesModal";
 
@@ -26,22 +26,22 @@ const Spaces = () => {
         .catch((err)=> {console.log(err)})
     }
 
-    const showSpacesAdmin = () =>{
-        axios.get(`${BaseUrl}/adminDashboard/all-properties`,{headers:{
-            Authorization : localStorage.getItem("admin_token")
-        }})
-        .then((res)=> {
-            console.log(res.data)
-            console.log(res.data.spaces)
-            console.log(res.data.spaces[0].id)
-            setSpacesDisplay(res.data.spaces)
-        })
-        .catch((err)=> {
+    // const showSpacesAdmin = () =>{
+    //     axios.get(`${BaseUrl}/adminDashboard/all-properties`,{headers:{
+    //         Authorization : localStorage.getItem("admin_token")
+    //     }})
+    //     .then((res)=> {
+    //         console.log(res.data)
+    //         console.log(res.data.spaces)
+    //         console.log(res.data.spaces[0].id)
+    //         setSpacesDisplay(res.data.spaces)
+    //     })
+    //     .catch((err)=> {
             
-            console.log(err)
+    //         console.log(err)
         
-        })
-    }
+    //     })
+    // }
 
     const showSpacesPropertyOwner = () =>{
         axios.get(`${BaseUrl}/propertyOwner/all-venues`,{headers:{

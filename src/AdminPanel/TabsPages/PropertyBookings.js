@@ -34,7 +34,7 @@ const PropertyBookings = () => {
   const declineHandler = () => {
     const value = { approve_status: "Reject" };
 
-    console.log("Reject");
+    console.log(value);
   };
 
   useEffect(() => {
