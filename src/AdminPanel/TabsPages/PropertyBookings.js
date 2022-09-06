@@ -10,7 +10,7 @@ const PropertyBookings = () => {
   const [bookedProperties, setBookedProperties] = useState({});
 
   const acceptHandler = (bookedProp) => {
-    // const value = { "approve_status":"approved"}
+    const value = { approve_status: "approved" };
     console.log("Aproved");
     console.log(bookedProp);
     console.log(bookedProp[0].admininfoId);
@@ -32,7 +32,7 @@ const PropertyBookings = () => {
   };
 
   const declineHandler = () => {
-    // const value = { "approve_status":"Reject"}
+    const value = { approve_status: "Reject" };
 
     console.log("Reject");
   };

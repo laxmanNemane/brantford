@@ -165,7 +165,7 @@ function SignUp() {
                         <i className="fab fa-google fa-x mx-5"></i> Continue
                         with Google
                       </p> */}
-                      <LoginWithGoogle />
+                      {/* <LoginWithGoogle /> */}
 
                       {/* <LogoutFromGoogle/> */}
                       {/* <li className="btn border rounded-2 me-4">

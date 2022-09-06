@@ -18,12 +18,13 @@ const BaseUrl = "http://bantford.prometteur.in";
 // const Admin_token = localStorage.getItem("admin_token");
 
 const Properties = () => {
-  // const [properties, setProperties] = useState();
+  const [properties, setProperties] = useState();
   const [bookedProperties, setBookedProperties] = useState({});
   const [propertyCount, setPropertyCount] = useState(0);
   const [newListedCount, setNewListedCount] = useState();
-  // const [countAproved, setCountAproved] = useState(0);
+  const [countAproved, setCountAproved] = useState(0);
 
+  console.log("properties", properties);
   // allProperties
   const allProperties = () => {
     axios

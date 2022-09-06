@@ -11,7 +11,9 @@ const AdminUserTable = () => {
   // const [paginatePosts, setPaginatePosts] = useState();
 
   // const [currentPage, setCurrentPage] = useState(1);
-  // const [userCount, setUserCount] = useState()
+  const [userCount, setUserCount] = useState();
+
+  console.log("usercount", userCount);
 
   useEffect(() => {
     axios

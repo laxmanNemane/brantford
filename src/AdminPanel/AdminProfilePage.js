@@ -10,7 +10,8 @@ const BaseUrl = "http://bantford.prometteur.in";
 
 const AdminProfilePage = () => {
   const [profileDetail, setProfileDetail] = useState([]);
-  // const [initialValues, setIntialvalue] = useState()
+  const [initialValues, setIntialvalue] = useState();
+  console.log("values", initialValues);
 
   const handleSubmit = (values) => {
     console.log(values);

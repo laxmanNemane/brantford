@@ -7,7 +7,8 @@ import "./categoryModal.css";
 const BaseUrl = "http://bantford.prometteur.in";
 
 const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
-  // const [categary, setCategary] = useState("");
+  const [categary, setCategary] = useState("");
+  console.log("category", categary);
 
   const handleSubmit = (values) => {
     setshowStatus(true);
