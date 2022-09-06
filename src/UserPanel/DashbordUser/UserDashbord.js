@@ -46,6 +46,8 @@ const UserDashbord = () => {
     dispatch(FetchAllVisitors());
     dispatch(fetchTotalAmount());
     dispatch(fetchTotalBooking());
+
+    // eslint-disable-next-line
   }, []);
 
   const option1 = {
