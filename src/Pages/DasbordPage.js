@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import HocComponent from "../Components/HocComponent";
 import { IoIosAirplane } from "react-icons/io";
-import {  FcApproval, FcBullish } from "react-icons/fc";
+import { FcApproval, FcBullish } from "react-icons/fc";
 import "../Styles/DashbordPage.css";
 import { RiBuildingLine } from "react-icons/ri";
 import { Divider } from "antd";
@@ -88,7 +88,7 @@ const DasbordPage = () => {
     getBookedProperties();
     getallProperties();
     getRevenue();
-  }, []);
+  }, [allPropertiesCount]);
 
   // console.log(bookedCount);
 
