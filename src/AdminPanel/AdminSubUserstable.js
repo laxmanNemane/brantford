@@ -1,7 +1,6 @@
 import React from "react";
 // import _ from "lodash";
 import axios from "axios";
-import "../Styles/Admintenants.css";
 import { useEffect, useState } from "react";
 
 const BaseUrl = "http://bantford.prometteur.in";

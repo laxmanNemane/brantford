@@ -2,7 +2,6 @@ import React from "react";
 import { FcAdvertising, FcGlobe } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { Badge } from "react-bootstrap";
-import "../Styles/adminDashbordFooter.css";
 
 const AdminDashbordFooter = () => {
   return (

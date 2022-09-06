@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../Styles/AdminProperty.css";
 import HocComponent from "../Components/HocComponent";
 // import allPrperty from "../Assets/Images/propertiesIcon.svg";
 // import Booking from "../Assets/Images/booked.svg";

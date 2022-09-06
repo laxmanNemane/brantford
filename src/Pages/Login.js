@@ -1,15 +1,15 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import axios from "axios";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import ForgetPassword from "../Components/ForgetPassword";
-import "../Styles/loginpage.css";
+// import "../Styles/loginpage.css";
 import loginPage_image from "../Assets/Images/login.jpg";
 // import Navbar from "../Layout/Navbar";
 
 // import LoginWithGoogle from "./LoginWithGoogle";
 // import LogoutFromGoogle from "./LogoutFromGoogle";
 // import SignUp from "./SignUp";
-import { Link,  useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const BaseUrl = "http://bantford.prometteur.in";
 

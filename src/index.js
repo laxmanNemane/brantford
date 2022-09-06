@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import "./Assets/CSS/Admin.css";
 import App from "./App";
 import "antd/dist/antd.min.css";
 import { Provider } from "react-redux";

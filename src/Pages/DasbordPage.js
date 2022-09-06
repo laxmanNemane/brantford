@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import HocComponent from "../Components/HocComponent";
 import { IoIosAirplane } from "react-icons/io";
 import { FcApproval, FcBullish } from "react-icons/fc";
-import "../Styles/DashbordPage.css";
+// import "../Styles/DashbordPage.css";
 import { RiBuildingLine } from "react-icons/ri";
 import { Divider } from "antd";
 import { BsPatchPlus } from "react-icons/bs";

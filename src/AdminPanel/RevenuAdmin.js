@@ -1,7 +1,6 @@
 import React from "react";
 import HocComponent from "../Components/HocComponent";
 import ReactEcharts from "echarts-for-react";
-import "../Styles/RevnuPage.css";
 // import AdminSubUserstable from "./AdminSubUserstable";
 
 const option = {

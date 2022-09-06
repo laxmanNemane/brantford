@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 import HocComponent from "../Components/HocComponent";
-import ".././Styles/AdminProfile.css";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { Field, Form, Formik } from "formik";
 import axios from "axios";

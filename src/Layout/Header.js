@@ -1,7 +1,6 @@
 import { Badge, Dropdown, Input, Menu } from "antd";
 import React, { useState } from "react";
 import { BsSearch, BsBell, BsBookmarkStar } from "react-icons/bs";
-import "../Styles/DashbordHeader.css";
 import { NavLink } from "react-router-dom";
 import { AiOutlinePoweroff, AiOutlineUser } from "react-icons/ai";
 import axios from "axios";

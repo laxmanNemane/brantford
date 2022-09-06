@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import axios from "axios";
 import React, { useState } from "react";
 import ForgetPassword from "../Components/ForgetPassword";
-import "../Styles/loginpage.css";
+// import "../Styles/loginpage.css";
 import loginPage_image from "../Assets/Images/login.jpg";
 import Navbar from "../Layout/Navbar";
 // import LoginWithGoogle from "./LoginWithGoogle";
@@ -38,10 +38,10 @@ function SignUp() {
     };
 
     axios(config)
-      .then(function (response) {
+      .then(function(response) {
         console.log(JSON.stringify(response.data));
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   };

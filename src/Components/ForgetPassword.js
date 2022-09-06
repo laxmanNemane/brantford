@@ -2,7 +2,7 @@ import { Modal } from "antd";
 import axios from "axios";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
-import "../Styles/forgetmodal.css";
+// import "../Styles/forgetmodal.css";
 import ficon from "../Assets/Icons/forgetIcon.svg";
 
 const BaseUrl = "http://bantford.prometteur.in";
