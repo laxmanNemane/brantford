@@ -7,7 +7,7 @@ import TestimonialSection from "../Components/BrantFordLandingPages/TestimonialS
 import Navbar from "../Layout/Navbar";
 import videoBg from ".././Assets/video/pexels-alena-darmel-7646596.mp4";
 import Footer from "../Layout/Footer";
-import ".././Styles/LandingPage/brantFord.css";
+// import ".././Styles/LandingPage/brantFord.css";
 import Sponsers from "../Components/BrantFordLandingPages/Sponsers";
 import FindsProperty from "../Components/BrantFordLandingPages/FindsProperty";
 import PostAddFree from "../Components/BrantFordLandingPages/PostAddFree";
