@@ -58,9 +58,9 @@ const DasbordPage = () => {
         console.log(err);
         navigate("/login");
       });
-  }, [allPropertiesCount]);
+  }, [allPropertiesCount, navigate]);
 
-  const getBookedProperties = useCallback(() => {
+  const getBookedProperties = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-booked-properties`, {
         headers: {
@@ -76,7 +76,7 @@ const DasbordPage = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [bookedCount]);
+  };
 
   // bookedCount.map((item)=> {
   //   setPropertyBookedCount(propertyBookedCount++);

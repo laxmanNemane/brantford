@@ -11,25 +11,22 @@ const Spaces = () => {
   const [showStatus, setshowStatus] = useState(false);
   const [spacesDisplay, setSpacesDisplay] = useState([]);
 
-  const deletespace = useCallback(
-    (id) => {
-      console.log(id);
-      axios
-        .delete(`${BaseUrl}/admin/delete-space?id=${id}`, {
-          headers: {
-            Authorization: localStorage.getItem("property_owner_token"),
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-          showSpacesPropertyOwner();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    [spacesDisplay]
-  );
+  const deletespace = useCallback((id) => {
+    console.log(id);
+    axios
+      .delete(`${BaseUrl}/admin/delete-space?id=${id}`, {
+        headers: {
+          Authorization: localStorage.getItem("property_owner_token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        showSpacesPropertyOwner();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   // const showSpacesAdmin = () =>{
   //     axios.get(`${BaseUrl}/adminDashboard/all-properties`,{headers:{
@@ -71,7 +68,7 @@ const Spaces = () => {
     // showSpacesAdmin();
     deletespace();
     showSpacesPropertyOwner();
-  }, []);
+  }, [deletespace]);
 
   return (
     <div className="mx-5">
