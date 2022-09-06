@@ -9,13 +9,12 @@ const admin_token = localStorage.getItem("admin_token");
 const PropertyBookings = () => {
   const [bookedProperties, setBookedProperties] = useState({});
 
-
-  const acceptHandler = (bookedProp) =>{
-    const value = { "approve_status":"approved"}
-    console.log("Aproved")
-    console.log(bookedProp)
-    console.log(bookedProp[0].admininfoId)
-    console.log(value)
+  const acceptHandler = (bookedProp) => {
+    // const value = { "approve_status":"approved"}
+    console.log("Aproved");
+    console.log(bookedProp);
+    console.log(bookedProp[0].admininfoId);
+    console.log(value);
 
     // axios
     // .patch(`${BaseUrl}/adminDashboard/approveOrreject-property?id=${bookedProp[0].admininfoId}`,value, {
@@ -30,16 +29,13 @@ const PropertyBookings = () => {
     // .catch((err) => {
     //   console.log(err);
     // });
-
-  }
+  };
 
   const declineHandler = () => {
-    const value = { "approve_status":"Reject"}
+    // const value = { "approve_status":"Reject"}
 
-    console.log("Reject")
-
-  }
-
+    console.log("Reject");
+  };
 
   useEffect(() => {
     axios
@@ -90,10 +86,17 @@ const PropertyBookings = () => {
                 </div>
                 <hr />
                 <div className="mb-2 text-">
-                  <button className="btn px-3 ms-3  border  accept_booking " onClick={()=>acceptHandler(bookedProperties)}>
+                  <button
+                    className="btn px-3 ms-3  border  accept_booking "
+                    onClick={() => acceptHandler(bookedProperties)}
+                  >
                     Accept <AiOutlineDoubleRight />
                   </button>
-                  <button className="btn mx-3 " style={{ fontSize: "16px" }} onClick={declineHandler}>
+                  <button
+                    className="btn mx-3 "
+                    style={{ fontSize: "16px" }}
+                    onClick={declineHandler}
+                  >
                     Decline
                   </button>
                 </div>

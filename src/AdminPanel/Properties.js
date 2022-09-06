@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../Styles/AdminProperty.css";
 import HocComponent from "../Components/HocComponent";
-import allPrperty from "../Assets/Images/propertiesIcon.svg";
-import Booking from "../Assets/Images/booked.svg";
-import Users from "../Assets/Images/Approval.svg";
-import ResquestUser from "../Assets/Images/NewListed.svg";
+// import allPrperty from "../Assets/Images/propertiesIcon.svg";
+// import Booking from "../Assets/Images/booked.svg";
+// import Users from "../Assets/Images/Approval.svg";
+// import ResquestUser from "../Assets/Images/NewListed.svg";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Services from "./TabsPages/Services";
@@ -15,14 +15,14 @@ import { FiCheckSquare, FiCheck, FiList } from "react-icons/fi";
 import axios from "axios";
 
 const BaseUrl = "http://bantford.prometteur.in";
-const Admin_token = localStorage.getItem("admin_token");
+// const Admin_token = localStorage.getItem("admin_token");
 
 const Properties = () => {
-  const [properties, setProperties] = useState();
+  // const [properties, setProperties] = useState();
   const [bookedProperties, setBookedProperties] = useState({});
   const [propertyCount, setPropertyCount] = useState(0);
   const [newListedCount, setNewListedCount] = useState();
-  const [countAproved, setCountAproved] = useState(0);
+  // const [countAproved, setCountAproved] = useState(0);
 
   // allProperties
   const allProperties = () => {
@@ -92,7 +92,7 @@ const Properties = () => {
       console.log(key, index);
       console.log(bookedProperties[key]);
       console.log(bookedProperties[key].approve_status);
-      if (bookedProperties[key].approve_status == "pending") {
+      if (bookedProperties[key].approve_status === "pending") {
       }
     });
   }

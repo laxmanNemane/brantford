@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Field, Form, Formik } from "formik";
 import { Modal } from "antd";
@@ -22,7 +22,6 @@ const AddLocation = ({ addlocationShow, setAddLocationShow }) => {
         console.log(res);
       })
       .catch((err) => console.log(err));
-
 
     setAddLocationShow(false);
   };

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Routing from "./Navigation/Route";
-import Featurs from "./UserPanel/Featurs";
+// import Featurs from "./UserPanel/Featurs";
 
 function App() {
   return (

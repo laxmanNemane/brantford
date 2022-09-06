@@ -1,4 +1,4 @@
-import AllProperties from "../AdminPanel/TabsPages/AllProperties/AllProperties";
+// import AllProperties from "../AdminPanel/TabsPages/AllProperties/AllProperties";
 import allapprovedSlice from "./PropertyOwnerSlices/allapprovedSlice";
 import allcategoriesSlice from "./PropertyOwnerSlices/allcategoriesSlice";
 import AllpendingSlice from "./PropertyOwnerSlices/AllpendingSlice";
