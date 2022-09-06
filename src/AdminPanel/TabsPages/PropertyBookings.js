@@ -67,7 +67,7 @@ const PropertyBookings = () => {
   return (
     <div className=" my-2  ">
       <div className="row">
-        {Object.keys(bookedProperties).map((key, index) => {
+        {/* {Object.keys(bookedProperties).map((key, index) => {
           return (
             <div className="col-3" key={index}>
               <div className="card booking_card_notification shadow">
@@ -103,7 +103,7 @@ const PropertyBookings = () => {
               </div>
             </div>
           );
-        })}
+        })} */}
       </div>
     </div>
   );

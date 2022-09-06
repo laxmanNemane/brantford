@@ -89,15 +89,15 @@ const Properties = () => {
 
   console.log(newListedCount);
 
-  {
-    Object.keys(bookedProperties).map((key, index) => {
-      console.log(key, index);
-      console.log(bookedProperties[key]);
-      console.log(bookedProperties[key].approve_status);
-      if (bookedProperties[key].approve_status === "pending") {
-      }
-    });
-  }
+  // {
+  //   Object.keys(bookedProperties).map((key, index) => {
+  //     console.log(key, index);
+  //     console.log(bookedProperties[key]);
+  //     console.log(bookedProperties[key].approve_status);
+  //     if (bookedProperties[key].approve_status === "pending") {
+  //     }
+  //   });
+  // }
 
   console.log(countAproved);
 
