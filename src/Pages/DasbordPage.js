@@ -58,7 +58,7 @@ const DasbordPage = () => {
         console.log(err);
         navigate("/login");
       });
-  }, [allPropertiesCount, navigate]);
+  }, [navigate]);
 
   const getBookedProperties = () => {
     axios
