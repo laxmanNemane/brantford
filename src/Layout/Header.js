@@ -97,7 +97,7 @@ const Header = () => {
               <li
                 onClick={() => setOpen(!open)}
                 aria-controls="example-collapse-text"
-                aria-expanded={open}
+                // aria-expanded={open}
               >
                 <Dropdown overlay={menu} placement="bottomRight" arrow>
                   <img

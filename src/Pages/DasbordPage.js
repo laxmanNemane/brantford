@@ -43,7 +43,7 @@ const DasbordPage = () => {
       });
   };
   //  //All Properties
-  const getallProperties = () => {
+  const getallProperties = useCallback(() => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-properties`, {
         headers: {
@@ -58,9 +58,9 @@ const DasbordPage = () => {
         console.log(err);
         navigate("/login");
       });
-  };
+  }, [allPropertiesCount]);
 
-  const getBookedProperties = () => {
+  const getBookedProperties = useCallback(() => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-booked-properties`, {
         headers: {
@@ -76,7 +76,7 @@ const DasbordPage = () => {
       .catch((err) => {
         console.log(err);
       });
-  };
+  }, [bookedCount]);
 
   // bookedCount.map((item)=> {
   //   setPropertyBookedCount(propertyBookedCount++);
@@ -88,7 +88,7 @@ const DasbordPage = () => {
     getBookedProperties();
     getallProperties();
     getRevenue();
-  }, [allPropertiesCount]);
+  }, [getallProperties]);
 
   // console.log(bookedCount);
 
