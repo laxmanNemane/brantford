@@ -27,7 +27,7 @@ const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
     axios
       .post(`${BaseUrl}/admin/add-categary`, values, {
         headers: {
-          Authorization: admin_token,
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
