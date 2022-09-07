@@ -10,6 +10,8 @@ import loginPage_image from "../Assets/Images/login.jpg";
 // import LogoutFromGoogle from "./LogoutFromGoogle";
 // import SignUp from "./SignUp";
 import { Link, useNavigate } from "react-router-dom";
+import Navbar from "../Layout/Navbar";
+import Footer from "../Layout/Footer";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -41,8 +43,9 @@ const Login = () => {
 
   return (
     <div>
-      {/* <Navbar /> */}
-      <div className="container d-flex justify-content-center mt-3 ">
+      <Navbar />
+
+      <div className="container d-flex justify-content-center my-3 py-4 ">
         <div className="login_Card  w-100 py-3 ">
           <div className="d-flex">
             <div className="login-image-section">
@@ -155,10 +158,12 @@ const Login = () => {
           </div>
         </div>
       </div>
+
       <ForgetPassword
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
       />
+      <Footer />
     </div>
   );
 };

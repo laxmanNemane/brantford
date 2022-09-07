@@ -2,6 +2,7 @@
   "name": "brantford",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://bantford.prometteur.in",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.4",
@@ -28,8 +29,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider  start",
-    "build": "react-scripts --openssl-legacy-provider  build",
+    "start": "react-scripts  --openssl-legacy-provider start",
+    "build": "react-scripts  --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

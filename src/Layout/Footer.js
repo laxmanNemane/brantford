@@ -32,7 +32,7 @@ const Footer = () => {
                 <BsChevronRight /> Builders in India
               </li>
               <li>
-                <NavLink to="/terms&conditions " className="text-light">
+                <NavLink to="/terms-conditions " className="text-light">
                   <BsChevronRight /> Privacy Policy
                 </NavLink>
               </li>
