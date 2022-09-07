@@ -2,9 +2,9 @@ import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRoute = () => {
-  const admin = { id: "1", name: "lakahn" };
+  const admin = { isLoggedIn: "false" };
 
-  return admin ? <Outlet /> : Navigate("/");
+  return admin && admin.isLoggedIn ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default PrivateRoute;

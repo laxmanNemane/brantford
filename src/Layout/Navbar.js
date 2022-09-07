@@ -29,21 +29,9 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mb-1 ms-auto">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                About Us
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Contact Us
-              </a>
-            </li>
+            <li className="nav-item">Home</li>
+            <li className="nav-item">About Us</li>
+            <li className="nav-item">Contact Us</li>
           </ul>
 
           <div className="user-icon">

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./StyleTabs/NewListed.css";
 import { AiOutlineFolderOpen } from "react-icons/ai";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
-import PropertyDetailPage from "../PropertyDetailPage";
+// import PropertyDetailPage from "../PropertyDetailPage";
 
 const BaseUrl = "http://bantford.prometteur.in";
-const Admin_token = localStorage.getItem("admin_token");
+const Admin_token = localStorage.getItem("token");
 
 const NewListedProperty = () => {
   const [newListed, setNewListed] = useState([]);
@@ -15,7 +15,7 @@ const NewListedProperty = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-newlistedpropertirs`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -50,8 +50,7 @@ const NewListedProperty = () => {
                   <div className="w-75 d-flex justify-content-between">
                     <p className="price_newListedtabs">Price : {item.price}</p>
                     <p className="viewIcon">
-                      <NavLink to="/detail" className="text-dark" >
-                        
+                      <NavLink to="/detail" className="text-dark">
                         <AiOutlineFolderOpen />
                       </NavLink>
                     </p>

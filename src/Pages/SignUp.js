@@ -1,33 +1,33 @@
-
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import axios from "axios";
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import ForgetPassword from "../Components/ForgetPassword";
-import "../Styles/loginpage.css";
+// import "../Styles/loginpage.css";
 import loginPage_image from "../Assets/Images/login.jpg";
 import Navbar from "../Layout/Navbar";
-import LoginWithGoogle from "./LoginWithGoogle";
-import LogoutFromGoogle from "./LogoutFromGoogle";
-import { Link, NavLink, Route, Router } from "react-router-dom";
-
+// import LoginWithGoogle from "./LoginWithGoogle";
+// import LogoutFromGoogle from "./LogoutFromGoogle";
+import { Link } from "react-router-dom";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
 function SignUp() {
-
-    const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleSubmit = (values) => {
-      const newvalues = [ {...values,
-      "address":"pune , maharashtra, 411101",
-      "profile":"property-owner"}];
-      
-      console.log(newvalues[0]);  
-      
-     
+    const newvalues = [
+      {
+        ...values,
+        address: "pune , maharashtra, 411101",
+        profile: "property-owner",
+      },
+    ];
+
+    console.log(newvalues[0]);
+
     //   Formik.resetForm({status:tr})
     //login user
-    
+
     // var axios = require("axios");
     var data = values;
     var config = {
@@ -38,12 +38,10 @@ function SignUp() {
     };
 
     axios(config)
-      .then(function (response) {
-       
+      .then(function(response) {
         console.log(JSON.stringify(response.data));
       })
-      .catch(function (error) {
-        
+      .catch(function(error) {
         console.log(error);
       });
   };
@@ -70,7 +68,12 @@ function SignUp() {
               </p>
               <div>
                 <Formik
-                  initialValues={{ name: "", contact:"", email: "", password: "" }}
+                  initialValues={{
+                    name: "",
+                    contact: "",
+                    email: "",
+                    password: "",
+                  }}
                   validate={(values) => {
                     let errors = {};
                     if (!values.email) {
@@ -82,11 +85,11 @@ function SignUp() {
                     ) {
                       errors.email = "Invalid email address";
                     }
-                    if(!values.name){
-                        errors.name = "required*";
+                    if (!values.name) {
+                      errors.name = "required*";
                     }
-                    if(!values.contact){
-                        errors.contact = "required*";
+                    if (!values.contact) {
+                      errors.contact = "required*";
                     }
                     if (!values.password) {
                       errors.password = "required*";
@@ -96,10 +99,9 @@ function SignUp() {
                   onSubmit={handleSubmit}
                   className="mt-4"
                 >
-                  {({ values, errors, handleSubmit }) => ( 
+                  {({ values, errors, handleSubmit }) => (
                     <Form onSubmit={handleSubmit} className="mt-5">
-                        
-                        <Field
+                      <Field
                         type="name"
                         name="name"
                         placeholder="name"
@@ -117,7 +119,7 @@ function SignUp() {
                       <p className="ms-5 ps-2 text-danger">
                         <ErrorMessage name="contact" />
                       </p>
-                       
+
                       <Field
                         type="email"
                         name="email"
@@ -153,7 +155,6 @@ function SignUp() {
                         type="submit"
                         className="form-control border-none w-75 mx-auto my-5 fw-bold SignIn_btn "
                       >
-                        
                         Sign Up
                       </button>
                       <p className="text-center py-2 fs-5">
@@ -164,7 +165,7 @@ function SignUp() {
                         <i className="fab fa-google fa-x mx-5"></i> Continue
                         with Google
                       </p> */}
-                      <LoginWithGoogle />
+                      {/* <LoginWithGoogle /> */}
 
                       {/* <LogoutFromGoogle/> */}
                       {/* <li className="btn border rounded-2 me-4">
@@ -193,7 +194,7 @@ function SignUp() {
         setIsModalVisible={setIsModalVisible}
       />
     </div>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;

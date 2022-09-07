@@ -3,7 +3,7 @@ import HocComponent from "../Components/HocComponent";
 import tenantsUser from "../Assets/Images/tenates.svg";
 import Users from "../Assets/Images/user.svg";
 import ResquestUser from "../Assets/Images/request.svg";
-import "../Styles/Admintenants.css";
+import "../Assets/CSS/Admin.css";
 import AdminUserTable from "./AdminSubUserstable";
 import { AiOutlineUserSwitch, AiOutlineTeam } from "react-icons/ai";
 import { BsArrowDownLeftCircle } from "react-icons/bs";
@@ -20,7 +20,7 @@ function AdminRequirements() {
     useEffect(() => {
 
         axios.get(`${BaseUrl}/adminDashboard/all-requirements`,{headers:{
-          Authorization: localStorage.getItem("admin_token")
+          Authorization: localStorage.getItem("token")
         }}).then((res) => {
           // console.log(res.data);
           setPost(res.data);

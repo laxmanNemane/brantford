@@ -7,17 +7,17 @@ import TestimonialSection from "../Components/BrantFordLandingPages/TestimonialS
 import Navbar from "../Layout/Navbar";
 import videoBg from ".././Assets/video/pexels-alena-darmel-7646596.mp4";
 import Footer from "../Layout/Footer";
-import ".././Styles/LandingPage/brantFord.css";
+// import ".././Styles/LandingPage/brantFord.css";
 import Sponsers from "../Components/BrantFordLandingPages/Sponsers";
 import FindsProperty from "../Components/BrantFordLandingPages/FindsProperty";
 import PostAddFree from "../Components/BrantFordLandingPages/PostAddFree";
 import Cities from "../Components/BrantFordLandingPages/Cities";
-import ContactForm from "../AdminPanel/Modals/ContactForm";
+import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
 
 const BrantfordPage = () => {
   return (
     <div className="brantford-landing-page">
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="landing_section">
         <video src={videoBg} autoPlay loop muted></video>
         <HeroSection />
@@ -31,8 +31,7 @@ const BrantfordPage = () => {
         <CallToActionSection />
         <TestimonialSection />
         <Sponsers />
-        <ContactForm/>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </div>
   );

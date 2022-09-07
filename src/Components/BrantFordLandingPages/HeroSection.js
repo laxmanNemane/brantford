@@ -1,6 +1,6 @@
 import React from "react";
 // import "../../Styles/LandingPage/HeroSection.css";
-import videoBg from "../../Assets/video/pexels-alena-darmel-7646596.mp4";
+// import videoBg from "../../Assets/video/pexels-alena-darmel-7646596.mp4";
 import { Dropdown } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
 

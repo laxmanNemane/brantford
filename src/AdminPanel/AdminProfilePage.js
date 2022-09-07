@@ -1,87 +1,77 @@
 import React, { useEffect, useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 import HocComponent from "../Components/HocComponent";
-import ".././Styles/AdminProfile.css";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { RiCoinsLine } from "react-icons/ri";
+import { Field, Form, Formik } from "formik";
 import axios from "axios";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
 const AdminProfilePage = () => {
   const [profileDetail, setProfileDetail] = useState([]);
-  const [initialValues, setIntialvalue] = useState()
-
+  const [initialValues, setIntialvalue] = useState();
+  console.log("values", initialValues);
 
   const handleSubmit = (values) => {
     // console.log(values);
 
-    axios.patch(`${BaseUrl}/admin/update-profile`,values, {headers:{
-      Authorization:localStorage.getItem("admin_token")
-    }})
-    .then((res)=> {
-
-      // console.log(res)
-      setProfileDetail(res.data)
-    })
-    .catch((err)=> console.log(err))
-
-    
-
+    axios
+      .patch(`${BaseUrl}/admin/update-profile`, values, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setProfileDetail(res.data);
+      })
+      .catch((err) => console.log(err));
   };
   const getadminProfile = () => {
-    axios.get(`${BaseUrl}/admin/admin-profile`,{headers:{
-      Authorization : localStorage.getItem("admin_token")
-  }})
-  .then((res)=> {
-      // console.log(res.data)
-      // console.log(res.data)
-      // console.log(res.data.)
-      setProfileDetail(res.data)
-      setIntialvalue(res.data)
-       
-      
-  })
-  .catch((err)=> {console.log(err)})
-}
+    axios
+      .get(`${BaseUrl}/admin/admin-profile`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        console.log(res.data);
+        // console.log(res.data.)
+        setProfileDetail(res.data);
+        setIntialvalue(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
+  useEffect(() => {
+    getadminProfile();
+  }, []);
 
-useEffect(()=>{
-  getadminProfile();
-},[])
+  console.log(profileDetail);
 
-// console.log(profileDetail)
+  // Object.keys(profileDetail).map((key,index)=>{
+  //   console.log(profileDetail[key])
+  //   const profileData = profileDetail[key];
+  // })
 
-// Object.keys(profileDetail).map((key,index)=>{
-//   console.log(profileDetail[key])
-//   const profileData = profileDetail[key];
-// })
+  const setinitialValues = {
+    firstName: profileDetail.name,
+    lastName: profileDetail.name,
+    email: profileDetail.email,
+    password: profileDetail.password,
+    address: profileDetail.address,
+    city: profileDetail.address,
+    state: profileDetail.address,
+    zip: profileDetail.contact,
+    description: profileDetail.email,
+  };
 
-
-
-
-
-
-const setinitialValues= {
-  firstName: profileDetail.name,
-  lastName: profileDetail.name,
-  email: profileDetail.email,
-  password:profileDetail.password,
-  address: profileDetail.address,
-  city: profileDetail.address,
-  state: profileDetail.address,
-  zip: profileDetail.contact,
-  description: profileDetail.email
-}
-
-
-  
-// console.log(setinitialValues);
-// console.log(setinitialValues.firstName);
-//  console.log(profileDetail.name)
-
-
+  // console.log(setinitialValues);
+  // console.log(setinitialValues.firstName);
+  console.log(profileDetail.name);
 
   return (
     <div
@@ -139,11 +129,11 @@ const setinitialValues= {
               <p className="account-deatil-heading">Account Detail</p>
               <hr />
               <div>
-               
-                <Formik 
-                enableReinitialize
+                {console.log(setinitialValues.firstName)}
+                <Formik
+                  enableReinitialize
                   initialValues={{
-                    name:`${profileDetail.name}`,
+                    name: `${profileDetail.name}`,
                     lastName: `${profileDetail.name}`,
                     email: `${setinitialValues.email}`,
                     contact: `${profileDetail.contact}`,
@@ -152,7 +142,6 @@ const setinitialValues= {
                     description: `${profileDetail.description}`,
                     address: `${profileDetail.address}`,
                     state: `${setinitialValues.state}`,
-
                   }}
                   validate={(values) => {
                     let errors = {};

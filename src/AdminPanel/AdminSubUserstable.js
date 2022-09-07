@@ -1,7 +1,6 @@
 import React from "react";
-import _ from "lodash";
+// import _ from "lodash";
 import axios from "axios";
-import "../Styles/Admintenants.css";
 import { useEffect, useState } from "react";
 
 const BaseUrl = "http://bantford.prometteur.in";
@@ -17,7 +16,7 @@ const AdminUserTable = () => {
 
   const viewUser = (id) =>{
     axios.get(`${BaseUrl}/adminDashboard/single-propertyOwner?id=${id}`, {headers: {
-      Authorization: localStorage.getItem("admin_token")
+      Authorization: localStorage.getItem("token")
 
     }}).then((res)=>{
       // console.log(res)
@@ -33,7 +32,7 @@ const AdminUserTable = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-propertyOwners`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -50,7 +49,7 @@ const AdminUserTable = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-endusers`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -67,7 +66,7 @@ const AdminUserTable = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-users`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "../Styles/AdminProperty.css";
 import HocComponent from "../Components/HocComponent";
-import allPrperty from "../Assets/Images/propertiesIcon.svg";
-import Booking from "../Assets/Images/booked.svg";
-import Users from "../Assets/Images/Approval.svg";
-import ResquestUser from "../Assets/Images/NewListed.svg";
+// import allPrperty from "../Assets/Images/propertiesIcon.svg";
+// import Booking from "../Assets/Images/booked.svg";
+// import Users from "../Assets/Images/Approval.svg";
+// import ResquestUser from "../Assets/Images/NewListed.svg";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Services from "./TabsPages/Services";
@@ -15,7 +14,7 @@ import { FiCheckSquare, FiCheck, FiList } from "react-icons/fi";
 import axios from "axios";
 
 const BaseUrl = "http://bantford.prometteur.in";
-const Admin_token = localStorage.getItem("admin_token");
+// const Admin_token = localStorage.getItem("token");
 
 const Properties = () => {
   const [properties, setProperties] = useState();
@@ -24,13 +23,13 @@ const Properties = () => {
   const [newListedCount, setNewListedCount] = useState();
   const [countAproved, setCountAproved] = useState(0);
 
-
+  console.log("properties", properties);
   // allProperties
   const allProperties = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-properties`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -41,6 +40,7 @@ const Properties = () => {
       .catch((err) => {
         // console.log(err);
       });
+    setCountAproved("");
   };
 
   // allProperties booked properties
@@ -48,7 +48,7 @@ const Properties = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-booked-properties`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -62,19 +62,19 @@ const Properties = () => {
 
   //new listed
   const newListed = () => {
-    axios.get(`${BaseUrl}/adminDashboard/all-newlistedpropertirs`,{headers:{
-      Authorization: localStorage.getItem("admin_token"),
-    }})
-    .then((res)=> {
-      setNewListedCount(res.data.spaces.length)
-      // console.log(res)
-      // console.log(res.data.spaces);
-    }
-    )
-    .catch((err)=>{
-      // console.log(err)
-    })
-  }
+    axios
+      .get(`${BaseUrl}/adminDashboard/all-newlistedpropertirs`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setNewListedCount(res.data.spaces.length);
+        console.log(res);
+        console.log(res.data.spaces);
+      })
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     allbookedProperties();
@@ -88,20 +88,17 @@ const Properties = () => {
 
   // console.log(newListedCount);
 
-  {
-    Object.keys(bookedProperties).map((key, index) => {
-      // console.log(key, index);
-      // console.log(bookedProperties[key]);
-      // console.log(bookedProperties[key].approve_status);
-      // if(bookedProperties[key].approve_status == "pending"){
-        
-      // }
-
-    });
-  }
+  // {
+  //   Object.keys(bookedProperties).map((key, index) => {
+  //     console.log(key, index);
+  //     console.log(bookedProperties[key]);
+  //     console.log(bookedProperties[key].approve_status);
+  //     if (bookedProperties[key].approve_status === "pending") {
+  //     }
+  //   });
+  // }
 
   // console.log(countAproved);
-
 
   return (
     <div
@@ -190,9 +187,7 @@ const Properties = () => {
                   <p className=" properties-sectionCard_headeing" style={{}}>
                     New Listed
                   </p>
-                  <p className="People_tenant ">
-                    {newListedCount}
-                  </p>
+                  <p className="People_tenant ">{newListedCount}</p>
                 </div>
               </div>
             </div>

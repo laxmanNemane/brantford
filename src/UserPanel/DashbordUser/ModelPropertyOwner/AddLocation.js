@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Field, Form, Formik } from "formik";
 import { Modal } from "antd";
@@ -9,12 +9,13 @@ const BaseUrl = "http://bantford.prometteur.in";
 const AddLocation = ({ addlocationShow, setAddLocationShow }) => {
   const handleSubmit = (values) => {
     console.log(values);
+
     const id = 3;
 
     axios
       .post(`${BaseUrl}/admin/add-location?spaceId=${id}}`, values, {
         headers: {
-          Authorization: localStorage.getItem("property_owner_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -95,7 +96,7 @@ const AddLocation = ({ addlocationShow, setAddLocationShow }) => {
                       className="btn-first pt-2 my-3"
                       onClick={handleSubmit}
                     >
-                      Add New Ammenity
+                      Add New Location
                     </button>
                   </div>
                 </div>

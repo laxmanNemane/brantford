@@ -1,6 +1,6 @@
 import React from "react";
 import HocComponent from "../Components/HocComponent";
-import ".././Styles/PropertyDetail.css";
+// import ".././Styles/PropertyDetail.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import office1 from "../Assets/Images/office.avif";

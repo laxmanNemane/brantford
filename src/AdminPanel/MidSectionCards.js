@@ -3,7 +3,7 @@ import React from "react";
 import { FaJsfiddle } from "react-icons/fa";
 import { FcMenu } from "react-icons/fc";
 import { AiOutlineMessage } from "react-icons/ai";
-import "../Styles/MidSectionCardPage.css";
+// import "../Styles/MidSectionCardPage.css";
 
 const MidSectionCards = () => {
   return (

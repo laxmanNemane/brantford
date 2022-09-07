@@ -7,7 +7,8 @@ import office3 from "../Assets/Images/office2.avif";
 import meetingRoom from "../Assets/Images/meeting.avif";
 import canteenOffice from "../Assets/Images/canteen.avif";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import "../Styles/EndUser/officesPage.css";
+// import "../Styles/EndUser/officesPage.css";
+import "../Assets/CSS/brantFord.css";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsHeart, BsPlusCircle } from "react-icons/bs";
@@ -34,7 +35,7 @@ const OfficesDetailPage = () => {
     axios
       .post(`${BaseUrl}/endUser/send-requirement`, values, {
         headers: {
-          Authorization: localStorage.getItem("endUser_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -296,7 +297,7 @@ const OfficesDetailPage = () => {
                       <div className="image-office-sction py-1 ps-1">
                         <img
                           src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                          alt="office-image"
+                          alt="office image"
                           width="100%"
                           height={230}
                         />

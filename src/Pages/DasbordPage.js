@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import HocComponent from "../Components/HocComponent";
 import { IoIosAirplane } from "react-icons/io";
-import { FcRating, FcPlus, FcApproval, FcBullish } from "react-icons/fc";
-import "../Styles/DashbordPage.css";
+import { FcApproval, FcBullish } from "react-icons/fc";
+// import "../Styles/DashbordPage.css";
 import { RiBuildingLine } from "react-icons/ri";
 import { Divider } from "antd";
 import { BsPatchPlus } from "react-icons/bs";
 import MidSectionCards from "../AdminPanel/MidSectionCards";
 import AdminDashbordFooter from "../AdminPanel/AdminDashbordFooter";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import AddCategoryModel from "../AdminPanel/Modals/AddCategoryModel";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
 const BaseUrl = "http://bantford.prometteur.in";
-const Admin_token = localStorage.getItem("admin_token");
+// const Admin_token = localStorage.getItem("token");
 
 const DasbordPage = () => {
   const [revenue, setRevenue] = useState();
@@ -27,11 +27,13 @@ const DasbordPage = () => {
 
   const revenueCategory = "monthly";
 
+ 
+
   const getRevenue = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/get-revenue?revenue=${revenueCategory}`, {
         headers: {
-          Authorization:localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -44,11 +46,11 @@ const DasbordPage = () => {
       });
   };
   //  //All Properties
-  const getallProperties = () => {
+  const getallProperties = useCallback(() => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-properties`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -56,21 +58,21 @@ const DasbordPage = () => {
         // console.log(res);
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
+        navigate("/login");
       });
-  };
+  }, [navigate]);
 
   const getBookedProperties = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-booked-properties`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
-        // console.log(res.data.length);
-        // console.log(res.data);
-      
+        console.log(res.data.length);
+        console.log(res.data);
 
         setBookedCount(res.data);
       })
@@ -82,15 +84,14 @@ const DasbordPage = () => {
   // bookedCount.map((item)=> {
   //   setPropertyBookedCount(propertyBookedCount++);
   // })
-  // console.log(bookedCount);
-  // console.log(Object.keys(bookedCount).length)
-
+  console.log(bookedCount);
+  console.log(Object.keys(bookedCount).length);
 
   useEffect(() => {
     getBookedProperties();
     getallProperties();
     getRevenue();
-  }, []);
+  }, [getallProperties]);
 
   // console.log(bookedCount);
 
@@ -147,10 +148,12 @@ const DasbordPage = () => {
               <div className="row py-4 px-3">
                 <div className="col-4 d-flex ">
                   <div className="col-left mt-">
-                    <RiBuildingLine
-                      className="icons_dashbord"
-                      style={{ fontSize: "90px" }}
-                    />
+                    <Link to="/all-properties">
+                      <RiBuildingLine
+                        className="icons_dashbord"
+                        style={{ fontSize: "90px" }}
+                      />
+                    </Link>
                   </div>
                   <div className="col-right ms-3">
                     <span className="title_overiew_dashbord_page">

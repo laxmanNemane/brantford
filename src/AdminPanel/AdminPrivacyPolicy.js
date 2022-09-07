@@ -3,7 +3,6 @@ import React from "react";
 import { useState } from "react";
 import HocComponent from "../Components/HocComponent";
 import { MdNoteAdd } from "react-icons/md";
-import "../Styles/AdminPrivacyPolicy.css";
 
 const AdminPrivacyPolicy = () => {
   const [showForm, setShowForm] = useState(false);
@@ -109,7 +108,7 @@ const AdminPrivacyPolicy = () => {
                           <ErrorMessage name="description" />
                         </p>
                         <button
-                        type="submit"
+                          type="submit"
                           className="btn   btn-privacy-policy "
                           onClick={resetForm}
                         >

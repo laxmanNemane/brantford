@@ -8,6 +8,7 @@ const BaseUrl = "http://bantford.prometteur.in";
 
 const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
   const [categary, setCategary] = useState("");
+  console.log("category", categary);
 
   const handleSubmit = (values) => {
     setshowStatus(true);
@@ -15,18 +16,18 @@ const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
     // console.log(values);
     // console.log(categary);
 
-    // console.log(localStorage.getItem("admin_token"));
+    // console.log(localStorage.getItem("token"));
 
-    const admin_token = localStorage.getItem("admin_token");
-    const property_owner_token = localStorage.getItem("property_owner_token");
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heG1lbGFuc2hzZkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IlByb0A4MDg3IiwicmVtZW1iZXIgbWUiOnRydWUsInByb2ZpbGUiOiJhZG1pbiIsImlkIjo0LCJpYXQiOjE2NjE3NzU4NjksImV4cCI6MTY2MTc4MzA2OX0.GJYucWfhvoASU-R9m0TQJERZGBPdnkQW5Tixz8KdyFc";
+    // const admin_token = localStorage.getItem("token");
+    // const property_owner_token = localStorage.getItem("property_owner_token");
+    // const token =
+    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heG1lbGFuc2hzZkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IlByb0A4MDg3IiwicmVtZW1iZXIgbWUiOnRydWUsInByb2ZpbGUiOiJhZG1pbiIsImlkIjo0LCJpYXQiOjE2NjE3NzU4NjksImV4cCI6MTY2MTc4MzA2OX0.GJYucWfhvoASU-R9m0TQJERZGBPdnkQW5Tixz8KdyFc";
     // console.log(auth_token);
 
     axios
       .post(`${BaseUrl}/admin/add-categary`, values, {
         headers: {
-          Authorization: admin_token,
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {

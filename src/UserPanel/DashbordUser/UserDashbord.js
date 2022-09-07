@@ -1,77 +1,125 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Style.css";
 import { NavLink } from "react-router-dom";
-import { FiUsers, FiWatch } from "react-icons/fi";
-// import { CircularProgressbar } from "react-circular-progressbar";
-// import "react-circular-progressbar/dist/styles.css";
-import {
-  MdIncompleteCircle,
-  MdOutlineCancel,
-  MdOutlineWatch,
-} from "react-icons/md";
-import {
-  BiBuildingHouse,
-  BiHome,
-  BiHomeAlt,
-  BiTime,
-  BiTimeFive,
-} from "react-icons/bi";
-import {
-  BsArrowBarUp,
-  BsArrowDown,
-  BsArrowLeft,
-  BsArrowUp,
-  BsLightningCharge,
-  BsWatch,
-} from "react-icons/bs";
+
+import ReactEcharts from "echarts-for-react";
+
+import { BiBuildingHouse } from "react-icons/bi";
+
 // import { HiArrowTrendingUp } from "react-icons/hi";
-import { FcCancel } from "react-icons/fc";
 import { IoIosArrowForward } from "react-icons/io";
-import { TiMediaFastForward } from "react-icons/ti";
 import HocComponent from "../../Components/HocComponent";
+// import { usersContext } from "../../Context/UserContext";
+import { useDispatch, useSelector } from "react-redux";
+import { getProfileUser } from "../../Redux/PropertyOwnerSlices/profileSlice";
+import { FetchAllApproveProperties } from "../../Redux/PropertyOwnerSlices/allapprovedSlice";
+import { FetchAllCategories } from "../../Redux/PropertyOwnerSlices/allcategoriesSlice";
+import { FetchAllPendingProperties } from "../../Redux/PropertyOwnerSlices/AllpendingSlice";
+import { FetchAllRejectedProperties } from "../../Redux/PropertyOwnerSlices/allRejectedSlice";
+import { fetchTotalAmount } from "../../Redux/PropertyOwnerSlices/totalAmountSlice";
+import { FetchAllVisitors } from "../../Redux/PropertyOwnerSlices/allVisitors";
+import { FetchAllSpaces } from "../../Redux/PropertyOwnerSlices/allvenuSlice";
+import { fetchTotalBooking } from "../../Redux/PropertyOwnerSlices/totalBookingslice";
 
 const UserDashbord = () => {
+  // const { users } = useContext(usersContext);
+
+  // console.log(users);
+  const data = useSelector((state) => state);
+  console.log(data);
+  const bookedProperties = useSelector(
+    (state) => state.POBookings.ApprovepropertiesPO
+  );
+  console.log(bookedProperties.length);
+
+  var size = Object.keys(bookedProperties).length;
+  console.log(size); // Prints: 4
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProfileUser());
+    dispatch(FetchAllApproveProperties());
+    dispatch(FetchAllCategories());
+    dispatch(FetchAllPendingProperties());
+    dispatch(FetchAllRejectedProperties());
+    dispatch(FetchAllSpaces());
+    dispatch(FetchAllVisitors());
+    dispatch(fetchTotalAmount());
+    dispatch(fetchTotalBooking());
+
+    // eslint-disable-next-line
+  }, []);
+
   const option1 = {
-    tooltip: {
-      trigger: "item",
+    color: "#c2255c",
+    xAxis: {
+      type: "category",
+      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     },
-    //   legend: {
-    //     bottom: "1%",
-    //     fontSize:"10px"
-    //     // left: "center",
-    //   },
+    yAxis: {
+      type: "value",
+    },
+    series: [
+      {
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: "line",
+        smooth: true,
+      },
+    ],
+  };
+
+  const option = {
+    color: ["#c2255c", "#4263eb"],
+    title: {
+      title: "Propertis Status",
+      left: "center",
+    },
+    tooltip: {},
+    legend: {
+      orient: "vertical",
+      bottom: "bottom",
+    },
     series: [
       {
         name: "Access From",
         type: "pie",
-        radius: ["30%", "60%"],
-        avoidLabelOverlap: false,
-        label: {
-          show: false,
-          position: "center",
-        },
+        radius: "50%",
+        data: [
+          { value: 2, name: "Booked Properties" },
+          { value: 1, name: "Rejected Properties" },
+        ],
         emphasis: {
-          label: {
-            show: true,
-            fontSize: "30",
-            fontWeight: "bold",
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: "rgba(0, 0, 0, 0.5)",
           },
         },
-        labelLine: {
-          show: false,
-        },
-        data: [
-          { value: 1048, name: "All Properties" },
-          { value: 735, name: "Booked Properties" },
-          { value: 580, name: "New Listed propertis" },
-        ],
       },
     ],
   };
+
   return (
     <div className="position-relative property-owner h-100">
       <div className="user-dashbord mx-5  pb-5 ">
         <div className="row py-5">
+          <div className="col-12 mb-5">
+            <div className="dashbord-section-content d-flex justify-content-between align-items-center   px-4 py-2   rounded">
+              <div className="heading-section-dashbord ">
+                <h1 className="heading-second mb-1"> Dashbord</h1>
+                <p className="paragraph">
+                  Welcome to Brantford property portal
+                </p>
+              </div>
+              <div className="heading-buttons-dashbord">
+                <button className="btn-first mx-4">Refresh</button>
+                <button className="btn-second">
+                  <i className="fa-solid fa-gear"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
           <div className="col-lg-12">
             <div className="user-right-esction">
               <div className="row">
@@ -85,7 +133,7 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-6">
                         <div className="decsiption-user-dashbord">
-                          <p className="value-number">5445</p>
+                          <p className="value-number">5,445</p>
                           <p className="user-dash-heading">All Spaces</p>
                         </div>
                       </div>
@@ -110,7 +158,7 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-6">
                         <div className="decsiption-user-dashbord">
-                          <p className="value-number">5445</p>
+                          <p className="value-number">5,445</p>
                           <p className="user-dash-heading">All Booked Space</p>
                         </div>
                       </div>
@@ -135,7 +183,7 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-6">
                         <div className="decsiption-user-dashbord">
-                          <p className="value-number">5445</p>
+                          <p className="value-number">5,445</p>
                           <p className="user-dash-heading">Rejected Space</p>
                         </div>
                       </div>
@@ -160,7 +208,7 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-6">
                         <div className="decsiption-user-dashbord">
-                          <p className="value-number">5445</p>
+                          <p className="value-number">5,445</p>
                           <p className="user-dash-heading">Visitors </p>
                         </div>
                       </div>
@@ -178,66 +226,38 @@ const UserDashbord = () => {
             </div>
           </div>
 
-          <div className="col-12">
+          <div className="col-12 mt-5 ">
             <h5 className="name mt-4">Account Summary</h5>
             <hr />
-
-            <div className="col-8">
+            <div className="col-12">
               <div className="account-summery-section">
                 <div className="row">
-                  <div className="col-4">
-                    <div className="this-week-section bg-white">
-                      <div className="icons-sections-this"></div>
-                    </div>
-                  </div>
-
-                  <div className="col-4">
-                    <div className="this-week-section bg-white">
+                  <div className="col-8">
+                    <div
+                      className="this-week-section bg-white pt-5"
+                      style={{ borderRadius: "15px" }}
+                    >
                       <div className="icons-sections-this">
-                        <p className="icn second-icon">
-                          <BiTimeFive />
-                        </p>
+                        <div className="chart-daily mx-3">
+                          <p className="paragraph fw-bold">Revenu status</p>
+                          <p></p>
+                          <ReactEcharts option={{ ...option1 }} />
+                        </div>
                       </div>
-                      <p className="heading-summery fw-bold">This Month</p>
-                      <p className="return-value">
-                        3.54k <BsArrowDown className="text-danger" />
-                      </p>
-                      <p className="slope-value">+3.1 icon</p>
                     </div>
                   </div>
                   <div className="col-4">
-                    <div className="this-week-section bg-white">
-                      <div className="icons-sections-this">
-                        <p className="icn third-icon">
-                          <MdIncompleteCircle />
-                        </p>
-                      </div>
-                      <p className="heading-summery fw-bold">This Year</p>
-                      <p className="return-value">3.54k</p>
-                      <p className="slope-value">+3.1 icon</p>
+                    <div
+                      className="this-week-section bg-white pt-5"
+                      style={{ borderRadius: "15px" }}
+                    >
+                      <ReactEcharts option={{ ...option }} />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          {/* <div className="col-lg-5 text-center ">
-                        <div className="upgrade-package bg-white">
-                            <p className="upgrade-heading">Upgrade to Your package </p>
-                            <NavLink to="/" className="text-dark">
-                                You'r now in Basic pack
-                            </NavLink>
-                            <br />
-                            <img
-                                src="https://img.freepik.com/free-vector/operating-system-upgrade-concept-illustration_114360-5629.jpg?w=740&t=st=1661843596~exp=1661844196~hmac=ec5fc44e0da3e4dd095bfc6e8d7853aef29775586cd29ea4a442d0149e04b398"
-                                alt=""
-                                width={200}
-                            />
-                            <br />
-
-                            <button className="btn-for-all-landpage">Upgrade Now</button>
-                        </div>
-                    </div> */}
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsHeart, BsPlusCircle } from "react-icons/bs";
 import { BsArrowRight } from "react-icons/bs";
@@ -7,6 +7,8 @@ import PropertyOverview from "../../EndUserPanel/PropertyOverview";
 
 const PropertySection = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  
 
   return (
     <div className="property-page-section">
