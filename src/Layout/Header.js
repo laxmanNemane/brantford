@@ -1,34 +1,35 @@
-import { Badge, Divider, Dropdown, Input, Menu, Modal } from "antd";
-import React, { useEffect, useState } from "react";
+import { Badge, Dropdown, Input, Menu } from "antd";
+import React, { useState } from "react";
 import { BsSearch, BsBell, BsBookmarkStar } from "react-icons/bs";
-import "../Styles/DashbordHeader.css";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AiOutlinePoweroff, AiOutlineUser } from "react-icons/ai";
 import axios from "axios";
 
-
 const BaseUrl = "http://bantford.prometteur.in";
-const AuthToken = localStorage.getItem("admin_token");
-
+// const AuthToken = localStorage.getItem("admin_token");
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   // const [isLogout, setIsLogout] = useState(false);
 
-
   const logOutHandler = () => {
     // e.preventDefault();
     // setIsLogout(true);
 
-    axios.post(`${BaseUrl}/admin/admin-logout`, {
-      headers:{
-        Authorization: localStorage.getItem("admin_token")
-      }
-    })
-    .then((res) => {console.log(res)})
-    .catch((err)=> {console.log(err)})
-     console.log("clicked");
-  }
+    axios
+      .post(`${BaseUrl}/admin/admin-logout`, {
+        headers: {
+          Authorization: localStorage.getItem("admin_token"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log("clicked");
+  };
 
   const menu = (
     <Menu
@@ -50,12 +51,12 @@ const Header = () => {
         {
           key: "3",
           label: (
-              <button onClick={logOutHandler}>
-            <NavLink to="/" className="fs-5">
-              <AiOutlinePoweroff className="mx-2" />
+            <button onClick={logOutHandler}>
+              <NavLink to="/" className="fs-5">
+                <AiOutlinePoweroff className="mx-2" />
                 Logout
-            </NavLink>
-              </button>
+              </NavLink>
+            </button>
           ),
         },
       ]}
@@ -95,7 +96,7 @@ const Header = () => {
               <li
                 onClick={() => setOpen(!open)}
                 aria-controls="example-collapse-text"
-                aria-expanded={open}
+                // aria-expanded={open}
               >
                 <Dropdown overlay={menu} placement="bottomRight" arrow>
                   <img

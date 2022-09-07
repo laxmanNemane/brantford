@@ -1,34 +1,32 @@
 import { Modal } from "antd";
 import axios from "axios";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useState } from "react";
-import "../Styles/forgetmodal.css";
+import React from "react";
+// import "../Styles/forgetmodal.css";
 import ficon from "../Assets/Icons/forgetIcon.svg";
 
 const BaseUrl = "http://bantford.prometteur.in";
-let token = localStorage.getItem("admin_token");
+// let token = localStorage.getItem("admin_token");
 
 const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
-
-
   const handleSubmit = (values) => {
+    axios
+      .post(`${BaseUrl}/admin/forgot-password`, values)
+      .then((res) => {
+        console.log(res);
+        // if(res.statusText==="OK"){
+        //   console.log("success status");
+        //   axios.patch(`${BaseUrl}/reset-password/${token}`)
+        //   .then((res)=> {console.log(res)})
+        //   .catch((err) => {console.log(err)})
 
-    axios.post(`${BaseUrl}/admin/forgot-password`,values)
-    .then((res)=> {
-      console.log(res)
-    // if(res.statusText==="OK"){
-    //   console.log("success status");
-    //   axios.patch(`${BaseUrl}/reset-password/${token}`)
-    //   .then((res)=> {console.log(res)})
-    //   .catch((err) => {console.log(err)})
-
-    // }
-    })
-    .catch((err)=> {console.log(err)})
+        // }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     console.log(values);
-    
-
-  } 
+  };
 
   const handleOk = () => {
     setIsModalVisible(false);

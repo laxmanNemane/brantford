@@ -1,8 +1,10 @@
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import "./Assets/CSS/Admin.css";
+import "./Assets/CSS/brantFord.css";
 import App from "./App";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 import UserContext from "./Context/UserContext";

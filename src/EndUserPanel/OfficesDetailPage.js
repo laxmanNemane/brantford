@@ -269,7 +269,7 @@ const OfficesDetailPage = () => {
                       <div className="image-office-sction py-1 ps-1">
                         <img
                           src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                          alt="office-image"
+                          alt="office image"
                           width="100%"
                           height={230}
                         />

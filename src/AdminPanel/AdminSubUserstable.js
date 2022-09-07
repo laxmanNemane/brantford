@@ -1,32 +1,32 @@
 import React from "react";
-import _ from "lodash";
+// import _ from "lodash";
 import axios from "axios";
-import "../Styles/Admintenants.css";
 import { useEffect, useState } from "react";
-
 
 const BaseUrl = "http://bantford.prometteur.in";
 const AdminUserTable = () => {
-
   // const pageSize = 13;
   const [post, setPost] = useState([]);
   // const [paginatePosts, setPaginatePosts] = useState();
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [userCount, setUserCount] = useState()
+  // const [currentPage, setCurrentPage] = useState(1);
+  const [userCount, setUserCount] = useState();
 
- 
+  console.log("usercount", userCount);
 
   useEffect(() => {
-
-    axios.get(`${BaseUrl}/adminDashboard/all-users`,{headers:{
-      Authorization: localStorage.getItem("admin_token")
-    }}).then((res) => {
-      console.log(res.data);
-      setPost(res.data);
-      setUserCount(res.data.length)
-      // setPaginatePosts(_(res.data).slice(0).take(pageSize).value());
-    });
+    axios
+      .get(`${BaseUrl}/adminDashboard/all-users`, {
+        headers: {
+          Authorization: localStorage.getItem("admin_token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setPost(res.data);
+        setUserCount(res.data.length);
+        // setPaginatePosts(_(res.data).slice(0).take(pageSize).value());
+      });
   }, []);
 
   // const pageCount = post ? Math.ceil(post.length / pageSize) : 0;
@@ -64,19 +64,14 @@ const AdminUserTable = () => {
             </tr>
           </thead>
           <tbody>
-
-            {
-             post.map((ele, index) => (
-                <tr className=""  key={index}>
-                  <td  className="table-td" >{ele.id}</td>
-                  <td className="table-td">{ele.name}</td>
-                  <td className="table-td">{ele.email}</td>
-                  {/* <td className="table-td">{ele.profile}</td> */}
-                 
-                  
-                </tr>
-              ))}
-           
+            {post.map((ele, index) => (
+              <tr className="" key={index}>
+                <td className="table-td">{ele.id}</td>
+                <td className="table-td">{ele.name}</td>
+                <td className="table-td">{ele.email}</td>
+                {/* <td className="table-td">{ele.profile}</td> */}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

@@ -1,40 +1,55 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import "../Style.css";
 import { NavLink } from "react-router-dom";
-import { FiUsers, FiWatch } from "react-icons/fi";
 
 import ReactEcharts from "echarts-for-react";
-import { CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
 
-import {
-  MdIncompleteCircle,
-  MdOutlineCancel,
-  MdOutlineWatch,
-} from "react-icons/md";
-import {
-  BiBuildingHouse,
-  BiHome,
-  BiHomeAlt,
-  BiTime,
-  BiTimeFive,
-} from "react-icons/bi";
-import {
-  BsArrowBarUp,
-  BsArrowDown,
-  BsArrowLeft,
-  BsArrowUp,
-  BsLightningCharge,
-  BsWatch,
-} from "react-icons/bs";
+import { BiBuildingHouse } from "react-icons/bi";
+
 // import { HiArrowTrendingUp } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
 import HocComponent from "../../Components/HocComponent";
-import { usersContext } from "../../Context/UserContext";
+// import { usersContext } from "../../Context/UserContext";
+import { useDispatch, useSelector } from "react-redux";
+import { getProfileUser } from "../../Redux/PropertyOwnerSlices/profileSlice";
+import { FetchAllApproveProperties } from "../../Redux/PropertyOwnerSlices/allapprovedSlice";
+import { FetchAllCategories } from "../../Redux/PropertyOwnerSlices/allcategoriesSlice";
+import { FetchAllPendingProperties } from "../../Redux/PropertyOwnerSlices/AllpendingSlice";
+import { FetchAllRejectedProperties } from "../../Redux/PropertyOwnerSlices/allRejectedSlice";
+import { fetchTotalAmount } from "../../Redux/PropertyOwnerSlices/totalAmountSlice";
+import { FetchAllVisitors } from "../../Redux/PropertyOwnerSlices/allVisitors";
+import { FetchAllSpaces } from "../../Redux/PropertyOwnerSlices/allvenuSlice";
+import { fetchTotalBooking } from "../../Redux/PropertyOwnerSlices/totalBookingslice";
 
 const UserDashbord = () => {
   // const { users } = useContext(usersContext);
+
   // console.log(users);
+  const data = useSelector((state) => state);
+  console.log(data);
+  const bookedProperties = useSelector(
+    (state) => state.POBookings.ApprovepropertiesPO
+  );
+  console.log(bookedProperties.length);
+
+  var size = Object.keys(bookedProperties).length;
+  console.log(size); // Prints: 4
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProfileUser());
+    dispatch(FetchAllApproveProperties());
+    dispatch(FetchAllCategories());
+    dispatch(FetchAllPendingProperties());
+    dispatch(FetchAllRejectedProperties());
+    dispatch(FetchAllSpaces());
+    dispatch(FetchAllVisitors());
+    dispatch(fetchTotalAmount());
+    dispatch(fetchTotalBooking());
+
+    // eslint-disable-next-line
+  }, []);
+
   const option1 = {
     color: "#c2255c",
     xAxis: {
@@ -70,8 +85,8 @@ const UserDashbord = () => {
         type: "pie",
         radius: "50%",
         data: [
-          { value: 1048, name: "Booked Properties" },
-          { value: 735, name: "Rejected Properties" },
+          { value: 2, name: "Booked Properties" },
+          { value: 1, name: "Rejected Properties" },
         ],
         emphasis: {
           itemStyle: {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import HocComponent from "../Components/HocComponent";
-import { AiOutlineMore, AiFillPlusCircle } from "react-icons/ai";
+import { AiFillPlusCircle } from "react-icons/ai";
 import AddCategoryModel from "./Modals/AddCategoryModel";
 import UpdateCategoryModel from "./Modals/UpdateCategoryModel";
 import axios from "axios";
@@ -11,22 +11,23 @@ const BaseUrl = "http://bantford.prometteur.in";
 const AdminCategories = () => {
   const [showStatus, setshowStatus] = useState(false);
   const [categaries, setCategaries] = useState([]);
-  const [isModalVisible, setIsModalVisible] = useState(false,0);
+  const [isModalVisible, setIsModalVisible] = useState(false, 0);
   const [updateId, setUpdateId] = useState();
   const [updatecategary, setUpdatecategary] = useState();
- 
 
   //update category
   const OnupdateMessage = (id, categary) => {
     // console.log("update", id, categary);
-    
-    const categary_update = "update value"
+
+    const categary_update = "update value";
     setUpdateId(id);
-    setUpdatecategary(categary)
-    const updatedValue = {categary:`${categary_update}`}
-    axios.patch(`${BaseUrl}/admin/update-categary?id=${id}`,updatedValue, {headers:{
-      Authorization: localStorage.getItem("admin_token")
-    }})
+    setUpdatecategary(categary);
+    const updatedValue = { categary: `${categary_update}` };
+    axios.patch(`${BaseUrl}/admin/update-categary?id=${id}`, updatedValue, {
+      headers: {
+        Authorization: localStorage.getItem("admin_token"),
+      },
+    });
 
     adminCategory();
   };
@@ -34,22 +35,25 @@ const AdminCategories = () => {
   //delete category
   const Admin_token = localStorage.getItem("admin_token");
   const onDelete = (id) => {
-    axios.delete(`${BaseUrl}/admin/delete-categary?id=${id}`, {headers:{
-      Authorization:Admin_token
-    }})
-    .then((res)=> { 
-      adminCategory()
-      console.log(res)
-    
-    })
-    .catch((err)=> { console.log(err)})
+    axios
+      .delete(`${BaseUrl}/admin/delete-categary?id=${id}`, {
+        headers: {
+          Authorization: Admin_token,
+        },
+      })
+      .then((res) => {
+        adminCategory();
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     console.log(id);
   };
 
   //Admin category
-const adminCategory = () => {
-
-  axios
+  const adminCategory = () => {
+    axios
       .get(`${BaseUrl}/adminDashboard/all-categaries`, {
         headers: {
           Authorization: localStorage.getItem("admin_token"),
@@ -62,13 +66,10 @@ const adminCategory = () => {
       .catch((err) => {
         console.log(err);
       });
-
-}
-  
+  };
 
   useEffect(() => {
-    adminCategory()
-
+    adminCategory();
   }, [isModalVisible]);
 
   return (
@@ -90,7 +91,6 @@ const adminCategory = () => {
             <AiFillPlusCircle className="mx-2 fs-5" />
             Add Category
           </button>
-
         </div>
 
         <div
@@ -150,9 +150,9 @@ const adminCategory = () => {
                             style={{ cursor: "pointer" }}
                             className="my-2 mx-2"
                             onClick={function (event) {
-                              OnupdateMessage(item.id, item.categary)
-                              setIsModalVisible(true) }
-                            }
+                              OnupdateMessage(item.id, item.categary);
+                              setIsModalVisible(true);
+                            }}
                           >
                             <i className="fas fa-pencil-alt mx-2"></i> Update
                           </li>
@@ -174,7 +174,12 @@ const adminCategory = () => {
         </div>
       </div>
       <AddCategoryModel showStatus={showStatus} setshowStatus={setshowStatus} />
-      <UpdateCategoryModel isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}  id={updateId} categary={updatecategary}/>
+      <UpdateCategoryModel
+        isModalVisible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+        id={updateId}
+        categary={updatecategary}
+      />
     </div>
   );
 };
