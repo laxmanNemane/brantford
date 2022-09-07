@@ -1,11 +1,38 @@
 import React, { useEffect } from "react";
 import "../Style.css";
 import { NavLink } from "react-router-dom";
+<<<<<<< HEAD
 
 import ReactEcharts from "echarts-for-react";
 
 import { BiBuildingHouse } from "react-icons/bi";
 
+=======
+import { FiUsers, FiWatch } from "react-icons/fi";
+import ReactEcharts from "echarts-for-react";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import {
+  MdIncompleteCircle,
+  MdOutlineCancel,
+  MdOutlineWatch,
+} from "react-icons/md";
+import {
+  BiBuildingHouse,
+  BiHome,
+  BiHomeAlt,
+  BiTime,
+  BiTimeFive,
+} from "react-icons/bi";
+import {
+  BsArrowBarUp,
+  BsArrowDown,
+  BsArrowLeft,
+  BsArrowUp,
+  BsLightningCharge,
+  BsWatch,
+} from "react-icons/bs";
+>>>>>>> d9163b9 (private route which is used to authorization)
 // import { HiArrowTrendingUp } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
 import HocComponent from "../../Components/HocComponent";
@@ -51,7 +78,10 @@ const UserDashbord = () => {
   }, []);
 
   const option1 = {
+<<<<<<< HEAD
     color: "#c2255c",
+=======
+>>>>>>> d9163b9 (private route which is used to authorization)
     xAxis: {
       type: "category",
       data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -69,24 +99,43 @@ const UserDashbord = () => {
   };
 
   const option = {
+<<<<<<< HEAD
     color: ["#c2255c", "#4263eb"],
+=======
+>>>>>>> d9163b9 (private route which is used to authorization)
     title: {
       title: "Propertis Status",
       left: "center",
     },
+<<<<<<< HEAD
     tooltip: {},
     legend: {
       orient: "vertical",
       bottom: "bottom",
     },
+=======
+    tooltip: {
+      trigger: "item",
+    },
+    legend: {
+      orient: "vertical",
+      bottom: "bottom",
+    },
+>>>>>>> d9163b9 (private route which is used to authorization)
     series: [
       {
         name: "Access From",
         type: "pie",
         radius: "50%",
         data: [
+<<<<<<< HEAD
           { value: 2, name: "Booked Properties" },
           { value: 1, name: "Rejected Properties" },
+=======
+          { value: 1048, name: "Booked Properties" },
+          { value: 735, name: "Rejected Properties" },
+
+>>>>>>> d9163b9 (private route which is used to authorization)
         ],
         emphasis: {
           itemStyle: {
@@ -226,7 +275,11 @@ const UserDashbord = () => {
             </div>
           </div>
 
+<<<<<<< HEAD
           <div className="col-12 mt-5 ">
+=======
+          <div className="col-12 mt-5">
+>>>>>>> d9163b9 (private route which is used to authorization)
             <h5 className="name mt-4">Account Summary</h5>
             <hr />
             <div className="col-12">
@@ -247,10 +300,15 @@ const UserDashbord = () => {
                     </div>
                   </div>
                   <div className="col-4">
+<<<<<<< HEAD
                     <div
                       className="this-week-section bg-white pt-5"
                       style={{ borderRadius: "15px" }}
                     >
+=======
+                    <div className="this-week-section bg-white pt-5"
+                      style={{ borderRadius: "15px" }} >
+>>>>>>> d9163b9 (private route which is used to authorization)
                       <ReactEcharts option={{ ...option }} />
                     </div>
                   </div>
