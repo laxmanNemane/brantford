@@ -29,7 +29,7 @@ const OfficesDetailPage = () => {
 
   const handleSubmit = (values) => {
     // console.log("hello lakhan ");
-    // console.log(values);
+    console.log(values);
 
     axios
       .post(`${BaseUrl}/endUser/send-requirement`, values, {

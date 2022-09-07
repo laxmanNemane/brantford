@@ -12,6 +12,7 @@ import Sponsers from "../Components/BrantFordLandingPages/Sponsers";
 import FindsProperty from "../Components/BrantFordLandingPages/FindsProperty";
 import PostAddFree from "../Components/BrantFordLandingPages/PostAddFree";
 import Cities from "../Components/BrantFordLandingPages/Cities";
+import ContactForm from "../AdminPanel/Modals/ContactForm";
 
 const BrantfordPage = () => {
   return (
@@ -30,6 +31,7 @@ const BrantfordPage = () => {
         <CallToActionSection />
         <TestimonialSection />
         <Sponsers />
+        <ContactForm/>
         {/* <Footer /> */}
       </div>
     </div>
