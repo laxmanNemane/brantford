@@ -6,6 +6,10 @@ import AddLocation from "./ModelPropertyOwner/AddLocation";
 const PropertyOwnerPropertyDetail = () => {
   const [showStatus, setshowStatus] = useState(false);
   const [addlocationShow, setAddLocationShow] = useState(false);
+
+  const onAddAmenity = () => {
+    setshowStatus(true);
+  };
   return (
     <div className="property-Detail-property-owner">
       <div className="row mx-3 mt-3">
@@ -68,17 +72,17 @@ const PropertyOwnerPropertyDetail = () => {
               </h4>
               <p className="paragraph my-3">Agent</p>
               <p className="paragraph my-1">
-                <i class="fa-regular fa-circle-user me-2"></i> Lorem, ipsum
+                <i className="fa-regular fa-circle-user me-2"></i> Lorem, ipsum
                 dolor.
               </p>
               <p className="paragraph">Lorem, ipsum.</p>
             </div>
             <div className="social-icons my-4 ">
               <button className="btn-first rounded-circle py-2 fs-5 mx-2 ">
-                <i class="fa-brands fa-twitter"></i>
+                <i className="fa-brands fa-twitter"></i>
               </button>
               <button className="btn-first rounded-circle py-2 fs-5 mx-2">
-                <i class="fa-brands fa-instagram"></i>
+                <i className="fa-brands fa-instagram"></i>
               </button>
               <button className="btn-first rounded-circle py-2 fs-5 mx-2">
                 <i className="fa-brands fa-facebook-f"></i>{" "}
@@ -169,7 +173,7 @@ const PropertyOwnerPropertyDetail = () => {
 
               <button
                 className="btn-second mt-5"
-                onClick={() => setshowStatus(true)}
+                onClick={() => onAddAmenity()}
               >
                 Add Ammenity
               </button>

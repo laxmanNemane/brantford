@@ -6,7 +6,8 @@ import axios from "axios";
 const BaseUrl = "http://bantford.prometteur.in";
 
 const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
-  console.log(cid);
+  console.log(spaceId);
+  // console.log(element);
   const handleSubmit = (values) => {
     console.log(values);
     if (spaceId) {
@@ -70,22 +71,23 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
           {spaceId ? (
             <>
               <Formik
+                enableReinitialize
                 initialValues={{
-                  space: "coworking space in Pune",
-                  manager_name: "laxaman",
-                  manager_email: "lakhsn@gmail.com",
-                  manager_contactNumber: 8967452356,
-                  seating_capacity: 30,
-                  cabin_capacity: 10,
-                  total_desks: 50,
-                  address: "pume maharashtra 411109",
-                  city: "hinjewadi",
-                  price: "6000",
-                  property_status: "Rent",
-                  description: "coworking space for Rent",
-                  working_days: "mondayToFriday",
-                  property_id: 2134,
-                  categaryId: 1,
+                  space: element.space,
+                  manager_name: element.manager_name,
+                  manager_email: element.manager_email,
+                  manager_contactNumber: element.manager_contactNumber,
+                  seating_capacity: element.seating_capacity,
+                  cabin_capacity: element.cabin_capacity,
+                  total_desks: element.total_desks,
+                  address: element.address,
+                  city: element.city,
+                  price: element.price,
+                  property_status: element.property_status,
+                  description: element.description,
+                  working_days: element.working_days,
+                  property_id: element.property_id,
+                  categaryId: element.categaryId,
                 }}
                 validate={(values) => {
                   let errors = {};
@@ -265,7 +267,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           type="button"
                           onClick={handleSubmit}
                         >
-                          Add New Space
+                          Update Space
                         </button>
                       </div>
                     </div>

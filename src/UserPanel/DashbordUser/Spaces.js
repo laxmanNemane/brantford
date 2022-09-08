@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 // import { NavLink } from "react-router-dom";
 import HocComponent from "../../Components/HocComponent";
 import { FetchAllSpaces } from "../../Redux/PropertyOwnerSlices/allvenuSlice";
@@ -38,11 +39,13 @@ const Spaces = () => {
       });
   }, []);
 
-  const onUpdateValues = ({ data, id }) => {
+  const onUpdateValues = (data, id) => {
     setshowStatus(true);
     setElement(data);
     setSpaceId(id);
   };
+
+  // console.log("element.is", element);
 
   const OnAddSpacess = () => {
     setshowStatus(true);
@@ -83,7 +86,10 @@ const Spaces = () => {
                       <td>{index + 1}</td>
                       <td>{item.space}</td>
                       <td>{item.address}</td>
-                      <td>View</td>
+                      <td>
+                        {" "}
+                        <Link to="/property">View</Link>{" "}
+                      </td>
                       <td>
                         {item.approve_status === "approved" ? (
                           <button
