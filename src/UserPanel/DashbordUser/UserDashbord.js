@@ -94,8 +94,8 @@ const UserDashbord = () => {
     dispatch(FetchAllRejectedProperties());
     dispatch(FetchAllSpaces());
     dispatch(FetchAllVisitors());
-    dispatch(fetchTotalAmount());
-    dispatch(fetchTotalBooking());
+    // dispatch(fetchTotalAmount());
+    // dispatch(fetchTotalBooking());
 
     // eslint-disable-next-line
   }, []);
@@ -280,8 +280,11 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-6">
                         <div className="decsiption-user-dashbord">
-                          <p className="value-number">5,445</p>
-                          <p className="user-dash-heading">Visitors </p>
+                          <p className="value-number">
+                            {" "}
+                            {data.allvisitors.AllVisitors.length}
+                          </p>
+                          <p className="user-dash-heading">Visitors(todays)</p>
                         </div>
                       </div>
                       <div className="col-2">

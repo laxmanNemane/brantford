@@ -11,10 +11,10 @@ const HocComponent = (Component) => {
   return (props) => {
     return (
       <div className="d-flex" style={{ height: "100vh" }}>
-        <div style={{ widtth: "18%" }}>
+        <div style={{ width: "18%" }}>
           {User.admin.profile === "admin" ? <Sidebar /> : <UserSidebar />}
         </div>
-        <div style={{ width: "82%", marginLeft: "18%" }}>
+        <div style={{ width: "82%" }}>
           <Header />
           <Component />
         </div>

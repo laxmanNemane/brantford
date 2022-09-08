@@ -1,11 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+console.log("inside of profile slice");
+
 export const getProfileUser = createAsyncThunk(
   "profile/getProfileUser",
   async () => {
     const response = await axios.get(
-      "http://bantford.prometteur.in/propertyOwner/propertyowner-profile",
+      "http://bantford.prometteur.in/admin/admin-profile",
       {
         headers: {
           Authorization: localStorage.getItem("token"),
@@ -14,7 +16,7 @@ export const getProfileUser = createAsyncThunk(
     );
 
     try {
-      //   console.log("profile response", response.data);
+      // console.log("profile response", response.data);
       return response.data;
     } catch (error) {
       console.log(error);
