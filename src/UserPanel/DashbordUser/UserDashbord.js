@@ -46,35 +46,36 @@ const UserDashbord = () => {
 
   // console.log(users);
   const data = useSelector((state) => state);
-  console.log(data);
-  console.log("all venues", data.Allvenue.AllSpaces);
-  console.log("total amount paid ", data.POAmount.totalAmount);
-  console.log(
-    "all approved propertis",
-    data.POApprovedProperty.ApprovepropertiesPO
-  );
-  console.log("all bookings", data.POBookings.ApprovepropertiesPO);
-  console.log(
-    "all bookings length",
-    data.POBookings.ApprovepropertiesPO.length
-  );
-  console.log("all categoris", data.POCategories.AllPropertyOwnerCategories);
-  console.log(
-    "all pending properties",
-    data.POPendingProperty.PendingPropertiesOwner
-  );
-  console.log(
-    "all pending properties length",
-    data.POPendingProperty.PendingPropertiesOwner.length
-  );
-  console.log(
-    "all rejected properties",
-    data.PORejectedProperties.RejectedpropertiesPO
-  );
-  console.log(
-    "all rejected properties length",
-    data.PORejectedProperties.RejectedpropertiesPO.length
-  );
+  // console.log(data);
+  // console.log("all venues", data.Allvenue.AllSpaces);
+  // console.log("all venues length", data.Allvenue.AllSpaces.length);
+  // console.log("total amount paid ", data.POAmount.totalAmount);
+  // console.log(
+  //   "all approved propertis",
+  //   data.POApprovedProperty.ApprovepropertiesPO
+  // );
+  // console.log("all bookings", data.POBookings.ApprovepropertiesPO);
+  // console.log(
+  //   "all bookings length",
+  //   data.POBookings.ApprovepropertiesPO.length
+  // );
+  // console.log("all categoris", data.POCategories.AllPropertyOwnerCategories);
+  // console.log(
+  //   "all pending properties",
+  //   data.POPendingProperty.PendingPropertiesOwner
+  // );
+  // console.log(
+  //   "all pending properties length",
+  //   data.POPendingProperty.PendingPropertiesOwner.length
+  // );
+  // console.log(
+  //   "all rejected properties",
+  //   data.PORejectedProperties.RejectedpropertiesPO
+  // );
+  // console.log(
+  //   "all rejected properties length",
+  //   data.PORejectedProperties.RejectedpropertiesPO.length
+  // );
 
   // const bookedProperties = useSelector(
   //   (state) => state.POBookings.ApprovepropertiesPO
@@ -141,10 +142,11 @@ const UserDashbord = () => {
         type: "pie",
         radius: "50%",
         data: [
-          { value: 2, name: "Booked Properties" },
-          { value: 1, name: "Rejected Properties" },
-          { value: 1048, name: "Booked Properties" },
-          { value: 735, name: "Rejected Properties" },
+          { value: `${data.Allvenue.AllSpaces.length}`, name: "Properties" },
+          {
+            value: `${data.POPendingProperty.PendingPropertiesOwner.length}`,
+            name: "Booked Properties",
+          },
         ],
         emphasis: {
           itemStyle: {
@@ -319,11 +321,11 @@ const UserDashbord = () => {
                     </div>
                     <div className="col-4">
                       <div
-                        className="this-week-section bg-white pt-5"
+                        className="this-week-section bg-white "
                         style={{ borderRadius: "15px" }}
                       >
                         <div
-                          className="this-week-section bg-white pt-5"
+                          className=" bg-white py-3"
                           style={{ borderRadius: "15px" }}
                         >
                           <ReactEcharts option={{ ...option }} />

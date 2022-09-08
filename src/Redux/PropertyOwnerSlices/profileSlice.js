@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-console.log("You lakhan brilliant");
-
 export const getProfileUser = createAsyncThunk(
   "profile/getProfileUser",
   async () => {

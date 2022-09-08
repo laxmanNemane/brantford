@@ -23,14 +23,14 @@ const AllRejectedPropertyOwnerSlice = createSlice({
   },
   extraReducers: {
     [FetchAllRejectedProperties.pending]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
     },
     [FetchAllRejectedProperties.fulfilled]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
       state.RejectedpropertiesPO = action.payload;
     },
     [FetchAllRejectedProperties.rejected]: (state, action) => {
-      console.log("rejected error");
+      // console.log("rejected error");
     },
   },
 });

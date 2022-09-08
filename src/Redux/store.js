@@ -11,8 +11,6 @@ import totalBookingslice from "./PropertyOwnerSlices/totalBookingslice";
 
 const { configureStore } = require("@reduxjs/toolkit");
 
-console.log("hello lakhan");
-
 const store = configureStore({
   reducer: {
     Allvenue: allvenuSlice,

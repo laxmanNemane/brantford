@@ -63,7 +63,7 @@ const UserSidebar = () => {
       <div className=" Sidebar_otption_section">
         <ul className="list-unstyled">
           <li className="my-3    list-sidebar-menu">
-            <NavLink to="/dashbord" className="text-dark">
+            <NavLink to="/userdashbord" className="text-dark">
               <TiChartBar className="Sidebar_icons" />
               Dashbord
             </NavLink>
@@ -86,16 +86,16 @@ const UserSidebar = () => {
             </NavLink>
           </li> */}
           <li className="my-3  list-sidebar-menu">
-            <NavLink to="/revenu" className="text-dark">
+            <NavLink to="/spaces" className="text-dark">
               <AiOutlineCreditCard className="Sidebar_icons" />
-              Income
+              Spaces
             </NavLink>
           </li>
           <li className="my-3 list-sidebar-menu">
-            {/* <NavLink to="/dashbord" className="text-dark"> */}
-            <AiOutlineWechat className="Sidebar_icons" />
-            Chat
-            {/* </NavLink> */}
+            <NavLink to="/Visitors" className="text-dark">
+              <AiOutlineWechat className="Sidebar_icons" />
+              Visitors
+            </NavLink>
           </li>
         </ul>
         <p className="sidebar-setting">

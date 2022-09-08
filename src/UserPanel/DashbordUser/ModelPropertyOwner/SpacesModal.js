@@ -5,32 +5,47 @@ import axios from "axios";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
-const SpacesModal = ({
-  showStatus,
-  setshowStatus,
-  showSpacesPropertyOwner,
-}) => {
+const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
+  console.log(cid);
   const handleSubmit = (values) => {
-    // setshowStatus(true);
     console.log(values);
-    const id = 4;
+    if (spaceId) {
+      // UpdateSpace
+      axios
+        .patch(`${BaseUrl}/admin/update-space?id=${spaceId}`, values, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          console.log(res.data.spaces);
+          // showSpacesPropertyOwner();
+          setshowStatus(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      // Addspace
+      axios
+        .post(`${BaseUrl}/admin/add-space?categaryId=${4}`, values, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          console.log(res.data.spaces);
+          // showSpacesPropertyOwner();
+          setshowStatus(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
 
     //add spaces
-    axios
-      .post(`${BaseUrl}/admin/add-space?categaryId=${id}`, values, {
-        headers: {
-          Authorization: localStorage.getItem("property_owner_token"),
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        console.log(res.data.spaces);
-        showSpacesPropertyOwner();
-        setshowStatus(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   const handleOk = () => {
@@ -68,6 +83,7 @@ const SpacesModal = ({
               description: "coworking space for Rent",
               working_days: "mondayToFriday",
               property_id: 2134,
+              categaryId: 1,
             }}
             validate={(values) => {
               let errors = {};
@@ -139,8 +155,27 @@ const SpacesModal = ({
                         placeholder="property_id"
                         className="form-control  mb-3  m"
                       />
+                      <label htmlFor="city" className="label-user">
+                        City:{" "}
+                      </label>
+
+                      <Field
+                        type="text"
+                        name="city"
+                        placeholder="city"
+                        className="form-control  mb-3  m"
+                      />
                     </div>
                     <div className="col-6">
+                      <label htmlFor="manager_name" className="label-user">
+                        category -id:{" "}
+                      </label>
+                      <Field
+                        type="text"
+                        name="categaryId"
+                        placeholder="categaryId"
+                        className="form-control  mb-3  m"
+                      />
                       <label htmlFor="manager_name" className="label-user">
                         manager name:{" "}
                       </label>
@@ -188,17 +223,6 @@ const SpacesModal = ({
                         type="text"
                         name="working_days"
                         placeholder="working_days"
-                        className="form-control  mb-3  m"
-                      />
-
-                      <label htmlFor="city" className="label-user">
-                        City:{" "}
-                      </label>
-
-                      <Field
-                        type="text"
-                        name="city"
-                        placeholder="city"
                         className="form-control  mb-3  m"
                       />
                     </div>
@@ -250,3 +274,18 @@ const SpacesModal = ({
 };
 
 export default SpacesModal;
+
+// space: "coworking space in Pune",
+// manager_name: "laxaman",
+// manager_email: "lakhsn@gmail.com",
+// manager_contactNumber: 8967452356,
+// seating_capacity: 30,
+// cabin_capacity: 10,
+// total_desks: 50,
+// address: "pume maharashtra 411109",
+// city: "hinjewadi",
+// price: "6000",
+// property_status: "Rent",
+// description: "coworking space for Rent",
+// working_days: "mondayToFriday",
+// property_id: 2134,
