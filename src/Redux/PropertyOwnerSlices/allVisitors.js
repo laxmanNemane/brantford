@@ -5,13 +5,12 @@ export const FetchAllVisitors = createAsyncThunk(
   "visitors/FetchAllVisitors",
   async () => {
     const response = await axios.get(
-      "bantford.prometteur.in/propertyOwner/all-visitors",
+      `bantford.prometteur.in/propertyOwner/all-visitors?visits=${7} days`,
       {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
-      },
-      { params: "visits=7 days" }
+      }
     );
     return response.data;
   }

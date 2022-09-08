@@ -40,7 +40,11 @@ const Routing = () => {
         <Route path="/terms-conditions" element={<TermsCondition />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route exact path="/office-detail" element={<OfficesDetailPage />} />
+        <Route
+          exact
+          path="/office-detail/:id"
+          element={<OfficesDetailPage />}
+        />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         {/* =================property owner=================== */}
         <Route element={<PrivateRouteForuser />}>

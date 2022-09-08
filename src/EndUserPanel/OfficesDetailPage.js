@@ -17,6 +17,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { GrAttachment } from "react-icons/gr";
 import Navbar from "../Layout/Navbar";
 import Footer from "../Layout/Footer";
+import { useParams } from "react-router-dom";
 
 // --------fs-3----
 

@@ -6,6 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 import PropertyOverview from "../../EndUserPanel/PropertyOverview";
 
 const PropertySection = () => {
+  // const id = "3";
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
@@ -57,9 +58,7 @@ const PropertySection = () => {
                   </p>
                   <div className="button-space d-flex justify-content-between btn-area">
                     <p className=" fw-bold">Co-working</p>
-                    <NavLink to="/office-detail">
-                      <button className="btn-first">Detail</button>
-                    </NavLink>
+                    <button className="btn-first">Detail</button>
                   </div>
                 </div>
               </div>
