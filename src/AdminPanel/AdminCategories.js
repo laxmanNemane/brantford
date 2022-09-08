@@ -25,7 +25,7 @@ const AdminCategories = () => {
     const updatedValue = { categary: `${categary_update}` };
     axios.patch(`${BaseUrl}/admin/update-categary?id=${id}`, updatedValue, {
       headers: {
-        Authorization: localStorage.getItem("admin_token"),
+        Authorization: localStorage.getItem("token"),
       },
     });
 
@@ -33,12 +33,11 @@ const AdminCategories = () => {
   };
 
   //delete category
-  const Admin_token = localStorage.getItem("admin_token");
   const onDelete = (id) => {
     axios
       .delete(`${BaseUrl}/admin/delete-categary?id=${id}`, {
         headers: {
-          Authorization: Admin_token,
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -56,7 +55,7 @@ const AdminCategories = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-categaries`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {

@@ -18,7 +18,7 @@ const AdminUserTable = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-users`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {

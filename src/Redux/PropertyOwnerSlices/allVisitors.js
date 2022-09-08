@@ -5,12 +5,13 @@ export const FetchAllVisitors = createAsyncThunk(
   "visitors/FetchAllVisitors",
   async () => {
     const response = await axios.get(
-      "http://bantford.prometteur.in/propertyOwner/all-visitors?visits=7 days",
+      "bantford.prometteur.in/propertyOwner/all-visitors",
       {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
-      }
+      },
+      { params: "visits=7 days" }
     );
     return response.data;
   }
@@ -23,14 +24,14 @@ const AllVisitorsSlice = createSlice({
   },
   extraReducers: {
     [FetchAllVisitors.pending]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
     },
     [FetchAllVisitors.fulfilled]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
       state.AllVisitors = action.payload;
     },
     [FetchAllVisitors.rejected]: (state, action) => {
-      console.log("rejected error");
+      // console.log("rejected error");
     },
   },
 });

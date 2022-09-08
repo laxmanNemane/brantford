@@ -19,7 +19,7 @@ const Header = () => {
     axios
       .post(`${BaseUrl}/admin/admin-logout`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {

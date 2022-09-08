@@ -42,8 +42,6 @@ const Routing = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route exact path="/office-detail" element={<OfficesDetailPage />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
-<<<<<<< HEAD
-
         {/* =================property owner=================== */}
         <Route element={<PrivateRouteForuser />}>
           <Route path="/userDashbord" element={<UserDashbord />} />
@@ -53,27 +51,10 @@ const Routing = () => {
           <Route path="/image" element={<AddImages />} />
           <Route path="/map" element={<AddLocation />} />
           <Route path="/property" element={<PropertyOwnerPropertyDetail />} />
+          <Route path="/profile" element={<AdminProfilePage />} />
         </Route>
-
-        {/* </Route> */}
-        {/* <Route element={<PrivateRouteForAdmin />}> */}
-        <Route path="/dashbord" element={<DasbordPage />} />
-        <Route path="/properties" element={<Properties />} />
-        <Route path="/revenu" element={<RevenuAdmin />} />
-        <Route path="/tenants" element={<AdminTenants />} />
-        <Route path="/detail" element={<PropertyDetailPage />} />
-        <Route path="/privacy-policy" element={<AdminPrivacyPolicy />} />
-        <Route path="/categories" element={<AdminCategories />} />
-        <Route path="/all-properties" element={<AllProperties />} />
-        <Route path="/detail" element={<PropertyDetailPage />} />
-        <Route path="/profile" element={<AdminProfilePage />} />
-        {/* </Route> */}
-=======
-        <Route path="/office-detail" element={<OfficesDetailPage />} /> */}
-        {/* langding page  */}
-        {/* <Route path="/" element={<BrantfordPage />} /> */}
-        <Route path="/terms&conditions" element={<TermsCondition />} />
-        <Route element={<PrivateRoute />}>
+        {/* ============================Admin========================== */}
+        <Route element={<PrivateRouteForAdmin />}>
           <Route path="/dashbord" element={<DasbordPage />} />
           <Route path="/properties" element={<Properties />} />
           <Route path="/revenu" element={<RevenuAdmin />} />
@@ -81,11 +62,10 @@ const Routing = () => {
           <Route path="/detail" element={<PropertyDetailPage />} />
           <Route path="/privacy-policy" element={<AdminPrivacyPolicy />} />
           <Route path="/categories" element={<AdminCategories />} />
-          {/* admin panel */}
+          <Route path="/all-properties" element={<AllProperties />} />
+          <Route path="/detail" element={<PropertyDetailPage />} />
           <Route path="/profile" element={<AdminProfilePage />} />
         </Route>
-        {/* <Route path="*" element={<h1>Page is Not Found</h1>} /> */}
->>>>>>> d9163b9 (private route which is used to authorization)
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>

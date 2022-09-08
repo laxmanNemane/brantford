@@ -5,14 +5,14 @@ import Sidebar from "../Layout/Sidebar";
 import UserSidebar from "../UserPanel/PropertyOwnerSidebar/UserSidebar";
 // import { DasbordPage } from "../Pages/DasbordPage";
 
-const data = { profile: "admin" };
+const User = JSON.parse(localStorage.getItem("user"));
 
 const HocComponent = (Component) => {
   return (props) => {
     return (
       <div className="d-flex" style={{ height: "100vh" }}>
         <div style={{ widtth: "18%" }}>
-          {data.profile === "admin" ? <Sidebar /> : <UserSidebar />}
+          {User.admin.profile === "admin" ? <Sidebar /> : <UserSidebar />}
         </div>
         <div style={{ width: "82%", marginLeft: "18%" }}>
           <Header />

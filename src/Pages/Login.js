@@ -30,9 +30,15 @@ const Login = () => {
         // console.log(res);
         // console.log(res.data.admin.profile);
         console.log("token", res.data.token);
-        localStorage.setItem("user", res.data);
+        console.log(res.data);
+        console.log(res.data.admin.profile);
+        localStorage.setItem("user", JSON.stringify(res.data));
+        if (res.data.admin.profile === "admin") {
+          navigate("/dashbord");
+        } else {
+          navigate("/userDashbord");
+        }
         localStorage.setItem("token", res.data.token);
-        navigate("/userDashbord");
 
         // console.log("token-length", res.data.token.length);
       })

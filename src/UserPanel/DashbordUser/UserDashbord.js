@@ -1,39 +1,32 @@
 import React, { useEffect } from "react";
 import "../Style.css";
 import { NavLink } from "react-router-dom";
-<<<<<<< HEAD
 
-import ReactEcharts from "echarts-for-react";
+// import ReactEcharts from "echarts-for-react";
 
 import { BiBuildingHouse } from "react-icons/bi";
 
-=======
-import { FiUsers, FiWatch } from "react-icons/fi";
+// import { FiUsers, FiWatch } from "react-icons/fi";
 import ReactEcharts from "echarts-for-react";
-import { CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
-import {
-  MdIncompleteCircle,
-  MdOutlineCancel,
-  MdOutlineWatch,
-} from "react-icons/md";
-import {
-  BiBuildingHouse,
-  BiHome,
-  BiHomeAlt,
-  BiTime,
-  BiTimeFive,
-} from "react-icons/bi";
-import {
-  BsArrowBarUp,
-  BsArrowDown,
-  BsArrowLeft,
-  BsArrowUp,
-  BsLightningCharge,
-  BsWatch,
-} from "react-icons/bs";
->>>>>>> d9163b9 (private route which is used to authorization)
-// import { HiArrowTrendingUp } from "react-icons/hi";
+// import { CircularProgressbar } from "react-circular-progressbar";
+// import "react-circular-progressbar/dist/styles.css";
+// import {
+//   MdIncompleteCircle,
+//   MdOutlineCancel,
+//   MdOutlineWatch,
+// } from "react-icons/md";
+// import {
+//   BiBuildingHouse,
+
+// } from "react-icons/bi";
+// import {
+//   BsArrowBarUp,
+//   BsArrowDown,
+//   BsArrowLeft,
+//   BsArrowUp,
+//   BsLightningCharge,
+//   BsWatch,
+// } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io";
 import HocComponent from "../../Components/HocComponent";
 // import { usersContext } from "../../Context/UserContext";
@@ -54,13 +47,42 @@ const UserDashbord = () => {
   // console.log(users);
   const data = useSelector((state) => state);
   console.log(data);
-  const bookedProperties = useSelector(
-    (state) => state.POBookings.ApprovepropertiesPO
+  console.log("all venues", data.Allvenue.AllSpaces);
+  console.log("total amount paid ", data.POAmount.totalAmount);
+  console.log(
+    "all approved propertis",
+    data.POApprovedProperty.ApprovepropertiesPO
   );
-  console.log(bookedProperties.length);
+  console.log("all bookings", data.POBookings.ApprovepropertiesPO);
+  console.log(
+    "all bookings length",
+    data.POBookings.ApprovepropertiesPO.length
+  );
+  console.log("all categoris", data.POCategories.AllPropertyOwnerCategories);
+  console.log(
+    "all pending properties",
+    data.POPendingProperty.PendingPropertiesOwner
+  );
+  console.log(
+    "all pending properties length",
+    data.POPendingProperty.PendingPropertiesOwner.length
+  );
+  console.log(
+    "all rejected properties",
+    data.PORejectedProperties.RejectedpropertiesPO
+  );
+  console.log(
+    "all rejected properties length",
+    data.PORejectedProperties.RejectedpropertiesPO.length
+  );
 
-  var size = Object.keys(bookedProperties).length;
-  console.log(size); // Prints: 4
+  // const bookedProperties = useSelector(
+  //   (state) => state.POBookings.ApprovepropertiesPO
+  // );
+  // console.log(bookedProperties.length);
+
+  // var size = Object.keys(bookedProperties).length;
+  // console.log(size); // Prints: 4
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -78,10 +100,7 @@ const UserDashbord = () => {
   }, []);
 
   const option1 = {
-<<<<<<< HEAD
     color: "#c2255c",
-=======
->>>>>>> d9163b9 (private route which is used to authorization)
     xAxis: {
       type: "category",
       data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -99,21 +118,16 @@ const UserDashbord = () => {
   };
 
   const option = {
-<<<<<<< HEAD
     color: ["#c2255c", "#4263eb"],
-=======
->>>>>>> d9163b9 (private route which is used to authorization)
     title: {
       title: "Propertis Status",
       left: "center",
     },
-<<<<<<< HEAD
     tooltip: {},
     legend: {
       orient: "vertical",
       bottom: "bottom",
     },
-=======
     tooltip: {
       trigger: "item",
     },
@@ -121,21 +135,16 @@ const UserDashbord = () => {
       orient: "vertical",
       bottom: "bottom",
     },
->>>>>>> d9163b9 (private route which is used to authorization)
     series: [
       {
         name: "Access From",
         type: "pie",
         radius: "50%",
         data: [
-<<<<<<< HEAD
           { value: 2, name: "Booked Properties" },
           { value: 1, name: "Rejected Properties" },
-=======
           { value: 1048, name: "Booked Properties" },
           { value: 735, name: "Rejected Properties" },
-
->>>>>>> d9163b9 (private route which is used to authorization)
         ],
         emphasis: {
           itemStyle: {
@@ -182,7 +191,9 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-6">
                         <div className="decsiption-user-dashbord">
-                          <p className="value-number">5,445</p>
+                          <p className="value-number">
+                            {data.Allvenue.AllSpaces.length}
+                          </p>
                           <p className="user-dash-heading">All Spaces</p>
                         </div>
                       </div>
@@ -207,7 +218,12 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-6">
                         <div className="decsiption-user-dashbord">
-                          <p className="value-number">5,445</p>
+                          <p className="value-number">
+                            {
+                              data.POPendingProperty.PendingPropertiesOwner
+                                .length
+                            }
+                          </p>
                           <p className="user-dash-heading">All Booked Space</p>
                         </div>
                       </div>
@@ -232,7 +248,12 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-6">
                         <div className="decsiption-user-dashbord">
-                          <p className="value-number">5,445</p>
+                          <p className="value-number">
+                            {
+                              data.PORejectedProperties.RejectedpropertiesPO
+                                .length
+                            }
+                          </p>
                           <p className="user-dash-heading">Rejected Space</p>
                         </div>
                       </div>
@@ -275,41 +296,39 @@ const UserDashbord = () => {
             </div>
           </div>
 
-<<<<<<< HEAD
           <div className="col-12 mt-5 ">
-=======
-          <div className="col-12 mt-5">
->>>>>>> d9163b9 (private route which is used to authorization)
-            <h5 className="name mt-4">Account Summary</h5>
-            <hr />
-            <div className="col-12">
-              <div className="account-summery-section">
-                <div className="row">
-                  <div className="col-8">
-                    <div
-                      className="this-week-section bg-white pt-5"
-                      style={{ borderRadius: "15px" }}
-                    >
-                      <div className="icons-sections-this">
-                        <div className="chart-daily mx-3">
-                          <p className="paragraph fw-bold">Revenu status</p>
-                          <p></p>
-                          <ReactEcharts option={{ ...option1 }} />
+            <div className="col-12 mt-5">
+              <h5 className="name mt-4">Account Summary</h5>
+              <hr />
+              <div className="col-12">
+                <div className="account-summery-section">
+                  <div className="row">
+                    <div className="col-8">
+                      <div
+                        className="this-week-section bg-white pt-5"
+                        style={{ borderRadius: "15px" }}
+                      >
+                        <div className="icons-sections-this">
+                          <div className="chart-daily mx-3">
+                            <p className="paragraph fw-bold">Revenu status</p>
+                            <p></p>
+                            <ReactEcharts option={{ ...option1 }} />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-4">
-<<<<<<< HEAD
-                    <div
-                      className="this-week-section bg-white pt-5"
-                      style={{ borderRadius: "15px" }}
-                    >
-=======
-                    <div className="this-week-section bg-white pt-5"
-                      style={{ borderRadius: "15px" }} >
->>>>>>> d9163b9 (private route which is used to authorization)
-                      <ReactEcharts option={{ ...option }} />
+                    <div className="col-4">
+                      <div
+                        className="this-week-section bg-white pt-5"
+                        style={{ borderRadius: "15px" }}
+                      >
+                        <div
+                          className="this-week-section bg-white pt-5"
+                          style={{ borderRadius: "15px" }}
+                        >
+                          <ReactEcharts option={{ ...option }} />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

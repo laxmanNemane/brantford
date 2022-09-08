@@ -18,7 +18,7 @@ const AdminProfilePage = () => {
     axios
       .patch(`${BaseUrl}/admin/update-profile`, values, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -31,7 +31,7 @@ const AdminProfilePage = () => {
     axios
       .get(`${BaseUrl}/admin/admin-profile`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {

@@ -31,14 +31,14 @@ const allProfileUserSlice = createSlice({
   },
   extraReducers: {
     [getProfileUser.pending]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
     },
     [getProfileUser.fulfilled]: (state, action) => {
-      console.log("fillfilled");
+      // console.log("fillfilled");
       state.userProfile = action.payload;
     },
     [getProfileUser.rejected]: (state, action) => {
-      console.log("rejected error");
+      // console.log("rejected error");
     },
   },
 });
