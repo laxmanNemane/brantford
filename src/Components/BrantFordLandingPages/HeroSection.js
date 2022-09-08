@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 // import "../../Styles/LandingPage/HeroSection.css";
 // import videoBg from "../../Assets/video/pexels-alena-darmel-7646596.mp4";
 import { Dropdown } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
 
 const HeroSection = () => {
+
+const [searchKey, setSearchKey] = useState();
+
+  const searchHandler = () => {
+    console.log(searchKey);
+  }
+
+
   return (
     <div className="hero-section d-flex align-items-center justify-content-center flex-column">
       <div className="container">
@@ -15,11 +23,12 @@ const HeroSection = () => {
             </div>
             {/* <p className="expant-paragraph">Expand. Renew. Relocate</p> */}
             <div className="search-section d-flex">
-              <Dropdown>
+              {/* <Dropdown>
                 <Dropdown.Toggle
                   variant="light"
                   id="dropdown-basic"
                   className="drop-btn"
+                  
                 >
                   Select City
                 </Dropdown.Toggle>
@@ -29,17 +38,18 @@ const HeroSection = () => {
                   <Dropdown.Item href="#/action-2">Mumbai</Dropdown.Item>
                   <Dropdown.Item href="#/action-3">Banglore</Dropdown.Item>
                 </Dropdown.Menu>
-              </Dropdown>
+              </Dropdown> */}
               <div className="input_search">
                 <div className="input1">
                   <input
                     type="text"
                     placeholder="Search By Location"
                     className="input-serchboox"
+                    onChange={(e)=> setSearchKey(e.target.value)}
                   />
                 </div>
-                <div className="serch-icon">
-                  <AiOutlineSearch className="fs-3" />
+                <div className="serch-icon" style={{cursor:"pointer"}} onClick={searchHandler}>
+                  <AiOutlineSearch className="fs-3"  />
                 </div>
               </div>
             </div>

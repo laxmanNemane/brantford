@@ -6,7 +6,7 @@ import axios from "axios";
 // import PropertyDetailPage from "../PropertyDetailPage";
 
 const BaseUrl = "http://bantford.prometteur.in";
-const Admin_token = localStorage.getItem("token");
+const Admin_token = localStorage.getItem("admin_token");
 
 const NewListedProperty = () => {
   const [newListed, setNewListed] = useState([]);
@@ -15,7 +15,7 @@ const NewListedProperty = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-newlistedpropertirs`, {
         headers: {
-          Authorization: localStorage.getItem("token"),
+          Authorization: localStorage.getItem("admin_token"),
         },
       })
       .then((res) => {

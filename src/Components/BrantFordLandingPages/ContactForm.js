@@ -4,7 +4,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 function ContactForm() {
   const handleSubmit = (values) => {
     console.log(values);
-    values.resetForm();
+    Formik.resetForm();
 
   };
   const resetForm = () =>{

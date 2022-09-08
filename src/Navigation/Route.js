@@ -57,13 +57,14 @@ const Routing = () => {
 
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/office-detail" element={<OfficesDetailPage />} /> */}
-        <Route path="/office-detail" element={<OfficesDetailPage />} />
+        <Route path="/office-detail/:id" element={<OfficesDetailPage />} />
         {/* langding page  */}
         {/* <Route path="/office-detail" element={<OfficesDetailPage />} /> */}
         {/* admin panel */}
         {/* <Route element={<PrivateRoute />}> */}
         <Route path="/all-properties" element={<AllProperties />} />
         <Route path="/detail" element={<PropertyDetailPage />} />
+        <Route path="/requirements" element={<AdminRequirements />} />
         {/* <Route path="/dashbord" element={<DasbordPage />} />
         <Route path="/properties" element={<Properties />} />
         <Route path="/revenu" element={<RevenuAdmin />} />

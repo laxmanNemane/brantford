@@ -1,16 +1,74 @@
+import axios from "axios";
 import React, { useState,useEffect } from "react";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsHeart, BsPlusCircle } from "react-icons/bs";
 import { BsArrowRight } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import PropertyOverview from "../../EndUserPanel/PropertyOverview";
 
+const BaseUrl = "http://bantford.prometteur.in";
+
 const PropertySection = () => {
+
+  const navigate = useNavigate()
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const [categaries, setCategories]= useState([]);
+  const [singleCategory, setSinglecategory] = useState([1]);
+  const [detailId, setDetailId] = useState(null);
+
+
+  const setCategary = (categaryId) => {
+    console.log(categaryId)
+    localStorage.setItem("singlecategaryId", categaryId);
+  }
+
+  const getallCategaries = () => {
+    axios.get(`${BaseUrl}/endUser/all-categaries`, {headers:{
+      Authorization: localStorage.getItem("token")
+    }})
+    .then((res)=> {
+      console.log(res)
+      setCategories(res.data)
+    })
+    .catch((err)=> {console.log(err)})
+  }
+
 
   
 
+ const  singleCategary = (id) => {
+    console.log(id);
+    axios.get(`${BaseUrl}/endUser/get-categary?id=${id}`, {headers: {
+      Authorization: localStorage.getItem("token")
+    }})
+    .then((res)=> {
+      
+      console.log(res.data)
+      setSinglecategory(res.data);
+    })
+    .catch((err)=> {console.log(err)})
+  }
+
+
+ 
+  useEffect(()=>{
+    getallCategaries();
+  },[])
+  
+
   return (
+    <div>
+      <div className="categary-list">
+        <ul>
+          {categaries.map((item,index)=>{
+            return(
+            <li key={index}  onClick={()=>singleCategary(item.id)}>{item.categary}</li>
+            )
+          })}
+        </ul>
+
+      </div>
     <div className="property-page-section">
       <div className="container property-section">
         <div className="heading-property">
@@ -24,8 +82,13 @@ const PropertySection = () => {
               </p>
             </div>
           </div>
+
+
           <div className="row">
-            <div className="col-lg-4 col-md-6 col-sm-12 my-3">
+            {singleCategory.map((item,index)=> {  
+              return (
+
+                <div className="col-lg-4 col-md-6 col-sm-12 my-3" key={index}>
               <div className="properties">
                 <div className="img">
                   <img
@@ -52,21 +115,24 @@ const PropertySection = () => {
                 </div>
                 <div className="properties-description-card mx-2 my-3">
                   <p className="property-name-heading name">
-                    Co-working offices space-pune
+                    {item.space}
                   </p>
                   <p className="property-location-card description-why-page">
-                    Elite premio, Balewadi, Baner, Pune, 411045
+                    {item.address}
                   </p>
                   <div className="button-space d-flex justify-content-between btn-area">
-                    <p className=" fw-bold">Co-working</p>
-                    <NavLink to="/office-detail">
-                      <button className="btn-first">Detail</button>
+                    <p className=" fw-bold">{item.description}</p>
+                    <NavLink to={`/office-detail/${item.id}`}>
+                      <button className="btn-first" onClick={()=> setCategary(item.id)}>Detail</button>
                     </NavLink>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-sm-12 my-3">
+              )
+            })}
+            
+            {/* <div className="col-lg-4 col-md-6 col-sm-12 my-3">
               <div className="properties">
                 <div className="img">
                   <img
@@ -260,7 +326,7 @@ const PropertySection = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="btn-all-property">
             <button className="btn btn-view-all">
@@ -275,7 +341,9 @@ const PropertySection = () => {
         setIsModalVisible={setIsModalVisible}
       />
     </div>
+    </div>
   );
 };
 
 export default PropertySection;
+
