@@ -46,7 +46,7 @@ const UserDashbord = () => {
 
   // console.log(users);
   const data = useSelector((state) => state);
-  // console.log(data);
+  console.log(data);
   // console.log("all venues", data.Allvenue.AllSpaces);
   // console.log("all venues length", data.Allvenue.AllSpaces.length);
   // console.log("total amount paid ", data.POAmount.totalAmount);

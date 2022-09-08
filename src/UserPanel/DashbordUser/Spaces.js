@@ -14,7 +14,6 @@ const Spaces = () => {
   const [render, setRender] = useState(false);
   const dispatch = useDispatch();
   const [spaceId, setSpaceId] = useState();
-  const [categoryId, setCategoryId] = useState();
   const [element, setElement] = useState();
 
   const spaces = useSelector((state) => state.Allvenue.AllSpaces);
@@ -39,11 +38,15 @@ const Spaces = () => {
       });
   }, []);
 
-  const onUpdateValues = ({ data, id, cId }) => {
+  const onUpdateValues = ({ data, id }) => {
     setshowStatus(true);
     setElement(data);
     setSpaceId(id);
-    setCategoryId(cId);
+  };
+
+  const OnAddSpacess = () => {
+    setshowStatus(true);
+    setSpaceId("");
   };
 
   useEffect(() => {
@@ -55,7 +58,7 @@ const Spaces = () => {
       <div className="row">
         <div className="col-12 d-flex align-items-center justify-content-between">
           <h5>All Spaces</h5>
-          <button onClick={() => setshowStatus(true)} className="btn-first">
+          <button onClick={() => OnAddSpacess()} className="btn-first">
             Add Space
           </button>
         </div>
@@ -77,23 +80,36 @@ const Spaces = () => {
                 spaces.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td>{item.id}</td>
+                      <td>{index + 1}</td>
                       <td>{item.space}</td>
                       <td>{item.address}</td>
                       <td>View</td>
                       <td>
-                        {" "}
-                        <button
-                          className="btn-success"
-                          style={{
-                            color: "white",
-                            padding: "6px 12px",
-                            borderRadius: "12px",
-                            border: "none",
-                          }}
-                        >
-                          {item.approve_status}
-                        </button>
+                        {item.approve_status === "approved" ? (
+                          <button
+                            className="btn-success"
+                            style={{
+                              color: "white",
+                              padding: "6px 12px",
+                              borderRadius: "12px",
+                              border: "none",
+                            }}
+                          >
+                            {item.approve_status}
+                          </button>
+                        ) : (
+                          <button
+                            className="btn-warning"
+                            style={{
+                              color: "white",
+                              padding: "6px 12px",
+                              borderRadius: "12px",
+                              border: "none",
+                            }}
+                          >
+                            {item.approve_status}
+                          </button>
+                        )}
                       </td>
                       <td>
                         <button
@@ -124,7 +140,6 @@ const Spaces = () => {
           showStatus={showStatus}
           spaceId={spaceId}
           element={element}
-          cid={categoryId}
           // showSpacesPropertyOwner={showSpacesPropertyOwner}
         />
       </div>
