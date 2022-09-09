@@ -723,7 +723,6 @@ video {
   line-height: 1.7;
 }
 
-
 /* ================================office page=========================== */
 .office-detail-section {
   padding: 80px 0;
@@ -833,3 +832,8 @@ video {
   color: var(--paragraph);
 }
 
+/* property owner */
+
+.add-amenity-btn {
+  outline: none;
+}

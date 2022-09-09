@@ -53,7 +53,7 @@ const Spaces = () => {
   const onseeDetail = (id) => {
     console.log(id);
     setSpcesId(id);
-    navigate("/UpdatePage");
+    navigate("/property");
   };
 
   // console.log("element.is", element);
