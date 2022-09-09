@@ -30,6 +30,7 @@ import PrivateRoute from "./PrivateRoute";
 import AllProperties from "../AdminPanel/TabsPages/AllProperties/AllProperties";
 import PrivateRouteForAdmin from "./PrivateRoute";
 import PrivateRouteForuser from "./PrivteRouteForOwner";
+import UpdateProperty from "../UserPanel/DashbordUser/ModelPropertyOwner/UpdateProperty";
 
 const Routing = () => {
   return (
@@ -56,6 +57,7 @@ const Routing = () => {
           <Route path="/map" element={<AddLocation />} />
           <Route path="/property" element={<PropertyOwnerPropertyDetail />} />
           <Route path="/profile" element={<AdminProfilePage />} />
+          <Route path="/updatePage" element={<UpdateProperty />} />
         </Route>
         {/* ============================Admin========================== */}
         <Route element={<PrivateRouteForAdmin />}>

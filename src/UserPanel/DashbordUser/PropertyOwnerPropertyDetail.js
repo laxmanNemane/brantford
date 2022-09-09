@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import HocComponent from "../../Components/HocComponent";
 import AddAmenity from "./ModelPropertyOwner/AddAmenity";
 import AddLocation from "./ModelPropertyOwner/AddLocation";
@@ -25,7 +26,11 @@ const PropertyOwnerPropertyDetail = () => {
               </p>
             </div>
             <div className="heading-buttons-dashbord">
-              <button className="btn-third mx-4">Update</button>
+              <button className="btn-third mx-4">
+                <Link to="/updatePage" className="text-dark">
+                  Update
+                </Link>
+              </button>
               <button className="btn-first mx-4">Refresh</button>
               <button className="btn-second">
                 <i className="fa-solid fa-gear"></i>

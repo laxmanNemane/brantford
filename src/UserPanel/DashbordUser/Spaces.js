@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { NavLink } from "react-router-dom";
 import HocComponent from "../../Components/HocComponent";
+import { usersContext } from "../../Context/UserContext";
 import { FetchAllSpaces } from "../../Redux/PropertyOwnerSlices/allvenuSlice";
 import SpacesModal from "./ModelPropertyOwner/SpacesModal";
 
@@ -16,9 +17,13 @@ const Spaces = () => {
   const dispatch = useDispatch();
   const [spaceId, setSpaceId] = useState();
   const [element, setElement] = useState();
+  const { spaceIdsingle, setSpcesId } = useContext(usersContext);
+  const navigate = useNavigate();
+  // console.log("this user form contxt", user);
 
   const spaces = useSelector((state) => state.Allvenue.AllSpaces);
   console.log(spaces);
+
   // const [spacesDisplay, setSpacesDisplay] = useState([]);
 
   const onDeleteSpace = useCallback((id) => {
@@ -43,6 +48,12 @@ const Spaces = () => {
     setshowStatus(true);
     setElement(data);
     setSpaceId(id);
+  };
+
+  const onseeDetail = (id) => {
+    console.log(id);
+    setSpcesId(id);
+    navigate("/UpdatePage");
   };
 
   // console.log("element.is", element);
@@ -86,10 +97,7 @@ const Spaces = () => {
                       <td>{index + 1}</td>
                       <td>{item.space}</td>
                       <td>{item.address}</td>
-                      <td>
-                        {" "}
-                        <Link to="/property">View</Link>{" "}
-                      </td>
+                      <td onClick={() => onseeDetail(item.id)}>view</td>
                       <td>
                         {item.approve_status === "approved" ? (
                           <button

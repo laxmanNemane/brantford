@@ -37,7 +37,7 @@ const AddLocation = ({ addlocationShow, setAddLocationShow }) => {
     <>
       <Modal
         title="Add Location Detail"
-        visible={addlocationShow}
+        open={addlocationShow}
         onOk={handleOk}
         // width={650}
         onCancel={handleCancel}

@@ -1,9 +1,19 @@
-import { Modal } from "antd";
+import { Modal, Select } from "antd";
 import { Field, Form, Formik } from "formik";
 import React from "react";
 import axios from "axios";
 
 const BaseUrl = "http://bantford.prometteur.in";
+
+const { Option } = Select;
+
+const onChange = (value) => {
+  console.log(`selected ${value}`);
+};
+
+const onSearch = (value) => {
+  console.log("search:", value);
+};
 
 const AddAmenity = ({ showStatus, setshowStatus }) => {
   const handleSubmit = (values) => {
@@ -38,7 +48,7 @@ const AddAmenity = ({ showStatus, setshowStatus }) => {
     <>
       <Modal
         title="Add Amenity"
-        visible={showStatus}
+        open={showStatus}
         onOk={handleOk}
         // width={650}
         onCancel={handleCancel}
@@ -67,12 +77,18 @@ const AddAmenity = ({ showStatus, setshowStatus }) => {
                     <label htmlFor="Space Name" className="label">
                       amenities_type :{" "}
                     </label>
-                    <Field
-                      type="text"
-                      name="amenities_type"
-                      placeholder="amenities_type"
-                      className="form-control  mb-3   "
-                    />
+                    <Select
+                      showSearch
+                      placeholder="Select a person"
+                      optionFilterProp="children"
+                      onChange={onChange}
+                      onSearch={onSearch}
+                      className="form-control  mb-3 m"
+                    >
+                      <Option value="jack">Jack</Option>
+                      <Option value="lucy">Lucy</Option>
+                      <Option value="tom">Tom</Option>
+                    </Select>
                     <label htmlFor="manager_email" className="label">
                       Internet_Speed :{" "}
                     </label>

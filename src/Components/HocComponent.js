@@ -6,13 +6,18 @@ import UserSidebar from "../UserPanel/PropertyOwnerSidebar/UserSidebar";
 // import { DasbordPage } from "../Pages/DasbordPage";
 
 const User = JSON.parse(localStorage.getItem("user"));
+console.log(User.admin.profile);
 
 const HocComponent = (Component) => {
   return (props) => {
     return (
       <div className="d-flex" style={{ height: "100vh" }}>
         <div style={{ width: "18%" }}>
-          {User.admin.profile === "admin" ? <Sidebar /> : <UserSidebar />}
+          {User.admin.profile === "property-owner" ? (
+            <UserSidebar />
+          ) : (
+            <Sidebar />
+          )}
         </div>
         <div style={{ width: "82%" }}>
           <Header />
