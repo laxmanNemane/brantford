@@ -15,7 +15,7 @@ const NewListedProperty = () => {
     axios
       .get(`${BaseUrl}/adminDashboard/all-newlistedpropertirs`, {
         headers: {
-          Authorization: localStorage.getItem("admin_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {

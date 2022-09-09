@@ -14,7 +14,7 @@ const PropertySection = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const [categaries, setCategories]= useState([]);
-  const [singleCategory, setSinglecategory] = useState([1]);
+  const [singleCategory, setSinglecategory] = useState([]);
   const [detailId, setDetailId] = useState(null);
 
 
@@ -60,10 +60,10 @@ const PropertySection = () => {
   return (
     <div>
       <div className="categary-list">
-        <ul>
+        <ul className="">
           {categaries.map((item,index)=>{
             return(
-            <li key={index}  onClick={()=>singleCategary(item.id)}>{item.categary}</li>
+            <li key={index}  onClick={()=>singleCategary(item.id)} className="category-name">{item.categary}</li>
             )
           })}
         </ul>
@@ -85,7 +85,16 @@ const PropertySection = () => {
 
 
           <div className="row">
-            {singleCategory.map((item,index)=> {  
+            {
+             
+            singleCategory && singleCategory.map((item,index)=> {  
+              if(!singleCategory){
+                console.log(singleCategary);
+                    return <p>No records</p>
+              }
+              else{
+
+             
               return (
 
                 <div className="col-lg-4 col-md-6 col-sm-12 my-3" key={index}>
@@ -130,6 +139,7 @@ const PropertySection = () => {
               </div>
             </div>
               )
+            }
             })}
             
             {/* <div className="col-lg-4 col-md-6 col-sm-12 my-3">

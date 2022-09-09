@@ -19,6 +19,8 @@ import { GrAttachment } from "react-icons/gr";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { number } from "echarts";
+import swal from 'sweetalert';
+
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const token = localStorage.getItem("endUser_token");
@@ -29,6 +31,8 @@ const OfficesDetailPage = () => {
   // console.log(localStorage.getItem("endUser_token"));
 
   // getSingleProperty()
+
+  const [alreadyBooked, setAlreadyBooked] = useState(true)
 
   const pageid = useParams();
   console.log(pageid);
@@ -60,8 +64,38 @@ const OfficesDetailPage = () => {
   };
 
 
-  const propertyBooking = () => {
+  const propertyBooking = (id, price) => {
+    console.log(id, price);
+    const propertyPrice = Number(price)
+    const amount = {
+      "amount": propertyPrice
+    }
+
+    console.log(amount)
+
+    axios.post(`${BaseUrl}/endUser/book-space?id=${id}`,amount, {headers:{
+      Authorization:localStorage.getItem("token")
+    }})
+    .then((res)=> {
+      
+      console.log(res)
+      swal("Space Booked", "Thank you for booking sapce", "success");
+    })
+    .catch((err)=> {
+      console.log(err)
+      console.log(err.response.data.error)
+      if(err.response.data.error==="space aleready booked"){
+
+        setAlreadyBooked(false)
+      }
+      swal({
+        title: "Already Booked",
+        text: "You already booked this space",
+        icon: "error",
+      });
     
+    })
+
   }
   // setTimeout(() => {
 
@@ -71,7 +105,14 @@ const OfficesDetailPage = () => {
     showdetails();
   }, []);
 
+ 
+
   // const handleReset = (values) => {};
+
+  const resetForm = (values) => {
+    
+  }
+  
 
   const handleSubmit = (values) => {
     // console.log("hello lakhan ");
@@ -85,11 +126,18 @@ const OfficesDetailPage = () => {
       })
       .then((res) => {
         console.log(res);
+        swal({
+          title: "Submited ",
+          text: "Your requirement added",
+          icon: "success",
+        });
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  
 
   // useEffect(()=>{
   //   handleSubmit();
@@ -132,7 +180,7 @@ const OfficesDetailPage = () => {
                   <p className="actual-price fs-3 fw-bold">
                     ₹<span className="price1">9,500</span>/Seat/Month
                   </p>
-                  <button onClick={()=> propertyBooking()}>Book Property</button>
+                  <button onClick={()=> propertyBooking(categaryDetails.id,categaryDetails.price)} className="bookProperty-btn" disabled={alreadyBooked}>Book Property</button>
                 </div>
               </div>
             </div>
@@ -504,10 +552,14 @@ const OfficesDetailPage = () => {
                               return errors;
                             }}
                             onSubmit={handleSubmit}
+                            onReset={resetForm}
                             className="mt-4"
                           >
-                            {({ values, errors, handleSubmit }) => (
-                              <Form onSubmit={handleSubmit} className="mt-5">
+                            {({ values, errors, handleSubmit, resetForm }) => (
+
+                             
+                              
+                              <Form onSubmit={handleSubmit} onReset={resetForm} className="mt-5">
                                 <Field
                                   type="name"
                                   name="name"
@@ -624,7 +676,9 @@ const OfficesDetailPage = () => {
                                 >
                                   Submit
                                 </button>
+                               
                               </Form>
+                              
                             )}
                           </Formik>
                         </div>
