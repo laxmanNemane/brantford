@@ -24,6 +24,7 @@ const Header = () => {
       })
       .then((res) => {
         console.log(res);
+        localStorage.clear();
       })
       .catch((err) => {
         console.log(err);

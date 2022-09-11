@@ -1,12 +1,34 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HocComponent from "../../Components/HocComponent";
+import { usersContext } from "../../Context/UserContext";
 import AddAmenity from "./ModelPropertyOwner/AddAmenity";
 import AddLocation from "./ModelPropertyOwner/AddLocation";
 
 const PropertyOwnerPropertyDetail = () => {
   const [showStatus, setshowStatus] = useState(false);
   const [addlocationShow, setAddLocationShow] = useState(false);
+  const [amenityPost, setAmenityPost] = useState([])
+
+  const { spaceIdsingle, setSpcesId } = useContext(usersContext);
+
+
+  const getAmenitis = () => {
+    axios.get(`http://bantford.prometteur.in/admin/get-amenitys?spaceId=${spaceIdsingle}`, {
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    }).then((res) => setAmenityPost(res.data)).catch((err) => console.log(err))
+
+  }
+
+  console.log(amenityPost)
+
+  useEffect(() => {
+    getAmenitis()
+  }, []
+  )
 
   const onAddAmenity = () => {
     setshowStatus(true);
@@ -133,7 +155,6 @@ const PropertyOwnerPropertyDetail = () => {
                 </div>
               </div>
             </div>
-
             <div className="row">
               <div className="col-2">
                 <div className="buttons-amenity btn-first">Wi-fi Facility</div>
@@ -145,7 +166,6 @@ const PropertyOwnerPropertyDetail = () => {
                 <div className="buttons-amenity btn-first">Wi-fi Facility</div>
               </div>
             </div>
-
             <div className="description-owner my-4 ">
               <h4 className="heading-fourth mt-4">Description</h4>
               <p className="paragraph">
@@ -175,14 +195,31 @@ const PropertyOwnerPropertyDetail = () => {
                 nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 sunt in culpa qui officia deserunt mollit anim id est laborum
               </p>
-
-              <button
-                className="btn-second mt-5"
-                onClick={() => onAddAmenity()}
-              >
-                Add Ammenity
-              </button>
             </div>
+            <div className="row mt-4">
+              <h4>Amenities</h4>
+              <div className="amenities border px-3 py-3 rounded">
+                <div className="col-4 ">
+                  <div className="Amenities">
+                    {amenityPost.map((ele, index) => {
+                      return (
+                        <div key={index}>
+                          <p className="">{ele.amenities_type ? <><p className="bg-white mx-2 px-3 py-3">{ele.amenities_type} </p> <br /></> : <p className="bg-white mx-2 px-3 py-3">"Type is not Present"</p>}</p>
+                          {/* <p>{ele.}</p> */}
+                        </div>
+                      )
+
+                    })}
+
+                  </div>
+                </div>
+                <div className="col-4"></div>
+              </div>
+
+            </div>
+            <button className="btn-second mt-5" onClick={() => onAddAmenity()}>
+              Add Ammenity
+            </button>
           </div>
           <div className="property-featurs mt-4 px-5 py-5  bg-light  rounded">
             <h4 className="heading-fourth px-2">Featurs</h4>

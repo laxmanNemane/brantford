@@ -837,3 +837,26 @@ video {
 .add-amenity-btn {
   outline: none;
 }
+
+.Amenities {
+  display: flex;
+  position: relative;
+}
+
+.change {
+  display: none;
+}
+
+.container:hover + .change {
+  display: inline-block;
+  /* color: blue; */
+  /* width: 300px;
+  height: 100px; */
+}
+
+.btn-unique {
+  color: #c2255c;
+  border: none;
+  background-color: none;
+  padding: 4px 18px;
+}

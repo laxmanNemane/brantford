@@ -2,6 +2,7 @@ import { Select } from "antd";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useContext, useState } from "react";
+import { useEffect } from "react";
 import Collapse from "react-bootstrap/Collapse";
 import HocComponent from "../../../Components/HocComponent";
 import { usersContext } from "../../../Context/UserContext";
@@ -21,7 +22,7 @@ const UpdateProperty = () => {
   const [other, setOther] = useState(false);
   const { spaceIdsingle, setSpcesId } = useContext(usersContext);
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, resetForm) => {
     axios
       .post(
         `http://bantford.prometteur.in/admin/add-amenity?spaceId=${spaceIdsingle}`,
@@ -30,14 +31,24 @@ const UpdateProperty = () => {
       )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    console.log(values);
+    console.log('values')
+    console.log(values)
+    resetForm();
     setBasic(false);
     setRecreational_Zone(false);
     setCommunity(false);
+    setBreakout_Zone(false);
+    setCafetarea(false)
+    setCompliances(false)
+    setDays(false)
+    setTelicom_service(false)
+    setOther(false)
   };
 
 
-  const addLocationSubmit = (values) => {
+
+
+  const addLocationSubmit = (values, resetForm) => {
     axios
       .post(
         `http://bantford.prometteur.in/admin/add-location`,
@@ -46,6 +57,8 @@ const UpdateProperty = () => {
       )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    console.log(values)
+    resetForm();
   }
 
   return (
@@ -98,14 +111,15 @@ const UpdateProperty = () => {
                           }}
                           validate={(values) => {
                             let errors = {};
-
                             return errors;
                           }}
-                          onSubmit={handleSubmit}
+                          onSubmit={(values, { resetForm }) => {
+                            handleSubmit(values, resetForm);
+                          }}
                           className=""
                         >
-                          {({ values, errors, handleSubmit }) => (
-                            <Form onSubmit={handleSubmit} className="">
+                          {({ values, errors }) => (
+                            <Form className="">
                               <div className="formGroup">
                                 <div className="row">
                                   <div className="col-6">
@@ -118,10 +132,9 @@ const UpdateProperty = () => {
 
                                     <button
                                       type="submit "
-                                      className="btn-first pt-2 my-3"
-                                      onClick={handleSubmit}
+                                      className="btn-unique"
                                     >
-                                      Add
+                                      Add <i class="fa-solid fa-plus"></i>
                                     </button>
                                   </div>
                                 </div>
@@ -155,11 +168,13 @@ const UpdateProperty = () => {
 
                             return errors;
                           }}
-                          onSubmit={handleSubmit}
+                          onSubmit={(values, { resetForm }) => {
+                            handleSubmit(values, resetForm);
+                          }}
                           className=""
                         >
-                          {({ values, errors, handleSubmit }) => (
-                            <Form onSubmit={handleSubmit} className="">
+                          {({ values, errors }) => (
+                            <Form >
                               <div className="formGroup">
                                 <div className="row">
                                   <div className="col-12 w-50 py-4">
@@ -178,8 +193,8 @@ const UpdateProperty = () => {
 
                                     <button
                                       type="submit "
-                                      className="btn-first pt-2 my-3"
-                                      onClick={handleSubmit}
+                                      className="btn-unique"
+
                                     >
                                       Add
                                     </button>
@@ -215,11 +230,14 @@ const UpdateProperty = () => {
 
                             return errors;
                           }}
-                          onSubmit={handleSubmit}
+                          onSubmit={(values, { resetForm }) => {
+                            handleSubmit(values, resetForm);
+                          }}
+
                           className=""
                         >
-                          {({ values, errors, handleSubmit }) => (
-                            <Form onSubmit={handleSubmit} className="">
+                          {({ values, errors }) => (
+                            <Form className="">
                               <div className="formGroup">
                                 <div className="row">
                                   <div className="col-12 w-50 py-4">
@@ -236,13 +254,15 @@ const UpdateProperty = () => {
                                       className="form-control  mb-3 m "
                                     />
 
-                                    <button
+
+                                    <button type="submit" className="btn-first pt-2 my-3">ADDD</button>
+                                    {/* <button
                                       type="submit "
                                       className="btn-first pt-2 my-3"
-                                      onClick={handleSubmit}
+                                      onClick={() => { handleSubmit(); resetForm(); }}
                                     >
                                       Add
-                                    </button>
+                                    </button> */}
                                   </div>
                                 </div>
                               </div>
@@ -275,7 +295,9 @@ const UpdateProperty = () => {
 
                             return errors;
                           }}
-                          onSubmit={handleSubmit}
+                          onSubmit={(values, { resetForm }) => {
+                            handleSubmit(values, resetForm);
+                          }}
                           className=""
                         >
                           {({ values, errors, handleSubmit }) => (
@@ -327,15 +349,17 @@ const UpdateProperty = () => {
                         <Formik
                           initialValues={{
                             amenities_type: "other",
-                            Internet_Speed: "2mbps",
-                            Parking_available: "available",
+                            Internet_Speed: "",
+                            Parking_available: "",
                           }}
                           validate={(values) => {
                             let errors = {};
 
                             return errors;
                           }}
-                          onSubmit={handleSubmit}
+                          onSubmit={(values, { resetForm }) => {
+                            handleSubmit(values, resetForm);
+                          }}
                           className=""
                         >
                           {({ values, errors, handleSubmit }) => (
@@ -410,7 +434,9 @@ const UpdateProperty = () => {
 
                             return errors;
                           }}
-                          onSubmit={handleSubmit}
+                          onSubmit={(values, { resetForm }) => {
+                            handleSubmit(values, resetForm);
+                          }}
                           className=""
                         >
                           {({ values, errors, handleSubmit }) => (
@@ -471,7 +497,9 @@ const UpdateProperty = () => {
 
                             return errors;
                           }}
-                          onSubmit={handleSubmit}
+                          onSubmit={(values, { resetForm }) => {
+                            handleSubmit(values, resetForm);
+                          }}
                           className=""
                         >
                           {({ values, errors, handleSubmit }) => (
@@ -532,7 +560,9 @@ const UpdateProperty = () => {
 
                             return errors;
                           }}
-                          onSubmit={handleSubmit}
+                          onSubmit={(values, { resetForm }) => {
+                            handleSubmit(values, resetForm);
+                          }}
                           className=""
                         >
                           {({ values, errors, handleSubmit }) => (
@@ -545,7 +575,7 @@ const UpdateProperty = () => {
                                     </label>
                                     <Field
                                       type="text"
-                                      name="Internet_Speed"
+                                      name="Compliances"
                                       placeholder="Message"
                                       className="form-control  mb-3 m "
                                     />
@@ -590,11 +620,13 @@ const UpdateProperty = () => {
 
                             return errors;
                           }}
-                          onSubmit={handleSubmit}
+                          onSubmit={(values, { resetForm }) => {
+                            handleSubmit(values, resetForm);
+                          }}
                           className=""
                         >
                           {({ values, errors, handleSubmit }) => (
-                            <Form onSubmit={handleSubmit} className="">
+                            <Form className="">
                               <div className="formGroup">
                                 <div className="row">
                                   <div className="col-12 w-50 py-4">
@@ -606,7 +638,7 @@ const UpdateProperty = () => {
                                     </label>
                                     <Field
                                       type="text"
-                                      name="Internet_Speed"
+                                      name="days"
                                       placeholder="leave message"
                                       className="form-control  mb-3 m "
                                     />
@@ -614,7 +646,7 @@ const UpdateProperty = () => {
                                     <button
                                       type="submit "
                                       className="btn-first pt-2 my-3"
-                                      onClick={handleSubmit}
+
                                     >
                                       Add
                                     </button>
@@ -789,10 +821,12 @@ const UpdateProperty = () => {
 
                       return errors;
                     }}
-                    onSubmit={addLocationSubmit}
+                    onSubmit={(values, { resetForm }) => {
+                      addLocationSubmit(values, resetForm);
+                    }}
                   >
-                    {({ values, errors, handleSubmit }) => (
-                      <Form onSubmit={addLocationSubmit} className="">
+                    {({ values, errors }) => (
+                      <Form className="">
                         <div className="formGroup">
                           <div className="row">
                             <div className="col-12">
@@ -828,7 +862,6 @@ const UpdateProperty = () => {
                               <button
                                 type="submit "
                                 className="btn-first pt-2 my-3"
-                                onClick={handleSubmit}
                               >
                                 Add New Location
                               </button>
@@ -844,7 +877,7 @@ const UpdateProperty = () => {
             {/* </Collapse> */}
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 };
