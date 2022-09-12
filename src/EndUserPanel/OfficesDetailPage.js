@@ -114,9 +114,10 @@ const OfficesDetailPage = () => {
   }
   
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, resetForm) => {
     // console.log("hello lakhan ");
     console.log(values);
+    
 
     axios
       .post(`${BaseUrl}/endUser/send-requirement`, values, {
@@ -135,6 +136,7 @@ const OfficesDetailPage = () => {
       .catch((err) => {
         console.log(err);
       });
+      resetForm();
   };
 
   
@@ -551,15 +553,17 @@ const OfficesDetailPage = () => {
                               }
                               return errors;
                             }}
-                            onSubmit={handleSubmit}
-                            onReset={resetForm}
+                            onSubmit={(values, {resetForm})=>(
+                              handleSubmit(values , resetForm)
+                                  )}
+                            // onReset={resetForm}
                             className="mt-4"
                           >
-                            {({ values, errors, handleSubmit, resetForm }) => (
+                            {({ values, errors, handleSubmit }) => (
 
                              
                               
-                              <Form onSubmit={handleSubmit} onReset={resetForm} className="mt-5">
+                              <Form onSubmit={handleSubmit}  className="mt-5">
                                 <Field
                                   type="name"
                                   name="name"
