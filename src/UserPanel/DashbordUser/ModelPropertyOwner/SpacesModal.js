@@ -234,17 +234,8 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             className="form-control  mb-3  m"
                           />
 
-                          <label htmlFor="status" className="label-user">
-                            Property Status
-                          </label>
-                          <Field
-                            type="text"
-                            name="property_status"
-                            placeholder="property_status"
-                            className="form-control  mb-3  m"
-                          />
                           <label htmlFor="manager_name" className="label-user">
-                            category -id:{" "}
+                            Propert Status:{" "}
                           </label>
                           <Field
                             as="select"
@@ -257,6 +248,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
 
                             <option value="Sale">Sale</option>
                           </Field>
+
                           <label htmlFor="Working Days" className="label-user">
                             Working Days:
                           </label>
@@ -466,12 +458,6 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           <label htmlFor="price" className="label-user">
                             Price :
                           </label>
-                          <Field
-                            type="text"
-                            name="price"
-                            placeholder="price"
-                            className="form-control  mb-3  m"
-                          />
 
                           <Field
                             as="select"

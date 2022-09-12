@@ -2,7 +2,7 @@ import Item from "antd/lib/list/Item";
 import axios from "axios";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import HocComponent from "../../Components/HocComponent";
 import { usersContext } from "../../Context/UserContext";
 import AddAmenity from "./ModelPropertyOwner/AddAmenity";
@@ -12,10 +12,10 @@ const PropertyOwnerPropertyDetail = () => {
   const [showStatus, setshowStatus] = useState(false);
   const [addlocationShow, setAddLocationShow] = useState(false);
   const [amenityPost, setAmenityPost] = useState([]);
-  const [render, setRender] = useState(false)
+  const [render, setRender] = useState(false);
 
   const { spaceIdsingle, spaceDetail } = useContext(usersContext);
-  console.log(spaceDetail)
+  console.log(spaceDetail);
 
   const getAmenitis = () => {
     axios
@@ -52,11 +52,15 @@ const PropertyOwnerPropertyDetail = () => {
       .then((res) => {
         console.log(res.data);
         // showSpacesPropertyOwner();
-        setRender(true)
+        setRender(true);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const onupdatefield = () => {
+
   }
 
   return (
@@ -66,7 +70,6 @@ const PropertyOwnerPropertyDetail = () => {
           <div className="dashbord-section-content d-flex justify-content-between align-items-center bg-light  px-4 py-4 mt-3  rounded">
             <div className="heading-section-dashbord ">
               <h1 className="heading-second mb-1">Property Details</h1>
-
 
               <p className="paragraph">
                 <span className="text-" style={{ color: "#c2255c" }}>
@@ -168,9 +171,7 @@ const PropertyOwnerPropertyDetail = () => {
             <div className="row px-2 my-5">
               <div className="col-6">
                 <div className="heading-location">
-                  <h4 className="heading-second">
-                    {spaceDetail.space}
-                  </h4>
+                  <h4 className="heading-second">{spaceDetail.space}</h4>
                   <p className="paragraph">{spaceDetail.address}</p>
                 </div>
               </div>
@@ -199,46 +200,44 @@ const PropertyOwnerPropertyDetail = () => {
               <p className="paragraph">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum
+                enim ad minim veniam,
               </p>
               <p className="paragraph">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum
+                enim ad minim veniam,
               </p>
               <p className="paragraph">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum
+                enim ad minim veniam,
               </p>
             </div>
             <div className="row mt-4">
               <div className="heading-amenities-btn d-flex align-items-center justify-content-between ">
                 <h4 className="mt-4">Amenities</h4>
-                <button className="btn-second " onClick={() => onAddAmenity()}>
-                  Add Ammenity
+                <button className="btn-second ">
+                  <NavLink to="/updatePage">Add Ammenity</NavLink>
                 </button>
               </div>
               <div className="amenities   py-3 rounded">
                 <div className="col-12 ">
                   <div className="Amenities">
+                    <div>
 
-
+                      {amenityPost && amenityPost.map((listItem, index) => {
+                        return (
+                          <ul key={index} className="list-unstyled ">
+                            <li className="fw-bold">{listItem.amenities_type ? <>{listItem.amenities_type}<i className="fa-solid fa-pen-to-square ms-1 " onClick={() => onupdatefield(listItem.id)}></i>  <i className="fa-solid fa-trash-can ms-1" onClick={() => onDeleteAmenity(listItem.id)}></i></> : ""}</li>
+                            <li>{listItem.Internet_Speed ? <> <i>internet Speed</i> :{listItem.Internet_Speed} </> : ""}</li>
+                            <li>{listItem.Parking_available ? listItem.Parking_available : ""}</li>
+                            <li>{listItem.Parking_price_four_wheelers ? listItem.Parking_price_four_wheelers : ""}</li>
+                          </ul>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
-                <div className="col-4"></div>
               </div>
             </div>
             {/* <button className="btn-second mt-5" onClick={() => onAddAmenity()}>

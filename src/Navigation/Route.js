@@ -31,6 +31,7 @@ import AllProperties from "../AdminPanel/TabsPages/AllProperties/AllProperties";
 import PrivateRouteForAdmin from "./PrivateRoute";
 import PrivateRouteForuser from "./PrivteRouteForOwner";
 import UpdateProperty from "../UserPanel/DashbordUser/ModelPropertyOwner/UpdateProperty";
+import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 const Routing = () => {
   return (
@@ -71,6 +72,7 @@ const Routing = () => {
           <Route path="/all-properties" element={<AllProperties />} />
           <Route path="/detail" element={<PropertyDetailPage />} />
           <Route path="/profile" element={<AdminProfilePage />} />
+          <Route path="/requirments" element={<AdminRequirements />} />
         </Route>
       </Routes>
       {/* <Footer /> */}
