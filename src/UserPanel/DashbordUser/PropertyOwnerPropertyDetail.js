@@ -14,7 +14,8 @@ const PropertyOwnerPropertyDetail = () => {
   const [amenityPost, setAmenityPost] = useState([]);
   const [render, setRender] = useState(false)
 
-  const { spaceIdsingle, setSpcesId } = useContext(usersContext);
+  const { spaceIdsingle, spaceDetail } = useContext(usersContext);
+  console.log(spaceDetail)
 
   const getAmenitis = () => {
     axios
@@ -65,11 +66,13 @@ const PropertyOwnerPropertyDetail = () => {
           <div className="dashbord-section-content d-flex justify-content-between align-items-center bg-light  px-4 py-4 mt-3  rounded">
             <div className="heading-section-dashbord ">
               <h1 className="heading-second mb-1">Property Details</h1>
+
+
               <p className="paragraph">
                 <span className="text-" style={{ color: "#c2255c" }}>
-                  Property /
+                  Property / &nbsp;
                 </span>
-                98AB Alexander Court New York
+                {spaceDetail.city}
               </p>
             </div>
             <div className="heading-buttons-dashbord">
@@ -92,9 +95,9 @@ const PropertyOwnerPropertyDetail = () => {
             style={{ backgroundColor: "#1971c2" }}
           >
             <h1 className="primary-number mt-2 text-uppercase text-white fw-bold ">
-              Sale
+              {spaceDetail.property_status}
             </h1>
-            <p className="heading-fourth text-white">$40,000-$60,000</p>
+            <p className="heading-fourth text-white">${spaceDetail.price}</p>
           </div>
           <div className="manager-profile-card bg-light px-4 py-5 mt-4 ">
             <div className="image-profile position-relative">
@@ -120,7 +123,7 @@ const PropertyOwnerPropertyDetail = () => {
             </div>
             <div className="my-4 py-3">
               <h4 className="heading-ternary position-relative mt-4">
-                lakhan nemane
+                {spaceDetail.manager_name}
               </h4>
               <p className="paragraph my-3">Agent</p>
               <p className="paragraph my-1">
@@ -166,16 +169,16 @@ const PropertyOwnerPropertyDetail = () => {
               <div className="col-6">
                 <div className="heading-location">
                   <h4 className="heading-second">
-                    98X Allexander Court , parbhani
+                    {spaceDetail.space}
                   </h4>
-                  <p className="paragraph">45 Connor St. London, 44523</p>
+                  <p className="paragraph">{spaceDetail.address}</p>
                 </div>
               </div>
               <div className="col-6 text-end">
                 <div className="price-range">
                   <p className="mb-2">price range</p>
                   <h5 className="heading-fourth" style={{ color: "#c2255c" }}>
-                    $40,000-$60,000
+                    ${spaceDetail.price}
                   </h5>
                 </div>
               </div>
@@ -231,34 +234,7 @@ const PropertyOwnerPropertyDetail = () => {
               <div className="amenities   py-3 rounded">
                 <div className="col-12 ">
                   <div className="Amenities">
-                    <Table striped bordered hover className="w-100">
-                      <thead>
-                        <tr>
-                          <th>No.</th>
-                          <th>Amenity type</th>
-                          <th>data</th>
-                          <th>status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {amenityPost.map((ele, index) => {
-                          return (
-                            <tr key={index}>
-                              <td>{index + 1}</td>
-                              <td>{ele.amenities_type ? ele.amenities_type : "basic"}</td>
-                              <td></td>
-                              <td className="">
-                                <i className="fa-solid fa-pen-to-square btn-first"></i>
-                              </td>
-                              <td onClick={() => onDeleteAmenity(ele.id)}>
-                                <i className="fa-solid fa-trash-can btn-second"></i>
-                              </td>
-                              {/* <td>{ele}</td> */}
-                            </tr>
-                          )
-                        })}
-                      </tbody>
-                    </Table>
+
 
                   </div>
                 </div>
