@@ -31,35 +31,30 @@ const UpdateProperty = () => {
       )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    console.log('values')
-    console.log(values)
+    console.log("values");
+    console.log(values);
     resetForm();
     setBasic(false);
     setRecreational_Zone(false);
     setCommunity(false);
     setBreakout_Zone(false);
-    setCafetarea(false)
-    setCompliances(false)
-    setDays(false)
-    setTelicom_service(false)
-    setOther(false)
+    setCafetarea(false);
+    setCompliances(false);
+    setDays(false);
+    setTelicom_service(false);
+    setOther(false);
   };
-
-
-
 
   const addLocationSubmit = (values, resetForm) => {
     axios
-      .post(
-        `http://bantford.prometteur.in/admin/add-location`,
-        values,
-        { headers: { Authorization: localStorage.getItem("token") } }
-      )
+      .post(`http://bantford.prometteur.in/admin/add-location`, values, {
+        headers: { Authorization: localStorage.getItem("token") },
+      })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    console.log(values)
+    console.log(values);
     resetForm();
-  }
+  };
 
   return (
     <>
@@ -77,7 +72,7 @@ const UpdateProperty = () => {
               <div className="row">
                 <div className="col-6">
                   {/* ==============Basics===================== */}
-                  {/* <button
+                  <button
                     className="btn btn-outline-none"
                     onClick={() => setBasic(!basic)}
                     aria-controls="example-collapse-text"
@@ -123,20 +118,204 @@ const UpdateProperty = () => {
                               <div className="formGroup">
                                 <div className="row">
                                   <div className="col-6">
-                                    <label
-                                      htmlFor="manager_email"
-                                      className="label my-2"
+                                    <div
+                                      role="group"
+                                      aria-labelledby="checkbox-group"
+                                      className="my-4"
                                     >
-                                      message :{" "}
-                                    </label>
 
-                                    <button
-                                      type="submit "
-                                      className="btn-unique"
-                                    >
-                                      Add <i class="fa-solid fa-plus"></i>
-                                    </button>
+
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="Air_Conditioning"
+                                          className="fs-5"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp; Air_Conditioning
+                                        </label>
+                                      </div>
+
+                                      {/* cctv servilliance */}
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="CCTV_Surveillance"
+                                          id="check"
+                                          label="CCTV Surveillance"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp; CCTV Surveillance
+                                        </label>
+                                      </div>
+
+                                      {/* Conference_Room */}
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="Conference_Room"
+                                          id="check"
+                                          label="Conference Room"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp;Conference Room
+                                        </label>
+                                      </div>
+                                      {/*  Cubicle */}
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="Cubicles"
+                                          id="check"
+                                          label="Cubicles"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp; Cubicles
+                                        </label>
+                                      </div>
+                                      {/* Drinking_Water */}
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="Drinking_Water"
+                                          id="check"
+                                          label="Drinking_Water"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp; Drinking Water
+                                        </label>
+                                      </div>
+                                      {/* Electricity_Power_Backup */}
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="Electricity_Power_Backup"
+                                          id="check"
+                                          label=" Electricity_Power_Backup"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp; Electricity Power Backup
+                                        </label>
+                                      </div>
+                                      {/* Managed_Reception */}
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="Managed_Reception"
+                                          id="check"
+                                          label="Managed_Reception"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp; Managed Reception
+                                        </label>
+                                      </div>
+
+
+
+                                    </div>
+
+
                                   </div>
+                                  <div className="col-6">
+                                    <div
+                                      role="group"
+                                      aria-labelledby="checkbox-group"
+                                      className="my-4"
+                                    >
+                                      {/* Managing_Director_Cabin */}
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="Managing_Director_Cabin"
+                                          id="check"
+                                          label="Managing_Director_Cabin"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp; Managing Director Cabin
+                                        </label>
+                                      </div>
+                                      {/* Meeting_Conference_Rooms */}
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="Meeting_Conference_Rooms"
+                                          id="check"
+                                          label=" Meeting_Conference_Rooms"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp; Meeting Conference Rooms
+                                        </label>
+                                      </div>
+                                      {/* Passenger_Lift */}
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="Passenger_Lift"
+                                          id="check"
+                                          label="Passenger_Lift"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp; Passenger Lift
+                                        </label>
+                                      </div>
+                                      {/* Reception */}
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="Reception"
+                                          id="check"
+                                          label="Reception"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp; Reception
+                                        </label>
+                                      </div>
+                                      {/* Support_Staff */}
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="Support_Staff"
+                                          id="check"
+                                          label="Support_Staff"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp; Support Staff
+                                        </label>
+                                      </div>
+                                      {/* Window_Coverings */}
+                                      <div className="d-flex my-2">
+                                        <Field
+                                          type="checkbox"
+                                          name="Window_Coverings"
+                                          id="check"
+                                          label="Window_Coverings"
+                                          style={{ width: "18px" }}
+                                        />
+                                        <label className="">
+                                          &nbsp; Window Coverings
+                                        </label>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                  <button
+                                    type="submit "
+                                    className="btn-unique w-25"
+                                  >
+                                    Add <i class="fa-solid fa-plus"></i>
+                                  </button>
                                 </div>
                               </div>
                             </Form>
@@ -144,7 +323,7 @@ const UpdateProperty = () => {
                         </Formik>
                       </div>
                     </div>
-                  </Collapse> */}
+                  </Collapse>
                   {/* ===============================Recreational_Zone =========================== */}
                   <button
                     className="btn"
@@ -160,7 +339,7 @@ const UpdateProperty = () => {
                       <div className="px-3 ">
                         <Formik
                           initialValues={{
-                            amenities_type: "Recreational_Zone",
+                            amenities_type: "recreationalZone",
                             Recreational_Zone: "",
                           }}
                           validate={(values) => {
@@ -174,7 +353,7 @@ const UpdateProperty = () => {
                           className=""
                         >
                           {({ values, errors }) => (
-                            <Form >
+                            <Form>
                               <div className="formGroup">
                                 <div className="row">
                                   <div className="col-12 w-50 py-4">
@@ -194,7 +373,6 @@ const UpdateProperty = () => {
                                     <button
                                       type="submit "
                                       className="btn-unique"
-
                                     >
                                       Add
                                     </button>
@@ -222,7 +400,7 @@ const UpdateProperty = () => {
                       <div className="px-3 ">
                         <Formik
                           initialValues={{
-                            amenities_type: "Community",
+                            amenities_type: "community",
                             Community: "",
                           }}
                           validate={(values) => {
@@ -233,7 +411,6 @@ const UpdateProperty = () => {
                           onSubmit={(values, { resetForm }) => {
                             handleSubmit(values, resetForm);
                           }}
-
                           className=""
                         >
                           {({ values, errors }) => (
@@ -254,8 +431,12 @@ const UpdateProperty = () => {
                                       className="form-control  mb-3 m "
                                     />
 
-
-                                    <button type="submit" className="btn-first pt-2 my-3">ADDD</button>
+                                    <button
+                                      type="submit"
+                                      className="btn-first pt-2 my-3"
+                                    >
+                                      ADDD
+                                    </button>
                                     {/* <button
                                       type="submit "
                                       className="btn-first pt-2 my-3"
@@ -287,7 +468,7 @@ const UpdateProperty = () => {
                       <div className="px-3 ">
                         <Formik
                           initialValues={{
-                            amenities_type: "telicom_service",
+                            amenities_type: "telicomServices",
                             telicom_service: "",
                           }}
                           validate={(values) => {
@@ -426,7 +607,7 @@ const UpdateProperty = () => {
                       <div className="px-3 ">
                         <Formik
                           initialValues={{
-                            amenities_type: "Breakout_Zone",
+                            amenities_type: "breakOutZone",
                             Breakout_Zone: "",
                           }}
                           validate={(values) => {
@@ -489,7 +670,7 @@ const UpdateProperty = () => {
                       <div className="px-3 ">
                         <Formik
                           initialValues={{
-                            amenities_type: "Cafetarea",
+                            amenities_type: "cafeteria",
                             Cafetarea: "",
                           }}
                           validate={(values) => {
@@ -506,18 +687,18 @@ const UpdateProperty = () => {
                             <Form onSubmit={handleSubmit} className="">
                               <div className="formGroup">
                                 <div className="row">
-                                  <div className="col-12 w-50 py-4">
+                                  <div className="col-12 w-50 py-4 ">
                                     <label
                                       htmlFor="manager_email"
-                                      className="label"
+                                      className="label my-2"
                                     >
-                                      Internet_Speed :{" "}
+                                      Cafeteria Message :{" "}
                                     </label>
                                     <Field
                                       type="text"
                                       name="Cafetarea"
                                       placeholder="leave message "
-                                      className="form-control  mb-3 m "
+                                      className="form-control  mb-3  "
                                     />
 
                                     <button
@@ -552,7 +733,7 @@ const UpdateProperty = () => {
                       <div className="px-3 ">
                         <Formik
                           initialValues={{
-                            amenities_type: "Compliances",
+                            amenities_type: "compliances",
                             Compliances: "",
                           }}
                           validate={(values) => {
@@ -646,7 +827,6 @@ const UpdateProperty = () => {
                                     <button
                                       type="submit "
                                       className="btn-first pt-2 my-3"
-
                                     >
                                       Add
                                     </button>
@@ -661,13 +841,13 @@ const UpdateProperty = () => {
                   </Collapse>
 
                   {/* ===============================on demannd service =========================== */}
-                  {/* <button
+                  <button
                     className="btn"
                     onClick={() => setDemand(!demand)}
                     aria-controls="example-collapse-text"
                     aria-expanded={demand}
                   >
-                    days
+                    On Demand message
                   </button>
                   <br />
                   <Collapse in={demand}>
@@ -675,7 +855,7 @@ const UpdateProperty = () => {
                       <div className="px-3 ">
                         <Formik
                           initialValues={{
-                            amenities_type: "ondemand_service",
+                            amenities_type: "ondemandServices",
                             ondemand_service: "",
                           }}
                           validate={(values) => {
@@ -691,11 +871,9 @@ const UpdateProperty = () => {
                               <div className="formGroup">
                                 <div className="row">
                                   <div className="col-12 w-50 py-4">
-
                                     <label
                                       htmlFor="manager_email"
                                       className="label"
-
                                     >
                                       ondemand_service :{" "}
                                     </label>
@@ -705,7 +883,6 @@ const UpdateProperty = () => {
                                       placeholder="ondemand service message"
                                       className="form-control  mb-3 m "
                                     />
-
 
                                     <button
                                       type="submit "
@@ -722,73 +899,9 @@ const UpdateProperty = () => {
                         </Formik>
                       </div>
                     </div>
-                  </Collapse> */}
+                  </Collapse>
                 </div>
               </div>
-
-              {/* ===============================on demannd service =========================== */}
-              {/* <button
-                className="btn"
-                onClick={() => setDemand(!demand)}
-                aria-controls="example-collapse-text"
-                aria-expanded={demand}
-              >
-                days
-              </button>
-              <br />
-              <Collapse in={demand}>
-                <div id="example-collapse-text ">
-                  <div className="px-3 ">
-                    <Formik
-                      initialValues={{
-                        amenities_type: "ondemand_service",
-                        ondemand_service: "",
-                      }}
-                      validate={(values) => {
-                        let errors = {};
-
-                        return errors;
-                      }}
-                      onSubmit={handleSubmit}
-                      className=""
-                    >
-                      {({ values, errors, handleSubmit }) => (
-                        <Form onSubmit={handleSubmit} className="">
-                          <div className="formGroup">
-                            <div className="row">
-                              <div className="col-12 w-50 py-4">
-
-                                <label
-                                  htmlFor="manager_email"
-                                  className="label"
-
-                                >
-                                  ondemand_service :{" "}
-                                </label>
-                                <Field
-                                  type="text"
-                                  name="ondemand_service"
-                                  placeholder="ondemand service message"
-                                  className="form-control  mb-3 m "
-                                />
-
-
-                                <button
-                                  type="submit "
-                                  className="btn-first pt-2 my-3"
-                                  onClick={handleSubmit}
-                                >
-                                  Add
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </Form>
-                      )}
-                    </Formik>
-                  </div>
-                </div>
-              </Collapse> */}
             </div>
           </div>
           <div className="col-12 bg-light px-3 py-4  my-2">
@@ -848,7 +961,10 @@ const UpdateProperty = () => {
                                 placeholder="longitude"
                                 className="form-control  mb-3 m "
                               />
-                              <label htmlFor="Seating capacity " className="label">
+                              <label
+                                htmlFor="Seating capacity "
+                                className="label"
+                              >
                                 Space Id :{" "}
                               </label>
 
@@ -877,7 +993,7 @@ const UpdateProperty = () => {
             {/* </Collapse> */}
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
 };
