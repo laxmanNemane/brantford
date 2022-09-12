@@ -17,7 +17,8 @@ const Spaces = () => {
   const dispatch = useDispatch();
   const [spaceId, setSpaceId] = useState();
   const [element, setElement] = useState();
-  const { spaceIdsingle, setSpcesId } = useContext(usersContext);
+  const { spaceIdsingle, setSpcesId, setSpaceDetail } =
+    useContext(usersContext);
   const navigate = useNavigate();
   // console.log("this user form contxt", user);
 
@@ -50,9 +51,10 @@ const Spaces = () => {
     setSpaceId(id);
   };
 
-  const onseeDetail = (id) => {
+  const onseeDetail = (id, data) => {
     console.log(id);
     setSpcesId(id);
+    setSpaceDetail(data);
     navigate("/property");
   };
 
@@ -97,7 +99,7 @@ const Spaces = () => {
                       <td>{index + 1}</td>
                       <td>{item.space}</td>
                       <td>{item.address}</td>
-                      <td onClick={() => onseeDetail(item.id)}>view</td>
+                      <td onClick={() => onseeDetail(item.id, item)}>view</td>
                       <td>
                         {item.approve_status === "approved" ? (
                           <button
