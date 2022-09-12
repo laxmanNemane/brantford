@@ -5,11 +5,13 @@ import axios from "axios";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
+console.log(parseInt("2"));
+
 const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
   console.log(spaceId);
   // console.log(element);
   const handleSubmit = (values) => {
-    console.log(values);
+    console.log(values.categaryId);
     if (spaceId) {
       // UpdateSpace
       axios
@@ -27,14 +29,21 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
         .catch((err) => {
           console.log(err);
         });
+      console.log(values);
     } else {
       // Addspace
       axios
-        .post(`${BaseUrl}/admin/add-space?categaryId=${4}`, values, {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        })
+        .post(
+          `${BaseUrl}/admin/add-space?categaryId=${parseInt(
+            values.categaryId
+          )}`,
+          values,
+          {
+            headers: {
+              Authorization: localStorage.getItem("token"),
+            },
+          }
+        )
         .then((res) => {
           console.log(res.data);
           console.log(res.data.spaces);
@@ -178,11 +187,22 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             category -id:{" "}
                           </label>
                           <Field
-                            type="text"
+                            as="select"
+                            className=" form-control "
+                            component="select"
+                            id="workspace"
                             name="categaryId"
-                            placeholder="categaryId"
-                            className="form-control  mb-3  m"
-                          />
+                          >
+                            <option value="1">Co working spaces</option>
+
+                            <option value="2">private office</option>
+
+                            <option value="3">Flexi Desk</option>
+
+                            <option value="4">Free space</option>
+
+                            <option value="5">Other</option>
+                          </Field>
                           <label htmlFor="manager_name" className="label-user">
                             manager name:{" "}
                           </label>
@@ -223,15 +243,37 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="property_status"
                             className="form-control  mb-3  m"
                           />
+                          <label htmlFor="manager_name" className="label-user">
+                            category -id:{" "}
+                          </label>
+                          <Field
+                            as="select"
+                            className=" form-control "
+                            component="select"
+                            id="workspace"
+                            name="property_status"
+                          >
+                            <option value="Rent">Rent</option>
+
+                            <option value="Sale">Sale</option>
+                          </Field>
                           <label htmlFor="Working Days" className="label-user">
                             Working Days:
                           </label>
                           <Field
-                            type="text"
+                            as="select"
+                            className=" form-control "
+                            component="select"
+                            id="workspace"
                             name="working_days"
-                            placeholder="working_days"
-                            className="form-control  mb-3  m"
-                          />
+                          >
+                            <option value="Monday-Friday">Monday-Friday</option>
+                            <option value="Hybrid">Hybrid</option>
+
+                            <option value="Saturday-Sunday">
+                              Saturday-Sunday
+                            </option>
+                          </Field>
                         </div>
 
                         <div className="col-12">
@@ -384,11 +426,22 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             category -id:{" "}
                           </label>
                           <Field
-                            type="text"
+                            as="select"
+                            className=" form-control "
+                            component="select"
+                            id="workspace"
                             name="categaryId"
-                            placeholder="categaryId"
-                            className="form-control  mb-3  m"
-                          />
+                          >
+                            <option value="1">Co working spaces</option>
+
+                            <option value="2">private office</option>
+
+                            <option value="3">Flexi Desk</option>
+
+                            <option value="4">Free space</option>
+
+                            <option value="5">Other</option>
+                          </Field>
                           <label htmlFor="manager_name" className="label-user">
                             manager name:{" "}
                           </label>
@@ -420,15 +473,17 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             className="form-control  mb-3  m"
                           />
 
-                          <label htmlFor="status" className="label-user">
-                            Property Status
-                          </label>
                           <Field
-                            type="text"
+                            as="select"
+                            className=" form-control "
+                            component="select"
+                            id="workspace"
                             name="property_status"
-                            placeholder="property_status"
-                            className="form-control  mb-3  m"
-                          />
+                          >
+                            <option value="Rent">Rent</option>
+
+                            <option value="Sale">Sale</option>
+                          </Field>
                           <label htmlFor="Working Days" className="label-user">
                             Working Days:
                           </label>
@@ -438,6 +493,20 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="working_days"
                             className="form-control  mb-3  m"
                           />
+                          <Field
+                            as="select"
+                            className=" form-control "
+                            component="select"
+                            id="workspace"
+                            name="working_days"
+                          >
+                            <option value="Monday-Friday">Monday-Friday</option>
+                            <option value="Hybrid">Hybrid</option>
+
+                            <option value="Saturday-Sunday">
+                              Saturday-Sunday
+                            </option>
+                          </Field>
                         </div>
 
                         <div className="col-12">
