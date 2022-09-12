@@ -1,5 +1,7 @@
+import Item from "antd/lib/list/Item";
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import HocComponent from "../../Components/HocComponent";
 import { usersContext } from "../../Context/UserContext";
@@ -9,30 +11,53 @@ import AddLocation from "./ModelPropertyOwner/AddLocation";
 const PropertyOwnerPropertyDetail = () => {
   const [showStatus, setshowStatus] = useState(false);
   const [addlocationShow, setAddLocationShow] = useState(false);
-  const [amenityPost, setAmenityPost] = useState([])
+  const [amenityPost, setAmenityPost] = useState([]);
+  const [render, setRender] = useState(false)
 
   const { spaceIdsingle, setSpcesId } = useContext(usersContext);
 
-
   const getAmenitis = () => {
-    axios.get(`http://bantford.prometteur.in/admin/get-amenitys?spaceId=${spaceIdsingle}`, {
-      headers: {
-        Authorization: localStorage.getItem("token")
-      }
-    }).then((res) => setAmenityPost(res.data)).catch((err) => console.log(err))
+    axios
+      .get(
+        `http://bantford.prometteur.in/admin/get-amenitys?spaceId=${spaceIdsingle}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
+      .then((res) => setAmenityPost(res.data))
+      .catch((err) => console.log(err));
+  };
 
-  }
-
-  console.log(amenityPost)
+  console.log(amenityPost);
 
   useEffect(() => {
-    getAmenitis()
-  }, []
-  )
+    getAmenitis();
+  }, [render]);
 
   const onAddAmenity = () => {
     setshowStatus(true);
   };
+
+  const onDeleteAmenity = (id) => {
+    console.log(id);
+    axios
+      .delete(`http://bantford.prometteur.in/admin/delete-amenity?id=${id}`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        // showSpacesPropertyOwner();
+        setRender(true)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <div className="property-Detail-property-owner">
       <div className="row mx-3 mt-3">
@@ -50,7 +75,7 @@ const PropertyOwnerPropertyDetail = () => {
             <div className="heading-buttons-dashbord">
               <button className="btn-third mx-4">
                 <Link to="/updatePage" className="text-dark">
-                  Update
+                  Add detail /update
                 </Link>
               </button>
               <button className="btn-first mx-4">Refresh</button>
@@ -197,29 +222,52 @@ const PropertyOwnerPropertyDetail = () => {
               </p>
             </div>
             <div className="row mt-4">
-              <h4>Amenities</h4>
-              <div className="amenities border px-3 py-3 rounded">
-                <div className="col-4 ">
+              <div className="heading-amenities-btn d-flex align-items-center justify-content-between ">
+                <h4 className="mt-4">Amenities</h4>
+                <button className="btn-second " onClick={() => onAddAmenity()}>
+                  Add Ammenity
+                </button>
+              </div>
+              <div className="amenities   py-3 rounded">
+                <div className="col-12 ">
                   <div className="Amenities">
-                    {amenityPost.map((ele, index) => {
-                      return (
-                        <div key={index}>
-                          <p className="">{ele.amenities_type ? <><p className="bg-white mx-2 px-3 py-3">{ele.amenities_type} </p> <br /></> : <p className="bg-white mx-2 px-3 py-3">"Type is not Present"</p>}</p>
-                          {/* <p>{ele.}</p> */}
-                        </div>
-                      )
-
-                    })}
+                    <Table striped bordered hover className="w-100">
+                      <thead>
+                        <tr>
+                          <th>No.</th>
+                          <th>Amenity type</th>
+                          <th>data</th>
+                          <th>status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {amenityPost.map((ele, index) => {
+                          return (
+                            <tr key={index}>
+                              <td>{index + 1}</td>
+                              <td>{ele.amenities_type ? ele.amenities_type : "basic"}</td>
+                              <td></td>
+                              <td className="">
+                                <i className="fa-solid fa-pen-to-square btn-first"></i>
+                              </td>
+                              <td onClick={() => onDeleteAmenity(ele.id)}>
+                                <i className="fa-solid fa-trash-can btn-second"></i>
+                              </td>
+                              {/* <td>{ele}</td> */}
+                            </tr>
+                          )
+                        })}
+                      </tbody>
+                    </Table>
 
                   </div>
                 </div>
                 <div className="col-4"></div>
               </div>
-
             </div>
-            <button className="btn-second mt-5" onClick={() => onAddAmenity()}>
+            {/* <button className="btn-second mt-5" onClick={() => onAddAmenity()}>
               Add Ammenity
-            </button>
+            </button> */}
           </div>
           <div className="property-featurs mt-4 px-5 py-5  bg-light  rounded">
             <h4 className="heading-fourth px-2">Featurs</h4>

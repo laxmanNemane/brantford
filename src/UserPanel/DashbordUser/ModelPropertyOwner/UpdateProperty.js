@@ -77,7 +77,7 @@ const UpdateProperty = () => {
               <div className="row">
                 <div className="col-6">
                   {/* ==============Basics===================== */}
-                  <button
+                  {/* <button
                     className="btn btn-outline-none"
                     onClick={() => setBasic(!basic)}
                     aria-controls="example-collapse-text"
@@ -144,7 +144,7 @@ const UpdateProperty = () => {
                         </Formik>
                       </div>
                     </div>
-                  </Collapse>
+                  </Collapse> */}
                   {/* ===============================Recreational_Zone =========================== */}
                   <button
                     className="btn"
