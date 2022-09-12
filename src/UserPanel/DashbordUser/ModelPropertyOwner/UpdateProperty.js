@@ -214,7 +214,7 @@ const UpdateProperty = () => {
                     aria-controls="example-collapse-text"
                     aria-expanded={Community}
                   >
-                    Community<span className="text-danger ms-1">*</span>
+                    Community
                   </button>
                   <br />
                   <Collapse in={Community}>
