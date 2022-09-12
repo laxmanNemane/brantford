@@ -6,7 +6,6 @@ import axios from "axios";
 // import PropertyDetailPage from "../PropertyDetailPage";
 
 const BaseUrl = "http://bantford.prometteur.in";
-const Admin_token = localStorage.getItem("admin_token");
 
 const NewListedProperty = () => {
   const [newListed, setNewListed] = useState([]);

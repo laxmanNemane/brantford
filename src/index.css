@@ -7,7 +7,10 @@
   --btntxt: white;
 }
 
-html,
+html {
+  font-size: 93.75%;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -65,15 +68,19 @@ p {
   line-height: 1;
   font-weight: 600;
 }
+
 .heading-third {
   font-size: 28px;
 }
+
 .heading-fourth {
   font-size: 24px;
 }
+
 .heading-fifth {
   font-size: 22px;
 }
+
 .heading-Six {
   font-size: 20px;
 }

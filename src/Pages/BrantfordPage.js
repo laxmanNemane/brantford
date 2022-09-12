@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CallToActionSection from "../Components/BrantFordLandingPages/CallToActionSection";
 import HeroSection from "../Components/BrantFordLandingPages/HeroSection";
 import PromiseSection from "../Components/BrantFordLandingPages/PromiseSection";
@@ -15,6 +15,9 @@ import Cities from "../Components/BrantFordLandingPages/Cities";
 import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
 
 const BrantfordPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="brantford-landing-page">
       <Navbar />

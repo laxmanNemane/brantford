@@ -38,10 +38,10 @@ function SignUp() {
     };
 
     axios(config)
-      .then(function(response) {
+      .then(function (response) {
         console.log(JSON.stringify(response.data));
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   };
@@ -73,6 +73,7 @@ function SignUp() {
                     contact: "",
                     email: "",
                     password: "",
+                    profile: "",
                   }}
                   validate={(values) => {
                     let errors = {};
@@ -101,6 +102,18 @@ function SignUp() {
                 >
                   {({ values, errors, handleSubmit }) => (
                     <Form onSubmit={handleSubmit} className="mt-5">
+                      <Field
+                        as="select"
+                        className="my-select w-50 mx-auto text-center"
+                        component="select"
+                        id="workspace"
+                        name="profile"
+                      >
+                        <option value="admin">admin</option>
+                        <option value="property-owner">Property owner</option>
+                        <option value="end_user">End user </option>
+                      </Field>
+
                       <Field
                         type="name"
                         name="name"

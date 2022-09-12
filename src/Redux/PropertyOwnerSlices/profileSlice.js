@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-console.log("You lakhan brilliant");
+console.log("inside of profile slice");
 
 export const getProfileUser = createAsyncThunk(
   "profile/getProfileUser",
   async () => {
     const response = await axios.get(
-      "http://bantford.prometteur.in/propertyOwner/propertyowner-profile",
+      "http://bantford.prometteur.in/admin/admin-profile",
       {
         headers: {
           Authorization: localStorage.getItem("token"),
@@ -16,7 +16,7 @@ export const getProfileUser = createAsyncThunk(
     );
 
     try {
-      //   console.log("profile response", response.data);
+      // console.log("profile response", response.data);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -31,14 +31,14 @@ const allProfileUserSlice = createSlice({
   },
   extraReducers: {
     [getProfileUser.pending]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
     },
     [getProfileUser.fulfilled]: (state, action) => {
-      console.log("fillfilled");
+      // console.log("fillfilled");
       state.userProfile = action.payload;
     },
     [getProfileUser.rejected]: (state, action) => {
-      console.log("rejected error");
+      // console.log("rejected error");
     },
   },
 });

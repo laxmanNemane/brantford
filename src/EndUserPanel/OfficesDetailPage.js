@@ -181,7 +181,7 @@ const OfficesDetailPage = () => {
                 </div>
                 <div className="w-50 ms-auto">
                   <p className="actual-price fs-3 fw-bold">
-                    ₹<span className="price1">9,500</span>/Seat/Month
+                    ₹<span className="price1">{categaryDetails.price}</span>/Seat/Month
                   </p>
                   <button onClick={()=> propertyBooking(categaryDetails.id,categaryDetails.price)} 
                   className = {alreadyBooked ? 'disable-btn' : 'show-btn'}

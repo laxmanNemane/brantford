@@ -1,11 +1,63 @@
-import React, { useState } from "react";
+import Item from "antd/lib/list/Item";
+import axios from "axios";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import HocComponent from "../../Components/HocComponent";
+import { usersContext } from "../../Context/UserContext";
 import AddAmenity from "./ModelPropertyOwner/AddAmenity";
 import AddLocation from "./ModelPropertyOwner/AddLocation";
 
 const PropertyOwnerPropertyDetail = () => {
   const [showStatus, setshowStatus] = useState(false);
   const [addlocationShow, setAddLocationShow] = useState(false);
+  const [amenityPost, setAmenityPost] = useState([]);
+  const [render, setRender] = useState(false)
+
+  const { spaceIdsingle, setSpcesId } = useContext(usersContext);
+
+  const getAmenitis = () => {
+    axios
+      .get(
+        `http://bantford.prometteur.in/admin/get-amenitys?spaceId=${spaceIdsingle}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
+      .then((res) => setAmenityPost(res.data))
+      .catch((err) => console.log(err));
+  };
+
+  console.log(amenityPost);
+
+  useEffect(() => {
+    getAmenitis();
+  }, [render]);
+
+  const onAddAmenity = () => {
+    setshowStatus(true);
+  };
+
+  const onDeleteAmenity = (id) => {
+    console.log(id);
+    axios
+      .delete(`http://bantford.prometteur.in/admin/delete-amenity?id=${id}`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        // showSpacesPropertyOwner();
+        setRender(true)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <div className="property-Detail-property-owner">
       <div className="row mx-3 mt-3">
@@ -21,7 +73,11 @@ const PropertyOwnerPropertyDetail = () => {
               </p>
             </div>
             <div className="heading-buttons-dashbord">
-              <button className="btn-third mx-4">Update</button>
+              <button className="btn-third mx-4">
+                <Link to="/updatePage" className="text-dark">
+                  Add detail /update
+                </Link>
+              </button>
               <button className="btn-first mx-4">Refresh</button>
               <button className="btn-second">
                 <i className="fa-solid fa-gear"></i>
@@ -68,17 +124,17 @@ const PropertyOwnerPropertyDetail = () => {
               </h4>
               <p className="paragraph my-3">Agent</p>
               <p className="paragraph my-1">
-                <i class="fa-regular fa-circle-user me-2"></i> Lorem, ipsum
+                <i className="fa-regular fa-circle-user me-2"></i> Lorem, ipsum
                 dolor.
               </p>
               <p className="paragraph">Lorem, ipsum.</p>
             </div>
             <div className="social-icons my-4 ">
               <button className="btn-first rounded-circle py-2 fs-5 mx-2 ">
-                <i class="fa-brands fa-twitter"></i>
+                <i className="fa-brands fa-twitter"></i>
               </button>
               <button className="btn-first rounded-circle py-2 fs-5 mx-2">
-                <i class="fa-brands fa-instagram"></i>
+                <i className="fa-brands fa-instagram"></i>
               </button>
               <button className="btn-first rounded-circle py-2 fs-5 mx-2">
                 <i className="fa-brands fa-facebook-f"></i>{" "}
@@ -124,7 +180,6 @@ const PropertyOwnerPropertyDetail = () => {
                 </div>
               </div>
             </div>
-
             <div className="row">
               <div className="col-2">
                 <div className="buttons-amenity btn-first">Wi-fi Facility</div>
@@ -136,7 +191,6 @@ const PropertyOwnerPropertyDetail = () => {
                 <div className="buttons-amenity btn-first">Wi-fi Facility</div>
               </div>
             </div>
-
             <div className="description-owner my-4 ">
               <h4 className="heading-fourth mt-4">Description</h4>
               <p className="paragraph">
@@ -166,14 +220,54 @@ const PropertyOwnerPropertyDetail = () => {
                 nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 sunt in culpa qui officia deserunt mollit anim id est laborum
               </p>
-
-              <button
-                className="btn-second mt-5"
-                onClick={() => setshowStatus(true)}
-              >
-                Add Ammenity
-              </button>
             </div>
+            <div className="row mt-4">
+              <div className="heading-amenities-btn d-flex align-items-center justify-content-between ">
+                <h4 className="mt-4">Amenities</h4>
+                <button className="btn-second " onClick={() => onAddAmenity()}>
+                  Add Ammenity
+                </button>
+              </div>
+              <div className="amenities   py-3 rounded">
+                <div className="col-12 ">
+                  <div className="Amenities">
+                    <Table striped bordered hover className="w-100">
+                      <thead>
+                        <tr>
+                          <th>No.</th>
+                          <th>Amenity type</th>
+                          <th>data</th>
+                          <th>status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {amenityPost.map((ele, index) => {
+                          return (
+                            <tr key={index}>
+                              <td>{index + 1}</td>
+                              <td>{ele.amenities_type ? ele.amenities_type : "basic"}</td>
+                              <td></td>
+                              <td className="">
+                                <i className="fa-solid fa-pen-to-square btn-first"></i>
+                              </td>
+                              <td onClick={() => onDeleteAmenity(ele.id)}>
+                                <i className="fa-solid fa-trash-can btn-second"></i>
+                              </td>
+                              {/* <td>{ele}</td> */}
+                            </tr>
+                          )
+                        })}
+                      </tbody>
+                    </Table>
+
+                  </div>
+                </div>
+                <div className="col-4"></div>
+              </div>
+            </div>
+            {/* <button className="btn-second mt-5" onClick={() => onAddAmenity()}>
+              Add Ammenity
+            </button> */}
           </div>
           <div className="property-featurs mt-4 px-5 py-5  bg-light  rounded">
             <h4 className="heading-fourth px-2">Featurs</h4>

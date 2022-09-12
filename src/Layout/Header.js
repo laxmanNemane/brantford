@@ -24,6 +24,7 @@ const Header = () => {
       })
       .then((res) => {
         console.log(res);
+        localStorage.clear();
       })
       .catch((err) => {
         console.log(err);
@@ -52,10 +53,10 @@ const Header = () => {
           key: "3",
           label: (
             <button onClick={logOutHandler}>
-              <NavLink to="/" className="fs-5">
-                <AiOutlinePoweroff className="mx-2" />
-                Logout
-              </NavLink>
+              {/* <NavLink to="/" className="fs-5"> */}
+              <AiOutlinePoweroff className="mx-2" />
+              Logout
+              {/* </NavLink> */}
             </button>
           ),
         },

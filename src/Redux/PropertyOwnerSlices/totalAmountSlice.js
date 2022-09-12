@@ -23,14 +23,14 @@ const totalAmountSlice = createSlice({
   },
   extraReducers: {
     [fetchTotalAmount.pending]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
     },
     [fetchTotalAmount.fulfilled]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
       state.totalAmount = action.payload;
     },
     [fetchTotalAmount.rejected]: (state, action) => {
-      console.log("rejected error");
+      // console.log("rejected error");
     },
   },
 });

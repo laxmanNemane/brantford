@@ -23,14 +23,14 @@ const AllPropertyOwnerCategoriesSlice = createSlice({
   },
   extraReducers: {
     [FetchAllCategories.pending]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
     },
     [FetchAllCategories.fulfilled]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
       state.AllPropertyOwnerCategories = action.payload;
     },
     [FetchAllCategories.rejected]: (state, action) => {
-      console.log("rejected error");
+      // console.log("rejected error");
     },
   },
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Navbar from "../Layout/Navbar";
-// import ForgetPassword from "../Components/ForgetPassword";
+import ForgetPassword from "../Components/ForgetPassword";
 import Login from "../Pages/Login";
 // import Sidebar from "../Layout/Sidebar";
 import DasbordPage from "../Pages/DasbordPage";
@@ -13,7 +13,6 @@ import PropertyDetailPage from "../AdminPanel/PropertyDetailPage";
 import AdminPrivacyPolicy from "../AdminPanel/AdminPrivacyPolicy";
 import AdminCategories from "../AdminPanel/AdminCategories";
 import BrantfordPage from "../Pages/BrantfordPage";
-import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 import SignUp from "../Pages/SignUp";
 
@@ -39,7 +38,7 @@ const Routing = () => {
       {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<BrantfordPage />} />
-        <Route path="/terms&conditions" element={<TermsCondition />} />
+        <Route path="/terms-conditions" element={<TermsCondition />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/userDashbord" element={<UserDashbord />} />
@@ -64,7 +63,8 @@ const Routing = () => {
         {/* <Route element={<PrivateRoute />}> */}
         <Route path="/all-properties" element={<AllProperties />} />
         <Route path="/detail" element={<PropertyDetailPage />} />
-        <Route path="/requirements" element={<AdminRequirements />} />
+        <Route path="/enduser" element={<EndUserProfilePage />} />
+        {/* <Route path="/requirements" element={<AdminRequirements />} /> */}
         {/* <Route path="/dashbord" element={<DasbordPage />} />
         <Route path="/properties" element={<Properties />} />
         <Route path="/revenu" element={<RevenuAdmin />} />
@@ -81,13 +81,9 @@ const Routing = () => {
           <Route path="/revenu" element={<RevenuAdmin />} />
           <Route path="/tenants" element={<AdminTenants />} />
           <Route path="/detail" element={<PropertyDetailPage />} />
-          <Route path="/privacy-policy" element={<AdminPrivacyPolicy />} />
-          <Route path="/categories" element={<AdminCategories />} />
-          {/* admin panel */}
           <Route path="/profile" element={<AdminProfilePage />} />
-          <Route path="/enduser" element={<EndUserProfilePage />} />
+          
         </Route>
-        {/* <Route path="*" element={<h1>Page is Not Found</h1>} /> */}
       </Routes>
    
     </BrowserRouter>

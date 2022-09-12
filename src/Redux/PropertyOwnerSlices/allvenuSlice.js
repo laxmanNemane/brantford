@@ -4,7 +4,7 @@ import axios from "axios";
 export const FetchAllSpaces = createAsyncThunk(
   "space/FetchAllSpaces",
   async () => {
-    const response = axios.get(
+    const response = await axios.get(
       "http://bantford.prometteur.in/propertyOwner/all-venues",
       {
         headers: {
@@ -12,6 +12,7 @@ export const FetchAllSpaces = createAsyncThunk(
         },
       }
     );
+
     return response.data;
   }
 );
@@ -23,14 +24,14 @@ const allSpcaesSlice = createSlice({
   },
   extraReducers: {
     [FetchAllSpaces.pending]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
     },
     [FetchAllSpaces.fulfilled]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
       state.AllSpaces = action.payload;
     },
     [FetchAllSpaces.rejected]: (state, action) => {
-      console.log("rejected error");
+      // console.log("rejected error");
     },
   },
 });

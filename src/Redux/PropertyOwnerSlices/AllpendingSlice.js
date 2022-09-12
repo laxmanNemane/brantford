@@ -23,14 +23,14 @@ const AllPendingSlice = createSlice({
   },
   extraReducers: {
     [FetchAllPendingProperties.pending]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
     },
     [FetchAllPendingProperties.fulfilled]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
       state.PendingPropertiesOwner = action.payload;
     },
     [FetchAllPendingProperties.rejected]: (state, action) => {
-      console.log("rejected error");
+      // console.log("rejected error");
     },
   },
 });

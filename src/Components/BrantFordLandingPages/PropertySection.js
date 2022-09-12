@@ -35,8 +35,6 @@ const PropertySection = () => {
   }
 
 
-  
-
  const  singleCategary = (id) => {
     console.log(id);
     axios.get(`${BaseUrl}/endUser/get-categary?id=${id}`, {headers: {
@@ -187,7 +185,9 @@ const PropertySection = () => {
                   </p>
                   <div className="button-space d-flex justify-content-between btn-area">
                     <p className=" fw-bold">Co-working</p>
-                    <button className="btn-first ">Detail</button>
+                    <NavLink to="/office-detail">
+                      <button className="btn-first">Detail</button>
+                    </NavLink>
                   </div>
                 </div>
               </div>
@@ -226,7 +226,9 @@ const PropertySection = () => {
                   </p>
                   <div className="button-space d-flex justify-content-between btn-area">
                     <p className=" fw-bold">Co-working</p>
-                    <button className=" btn-first">Detail</button>
+                    <Link to="/office-detail">
+                      <button className="btn-first">Detail</button>
+                    </Link>{" "}
                   </div>
                 </div>
               </div>
@@ -265,7 +267,9 @@ const PropertySection = () => {
                   </p>
                   <div className="button-space d-flex justify-content-between btn-area">
                     <p className=" fw-bold">Co-working</p>
-                    <button className="btn-first">Detail</button>
+                    <NavLink to="/office-detail">
+                      <button className="btn-first">Detail</button>
+                    </NavLink>{" "}
                   </div>
                 </div>
               </div>
@@ -304,7 +308,9 @@ const PropertySection = () => {
                   </p>
                   <div className="button-space d-flex justify-content-between btn-area">
                     <p className=" fw-bold">Co-working</p>
-                    <button className="btn-first">Detail</button>
+                    <NavLink to="/office-detail">
+                      <button className="btn-first">Detail</button>
+                    </NavLink>{" "}
                   </div>
                 </div>
               </div>
@@ -343,7 +349,9 @@ const PropertySection = () => {
                   </p>
                   <div className="button-space d-flex justify-content-between btn-area">
                     <p className=" fw-bold">Co-working</p>
-                    <button className="btn-first">Detail</button>
+                    <NavLink to="/office-detail">
+                      <button className="btn-first">Detail</button>
+                    </NavLink>{" "}
                   </div>
                 </div>
               </div>

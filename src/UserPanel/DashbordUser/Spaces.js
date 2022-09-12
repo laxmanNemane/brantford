@@ -1,18 +1,33 @@
 import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 // import { NavLink } from "react-router-dom";
 import HocComponent from "../../Components/HocComponent";
+import { usersContext } from "../../Context/UserContext";
+import { FetchAllSpaces } from "../../Redux/PropertyOwnerSlices/allvenuSlice";
 import SpacesModal from "./ModelPropertyOwner/SpacesModal";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
 const Spaces = () => {
   const [showStatus, setshowStatus] = useState(false);
-  const [spacesDisplay, setSpacesDisplay] = useState([]);
+  const [render, setRender] = useState(false);
+  const dispatch = useDispatch();
+  const [spaceId, setSpaceId] = useState();
+  const [element, setElement] = useState();
+  const { spaceIdsingle, setSpcesId } = useContext(usersContext);
+  const navigate = useNavigate();
+  // console.log("this user form contxt", user);
 
-  const deletespace = useCallback((id) => {
-    console.log(id);
+  const spaces = useSelector((state) => state.Allvenue.AllSpaces);
+  console.log(spaces);
+
+  // const [spacesDisplay, setSpacesDisplay] = useState([]);
+
+  const onDeleteSpace = useCallback((id) => {
+    // console.log(id);
     axios
       .delete(`${BaseUrl}/admin/delete-space?id=${id}`, {
         headers: {
@@ -21,61 +36,43 @@ const Spaces = () => {
       })
       .then((res) => {
         console.log(res.data);
-        showSpacesPropertyOwner();
+        // showSpacesPropertyOwner();
+        setRender(true);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  // const showSpacesAdmin = () =>{
-  //     axios.get(`${BaseUrl}/adminDashboard/all-properties`,{headers:{
-  //         Authorization : localStorage.getItem("token")
-  //     }})
-  //     .then((res)=> {
-  //         console.log(res.data)
-  //         console.log(res.data.spaces)
-  //         console.log(res.data.spaces[0].id)
-  //         setSpacesDisplay(res.data.spaces)
-  //     })
-  //     .catch((err)=> {
-
-  //         console.log(err)
-
-  //     })
-  // }
-
-  const showSpacesPropertyOwner = () => {
-    axios
-      .get(`${BaseUrl}/propertyOwner/all-venues`, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        console.log(res.data);
-        setSpacesDisplay(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const onUpdateValues = (data, id) => {
+    setshowStatus(true);
+    setElement(data);
+    setSpaceId(id);
   };
 
-  console.log("stete ", spacesDisplay);
+  const onseeDetail = (id) => {
+    console.log(id);
+    setSpcesId(id);
+    navigate("/property");
+  };
+
+  // console.log("element.is", element);
+
+  const OnAddSpacess = () => {
+    setshowStatus(true);
+    setSpaceId("");
+  };
 
   useEffect(() => {
-    // showSpacesAdmin();
-    deletespace();
-    showSpacesPropertyOwner();
-  }, [deletespace]);
+    dispatch(FetchAllSpaces());
+  }, [render, showStatus]);
 
   return (
     <div className="mx-5">
       <div className="row">
         <div className="col-12 d-flex align-items-center justify-content-between">
           <h5>All Spaces</h5>
-          <button onClick={() => setshowStatus(true)} className="btn-first">
+          <button onClick={() => OnAddSpacess()} className="btn-first">
             Add Space
           </button>
         </div>
@@ -93,96 +90,71 @@ const Spaces = () => {
               </tr>
             </thead>
             <tbody>
-              {spacesDisplay.map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{item.id}</td>
-                    <td>{item.space}</td>
-                    <td>{item.address}</td>
-                    <td>View</td>
-                    <td>
-                      {" "}
-                      <button
-                        className="btn-success"
-                        style={{
-                          color: "white",
-                          padding: "6px 12px",
-                          borderRadius: "12px",
-                          border: "none",
-                        }}
-                      >
-                        {item.approve_status}
-                      </button>
-                    </td>
-                    <td>
-                      <button onClick={() => deletespace(item.id)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-              {/* <tr>
-=======
-                            <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>
-                                    <NavLink to="/property">View</NavLink>
-                                </td>
-                                <td>
-                                    {" "}
-                                    <button
-                                        className="btn-success"
-                                        style={{
-                                            color: "white",
-                                            padding: "6px 12px",
-                                            borderRadius: "12px",
-                                            border: "none",
-                                        }}
-                                    >
-                                        Approved
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
->>>>>>> 1d9e988b755b1df17b99cd4f1a66ddfd0932d41b
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>View</td>
-                                <td>
-                                    {" "}
-                                    <button
-                                        className="btn-danger"
-                                        style={{
-                                            color: "white",
-                                            padding: "6px 12px",
-                                            borderRadius: "12px",
-                                            border: "none",
-                                        }}
-                                    >
-                                        Rejected
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>View</td>
-<<<<<<< HEAD
-                                <td> <button className="btn-warning" style={{ color: "white", padding: "6px 12px", borderRadius: "12px", border: "none" }}>Pending
-                                </button></td>
-                            </tr> */}
+              {spaces &&
+                spaces.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{item.space}</td>
+                      <td>{item.address}</td>
+                      <td onClick={() => onseeDetail(item.id)}>view</td>
+                      <td>
+                        {item.approve_status === "approved" ? (
+                          <button
+                            className="btn-success"
+                            style={{
+                              color: "white",
+                              padding: "6px 12px",
+                              borderRadius: "12px",
+                              border: "none",
+                            }}
+                          >
+                            {item.approve_status}
+                          </button>
+                        ) : (
+                          <button
+                            className="btn-warning"
+                            style={{
+                              color: "white",
+                              padding: "6px 12px",
+                              borderRadius: "12px",
+                              border: "none",
+                            }}
+                          >
+                            {item.approve_status}
+                          </button>
+                        )}
+                      </td>
+                      <td>
+                        <button
+                          className="btn-second"
+                          onClick={() =>
+                            onUpdateValues(item, item.id, item.categaryId)
+                          }
+                        >
+                          <i className="fa-solid fa-pen-to-square"></i>
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          className="btn-first"
+                          onClick={() => onDeleteSpace(item.id)}
+                        >
+                          <i className="fa-solid fa-trash-can"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </Table>
         </div>
         <SpacesModal
           setshowStatus={setshowStatus}
           showStatus={showStatus}
-          showSpacesPropertyOwner={showSpacesPropertyOwner}
+          spaceId={spaceId}
+          element={element}
+          // showSpacesPropertyOwner={showSpacesPropertyOwner}
         />
       </div>
     </div>

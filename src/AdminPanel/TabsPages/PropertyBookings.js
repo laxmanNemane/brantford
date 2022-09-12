@@ -90,7 +90,7 @@ const PropertyBookings = () => {
                     className="btn px-3 ms-3  border  accept_booking "
                     onClick={() => acceptHandler(bookedProperties)}
                   >
-                    Accept <AiOutlineDoubleRight />
+                    Accept
                   </button>
                   <button
                     className="btn mx-3 "

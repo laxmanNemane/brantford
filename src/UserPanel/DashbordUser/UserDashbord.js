@@ -2,11 +2,31 @@ import React, { useEffect } from "react";
 import "../Style.css";
 import { NavLink } from "react-router-dom";
 
-import ReactEcharts from "echarts-for-react";
+// import ReactEcharts from "echarts-for-react";
 
 import { BiBuildingHouse } from "react-icons/bi";
 
-// import { HiArrowTrendingUp } from "react-icons/hi";
+// import { FiUsers, FiWatch } from "react-icons/fi";
+import ReactEcharts from "echarts-for-react";
+// import { CircularProgressbar } from "react-circular-progressbar";
+// import "react-circular-progressbar/dist/styles.css";
+// import {
+//   MdIncompleteCircle,
+//   MdOutlineCancel,
+//   MdOutlineWatch,
+// } from "react-icons/md";
+// import {
+//   BiBuildingHouse,
+
+// } from "react-icons/bi";
+// import {
+//   BsArrowBarUp,
+//   BsArrowDown,
+//   BsArrowLeft,
+//   BsArrowUp,
+//   BsLightningCharge,
+//   BsWatch,
+// } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io";
 import HocComponent from "../../Components/HocComponent";
 // import { usersContext } from "../../Context/UserContext";
@@ -27,13 +47,43 @@ const UserDashbord = () => {
   // console.log(users);
   const data = useSelector((state) => state);
   console.log(data);
-  const bookedProperties = useSelector(
-    (state) => state.POBookings.ApprovepropertiesPO
-  );
-  console.log(bookedProperties.length);
+  // console.log("all venues", data.Allvenue.AllSpaces);
+  // console.log("all venues length", data.Allvenue.AllSpaces.length);
+  // console.log("total amount paid ", data.POAmount.totalAmount);
+  // console.log(
+  //   "all approved propertis",
+  //   data.POApprovedProperty.ApprovepropertiesPO
+  // );
+  // console.log("all bookings", data.POBookings.ApprovepropertiesPO);
+  // console.log(
+  //   "all bookings length",
+  //   data.POBookings.ApprovepropertiesPO.length
+  // );
+  // console.log("all categoris", data.POCategories.AllPropertyOwnerCategories);
+  // console.log(
+  //   "all pending properties",
+  //   data.POPendingProperty.PendingPropertiesOwner
+  // );
+  // console.log(
+  //   "all pending properties length",
+  //   data.POPendingProperty.PendingPropertiesOwner.length
+  // );
+  // console.log(
+  //   "all rejected properties",
+  //   data.PORejectedProperties.RejectedpropertiesPO
+  // );
+  // console.log(
+  //   "all rejected properties length",
+  //   data.PORejectedProperties.RejectedpropertiesPO.length
+  // );
 
-  var size = Object.keys(bookedProperties).length;
-  console.log(size); // Prints: 4
+  // const bookedProperties = useSelector(
+  //   (state) => state.POBookings.ApprovepropertiesPO
+  // );
+  // console.log(bookedProperties.length);
+
+  // var size = Object.keys(bookedProperties).length;
+  // console.log(size); // Prints: 4
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -44,8 +94,8 @@ const UserDashbord = () => {
     dispatch(FetchAllRejectedProperties());
     dispatch(FetchAllSpaces());
     dispatch(FetchAllVisitors());
-    dispatch(fetchTotalAmount());
-    dispatch(fetchTotalBooking());
+    // dispatch(fetchTotalAmount());
+    // dispatch(fetchTotalBooking());
 
     // eslint-disable-next-line
   }, []);
@@ -79,14 +129,24 @@ const UserDashbord = () => {
       orient: "vertical",
       bottom: "bottom",
     },
+    tooltip: {
+      trigger: "item",
+    },
+    legend: {
+      orient: "vertical",
+      bottom: "bottom",
+    },
     series: [
       {
         name: "Access From",
         type: "pie",
         radius: "50%",
         data: [
-          { value: 2, name: "Booked Properties" },
-          { value: 1, name: "Rejected Properties" },
+          { value: `${data.Allvenue.AllSpaces.length}`, name: "Properties" },
+          {
+            value: `${data.POPendingProperty.PendingPropertiesOwner.length}`,
+            name: "Booked Properties",
+          },
         ],
         emphasis: {
           itemStyle: {
@@ -133,7 +193,9 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-6">
                         <div className="decsiption-user-dashbord">
-                          <p className="value-number">5,445</p>
+                          <p className="value-number">
+                            {data.Allvenue.AllSpaces.length}
+                          </p>
                           <p className="user-dash-heading">All Spaces</p>
                         </div>
                       </div>
@@ -158,7 +220,12 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-6">
                         <div className="decsiption-user-dashbord">
-                          <p className="value-number">5,445</p>
+                          <p className="value-number">
+                            {
+                              data.POPendingProperty.PendingPropertiesOwner
+                                .length
+                            }
+                          </p>
                           <p className="user-dash-heading">All Booked Space</p>
                         </div>
                       </div>
@@ -183,7 +250,12 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-6">
                         <div className="decsiption-user-dashbord">
-                          <p className="value-number">5,445</p>
+                          <p className="value-number">
+                            {
+                              data.PORejectedProperties.RejectedpropertiesPO
+                                .length
+                            }
+                          </p>
                           <p className="user-dash-heading">Rejected Space</p>
                         </div>
                       </div>
@@ -208,8 +280,11 @@ const UserDashbord = () => {
                       </div>
                       <div className="col-6">
                         <div className="decsiption-user-dashbord">
-                          <p className="value-number">5,445</p>
-                          <p className="user-dash-heading">Visitors </p>
+                          <p className="value-number">
+                            {" "}
+                            {data.allvisitors.AllVisitors.length}
+                          </p>
+                          <p className="user-dash-heading">Visitors(todays)</p>
                         </div>
                       </div>
                       <div className="col-2">
@@ -227,31 +302,38 @@ const UserDashbord = () => {
           </div>
 
           <div className="col-12 mt-5 ">
-            <h5 className="name mt-4">Account Summary</h5>
-            <hr />
-            <div className="col-12">
-              <div className="account-summery-section">
-                <div className="row">
-                  <div className="col-8">
-                    <div
-                      className="this-week-section bg-white pt-5"
-                      style={{ borderRadius: "15px" }}
-                    >
-                      <div className="icons-sections-this">
-                        <div className="chart-daily mx-3">
-                          <p className="paragraph fw-bold">Revenu status</p>
-                          <p></p>
-                          <ReactEcharts option={{ ...option1 }} />
+            <div className="col-12 mt-5">
+              <h5 className="name mt-4">Account Summary</h5>
+              <hr />
+              <div className="col-12">
+                <div className="account-summery-section">
+                  <div className="row">
+                    <div className="col-8">
+                      <div
+                        className="this-week-section bg-white pt-5"
+                        style={{ borderRadius: "15px" }}
+                      >
+                        <div className="icons-sections-this">
+                          <div className="chart-daily mx-3">
+                            <p className="paragraph fw-bold">Revenu status</p>
+                            <p></p>
+                            <ReactEcharts option={{ ...option1 }} />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-4">
-                    <div
-                      className="this-week-section bg-white pt-5"
-                      style={{ borderRadius: "15px" }}
-                    >
-                      <ReactEcharts option={{ ...option }} />
+                    <div className="col-4">
+                      <div
+                        className="this-week-section bg-white "
+                        style={{ borderRadius: "15px" }}
+                      >
+                        <div
+                          className=" bg-white py-3"
+                          style={{ borderRadius: "15px" }}
+                        >
+                          <ReactEcharts option={{ ...option }} />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
