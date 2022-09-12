@@ -1,8 +1,12 @@
+import axios from "axios";
 import React, { useState } from "react";
 // import "../../Styles/LandingPage/HeroSection.css";
 // import videoBg from "../../Assets/video/pexels-alena-darmel-7646596.mp4";
 import { Dropdown } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
+
+const BaseUrl = "http://bantford.prometteur.in";
+
 
 const HeroSection = () => {
 
@@ -10,6 +14,42 @@ const [searchKey, setSearchKey] = useState();
 
   const searchHandler = () => {
     console.log(searchKey);
+    const searchData = {"city": searchKey}
+    console.log(searchData)
+
+  //   axios.get(`${BaseUrl}/endUser/get-spacesbycity`, searchData, {headers:{
+  //     Authorization: localStorage.getItem("token"),
+  //   },
+  // })
+  //   .then((res)=> {
+      
+  //     console.log(res)
+  //   })
+  //   .catch((err)=> {
+
+  //     console.log(err)
+  //   })
+
+  axios
+  .get(`${BaseUrl}/endUser/get-spacesbycity`, searchData, {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  })
+  .then((res) => {
+    console.log(res);
+    // swal({
+    //   title: "Submited ",
+    //   text: "Your requirement added",
+    //   icon: "success",
+    // });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+
+
   }
 
 

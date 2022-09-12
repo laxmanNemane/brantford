@@ -848,8 +848,12 @@ video {
 
 
 .bookProperty-btn{padding: 10px 15px; background-color: #743772; color: #ffff; border-radius: 10px; border: none;}
+.disable-btn{padding: 10px 15px; background-color: #743772; color: #ffff; border-radius: 10px; border: none;}
+.show-btn{padding: 10px 15px; background-color: #fafafa; color: #743772; border-radius: 10px; border: none;}
 
 
+/* property section  */
+.empty-records { background-color: #C2255C; color: #ffff; padding: 15px 10px; width: 25%; border-radius: 20px;}
 
 
 

@@ -148,6 +148,7 @@ const OfficesDetailPage = () => {
   console.log(categaryDetails.space);
 
   return (
+    
     <div className="office-detail-section hj py-5 position-relative">
       {/* {Object.keys(categaryDetails).map((item, index) => {
 
@@ -182,7 +183,10 @@ const OfficesDetailPage = () => {
                   <p className="actual-price fs-3 fw-bold">
                     ₹<span className="price1">9,500</span>/Seat/Month
                   </p>
-                  <button onClick={()=> propertyBooking(categaryDetails.id,categaryDetails.price)} className="bookProperty-btn" disabled={alreadyBooked}>Book Property</button>
+                  <button onClick={()=> propertyBooking(categaryDetails.id,categaryDetails.price)} 
+                  className = {alreadyBooked ? 'disable-btn' : 'show-btn'}
+                  // disabled={alreadyBooked}
+                  >Book Property</button>
                 </div>
               </div>
             </div>
@@ -650,7 +654,6 @@ const OfficesDetailPage = () => {
                               <option value="free spaces">Free space</option>
                               <option value="others">Other</option>
                             </Field>
-
 
                             <Field
                                   type="date"

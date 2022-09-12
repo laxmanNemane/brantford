@@ -47,7 +47,11 @@ const PropertySection = () => {
       console.log(res.data)
       setSinglecategory(res.data);
     })
-    .catch((err)=> {console.log(err)})
+    .catch((err)=> {
+      
+      console.log(err)
+      setSinglecategory("")
+    })
   }
 
 
@@ -85,10 +89,13 @@ const PropertySection = () => {
 
 
           <div className="row">
+
             {
+
              
-            singleCategory && singleCategory.map((item,index)=> {  
-              if(!singleCategory){
+             
+            singleCategory ? singleCategory.map((item,index)=> {  
+              if(singleCategory===""){
                 console.log(singleCategary);
                     return <p>No records</p>
               }
@@ -140,7 +147,11 @@ const PropertySection = () => {
             </div>
               )
             }
-            })}
+            }):  (
+              <div className="empty-records">
+                <p>This Category does not added spaces into it.</p>
+              </div>
+            )}
             
             {/* <div className="col-lg-4 col-md-6 col-sm-12 my-3">
               <div className="properties">
