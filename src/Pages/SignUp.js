@@ -14,7 +14,6 @@ const BaseUrl = "http://bantford.prometteur.in";
 function SignUp() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-
   const handleSubmit = (values, resetForm) => {
     console.log(values);
     axios
@@ -27,7 +26,6 @@ function SignUp() {
       })
       .catch((err) => console.log(err));
     resetForm();
-
   };
 
   return (
@@ -55,7 +53,7 @@ function SignUp() {
                   initialValues={{
                     name: "",
                     email: "",
-                    password: ""
+                    password: "",
                     contact: "",
                     profile: "",
                     address: "",

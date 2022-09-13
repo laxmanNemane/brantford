@@ -2,28 +2,28 @@ import axios from "axios";
 import HocLandingPage from "../Components/HocLandingPage";
 import React, { useEffect, useState } from "react";
 
-
-
 const TermsCondition = () => {
+  const [terms, setTerms] = useState();
 
-    const [terms, setTerms] = useState();
+  const getTerms = () => {
+    axios
+      .get(`http://bantford.prometteur.in/endUser/terms-conditions`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setTerms(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    const getTerms = () => {
-        axios.get(`${BaseUrl}/endUser/terms-conditions`,{headers: {
-            Authorization: localStorage.getItem("token")
-        }})
-        .then((res)=>{
-            console.log(res)
-            setTerms(res.data)
-        })
-        .catch((err)=> {console.log(err)})
-    }
-
-    useEffect(()=>{
-        getTerms()
-    },[])
-
-
+  useEffect(() => {
+    getTerms();
+  }, []);
 
   return (
     <div className="terms-conditions-section">
