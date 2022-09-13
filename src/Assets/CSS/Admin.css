@@ -763,4 +763,12 @@ table tr td {
   }
 }
 
+/* all users  */
+.userView-btn{
+  background-color: #A951A5;
+  color: #ffff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+}
 

@@ -1,6 +1,28 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+
+const BaseUrl = "http://bantford.prometteur.in"
 
 const TermsCondition = () => {
+
+    const [terms, setTerms] = useState();
+
+    const getTerms = () => {
+        axios.get(`${BaseUrl}/endUser/terms-conditions`,{headers: {
+            Authorization: localStorage.getItem("token")
+        }})
+        .then((res)=>{
+            console.log(res)
+            setTerms(res.data)
+        })
+        .catch((err)=> {console.log(err)})
+    }
+
+    useEffect(()=>{
+        getTerms()
+    },[])
+
+
     return (
         <div className="terms-conditions-section">
             <div className="container">

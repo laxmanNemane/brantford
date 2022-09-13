@@ -6,7 +6,7 @@ import HocComponent from "../../../Components/HocComponent";
 const AllProperties = () => {
   return (
     <div className="mx-5">
-      <div className="row">
+      {/* <div className="row">
         <div className="col-12 d-flex align-items-center justify-content-between">
           <h5>All Properties</h5>
         </div>
@@ -42,7 +42,7 @@ const AllProperties = () => {
                       border: "none",
                     }}
                   >
-                    {/* {item.approve_status} */}
+                    {item.approve_status}
                   </button>
                 </td>
                 <td>
@@ -52,7 +52,7 @@ const AllProperties = () => {
             </tbody>
           </Table>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -264,5 +264,5 @@ const EndUserProfilePage = () => {
   );
 };
 
-export default HocComponent(EndUserProfilePage);
+export default EndUserProfilePage;
 

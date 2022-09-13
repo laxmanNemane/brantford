@@ -19,8 +19,7 @@ import { GrAttachment } from "react-icons/gr";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { number } from "echarts";
-
-// import swal from "sweetalert";
+import swal from 'sweetalert';
 
 
 const BaseUrl = "http://bantford.prometteur.in";
@@ -33,9 +32,7 @@ const OfficesDetailPage = () => {
 
   // getSingleProperty()
 
-
   const [alreadyBooked, setAlreadyBooked] = useState(true)
-
 
   const pageid = useParams();
   console.log(pageid);
@@ -69,37 +66,37 @@ const OfficesDetailPage = () => {
 
   const propertyBooking = (id, price) => {
     console.log(id, price);
-    const propertyPrice = Number(price);
+    const propertyPrice = Number(price)
     const amount = {
-      amount: propertyPrice,
-    };
+      "amount": propertyPrice
+    }
 
-    console.log(amount);
+    console.log(amount)
 
-    axios
-      .post(`${BaseUrl}/endUser/book-space?id=${id}`, amount, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        // swal("Space Booked", "Thank you for booking sapce", "success");
-      })
-      .catch((err) => {
-        console.log(err);
-        console.log(err.response.data.error);
-        if (err.response.data.error === "space aleready booked") {
-          setAlreadyBooked(false);
-        }
-        // swal({
-        //   title: "Already Booked",
-        //   text: "You already booked this space",
-        //   icon: "error",
-        // });
+    axios.post(`${BaseUrl}/endUser/book-space?id=${id}`,amount, {headers:{
+      Authorization:localStorage.getItem("token")
+    }})
+    .then((res)=> {
+      
+      console.log(res)
+      swal("Space Booked", "Thank you for booking sapce", "success");
+    })
+    .catch((err)=> {
+      console.log(err)
+      console.log(err.response.data.error)
+      if(err.response.data.error==="space aleready booked"){
+
+        setAlreadyBooked(false)
+      }
+      swal({
+        title: "Already Booked",
+        text: "You already booked this space",
+        icon: "error",
       });
-  };
+    
+    })
 
+  }
   // setTimeout(() => {
 
   // }, 3000);
@@ -108,16 +105,19 @@ const OfficesDetailPage = () => {
     showdetails();
   }, []);
 
+ 
 
   // const handleReset = (values) => {};
 
-  const resetForm = (values) => {};
-
+  const resetForm = (values) => {
+    
+  }
+  
 
   const handleSubmit = (values, resetForm) => {
     // console.log("hello lakhan ");
     console.log(values);
-
+    
 
     axios
       .post(`${BaseUrl}/endUser/send-requirement`, values, {
@@ -127,21 +127,19 @@ const OfficesDetailPage = () => {
       })
       .then((res) => {
         console.log(res);
-
-        // swal({
-        //   title: "Submited ",
-        //   text: "Your requirement added",
-        //   icon: "success",
-        // });
-
+        swal({
+          title: "Submited ",
+          text: "Your requirement added",
+          icon: "success",
+        });
       })
       .catch((err) => {
         console.log(err);
       });
-
-    resetForm();
+      resetForm();
   };
 
+  
 
   // useEffect(()=>{
   //   handleSubmit();
@@ -150,13 +148,12 @@ const OfficesDetailPage = () => {
   console.log(categaryDetails.space);
 
   return (
-
+    
     <div className="office-detail-section hj py-5 position-relative">
       {/* {Object.keys(categaryDetails).map((item, index) => {
 
         console.log(categaryDetails[item].space)
         return ( */}
-
           <div className="container ">
             <div className="row position-relative">
               <div className="col-lg-8 mb-4">
@@ -359,12 +356,10 @@ const OfficesDetailPage = () => {
                             </p>
                           </div>
                         </div>
-
                       </div>
                     </div>
                   </div>
                 </div>
-
                 <div className="features-setion-offices">
                   <div className="heading-features-offices">
                     <h5 className="office-sub-heading">Features</h5>
@@ -404,12 +399,10 @@ const OfficesDetailPage = () => {
                             24/7 Office Access
                           </p>
                         </div>
-
                       </div>
                     </div>
                   </div>
                 </div>
-
                 <div className="similarties-section mt-5">
                   <div className="similarties-heading">
                     <h5 className="office-sub-heading">Similar Listing</h5>
@@ -477,7 +470,6 @@ const OfficesDetailPage = () => {
                                 </button>
                               </div>
                             </div>
-
                           </div>
                         </div>
                       </div>
@@ -485,7 +477,6 @@ const OfficesDetailPage = () => {
                   </div>
                 </div>
               </div>
-
 
               <div className="col-lg-4">
                 <div className="end-user-requirement-setion  ">
@@ -649,7 +640,6 @@ const OfficesDetailPage = () => {
                                 <Field
                               as="select"
                               className="my-select w-100"
-
                               component="select"
                               id="workspace"
                               name="categary_of_workspace"
@@ -666,7 +656,6 @@ const OfficesDetailPage = () => {
                             </Field>
 
                             <Field
-
                                   type="date"
                                   name="start_date"
                                   placeholder="start_date"
@@ -701,18 +690,13 @@ const OfficesDetailPage = () => {
                           </Formik>
                         </div>
                       </div>
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-        </div>
-      </div>
-      {/* );
-
+        {/* );
       })} */}
     </div>
   );

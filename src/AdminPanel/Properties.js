@@ -12,6 +12,8 @@ import PropertyBookings from "./TabsPages/PropertyBookings";
 import { BsBuilding } from "react-icons/bs";
 import { FiCheckSquare, FiCheck, FiList } from "react-icons/fi";
 import axios from "axios";
+import AllProperties from "./TabsPages/AllProperties/AllProperties";
+import AllProperty from "./TabsPages/AllProperty";
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const Admin_token = localStorage.getItem("token");
@@ -33,7 +35,7 @@ const Properties = () => {
         },
       })
       .then((res) => {
-        // console.log(res.data.spaces.length);
+        console.log(res.data);
         setProperties(res.data.spaces);
         setPropertyCount(res.data.spaces.length);
       })
@@ -223,6 +225,14 @@ const Properties = () => {
               tabClassName="profile-tabitem"
             >
               <Services />
+            </Tab>
+
+            <Tab
+              eventKey="All Properties"
+              title="All Properties"
+              tabClassName="profile-tabitem"
+            >
+              <AllProperty />
             </Tab>
           </Tabs>
         </div>
