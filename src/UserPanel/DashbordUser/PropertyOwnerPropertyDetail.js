@@ -1,18 +1,20 @@
-import Item from "antd/lib/list/Item";
 import axios from "axios";
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink } from "react-router-dom";
 import HocComponent from "../../Components/HocComponent";
 import { usersContext } from "../../Context/UserContext";
 import AddAmenity from "./ModelPropertyOwner/AddAmenity";
 import AddLocation from "./ModelPropertyOwner/AddLocation";
+import AddOrUpdateAmenity from "./ModelPropertyOwner/AddOrUpdateAmenity";
 
 const PropertyOwnerPropertyDetail = () => {
   const [showStatus, setshowStatus] = useState(false);
   const [addlocationShow, setAddLocationShow] = useState(false);
   const [amenityPost, setAmenityPost] = useState([]);
   const [render, setRender] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [items, setItems] = useState([]);
+  const [id, setId] = useState();
 
   const { spaceIdsingle, spaceDetail } = useContext(usersContext);
   console.log(spaceDetail);
@@ -35,7 +37,7 @@ const PropertyOwnerPropertyDetail = () => {
 
   useEffect(() => {
     getAmenitis();
-  }, [render]);
+  }, [render, isModalOpen]);
 
   const onAddAmenity = () => {
     setshowStatus(true);
@@ -59,9 +61,13 @@ const PropertyOwnerPropertyDetail = () => {
       });
   };
 
-  const onupdatefield = () => {
-
-  }
+  const onupdatefield = (id, data) => {
+    setId(id);
+    setItems(data);
+    console.log("inside update data fixed", data);
+    console.log("inside update id fixed", id);
+    setIsModalOpen(true);
+  };
 
   return (
     <div className="property-Detail-property-owner">
@@ -224,17 +230,74 @@ const PropertyOwnerPropertyDetail = () => {
                 <div className="col-12 ">
                   <div className="Amenities">
                     <div>
-
-                      {amenityPost && amenityPost.map((listItem, index) => {
-                        return (
-                          <ul key={index} className="list-unstyled ">
-                            <li className="fw-bold">{listItem.amenities_type ? <>{listItem.amenities_type}<i className="fa-solid fa-pen-to-square ms-1 " onClick={() => onupdatefield(listItem.id)}></i>  <i className="fa-solid fa-trash-can ms-1" onClick={() => onDeleteAmenity(listItem.id)}></i></> : ""}</li>
-                            <li>{listItem.Internet_Speed ? <> <i>internet Speed</i> :{listItem.Internet_Speed} </> : ""}</li>
-                            <li>{listItem.Parking_available ? listItem.Parking_available : ""}</li>
-                            <li>{listItem.Parking_price_four_wheelers ? listItem.Parking_price_four_wheelers : ""}</li>
-                          </ul>
-                        );
-                      })}
+                      {amenityPost &&
+                        amenityPost.map((listItem, index) => {
+                          return (
+                            <ul key={index} className="list-unstyled ">
+                              <li className="fw-bold">
+                                {listItem.amenities_type ? (
+                                  <>
+                                    {listItem.amenities_type}
+                                    <i
+                                      className="fa-solid fa-pen-to-square ms-1 "
+                                      onClick={() =>
+                                        onupdatefield(listItem.id, listItem)
+                                      }
+                                    ></i>{" "}
+                                    <i
+                                      className="fa-solid fa-trash-can ms-1"
+                                      onClick={() =>
+                                        onDeleteAmenity(listItem.id)
+                                      }
+                                    ></i>
+                                  </>
+                                ) : (
+                                  ""
+                                )}
+                              </li>
+                              <li>
+                                {listItem.Internet_Speed ? (
+                                  <>
+                                    {" "}
+                                    <i>internet Speed</i> :
+                                    {listItem.Internet_Speed}{" "}
+                                  </>
+                                ) : (
+                                  ""
+                                )}
+                              </li>
+                              <li>
+                                {listItem.Parking_available
+                                  ? listItem.Parking_available
+                                  : ""}
+                              </li>
+                              <li>
+                                {listItem.Cafetarea ? listItem.Cafetarea : ""}
+                              </li>
+                              <li>
+                                {listItem.Community ? listItem.Community : ""}
+                              </li>
+                              <li>
+                                {listItem.Compliances
+                                  ? listItem.Compliances
+                                  : ""}
+                              </li>
+                              <li>
+                                {listItem.Equipment ? listItem.Equipment : ""}
+                              </li>
+                              <li>
+                                {listItem.Recreational_Zone
+                                  ? listItem.Recreational_Zone
+                                  : ""}
+                              </li>
+                              <li>
+                                {listItem.Breakout_Zone
+                                  ? listItem.Breakout_Zone
+                                  : ""}
+                              </li>
+                            </ul>
+                          );
+                        })}
                     </div>
                   </div>
                 </div>
@@ -251,10 +314,16 @@ const PropertyOwnerPropertyDetail = () => {
           </div>
         </div>
       </div>
-      <AddAmenity showStatus={showStatus} setshowStatus={setshowStatus} />
+      {/* <AddAmenity showStatus={showStatus} setshowStatus={setshowStatus} />
       <AddLocation
         addlocationShow={addlocationShow}
         setAddLocationShow={setAddLocationShow}
+      /> */}
+      <AddOrUpdateAmenity
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        items={items}
+        id={id}
       />
     </div>
   );
