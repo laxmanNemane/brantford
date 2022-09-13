@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Footer from '../Layout/Footer';
 import Navbar from '../Layout/Navbar';
@@ -15,3 +16,4 @@ function HocLandingPage(Component) {
 }
 
 export default HocLandingPage
+

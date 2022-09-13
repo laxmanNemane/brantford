@@ -295,6 +295,13 @@ const PropertyOwnerPropertyDetail = () => {
                                   ? listItem.Breakout_Zone
                                   : ""}
                               </li>
+                              <li>
+                                {listItem.telicom_service ? (
+                                  <>{listItem.telicom_service} </>
+                                ) : (
+                                  ""
+                                )}
+                              </li>
                             </ul>
                           );
                         })}

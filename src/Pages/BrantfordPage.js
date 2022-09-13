@@ -12,7 +12,11 @@ import Sponsers from "../Components/BrantFordLandingPages/Sponsers";
 import FindsProperty from "../Components/BrantFordLandingPages/FindsProperty";
 import PostAddFree from "../Components/BrantFordLandingPages/PostAddFree";
 import Cities from "../Components/BrantFordLandingPages/Cities";
+
+import HocLandingPage from "../Components/HocLandingPage";
+
 import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
+
 
 const BrantfordPage = () => {
   useEffect(() => {
@@ -20,7 +24,6 @@ const BrantfordPage = () => {
   }, []);
   return (
     <div className="brantford-landing-page">
-      <Navbar />
       <div className="landing_section">
         <video src={videoBg} autoPlay loop muted></video>
         <HeroSection />
@@ -34,10 +37,9 @@ const BrantfordPage = () => {
         <CallToActionSection />
         <TestimonialSection />
         <Sponsers />
-        <Footer />
       </div>
     </div>
   );
 };
 
-export default BrantfordPage;
+export default HocLandingPage(BrantfordPage);

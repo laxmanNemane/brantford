@@ -19,7 +19,12 @@ function SignUp() {
     console.log(values);
     axios
       .post("http://bantford.prometteur.in/admin/create-admin", values)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        if (res.status === "200") {
+          console.log(res.data);
+          alert("Registerd Successfully");
+        }
+      })
       .catch((err) => console.log(err));
     resetForm();
 
@@ -50,12 +55,10 @@ function SignUp() {
                   initialValues={{
                     name: "",
                     email: "",
-                    password: "",
-
+                    password: ""
                     contact: "",
-                    address: "",
-
                     profile: "",
+                    address: "",
                   }}
                   validate={(values) => {
                     let errors = {};
@@ -199,9 +202,9 @@ function SignUp() {
                             <i className="fab fa-instagram"></i>Instagram</li> */}
 
                       <p className="text-center mt-4 fs-5">
-                        Don't have account?{" "}
-                        <Link to="/signup" className="ms-2 text-dark">
-                          Click here
+                        Already have an Account?{" "}
+                        <Link to="/login" className="ms-2 text-dark">
+                          Sign in
                         </Link>
                       </p>
                     </Form>
