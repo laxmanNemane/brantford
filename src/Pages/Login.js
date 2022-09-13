@@ -12,6 +12,7 @@ import loginPage_image from "../Assets/Images/login.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Layout/Navbar";
 import Footer from "../Layout/Footer";
+import HocLandingPage from "../Components/HocLandingPage";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -49,8 +50,6 @@ const Login = () => {
 
   return (
     <div>
-      <Navbar />
-
       <div className="container d-flex justify-content-center my-3 py-4 ">
         <div className="login_Card  w-100 py-3 ">
           <div className="d-flex">
@@ -169,9 +168,8 @@ const Login = () => {
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
       />
-      <Footer />
     </div>
   );
 };
 
-export default Login;
+export default HocLandingPage(Login);

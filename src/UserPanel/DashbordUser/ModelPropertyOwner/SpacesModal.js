@@ -14,6 +14,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
     console.log(values.categaryId);
     if (spaceId) {
       // UpdateSpace
+      console.log(values);
       axios
         .patch(`${BaseUrl}/admin/update-space?id=${spaceId}`, values, {
           headers: {
@@ -32,6 +33,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
       console.log(values);
     } else {
       // Addspace
+      console.log(values);
       axios
         .post(
           `${BaseUrl}/admin/add-space?categaryId=${parseInt(
@@ -415,7 +417,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                         </div>
                         <div className="col-6">
                           <label htmlFor="manager_name" className="label-user">
-                            category -id:{" "}
+                            category :{" "}
                           </label>
                           <Field
                             as="select"
@@ -460,8 +462,17 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           </label>
 
                           <Field
-                            as="select"
                             className=" form-control "
+                            id="workspace"
+                            name="price"
+                          ></Field>
+                          <label htmlFor="price" className="label-user  mt-2">
+                            property status :
+                          </label>
+
+                          <Field
+                            as="select"
+                            className=" form-control mb-2 "
                             component="select"
                             id="workspace"
                             name="property_status"
@@ -470,18 +481,16 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
 
                             <option value="Sale">Sale</option>
                           </Field>
-                          <label htmlFor="Working Days" className="label-user">
+                          <label
+                            htmlFor="Working Days"
+                            className="label-user mt-2"
+                          >
                             Working Days:
                           </label>
-                          <Field
-                            type="text"
-                            name="working_days"
-                            placeholder="working_days"
-                            className="form-control  mb-3  m"
-                          />
+
                           <Field
                             as="select"
-                            className=" form-control "
+                            className=" form-control  mb-2"
                             component="select"
                             id="workspace"
                             name="working_days"
