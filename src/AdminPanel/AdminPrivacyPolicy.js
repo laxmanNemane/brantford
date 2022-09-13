@@ -3,9 +3,12 @@ import React from "react";
 import { useState } from "react";
 import HocComponent from "../Components/HocComponent";
 import { MdNoteAdd } from "react-icons/md";
+import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const AdminPrivacyPolicy = () => {
   const [showForm, setShowForm] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = () => {
     setShowForm((prev) => !prev);
@@ -13,6 +16,25 @@ const AdminPrivacyPolicy = () => {
 
   const handleSubmit = (values, resetForm) => {
     console.log(values);
+
+    axios
+      .post(
+        "http://bantford.prometteur.in/adminDashboard/add-privecyPolicys_termsConditions",
+        values,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        localStorage.clear();
+        navigate("/login");
+      });
 
     resetForm();
   };
@@ -38,7 +60,7 @@ const AdminPrivacyPolicy = () => {
               <div>
                 <Formik
                   initialValues={{
-                    heading: "PRIVACY_POLICY",
+                    heading: "",
                     title: "",
                     description: "",
                   }}
@@ -54,7 +76,9 @@ const AdminPrivacyPolicy = () => {
                     }
                     return errors;
                   }}
-                  onSubmit={handleSubmit}
+                  onSubmit={(values, { resetForm }) => {
+                    handleSubmit(values, resetForm);
+                  }}
                 >
                   {({
                     values,
@@ -65,17 +89,26 @@ const AdminPrivacyPolicy = () => {
                   }) => (
                     <Form className="mt-5">
                       <div className="formGroup mt-5">
+                        <label htmlFor="title" className="mb-2  label-user">
+                          Select Heading :
+                        </label>
                         <Field
-                          type="heading"
+                          as="select"
+                          className=" form-control  mx-auto mb-3 "
+                          component="select"
+                          id="workspace"
                           name="heading"
-                          placeholder="heading"
-                          className="form-control  my-3"
-                          defaultValue={values.heading}
-                          disabled
-                        />
-                        <p className=" ps-2 text-danger">
-                          <ErrorMessage name="email" />
-                        </p>
+                        >
+                          <option className="py-3">select heading</option>
+
+                          <option value="TERMS_CONDITIONS" className="my-3">
+                            TERMS_CONDITIONS
+                          </option>
+
+                          <option value="PRIVACY_POLICY" className="my-3">
+                            PRIVACY_POLICY
+                          </option>
+                        </Field>
 
                         <label htmlFor="title" className="mb-2  label-user">
                           Title :
@@ -110,7 +143,6 @@ const AdminPrivacyPolicy = () => {
                         <button
                           type="submit"
                           className="btn   btn-privacy-policy "
-                          onClick={resetForm}
                         >
                           Create Privacy Policy
                         </button>
