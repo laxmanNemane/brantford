@@ -1,34 +1,35 @@
 import React, { useEffect, useState } from "react";
 import HocComponent from "../Components/HocComponent";
-import tenantsUser from "../Assets/Images/tenates.svg";
-import Users from "../Assets/Images/user.svg";
-import ResquestUser from "../Assets/Images/request.svg";
+
+// import tenantsUser from "../Assets/Images/tenates.svg";
+// import Users from "../Assets/Images/user.svg";
+// import ResquestUser from "../Assets/Images/request.svg";
 import "../Assets/CSS/Admin.css";
 import AdminUserTable from "./AdminSubUserstable";
-import { AiOutlineUserSwitch, AiOutlineTeam } from "react-icons/ai";
-import { BsArrowDownLeftCircle } from "react-icons/bs";
+// import { AiOutlineUserSwitch, AiOutlineTeam } from "react-icons/ai";
+// import { BsArrowDownLeftCircle } from "react-icons/bs";
 import axios from "axios";
-
 
 const BaseUrl = "http://bantford.prometteur.in";
 
 function AdminRequirements() {
-    const [post, setPost] = useState([]);
-    const [userCount, setUserCount] = useState()
+  const [post, setPost] = useState([]);
+  const [userCount, setUserCount] = useState();
 
-
-    useEffect(() => {
-
-        axios.get(`${BaseUrl}/adminDashboard/all-requirements`,{headers:{
-          Authorization: localStorage.getItem("token")
-        }}).then((res) => {
-          // console.log(res.data);
-          setPost(res.data);
-          setUserCount(res.data.length)
-          // setPaginatePosts(_(res.data).slice(0).take(pageSize).value());
-        });
-      }, []);
-
+  useEffect(() => {
+    axios
+      .get(`${BaseUrl}/adminDashboard/all-requirements`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        // console.log(res.data);
+        setPost(res.data);
+        setUserCount(res.data.length);
+        // setPaginatePosts(_(res.data).slice(0).take(pageSize).value());
+      });
+  }, []);
 
 
   return (

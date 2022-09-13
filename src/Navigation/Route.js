@@ -28,8 +28,18 @@ import AddLocation from "../UserPanel/DashbordUser/ModelPropertyOwner/AddLocatio
 import PropertyOwnerPropertyDetail from "../UserPanel/DashbordUser/PropertyOwnerPropertyDetail";
 import PrivateRoute from "./PrivateRoute";
 import AllProperties from "../AdminPanel/TabsPages/AllProperties/AllProperties";
+
+
 import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
 import EndUserProfilePage from "../AdminPanel/EndUserProfilePage";
+
+
+
+import PrivateRouteForAdmin from "./PrivateRoute";
+import PrivateRouteForuser from "./PrivteRouteForOwner";
+import UpdateProperty from "../UserPanel/DashbordUser/ModelPropertyOwner/UpdateProperty";
+import AdminRequirements from "../AdminPanel/AdminRequirements";
+
 
 
 const Routing = () => {
@@ -82,7 +92,9 @@ const Routing = () => {
           <Route path="/tenants" element={<AdminTenants />} />
           <Route path="/detail" element={<PropertyDetailPage />} />
           <Route path="/profile" element={<AdminProfilePage />} />
-          
+
+          <Route path="/requirments" element={<AdminRequirements />} />
+
         </Route>
       </Routes>
    
