@@ -30,6 +30,8 @@ import PrivateRoute from "./PrivateRoute";
 import AllProperties from "../AdminPanel/TabsPages/AllProperties/AllProperties";
 import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
 import EndUserProfilePage from "../AdminPanel/EndUserProfilePage";
+import AdminRequirements from "../AdminPanel/AdminRequirements";
+import AdminUserDetails from "../AdminPanel/AdminUserDetails";
 
 
 const Routing = () => {
@@ -57,6 +59,7 @@ const Routing = () => {
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/office-detail" element={<OfficesDetailPage />} /> */}
         <Route path="/office-detail/:id" element={<OfficesDetailPage />} />
+        <Route path="/adminDashboard/single-enduser/:id" element={<AdminTenants />} />
         {/* langding page  */}
         {/* <Route path="/office-detail" element={<OfficesDetailPage />} /> */}
         {/* admin panel */}
@@ -64,7 +67,7 @@ const Routing = () => {
         <Route path="/all-properties" element={<AllProperties />} />
         <Route path="/detail" element={<PropertyDetailPage />} />
         <Route path="/enduser" element={<EndUserProfilePage />} />
-        {/* <Route path="/requirements" element={<AdminRequirements />} /> */}
+        <Route path="/requirements" element={<AdminRequirements />} />
         {/* <Route path="/dashbord" element={<DasbordPage />} />
         <Route path="/properties" element={<Properties />} />
         <Route path="/revenu" element={<RevenuAdmin />} />
@@ -82,6 +85,7 @@ const Routing = () => {
           <Route path="/tenants" element={<AdminTenants />} />
           <Route path="/detail" element={<PropertyDetailPage />} />
           <Route path="/profile" element={<AdminProfilePage />} />
+          <Route path="/categories" element={<AdminCategories/>} />
           
         </Route>
       </Routes>

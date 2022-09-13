@@ -29,7 +29,9 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mb-1 ms-auto">
-            <li className="nav-item">Home</li>
+          <NavLink to="/enduser">
+            <li className="nav-item">profile</li>
+            </NavLink>
             <li className="nav-item">About Us</li>
             <li className="nav-item">Contact Us</li>
           </ul>

@@ -32,7 +32,7 @@ const AdminTenants = () => {
       style={{
         background: "rgb(244, 240, 242)",
         padding: "0",
-        height: "100vh",
+        // height: "100vh",
       }}
     >
       <div className="row  mx-3  d-flex">

@@ -33,7 +33,7 @@ const Properties = () => {
         },
       })
       .then((res) => {
-        // console.log(res.data.spaces.length);
+        console.log(res.data);
         setProperties(res.data.spaces);
         setPropertyCount(res.data.spaces.length);
       })
