@@ -92,7 +92,9 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li className="my-3  list-sidebar-menu">
-            <NavLink to="/requirments" className="text-dark">
+
+            <NavLink to="/requirements" className="text-dark">
+
               <AiOutlineCreditCard className="Sidebar_icons" />
               Requirements
             </NavLink>

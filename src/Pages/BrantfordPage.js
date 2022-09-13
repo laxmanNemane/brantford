@@ -12,6 +12,7 @@ import Sponsers from "../Components/BrantFordLandingPages/Sponsers";
 import FindsProperty from "../Components/BrantFordLandingPages/FindsProperty";
 import PostAddFree from "../Components/BrantFordLandingPages/PostAddFree";
 import Cities from "../Components/BrantFordLandingPages/Cities";
+import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
 
 const BrantfordPage = () => {
   useEffect(() => {

@@ -56,6 +56,21 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
     }
 
     //add spaces
+    axios
+      .post(`${BaseUrl}/admin/add-space?categaryId=${spaceId}`, values, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        console.log(res.data.spaces);
+        // showSpacesPropertyOwner();
+        setshowStatus(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleOk = () => {

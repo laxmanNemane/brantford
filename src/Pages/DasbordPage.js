@@ -6,15 +6,15 @@ import { FcApproval, FcBullish } from "react-icons/fc";
 import { RiBuildingLine } from "react-icons/ri";
 import { Divider } from "antd";
 import { BsPatchPlus } from "react-icons/bs";
-// import MidSectionCards from "../AdminPanel/MidSectionCards";
-// import AdminDashbordFooter from "../AdminPanel/AdminDashbordFooter";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import MidSectionCards from "../AdminPanel/MidSectionCards";
+import AdminDashbordFooter from "../AdminPanel/AdminDashbordFooter";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import AddCategoryModel from "../AdminPanel/Modals/AddCategoryModel";
 import axios from "axios";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const BaseUrl = "http://bantford.prometteur.in";
-// const Admin_token = localStorage.getItem("admin_token");
+// const Admin_token = localStorage.getItem("token");
 
 const DasbordPage = () => {
   const [revenue, setRevenue] = useState();
@@ -22,10 +22,12 @@ const DasbordPage = () => {
   const [allPropertiesCount, setAllPropertiesCount] = useState();
   const [bookedCount, setBookedCount] = useState({});
   // const [propertyBookedCount, setPropertyBookedCount] = useState(0);
+  const navigate = useNavigate();
+
 
   const revenueCategory = "monthly";
 
-  const navigate = useNavigate();
+ 
 
   const getRevenue = () => {
     axios
@@ -36,10 +38,11 @@ const DasbordPage = () => {
       })
       .then((res) => {
         setRevenue(res.data.total_revenue);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        navigate("/dashbord");
       });
   };
   //  //All Properties
@@ -52,7 +55,7 @@ const DasbordPage = () => {
       })
       .then((res) => {
         setAllPropertiesCount(res.data.spaces.length);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -74,7 +77,7 @@ const DasbordPage = () => {
         setBookedCount(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 

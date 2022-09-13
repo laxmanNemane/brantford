@@ -7,6 +7,7 @@ import AdminUserTable from "./AdminSubUserstable";
 import { AiOutlineUserSwitch, AiOutlineTeam } from "react-icons/ai";
 import { BsArrowDownLeftCircle } from "react-icons/bs";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -97,6 +98,7 @@ const AdminTenants = () => {
             </div>
           </div>
         </div>
+        
         <AdminUserTable />
       </div>
     </div>

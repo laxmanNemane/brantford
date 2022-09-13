@@ -15,7 +15,7 @@ const AddLocation = ({ addlocationShow, setAddLocationShow }) => {
     axios
       .post(`${BaseUrl}/admin/add-location?spaceId=${id}}`, values, {
         headers: {
-          Authorization: localStorage.getItem("property_owner_token"),
+          Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {

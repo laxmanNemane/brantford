@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-// import { AiOutlineDoubleRight } from "react-icons/ai";
+import { AiOutlineDoubleRight } from "react-icons/ai";
 import "./StyleTabs/BookingProperty.css";
 
 const BaseUrl = "http://bantford.prometteur.in";
+// const admin_token = localStorage.getItem("token");
 
 const PropertyBookings = () => {
   const [bookedProperties, setBookedProperties] = useState({});
@@ -15,23 +16,19 @@ const PropertyBookings = () => {
     console.log(bookedProp[0].admininfoId);
     console.log(value);
 
-    axios
-      .patch(
-        `${BaseUrl}/adminDashboard/approveOrreject-property?id=${bookedProp[0].admininfoId}`,
-        value,
-        {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res.data);
-        setBookedProperties(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  axios
+  .patch(`${BaseUrl}/adminDashboard/approveOrreject-property?id=${bookedProp[0].admininfoId}`,value, {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  })
+  .then((res) => {
+    console.log(res.data);
+    setBookedProperties(res.data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
   };
 
   const declineHandler = () => {
@@ -48,15 +45,15 @@ const PropertyBookings = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setBookedProperties(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);  
       });
   }, []);
 
-  console.log(bookedProperties);
+  // console.log(bookedProperties);
   // {bookedProperties.map((item, index)=>{
   //   console.log(item);
   // })}

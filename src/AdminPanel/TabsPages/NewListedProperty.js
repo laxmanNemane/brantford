@@ -19,10 +19,10 @@ const NewListedProperty = () => {
       })
       .then((res) => {
         setNewListed(res.data.spaces);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }, []);
 

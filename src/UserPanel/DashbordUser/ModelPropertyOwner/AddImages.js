@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-
-import { Formik, Form } from "formik";
-
+import { Formik, Form, Field } from "formik";
 import { Input, Select } from "antd";
+import axios from "axios";
+
+
+
+const BaseUrl = 'http://bantford.prometteur.in'
 
 const AddImages = () => {
   const [img, setImg] = useState({

@@ -1,3 +1,9 @@
+/* univeral css   */
+
+a{
+  text-decoration: none !important;
+}
+
 /*========================Admin Dashbord========================= */
 .dashbord_footer {
   background-color: #e9d9e0;
@@ -756,3 +762,5 @@ table tr td {
     transform: rotate(359deg);
   }
 }
+
+

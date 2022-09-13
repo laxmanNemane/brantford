@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 // import "../../Styles/LandingPage/FindsProperty.css";
 
 const FindsProperty = () => {
+  
   return (
+    
     <div className="find-property-section land-page py-3">
       <div className="container py-5">
         <div className="heading-section-findsection text-center">
@@ -38,6 +40,7 @@ const FindsProperty = () => {
         </div>
       </div>
     </div>
+  
   );
 };
 

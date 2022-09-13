@@ -60,7 +60,7 @@ const AdminCategories = () => {
       })
       .then((res) => {
         setCategaries(res.data);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -112,7 +112,7 @@ const AdminCategories = () => {
             </thead>
             <tbody>
               {categaries.map((item) => {
-                console.log("render item", item);
+                
                 return (
                   <tr className="" key={item.id}>
                     <td
