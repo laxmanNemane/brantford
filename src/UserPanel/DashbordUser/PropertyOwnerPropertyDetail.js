@@ -2,7 +2,7 @@ import Item from "antd/lib/list/Item";
 import axios from "axios";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink } from "react-router-dom";
 import HocComponent from "../../Components/HocComponent";
 import { usersContext } from "../../Context/UserContext";
 import AddAmenity from "./ModelPropertyOwner/AddAmenity";
@@ -60,7 +60,7 @@ const PropertyOwnerPropertyDetail = () => {
   };
 
   const onupdatefield = () => {
-
+    Navigate("/updatePage")
   }
 
   return (
