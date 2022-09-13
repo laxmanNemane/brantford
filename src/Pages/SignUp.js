@@ -14,36 +14,15 @@ const BaseUrl = "http://bantford.prometteur.in";
 function SignUp() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const handleSubmit = (values) => {
-    const newvalues = [
-      {
-        ...values,
-        address: "pune , maharashtra, 411101",
-        profile: "property-owner",
-      },
-    ];
 
-    console.log(newvalues[0]);
+  const handleSubmit = (values, resetForm) => {
+    console.log(values);
+    axios
+      .post("http://bantford.prometteur.in/admin/create-admin", values)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+    resetForm();
 
-    //   Formik.resetForm({status:tr})
-    //login user
-
-    // var axios = require("axios");
-    var data = values;
-    var config = {
-      method: "post",
-      url: `${BaseUrl}/admin/create-admin`,
-      headers: {},
-      data: data,
-    };
-
-    axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   };
 
   return (
@@ -70,9 +49,12 @@ function SignUp() {
                 <Formik
                   initialValues={{
                     name: "",
-                    contact: "",
                     email: "",
                     password: "",
+
+                    contact: "",
+                    address: "",
+
                     profile: "",
                   }}
                   validate={(values) => {
@@ -97,7 +79,9 @@ function SignUp() {
                     }
                     return errors;
                   }}
-                  onSubmit={handleSubmit}
+                  onSubmit={(values, { resetForm }) => {
+                    handleSubmit(values, resetForm);
+                  }}
                   className="mt-4"
                 >
                   {({ values, errors, handleSubmit }) => (
@@ -151,11 +135,38 @@ function SignUp() {
                       <p className="ms-5 ps-2 text-danger">
                         <ErrorMessage name="password" />
                       </p>
+
+                      <Field
+                        as="select"
+                        className=" form-control w-75 mx-auto mb-3 "
+                        component="select"
+                        id="workspace"
+                        name="profile"
+                      >
+                        <option value="select profile " className="py-3">
+                          select profile
+                        </option>
+
+                        <option value="property-owner" className="py-3">
+                          property-owner
+                        </option>
+
+                        <option value="end-user" className="py-3">
+                          end-user
+                        </option>
+                      </Field>
+
+                      <Field
+                        type="text"
+                        name="address"
+                        placeholder="address"
+                        className="form-control w-75 mx-auto my-3"
+                      />
                       <div className="d-flex mx-auto justify-content-between w-75">
-                        <label className="  mb-2">
+                        {/* <label className="  mb-2">
                           <Field type="checkbox" name="remember me" />
                           &nbsp; Remember me
-                        </label>
+                        </label> */}
                         {/* <p 
                         style={{cursor:"pointer"}}
                           className="ps-3 forget_password_line"
