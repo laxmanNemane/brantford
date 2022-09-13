@@ -308,7 +308,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
             )}
           </Formik>
         </>
-      ) : items.amenities_type === "Recreational_Zone" ? (
+      ) : items.amenities_type === "recreationalZone" ? (
         <>
           {" "}
           <Formik
