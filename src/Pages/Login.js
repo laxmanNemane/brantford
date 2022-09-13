@@ -18,10 +18,11 @@ const BaseUrl = "http://bantford.prometteur.in";
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [error, setError] = useState();
   const navigate = useNavigate();
 
   const handleSubmit = (values) => {
-    console.log(values);
+    // console.log(values);
 
     //login user
 
@@ -45,6 +46,8 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err);
+        console.log("Enter Valid Details");
+        setError("Enter Valid Details");
       });
   };
 
@@ -109,6 +112,7 @@ const Login = () => {
                         placeholder="Password"
                         className="form-control w-75 mx-auto my-3"
                       />
+                       {<p style={{color:"red", paddingLeft:'50px'}}>{error}</p>}
                       <p className="ms-5 ps-2 text-danger">
                         <ErrorMessage name="password" />
                       </p>

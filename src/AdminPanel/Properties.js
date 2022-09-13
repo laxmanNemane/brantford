@@ -12,9 +12,11 @@ import PropertyBookings from "./TabsPages/PropertyBookings";
 import { BsBuilding } from "react-icons/bs";
 import { FiCheckSquare, FiCheck, FiList } from "react-icons/fi";
 import axios from "axios";
+import AllProperties from "./TabsPages/AllProperties/AllProperties";
+import AllProperty from "./TabsPages/AllProperty";
 
 const BaseUrl = "http://bantford.prometteur.in";
-// const Admin_token = localStorage.getItem("admin_token");
+// const Admin_token = localStorage.getItem("token");
 
 const Properties = () => {
   const [properties, setProperties] = useState();
@@ -33,12 +35,12 @@ const Properties = () => {
         },
       })
       .then((res) => {
-        console.log(res.data.spaces.length);
+        console.log(res.data);
         setProperties(res.data.spaces);
         setPropertyCount(res.data.spaces.length);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
     setCountAproved("");
   };
@@ -52,11 +54,11 @@ const Properties = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setBookedProperties(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
@@ -82,11 +84,11 @@ const Properties = () => {
     newListed();
   }, []);
 
-  console.log(Object.keys(bookedProperties).length);
+  // console.log(Object.keys(bookedProperties).length);
 
   // console.log(properties.spaces.length);
 
-  console.log(newListedCount);
+  // console.log(newListedCount);
 
   // {
   //   Object.keys(bookedProperties).map((key, index) => {
@@ -98,7 +100,7 @@ const Properties = () => {
   //   });
   // }
 
-  console.log(countAproved);
+  // console.log(countAproved);
 
   return (
     <div
@@ -223,6 +225,14 @@ const Properties = () => {
               tabClassName="profile-tabitem"
             >
               <Services />
+            </Tab>
+
+            <Tab
+              eventKey="All Properties"
+              title="All Properties"
+              tabClassName="profile-tabitem"
+            >
+              <AllProperty />
             </Tab>
           </Tabs>
         </div>

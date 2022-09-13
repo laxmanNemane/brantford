@@ -1,17 +1,19 @@
-import React from "react";
-import Navbar from "../Layout/Navbar";
-import Footer from "../Layout/Footer";
 
-const HocLandingPage = (LandingPages) => {
-  return (props) => {
-    return (
-      <div>
-        <Navbar />
-        <LandingPages />
-        <Footer />
-      </div>
-    );
-  };
-};
+import React from 'react'
+import Footer from '../Layout/Footer';
+import Navbar from '../Layout/Navbar';
 
-export default HocLandingPage;
+function HocLandingPage(Component) {
+    return (props) => {
+        return (
+          <div className="" >
+            <Navbar/>
+            <Component/>
+            <Footer/>
+          </div>
+        );
+      };
+}
+
+export default HocLandingPage
+

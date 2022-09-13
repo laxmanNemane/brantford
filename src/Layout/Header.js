@@ -6,7 +6,7 @@ import { AiOutlinePoweroff, AiOutlineUser } from "react-icons/ai";
 import axios from "axios";
 
 const BaseUrl = "http://bantford.prometteur.in";
-// const AuthToken = localStorage.getItem("admin_token");
+// const AuthToken = localStorage.getItem("token");
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -53,10 +53,10 @@ const Header = () => {
           key: "3",
           label: (
             <button onClick={logOutHandler}>
-              <NavLink to="/" className="fs-5">
-                <AiOutlinePoweroff className="mx-2" />
-                Logout
-              </NavLink>
+              {/* <NavLink to="/" className="fs-5"> */}
+              <AiOutlinePoweroff className="mx-2" />
+              Logout
+              {/* </NavLink> */}
             </button>
           ),
         },

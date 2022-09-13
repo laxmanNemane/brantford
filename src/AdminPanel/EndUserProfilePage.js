@@ -7,7 +7,7 @@ import axios from "axios";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
-const AdminProfilePage = () => {
+const EndUserProfilePage = () => {
   const [profileDetail, setProfileDetail] = useState([]);
   const [initialValues, setIntialvalue] = useState();
   console.log("values", initialValues);
@@ -264,4 +264,5 @@ const AdminProfilePage = () => {
   );
 };
 
-export default HocComponent(AdminProfilePage);
+export default EndUserProfilePage;
+

@@ -13,12 +13,12 @@ const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
   const handleSubmit = (values) => {
     setshowStatus(true);
     setCategary(values);
-    console.log(values);
+    // console.log(values);
     // console.log(categary);
 
-    // console.log(localStorage.getItem("admin_token"));
+    // console.log(localStorage.getItem("token"));
 
-    // const admin_token = localStorage.getItem("admin_token");
+    // const admin_token = localStorage.getItem("token");
     // const property_owner_token = localStorage.getItem("property_owner_token");
     // const token =
     //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heG1lbGFuc2hzZkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IlByb0A4MDg3IiwicmVtZW1iZXIgbWUiOnRydWUsInByb2ZpbGUiOiJhZG1pbiIsImlkIjo0LCJpYXQiOjE2NjE3NzU4NjksImV4cCI6MTY2MTc4MzA2OX0.GJYucWfhvoASU-R9m0TQJERZGBPdnkQW5Tixz8KdyFc";
@@ -31,7 +31,7 @@ const AddCategoryModel = ({ showStatus, setshowStatus, values }) => {
         },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setshowStatus(false);
       })
       .catch((err) => {

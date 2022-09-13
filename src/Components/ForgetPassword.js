@@ -6,7 +6,7 @@ import React from "react";
 import ficon from "../Assets/Icons/forgetIcon.svg";
 
 const BaseUrl = "http://bantford.prometteur.in";
-// let token = localStorage.getItem("admin_token");
+// let token = localStorage.getItem("token");
 
 const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
   const handleSubmit = (values) => {

@@ -2,17 +2,104 @@ import React from "react";
 // import _ from "lodash";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import SingleUserModel from "./Modals/SingleUserModel";
 
 const BaseUrl = "http://bantford.prometteur.in";
 const AdminUserTable = () => {
+  const [show, setShow] = useState(false);
+
+  const [userDetails, setUserDetails] = useState([]);
   // const pageSize = 13;
   const [post, setPost] = useState([]);
   // const [paginatePosts, setPaginatePosts] = useState();
+  const [endUser, SetEndUser] = useState([]);
+  const [propertyOwner, SetPropertyOwner] = useState([]);
 
-  // const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [userCount, setUserCount] = useState();
 
-  console.log("usercount", userCount);
+  const userId = useParams();
+
+  const getSingleEndUser = (id, ele) => {
+    setShow(true);
+    setUserDetails(ele);
+    console.log(ele);
+  };
+
+  const getSinglePropertyOwner = (id, ele) => {
+    setShow(true);
+    setUserDetails(ele);
+  };
+
+  const getSingleUserDetail = () => {
+    axios
+      .get(
+        `${BaseUrl}/adminDashboard/single-enduser?id=${localStorage.getItem(
+          "singleUser"
+        )}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setUserDetails(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const viewUser = (id) => {
+    console.log(id);
+    axios
+      .get(`${BaseUrl}/adminDashboard/single-propertyOwner?id=${id}`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        // console.log(res)
+      })
+      .catch((err) => {
+        // console.log(err)
+      });
+  };
+
+  const propertyOwners = () => {
+    axios
+      .get(`${BaseUrl}/adminDashboard/all-propertyOwners`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        // console.log(res.data);
+        SetPropertyOwner(res.data);
+      })
+      .catch((err) => {
+        // console.log(err);
+      });
+  };
+
+  const endusers = () => {
+    axios
+      .get(`${BaseUrl}/adminDashboard/all-endusers`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        // console.log(res.data);
+        SetEndUser(res.data);
+      })
+      .catch((err) => {
+        // console.log(err);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -22,11 +109,17 @@ const AdminUserTable = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setPost(res.data);
         setUserCount(res.data.length);
         // setPaginatePosts(_(res.data).slice(0).take(pageSize).value());
+      })
+      .catch((err) => {
+        console.log(err);
       });
+
+    endusers();
+    propertyOwners();
   }, []);
 
   // const pageCount = post ? Math.ceil(post.length / pageSize) : 0;
@@ -42,39 +135,134 @@ const AdminUserTable = () => {
   // };
 
   return (
-    <div className="mt-4 ms-2">
-      <h5 className="Analytic_heading"> Users</h5>
-      <div
-        className="table table-responsive me-auto ms-2"
-        style={{ width: "99%", margin: "0 20px 0 0" }}
-      >
-        <table
-          id="dtDynamicVerticalScrollExample"
-          className="table  table-bordered table-sm"
-          cellSpacing="0"
-          width="90%"
-          style={{ overflowY: "auto", height: "400px" }}
+    <div>
+      <div className="mt-4 ms-2">
+        <h5 className="Analytic_heading">All Users</h5>
+        <div
+          className="table table-responsive me-auto ms-2"
+          style={{ width: "99%", margin: "0 20px 0 0" }}
         >
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              {/* <th>Role</th> */}
-            </tr>
-          </thead>
-          <tbody>
-            {post.map((ele, index) => (
-              <tr className="" key={index}>
-                <td className="table-td">{ele.id}</td>
-                <td className="table-td">{ele.name}</td>
-                <td className="table-td">{ele.email}</td>
-                {/* <td className="table-td">{ele.profile}</td> */}
+          <table
+            id="dtDynamicVerticalScrollExample"
+            className="table  table-bordered table-sm"
+            cellSpacing="0"
+            width="90%"
+            style={{ overflowY: "auto", height: "400px" }}
+          >
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                {/* <th>Role</th> */}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {post.map((ele, index) => (
+                <tr className="" key={index}>
+                  <td className="table-td">{ele.id}</td>
+                  <td className="table-td">{ele.name}</td>
+                  <td className="table-td">{ele.email}</td>
+                  {/* <td className="table-td">{ele.profile}</td> */}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
+
+      {/* End User   */}
+      <div className="mt-4 ms-2">
+        <h5 className="Analytic_heading">End Users</h5>
+        <div
+          className="table table-responsive me-auto ms-2"
+          style={{ width: "99%", margin: "0 20px 0 0" }}
+        >
+          <table
+            id="dtDynamicVerticalScrollExample"
+            className="table  table-bordered table-sm"
+            cellSpacing="0"
+            width="90%"
+            style={{ overflowY: "auto", height: "400px" }}
+          >
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                {/* <th>profile role</th> */}
+              </tr>
+            </thead>
+            <tbody>
+              {endUser.map((ele, index) => (
+                <tr className="" key={index}>
+                  <td className="table-td">{ele.id}</td>
+                  <td className="table-td">{ele.name}</td>
+                  <td className="table-td">{ele.email}</td>
+                  <td className="table-td">
+                    <button
+                    className="userView-btn" 
+                    onClick={() => getSingleEndUser(ele.id, ele)}>
+                      {/* */}
+                      view
+                    </button>
+                  </td>
+                  {/* <td className="table-td">{ele.profile}</td> */}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="mt-4 ms-2">
+        <h5 className="Analytic_heading">Property Owners</h5>
+        <div
+          className="table table-responsive me-auto ms-2"
+          style={{ width: "99%", margin: "0 20px 0 0" }}
+        >
+          <table
+            id="dtDynamicVerticalScrollExample"
+            className="table  table-bordered table-sm"
+            cellSpacing="0"
+            width="90%"
+            style={{ overflowY: "auto", height: "400px" }}
+          >
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                {/* <th>Role</th> */}
+              </tr>
+            </thead>
+            <tbody>
+              {propertyOwner.map((ele, index) => (
+                <tr className="" key={index}>
+                  <td className="table-td">{ele.id}</td>
+                  <td className="table-td">{ele.name}</td>
+                  <td className="table-td">{ele.email}</td>
+                  <td>
+                    <td className="table-td">
+                      <button className="userView-btn"
+                        onClick={() => getSinglePropertyOwner(ele.id, ele)}
+                      >
+                        {/* */}
+                        view
+                      </button>
+                    </td>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <SingleUserModel
+        show={show}
+        setShow={setShow}
+        userDetails={userDetails}
+      />
     </div>
   );
 };

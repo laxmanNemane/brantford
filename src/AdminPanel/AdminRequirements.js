@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HocComponent from "../Components/HocComponent";
+
 // import tenantsUser from "../Assets/Images/tenates.svg";
 // import Users from "../Assets/Images/user.svg";
 // import ResquestUser from "../Assets/Images/request.svg";
@@ -29,6 +30,7 @@ function AdminRequirements() {
         // setPaginatePosts(_(res.data).slice(0).take(pageSize).value());
       });
   }, []);
+
 
   return (
     <div
@@ -91,6 +93,7 @@ function AdminRequirements() {
                 ))}
               </tbody>
             </table>
+
           </div>
         </div>
       </div>
