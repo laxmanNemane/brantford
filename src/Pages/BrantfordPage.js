@@ -32,7 +32,7 @@ const BrantfordPage = () => {
         <PromiseSection />
         <Cities />
         <CallToActionSection />
-        <TestimonialSection />
+        {/* <TestimonialSection /> */}
         <Sponsers />
         <Footer />
       </div>

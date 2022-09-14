@@ -11,13 +11,24 @@ const BaseUrl = "http://bantford.prometteur.in";
 const Header = () => {
   const [open, setOpen] = useState(false);
   // const [isLogout, setIsLogout] = useState(false);
+  const logoutHandler = () => {
+    axios.post(`http://bantford.prometteur.in/admin/admin-logout`,{
+      headers:{
+        Authorization: localStorage.getItem("token")
+      }
+    }).then((res)=>{
+      console.log(res.data)
+    })
+    .catch((err)=> {console.log(err)})
+  }
+  
 
   const logOutHandler = () => {
     // e.preventDefault();
     // setIsLogout(true);
-
+    console.log("clicked logout")
     axios
-      .post(`${BaseUrl}/admin/admin-logout`, {
+      .post(`http://bantford.prometteur.in/admin/admin-logout`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -82,6 +93,7 @@ const Header = () => {
               }}
             />
           </div>
+          <div><button onClick={logoutHandler}>logout</button></div>
           <div className="">
             <ul className="d-flex list-unstyled list_item_header">
               <li className="header_list">

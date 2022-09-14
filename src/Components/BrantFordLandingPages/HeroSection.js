@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import "../../Styles/LandingPage/HeroSection.css";
 // import videoBg from "../../Assets/video/pexels-alena-darmel-7646596.mp4";
 import { Dropdown } from "react-bootstrap";
@@ -12,17 +12,41 @@ const BaseUrl = "http://bantford.prometteur.in";
 
 const HeroSection = () => {
   const [searchData, setSearchData] = useState();
-  const [searchKey, setSearchKey] = useState();
+  const [searchKey, setSearchKey] = useState("");
+  const [city, setCity] = useState();
+  const [text, setText] = useState("");
+  const [suggestion, setSuggestion] = useState([]);
 
-  const searchHandler = () => {
+  const onChangeHandler = (e) => {
+    console.log(e.target.value);
+    setText(e.target.value);
+    let matches = [];
+
+    // if(text.length>0){
+    //   matches = city.filter(city=>{
+    //     const regx = new RegExp(`${text}`, "hin");
+    //     return city.city.match(regx)
+    //   })
+    // }
+    // console.log('matches',matches);
+    // setSuggestion(matches)
+    // setText(text)
+    // setSearchData(e.target.value)
+  };
+
+  const searchHandler = (event) => {
+    event.preventDefault();
+    console.log(text);
+    setCity(text);
     console.log(searchKey);
     // const searchData = {'city': searchKey}
 
     axios
-      .get(`${BaseUrl}/endUser/get-spacesbycity?city=${searchKey}`)
+      .get(`${BaseUrl}/endUser/get-spacesbycity?city=${text}`)
       .then((res) => {
         console.log(res);
         setSearchData(res.data);
+        setSearchKey("");
         // swal({
         //   title: "Submited ",
         //   text: "Your requirement added",
@@ -31,11 +55,27 @@ const HeroSection = () => {
       })
       .catch((err) => {
         console.log(err);
-        setSearchData("")
+        setSearchData("");
+        setSearchKey("");
       });
+    setText("");
   };
 
-  console.log(searchData);
+  // console.log(searchData);
+
+  useEffect(() => {
+    const loadCity = () => {
+      axios
+        .get(`${BaseUrl}/endUser/all-cities-listing`)
+        .then((res) => {
+          console.log(res);
+          setCity(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+  }, []);
 
   return (
     <>
@@ -66,19 +106,28 @@ const HeroSection = () => {
               </Dropdown> */}
                 <div className="input_search">
                   <div className="input1">
-                    <input
-                      type="text"
-                      placeholder="Search By Location"
-                      className="input-serchboox"
-                      onChange={(e) => setSearchKey(e.target.value)}
-                    />
-                  </div>
-                  <div
-                    className="serch-icon"
-                    style={{ cursor: "pointer" }}
-                    onClick={searchHandler}
-                  >
-                    <AiOutlineSearch className="fs-3" />
+                    <form onSubmit={searchHandler}>
+                      <input
+                        type="text"
+                        placeholder="Search By Location"
+                        className="input-serchboox"
+                        value={text}
+                        // onChange={(e) => setSearchKey(e.target.value)}
+                        onChange={(e) => onChangeHandler(e)}
+                      />
+                      {suggestion &&
+                        suggestion.map((item, i) => {
+                          <div>{suggestion}</div>;
+                        })}
+                      <input
+                        type="submit"
+                        className="serch-icon"
+                        style={{ cursor: "pointer" }}
+                      />
+
+                      {/* <AiOutlineSearch className="fs-3" /> */}
+                      {/* </div> */}
+                    </form>
                   </div>
                 </div>
               </div>
@@ -86,59 +135,68 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <div className=""
+
+      <div
+        className=""
         style={{ backgroundColor: "#ffff", display: "flex", padding: "30px" }}
-       >
+      >
+        
+          
+            {/* <div className="container">
+              <p>{city && `results for ${city}`}</p>
+            </div> */}
+       
         <div className="row">
-        {searchData ?
-          searchData.map((item, index) => {
-            return (
-              // console.log(item.id);
-             
+          {searchData ? (
+            searchData.map((item, index) => {
+              return (
+                // console.log(item.id);
+
                 // <p key={index}>{item.id}</p>
                 <div className="col-lg-4 col-md-6 col-sm-12 my-3" key={index}>
-                <div className="properties">
-                  <div className="img">
-                    <img
-                      src="https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                      alt=""
-                      className="properties-image-land"
-                    />
-                  </div>
-                  <div className="price-section d-flex justify-content-between mx-4">
-                    <div className="w-75 ">
-                      <p className="price">765654/sqr</p>
+                  <div className="properties">
+                    <div className="img">
+                      <img
+                        src="https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        alt=""
+                        className="properties-image-land"
+                      />
                     </div>
-                    <div className="d-flex justify-content-between w-25 gx-2 icon-group">
-                      <p >
-                        <AiOutlineArrowsAlt className="icons-recomanded-property  text-white" />
-                      </p>
-                      <p>
-                        <BsHeart className="icons-recomanded-property text-white" />
-                      </p>
-                      <p>
-                        <BsPlusCircle className="icons-recomanded-property text-white" />
-                      </p>
+                    <div className="price-section d-flex justify-content-between mx-4">
+                      <div className="w-75 ">
+                        <p className="price">765654/sqr</p>
+                      </div>
+                      <div className="d-flex justify-content-between w-25 gx-2 icon-group">
+                        <p>
+                          <AiOutlineArrowsAlt className="icons-recomanded-property  text-white" />
+                        </p>
+                        <p>
+                          <BsHeart className="icons-recomanded-property text-white" />
+                        </p>
+                        <p>
+                          <BsPlusCircle className="icons-recomanded-property text-white" />
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="properties-description-card mx-2 my-3">
-                    <p className="property-name-heading name">
-                      {item.space}
-                    </p>
-                    <p className="property-location-card description-why-page">
-                      {item.address}
-                    </p>
-                    <div className="button-space d-flex justify-content-between btn-area">
-                      <p className=" fw-bold">{item.description}</p>
-                     
+                    <div className="properties-description-card mx-2 my-3">
+                      <p className="property-name-heading name">{item.space}</p>
+                      <p className="property-location-card description-why-page">
+                        {item.address}
+                      </p>
+                      <div className="button-space d-flex justify-content-between btn-area">
+                        <p className=" fw-bold">{item.description}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-                
-            );
-          }):  <p> no records available</p>}
-      </div>
+              );
+            })
+          ) : (
+            <div style={{ paddingTop: "30px" }}>
+              <p>no records available</p>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

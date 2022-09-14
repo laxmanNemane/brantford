@@ -92,12 +92,12 @@ const [properties, setProperties] = useState([]);
               <td>{item.manager_name}</td>
               <td>{item.price}</td>
               <td>{item.approve_status}</td>
-              <td><button onClick={()=> approveProperty(item.id)} 
-            //   disabled={item.approve_status==="approved"}
+              <td><button className="btn btn-success" onClick={()=> approveProperty(item.id)} 
+              disabled={item.approve_status==="approved"}
               >{item.approve_status==="approved" ? 'Already Approved':'Approve'}</button>
               </td>
-              <td><button onClick={()=> rejectProperty(item.id)} 
-            //   disabled={item.approve_status==="approved"}
+              <td><button className="btn btn-danger" onClick={()=> rejectProperty(item.id)} 
+              disabled={item.approve_status==="rejected"}
               >reject</button>
               </td>
             </tr>
