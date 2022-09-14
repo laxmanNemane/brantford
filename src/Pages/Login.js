@@ -13,6 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Layout/Navbar";
 import Footer from "../Layout/Footer";
 import HocLandingPage from "../Components/HocLandingPage";
+import { toast } from "react-toastify";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -24,7 +25,12 @@ const Login = () => {
   const handleSubmit = (values) => {
     // console.log(values);
 
-    //login user
+    //login u
+
+    // if (values.password.length < 8) {
+    //   toast.error("password should be 8 digit");
+    //   // alert("shoule be8 diisgit");
+    // }
 
     axios
       .post(`${BaseUrl}/admin/admin-login`, values)
@@ -34,6 +40,7 @@ const Login = () => {
         console.log("token", res.data.token);
         console.log(res.data);
         console.log(res.data.admin.profile);
+        toast.success("successfully logged in ");
         localStorage.setItem("user", JSON.stringify(res.data));
         if (res.data.admin.profile === "admin") {
           navigate("/dashbord");
@@ -45,9 +52,10 @@ const Login = () => {
         // console.log("token-length", res.data.token.length);
       })
       .catch((err) => {
-        console.log(err);
-        console.log("Enter Valid Details");
+        // console.log(err);
+        // console.log("Enter Valid Details");
         setError("Enter Valid Details");
+        toast.error("please check detail");
       });
   };
 
@@ -112,7 +120,11 @@ const Login = () => {
                         placeholder="Password"
                         className="form-control w-75 mx-auto my-3"
                       />
-                       {<p style={{color:"red", paddingLeft:'50px'}}>{error}</p>}
+                      {
+                        <p style={{ color: "red", paddingLeft: "50px" }}>
+                          {error}
+                        </p>
+                      }
                       <p className="ms-5 ps-2 text-danger">
                         <ErrorMessage name="password" />
                       </p>
