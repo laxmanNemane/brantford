@@ -5,7 +5,7 @@ import "./Assets/CSS/Admin.css";
 import "./Assets/CSS/brantFord.css";
 import App from "./App";
 import "antd/dist/antd.min.css";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.min.css";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 import UserContext from "./Context/UserContext";

@@ -2,6 +2,7 @@ import { Modal } from "antd";
 import { Field, Form, Formik } from "formik";
 import React from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -24,11 +25,13 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
         .then((res) => {
           console.log(res.data);
           console.log(res.data.spaces);
+          toast.success("Space updated successfully");
           // showSpacesPropertyOwner();
           setshowStatus(false);
         })
         .catch((err) => {
           console.log(err);
+          toast.error("space is not updated!");
         });
       console.log(values);
     } else {
@@ -49,30 +52,32 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
         .then((res) => {
           console.log(res.data);
           console.log(res.data.spaces);
+          toast.success("Space added successfully");
           // showSpacesPropertyOwner();
           setshowStatus(false);
         })
         .catch((err) => {
           console.log(err);
+          toast.error("Space not added");
         });
     }
 
     //add spaces
-    axios
-      .post(`${BaseUrl}/admin/add-space?categaryId=${spaceId}`, values, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        console.log(res.data.spaces);
-        // showSpacesPropertyOwner();
-        setshowStatus(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // axios
+    //   .post(`${BaseUrl}/admin/add-space?categaryId=${spaceId}`, values, {
+    //     headers: {
+    //       Authorization: localStorage.getItem("token"),
+    //     },
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     console.log(res.data.spaces);
+    //     // showSpacesPropertyOwner();
+    //     setshowStatus(false);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   const handleOk = () => {
