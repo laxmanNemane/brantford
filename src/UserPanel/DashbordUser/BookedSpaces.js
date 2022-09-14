@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import HocComponent from "../../Components/HocComponent";
+import { FetchAllPendingProperties } from "../../Redux/PropertyOwnerSlices/AllpendingSlice";
 import { fetchTotalBooking } from "../../Redux/PropertyOwnerSlices/totalBookingslice";
 
 const BookedSpaces = () => {
-    const booking = useSelector((state) => state.POBookings.ApprovepropertiesPO);
+    const booking = useSelector((state) => state.POPendingProperty.PendingPropertiesOwner);
     console.log(booking);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchTotalBooking());
+        dispatch(FetchAllPendingProperties());
     }, []);
 
     return (
@@ -22,7 +23,7 @@ const BookedSpaces = () => {
         >
             <div className="mx-5 mt-2">
                 <div className="col-12 py-3">
-                    <h5 className="Analytic_heading ">All booked Space</h5>
+                    <h5 className="Analytic_heading ">All Pending Spaces</h5>
                 </div>
                 <div className="col-12">
                     <table
@@ -36,7 +37,7 @@ const BookedSpaces = () => {
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Email</th>
+                                <th>Address</th>
                                 {/* <th>Role</th> */}
                             </tr>
                         </thead>
@@ -45,7 +46,12 @@ const BookedSpaces = () => {
                                 booking.map((e, index) => {
                                     return (
                                         <tr key={index}>
-                                            <td>{e.spaceId}</td>
+                                            <td>{index + 1}</td>
+                                            <td>{e.space}</td>
+                                            <td>{e.address}</td>
+                                            {/* <td>{e.space}</td>
+                                            <td>{e.space}</td>
+                                            <td>{e.space}</td> */}
                                         </tr>
                                     )
                                 })
