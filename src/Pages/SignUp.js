@@ -88,18 +88,6 @@ function SignUp() {
                   {({ values, errors, handleSubmit }) => (
                     <Form onSubmit={handleSubmit} className="mt-5">
                       <Field
-                        as="select"
-                        className="my-select w-50 mx-auto text-center"
-                        component="select"
-                        id="workspace"
-                        name="profile"
-                      >
-                        <option value="admin">admin</option>
-                        <option value="property-owner">Property owner</option>
-                        <option value="end_user">End user </option>
-                      </Field>
-
-                      <Field
                         type="name"
                         name="name"
                         placeholder="name"

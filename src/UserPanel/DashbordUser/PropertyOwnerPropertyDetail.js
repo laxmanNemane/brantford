@@ -302,6 +302,13 @@ const PropertyOwnerPropertyDetail = () => {
                                   ""
                                 )}
                               </li>
+                              <li>
+                                {listItem.ondemand_service ? (
+                                  <>{listItem.ondemand_service} </>
+                                ) : (
+                                  ""
+                                )}
+                              </li>
                             </ul>
                           );
                         })}
