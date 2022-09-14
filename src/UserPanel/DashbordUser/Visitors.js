@@ -17,7 +17,6 @@ const Visitors = () => {
 
   useEffect(() => {
     dispatch(FetchAllVisitors());
-
   })
 
   return (
