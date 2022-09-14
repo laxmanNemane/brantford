@@ -170,7 +170,6 @@
 .hero-section {
   position: absolute;
   top: 0;
-
   width: 100%;
   height: 550px;
   /* display: flex; */
@@ -833,31 +832,76 @@ video {
 }
 
 /* conatct page css  */
-.contact-bg{background-color: #F8F8F8;}
-.contact_btn{color: #ffff !important;background-color: #743772 !important;padding: 10px !important;border-radius: 5px !important;}
-.contact_card{border-radius: 10px !important;border: none !important; background-color: #ffff !important; padding: 40px !important;}
-.contact-container{padding-top: 50px;}
-.contact-header{background-color: #4F4F4F; padding: 80px 30px !important;}
-
+.contact-bg {
+  background-color: #f8f8f8;
+}
+.contact_btn {
+  color: #ffff !important;
+  background-color: #743772 !important;
+  padding: 10px !important;
+  border-radius: 5px !important;
+}
+.contact_card {
+  border-radius: 10px !important;
+  border: none !important;
+  background-color: #ffff !important;
+  padding: 40px !important;
+}
+.contact-container {
+  padding-top: 50px;
+}
+.contact-header {
+  background-color: #4f4f4f;
+  padding: 80px 30px !important;
+}
 
 /* ctegoty list css  */
 /* .categary-list{ background-color: #343a40;color: #fff; text-align: center;} */
-.categary-list ul{ display: flex;}
-.categary-list ul li{ list-style: none; padding: 20px 15px; margin: 0px 10px; background-color: #343a40;color: #fff; cursor: pointer; width: 200px; text-align: center; border-radius: 20px;}
+.categary-list ul {
+  display: flex;
+}
+.categary-list ul li {
+  list-style: none;
+  padding: 20px 15px;
+  margin: 0px 10px;
+  background-color: #343a40;
+  color: #fff;
+  cursor: pointer;
+  width: 200px;
+  text-align: center;
+  border-radius: 20px;
+}
 
-
-.bookProperty-btn{padding: 10px 15px; background-color: #743772; color: #ffff; border-radius: 10px; border: none;}
-.disable-btn{padding: 10px 15px; background-color: #743772; color: #ffff; border-radius: 10px; border: none;}
-.show-btn{padding: 10px 15px; background-color: #fafafa; color: #743772; border-radius: 10px; border: none;}
-
+.bookProperty-btn {
+  padding: 10px 15px;
+  background-color: #743772;
+  color: #ffff;
+  border-radius: 10px;
+  border: none;
+}
+.disable-btn {
+  padding: 10px 15px;
+  background-color: #743772;
+  color: #ffff;
+  border-radius: 10px;
+  border: none;
+}
+.show-btn {
+  padding: 10px 15px;
+  background-color: #fafafa;
+  color: #743772;
+  border-radius: 10px;
+  border: none;
+}
 
 /* property section  */
-.empty-records { background-color: #C2255C; color: #ffff; padding: 15px 10px; width: 25%; border-radius: 20px;}
-
-
-
-
-
+.empty-records {
+  background-color: #c2255c;
+  color: #ffff;
+  padding: 15px 10px;
+  width: 25%;
+  border-radius: 20px;
+}
 
 .btn-unique {
   color: #c2255c;
@@ -938,4 +982,3 @@ video {
   width: 25%;
   border-radius: 20px;
 }
-

@@ -2,12 +2,16 @@ import axios from "axios";
 import HocLandingPage from "../Components/HocLandingPage";
 import React, { useEffect, useState } from "react";
 
+const BaseUrl = "http://bantford.prometteur.in";
+
+
 const TermsCondition = () => {
   const [terms, setTerms] = useState();
 
   const getTerms = () => {
     axios
-      .get(`http://bantford.prometteur.in/endUser/terms-conditions`, {
+
+      .get(`${BaseUrl}/endUser/terms-conditions`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
