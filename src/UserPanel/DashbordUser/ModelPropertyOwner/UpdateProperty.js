@@ -123,8 +123,6 @@ const UpdateProperty = () => {
                                       aria-labelledby="checkbox-group"
                                       className="my-4"
                                     >
-
-
                                       <div className="d-flex my-2">
                                         <Field
                                           type="checkbox"
@@ -216,12 +214,7 @@ const UpdateProperty = () => {
                                           &nbsp; Managed Reception
                                         </label>
                                       </div>
-
-
-
                                     </div>
-
-
                                   </div>
                                   <div className="col-6">
                                     <div
@@ -307,7 +300,6 @@ const UpdateProperty = () => {
                                           &nbsp; Window Coverings
                                         </label>
                                       </div>
-
                                     </div>
                                   </div>
                                   <button

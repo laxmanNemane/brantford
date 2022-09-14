@@ -1,7 +1,7 @@
 import { Badge, Dropdown, Input, Menu } from "antd";
 import React, { useState } from "react";
 import { BsSearch, BsBell, BsBookmarkStar } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AiOutlinePoweroff, AiOutlineUser } from "react-icons/ai";
 import axios from "axios";
 
@@ -10,6 +10,7 @@ const BaseUrl = "http://bantford.prometteur.in";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   // const [isLogout, setIsLogout] = useState(false);
   const logoutHandler = () => {
     axios.post(`http://bantford.prometteur.in/admin/admin-logout`,{
@@ -35,10 +36,12 @@ const Header = () => {
       })
       .then((res) => {
         console.log(res);
+        navigate("/");
         localStorage.clear();
       })
       .catch((err) => {
         console.log(err);
+        navigate("/");
       });
     console.log("clicked");
   };

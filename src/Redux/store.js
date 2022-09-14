@@ -18,7 +18,7 @@ const store = configureStore({
     POPendingProperty: AllpendingSlice,
     POApprovedProperty: allapprovedSlice,
     PORejectedProperties: allRejectedSlice,
-    // POBookings: totalBookingslice,
+    POBookings: totalBookingslice,
     // POAmount: totalAmountSlice,
     Profile: profileSlice,
     allvisitors: allVisitors,

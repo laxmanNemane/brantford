@@ -29,28 +29,21 @@ import PropertyOwnerPropertyDetail from "../UserPanel/DashbordUser/PropertyOwner
 import PrivateRoute from "./PrivateRoute";
 import AllProperties from "../AdminPanel/TabsPages/AllProperties/AllProperties";
 
-
 import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
 import EndUserProfilePage from "../AdminPanel/EndUserProfilePage";
 import AdminRequirements from "../AdminPanel/AdminRequirements";
 import AdminUserDetails from "../AdminPanel/AdminUserDetails";
 
-
-
 import PrivateRouteForAdmin from "./PrivateRoute";
 import PrivateRouteForuser from "./PrivteRouteForOwner";
 import UpdateProperty from "../UserPanel/DashbordUser/ModelPropertyOwner/UpdateProperty";
+import BookedSpaces from "../UserPanel/DashbordUser/BookedSpaces";
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
-
-
-
 
 // import PrivateRouteForAdmin from "./PrivateRoute";
 // import PrivateRouteForuser from "./PrivteRouteForOwner";
 // import UpdateProperty from "../UserPanel/DashbordUser/ModelPropertyOwner/UpdateProperty";
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
-
-
 
 const Routing = () => {
   return (
@@ -61,55 +54,43 @@ const Routing = () => {
         <Route path="/terms-conditions" element={<TermsCondition />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/userDashbord" element={<UserDashbord />} />
-        <Route path="/spaces" element={<Spaces />} />
-        <Route path="/visitors" element={<Visitors />} />
-        <Route path="/amenity" element={<AddAmenity />} />
-        <Route path="/image" element={<AddImages />} />
-        <Route path="/map" element={<AddLocation />} />
-        <Route path="/property" element={<PropertyOwnerPropertyDetail />} />
-        <Route path="/contact" element={<ContactForm />} />
-        {/* <Route path="/" element={<userDash />} /> */}
-        {/* <Route path="/" element={<p className="container mt-5">Home Page</p>} /> */}
-        b
-        {/* <Route path="/login" element={<Login />} />
-
+        <Route
+          exact
+          path="/office-detail/:id"
+          element={<OfficesDetailPage />}
+        />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
-        <Route path="/office-detail" element={<OfficesDetailPage />} /> */}
-        <Route path="/office-detail/:id" element={<OfficesDetailPage />} />
-        <Route path="/adminDashboard/single-enduser/:id" element={<AdminTenants />} />
-        {/* langding page  */}
-        {/* <Route path="/office-detail" element={<OfficesDetailPage />} /> */}
-        {/* admin panel */}
-        {/* <Route element={<PrivateRoute />}> */}
-        <Route path="/all-properties" element={<AllProperties />} />
-        <Route path="/detail" element={<PropertyDetailPage />} />
-        <Route path="/enduser" element={<EndUserProfilePage />} />
-        <Route path="/requirements" element={<AdminRequirements />} />
-        {/* <Route path="/dashbord" element={<DasbordPage />} />
-        <Route path="/properties" element={<Properties />} />
-        <Route path="/revenu" element={<RevenuAdmin />} />
-        <Route path="/requirements" element={<AdminRequirements />} />
-        <Route path="/tenants" element={<AdminTenants />} />
-        <Route path="/detail" element={<PropertyDetailPage />} />
-        <Route path="/privacy-policy" element={<AdminPrivacyPolicy />} />
-      <Route path="/categories" element={<AdminCategories />} />
-        <Route path="/profile" element={<AdminProfilePage />} /> */}
+
+        {/* =================property owner=================== */}
+        <Route element={<PrivateRouteForuser />}>
+          <Route path="/userDashbord" element={<UserDashbord />} />
+          <Route path="/spaces" element={<Spaces />} />
+          <Route path="/visitors" element={<Visitors />} />
+          <Route path="/amenity" element={<AddAmenity />} />
+          <Route path="/image" element={<AddImages />} />
+          <Route path="/map" element={<AddLocation />} />
+          <Route path="/property" element={<PropertyOwnerPropertyDetail />} />
+          <Route path="/updatePage" element={<UpdateProperty />} />
+          <Route path="/profile" element={<AdminProfilePage />} />
+          <Route path="/pendingSpaces" element={<BookedSpaces />} />
+        </Route>
+
         {/* </Route> */}
-        <Route element={<PrivateRoute />}>
+        <Route element={<PrivateRouteForAdmin />}>
           <Route path="/dashbord" element={<DasbordPage />} />
           <Route path="/properties" element={<Properties />} />
           <Route path="/revenu" element={<RevenuAdmin />} />
           <Route path="/tenants" element={<AdminTenants />} />
           <Route path="/detail" element={<PropertyDetailPage />} />
+          <Route path="/privacy-policy" element={<AdminPrivacyPolicy />} />
+          <Route path="/categories" element={<AdminCategories />} />
+          <Route path="/all-properties" element={<AllProperties />} />
+          <Route path="/detail" element={<PropertyDetailPage />} />
           <Route path="/profile" element={<AdminProfilePage />} />
-          <Route path="/categories" element={<AdminCategories/>} />
-
-          <Route path="/requirments" element={<AdminRequirements />} />
-
+          <Route path="/requirements" element={<AdminRequirements />} />
         </Route>
       </Routes>
-   
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 };

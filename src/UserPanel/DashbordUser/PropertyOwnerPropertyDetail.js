@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Link, Navigate, NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 import HocComponent from "../../Components/HocComponent";
 import { usersContext } from "../../Context/UserContext";
 import AddAmenity from "./ModelPropertyOwner/AddAmenity";
@@ -53,11 +54,13 @@ const PropertyOwnerPropertyDetail = () => {
       })
       .then((res) => {
         console.log(res.data);
+        toast.success("deleted successfully!");
         // showSpacesPropertyOwner();
         setRender(true);
       })
       .catch((err) => {
         console.log(err);
+        toast.error("deleted successfully!");
       });
   };
 
@@ -294,6 +297,20 @@ const PropertyOwnerPropertyDetail = () => {
                                 {listItem.Breakout_Zone
                                   ? listItem.Breakout_Zone
                                   : ""}
+                              </li>
+                              <li>
+                                {listItem.telicom_service ? (
+                                  <>{listItem.telicom_service} </>
+                                ) : (
+                                  ""
+                                )}
+                              </li>
+                              <li>
+                                {listItem.ondemand_service ? (
+                                  <>{listItem.ondemand_service} </>
+                                ) : (
+                                  ""
+                                )}
                               </li>
                             </ul>
                           );

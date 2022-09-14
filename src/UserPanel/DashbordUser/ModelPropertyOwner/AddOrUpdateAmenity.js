@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "antd";
 import { Field, Form, Formik } from "formik";
 import axios from "axios";
+import Item from "antd/lib/list/Item";
 
 const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
   const handleOk = () => {
@@ -66,7 +67,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
           <Formik
             initialValues={{
               amenities_type: "other",
-              Internet_Speed: "",
+              Internet_Speed: items.Internet_Speed,
               Parking_available: "",
             }}
             validate={(values) => {
@@ -109,7 +110,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
                         className="btn-first btn pt-2 my-3 border"
                         onClick={handleSubmit}
                       >
-                        Add
+                        update
                       </button>
                     </div>
                   </div>
@@ -124,7 +125,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
           <Formik
             initialValues={{
               amenities_type: "breakOutZone",
-              Breakout_Zone: "",
+              Breakout_Zone: items.Breakout_Zone,
             }}
             validate={(values) => {
               let errors = {};
@@ -156,7 +157,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
                         className="btn-first pt-2 my-3"
                         onClick={handleSubmit}
                       >
-                        Add
+                        Update
                       </button>
                     </div>
                   </div>
@@ -170,7 +171,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
           <Formik
             initialValues={{
               amenities_type: "telicomServices",
-              telicom_service: "",
+              telicom_service: items.telicom_service,
             }}
             validate={(values) => {
               let errors = {};
@@ -202,7 +203,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
                         className="btn-first pt-2 my-3"
                         onClick={handleSubmit}
                       >
-                        Add
+                        update
                       </button>
                     </div>
                   </div>
@@ -216,7 +217,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
           <Formik
             initialValues={{
               amenities_type: "compliances",
-              Compliances: "",
+              Compliances: items.Compliances,
             }}
             validate={(values) => {
               let errors = {};
@@ -248,7 +249,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
                         className="btn-first pt-2 my-3"
                         onClick={handleSubmit}
                       >
-                        Add
+                        update
                       </button>
                     </div>
                   </div>
@@ -263,7 +264,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
           <Formik
             initialValues={{
               amenities_type: "community",
-              Community: "",
+              Community: items.Community,
             }}
             validate={(values) => {
               let errors = {};
@@ -291,7 +292,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
                       />
 
                       <button type="submit" className="btn-first pt-2 my-3">
-                        ADDD
+                        update
                       </button>
                       {/* <button
                   type="submit "
@@ -307,13 +308,13 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
             )}
           </Formik>
         </>
-      ) : items.amenities_type === "Recreational_Zone" ? (
+      ) : items.amenities_type === "recreationalZone" ? (
         <>
           {" "}
           <Formik
             initialValues={{
               amenities_type: "recreationalZone",
-              Recreational_Zone: "",
+              Recreational_Zone: items.Recreational_Zone,
             }}
             validate={(values) => {
               let errors = {};
@@ -341,7 +342,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
                       />
 
                       <button type="submit " className="btn-unique">
-                        Add
+                        update
                       </button>
                     </div>
                   </div>
@@ -551,7 +552,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
                       </div>
                     </div>
                     <button type="submit " className="btn-unique w-25">
-                      Add <i class="fa-solid fa-plus"></i>
+                      update
                     </button>
                   </div>
                 </div>
@@ -564,7 +565,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
           <Formik
             initialValues={{
               amenities_type: "equipment",
-              Equipment: "",
+              Equipment: items.Equipment,
             }}
             validate={(values) => {
               let errors = {};
@@ -592,7 +593,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
                       />
 
                       <button type="submit " className="btn-unique">
-                        Add
+                        update
                       </button>
                     </div>
                   </div>
@@ -606,7 +607,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
           <Formik
             initialValues={{
               amenities_type: "cafeteria",
-              Cafeteria: "",
+              Cafetarea: items.Cafetarea,
             }}
             validate={(values) => {
               let errors = {};
@@ -634,7 +635,49 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
                       />
 
                       <button type="submit " className="btn-unique">
-                        Add
+                        update
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </>
+      ) : items.amenities_type === "ondemandServices" ? (
+        <>
+          <Formik
+            initialValues={{
+              amenities_type: "ondemandServices",
+              ondemand_service: items.ondemand_service,
+            }}
+            validate={(values) => {
+              let errors = {};
+
+              return errors;
+            }}
+            onSubmit={(values, { resetForm }) => {
+              handleSubmit(values, resetForm);
+            }}
+            className=""
+          >
+            {({ values, errors }) => (
+              <Form>
+                <div className="formGroup">
+                  <div className="row">
+                    <div className="col-12 w-50 py-4">
+                      <label htmlFor="Message" className="messgge py-2">
+                        Message :
+                      </label>
+                      <Field
+                        type="text"
+                        name="ondemand_service"
+                        placeholder="Cafetarea message "
+                        className="form-control  mb-3 m "
+                      />
+
+                      <button type="submit " className="btn-unique">
+                        update
                       </button>
                     </div>
                   </div>
