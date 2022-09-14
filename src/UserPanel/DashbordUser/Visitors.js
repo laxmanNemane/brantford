@@ -17,8 +17,7 @@ const Visitors = () => {
 
   useEffect(() => {
     dispatch(FetchAllVisitors());
-
-  })
+  }, [])
 
   return (
     <div className="mx-5">
@@ -35,8 +34,8 @@ const Visitors = () => {
             <thead>
               <tr>
                 <th>
-                  <div className="filtering ms-auto">
-
+                  <div className="filtering ms-auto d-flex ">
+                    Filter By:
                     <Formik
                       initialValues={{
                         filter: "yesterday",
@@ -63,13 +62,13 @@ const Visitors = () => {
                               onClick={handleSubmit}
                               style={{ width: "200px" }}
                             >
+                              <option value="today">Today</option>
                               <option value="yesterday">yesterday</option>
 
                               <option value="7 days">week</option>
 
                               <option value="30 days">Month</option>
 
-                              <option value="today">Today</option>
                             </Field>
                           </div>
                         </Form>
