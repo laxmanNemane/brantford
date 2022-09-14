@@ -4,11 +4,13 @@ import React, { useEffect, useState } from "react";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
+
 const TermsCondition = () => {
   const [terms, setTerms] = useState();
 
   const getTerms = () => {
     axios
+
       .get(`${BaseUrl}/endUser/terms-conditions`, {
         headers: {
           Authorization: localStorage.getItem("token"),

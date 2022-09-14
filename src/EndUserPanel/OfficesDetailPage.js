@@ -19,6 +19,9 @@ import { GrAttachment } from "react-icons/gr";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { number } from "echarts";
+
+import HocLandingPage from "../Components/HocLandingPage";
+
 // import swal from 'sweetalert';
 
 const BaseUrl = "http://bantford.prometteur.in";
@@ -684,4 +687,6 @@ const OfficesDetailPage = () => {
   );
 };
 
-export default OfficesDetailPage;
+
+export default HocLandingPage(OfficesDetailPage);
+
