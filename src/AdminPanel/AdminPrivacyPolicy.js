@@ -29,8 +29,10 @@ const AdminPrivacyPolicy = () => {
         }
       )
       .then((res) => {
+
         // console.log(res.data);
         toast.success("successfully added!");
+
       })
       .catch((err) => {
         console.log(err);
