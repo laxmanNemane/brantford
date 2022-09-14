@@ -5,7 +5,7 @@ export const FetchAllVisitors = createAsyncThunk(
   "visitors/FetchAllVisitors",
   async () => {
     const response = await axios.get(
-      `http://bantford.prometteur.in/propertyOwner/all-visitors?visits=7 days`,
+      `http://bantford.prometteur.in/propertyOwner/all-visitors?visits=yesterday`,
       {
         headers: {
           Authorization: localStorage.getItem("token"),
