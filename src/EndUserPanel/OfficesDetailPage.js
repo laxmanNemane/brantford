@@ -21,7 +21,7 @@ import { useParams } from "react-router-dom";
 import { number } from "echarts";
 
 import HocLandingPage from "../Components/HocLandingPage";
-// import swal from 'sweetalert';
+import swal from 'sweetalert';
 
 
 const BaseUrl = "http://bantford.prometteur.in";
