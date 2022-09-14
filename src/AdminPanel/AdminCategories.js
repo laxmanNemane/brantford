@@ -112,7 +112,6 @@ const AdminCategories = () => {
             </thead>
             <tbody>
               {categaries.map((item) => {
-                
                 return (
                   <tr className="" key={item.id}>
                     <td

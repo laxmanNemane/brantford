@@ -2,6 +2,7 @@ import { Modal } from "antd";
 import axios from "axios";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import "./categoryModal.css";
 
 const BaseUrl = "http://bantford.prometteur.in";
@@ -22,16 +23,6 @@ const UpdateCategoryModel = ({
   const handleSubmit = (values) => {
     setIsModalVisible(true);
     setUpdateCategary(values);
-    // console.log(values);
-    // console.log(categary);
-
-    console.log(localStorage.getItem("token"));
-
-    // const admin_token = localStorage.getItem("token");
-    // const property_owner_token = localStorage.getItem("property_owner_token");
-    // const token =
-    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heG1lbGFuc2hzZkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IlByb0A4MDg3IiwicmVtZW1iZXIgbWUiOnRydWUsInByb2ZpbGUiOiJhZG1pbiIsImlkIjo0LCJpYXQiOjE2NjE3NzU4NjksImV4cCI6MTY2MTc4MzA2OX0.GJYucWfhvoASU-R9m0TQJERZGBPdnkQW5Tixz8KdyFc";
-    // console.log(auth_token);
 
     axios
       .patch(`${BaseUrl}/admin/update-categary?id=${id}`, values, {
@@ -42,9 +33,11 @@ const UpdateCategoryModel = ({
       .then((res) => {
         console.log(res);
         setIsModalVisible(false);
+        toast.success("category Updated Successfully");
       })
       .catch((err) => {
         console.log(err);
+        toast.error("please try again");
       });
   };
 
@@ -67,7 +60,7 @@ const UpdateCategoryModel = ({
       >
         <div className="row">
           <Formik
-            initialValues={{ categary: "" }}
+            initialValues={{ categary: categary }}
             validate={(values) => {
               let errors = {};
 

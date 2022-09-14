@@ -5,6 +5,7 @@ import HocComponent from "../Components/HocComponent";
 import { MdNoteAdd } from "react-icons/md";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AdminPrivacyPolicy = () => {
   const [showForm, setShowForm] = useState(false);
@@ -28,12 +29,15 @@ const AdminPrivacyPolicy = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
-        
+
+        // console.log(res.data);
+        toast.success("successfully added!");
+
       })
       .catch((err) => {
         console.log(err);
         localStorage.clear();
+        toast.error("please add again");
         navigate("/login");
       });
 
