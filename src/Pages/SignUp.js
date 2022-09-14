@@ -55,6 +55,9 @@ function SignUp() {
                     email: "",
                     password: "",
                     contact: "",
+
+                    address: "",
+
                     profile: "",
                     address: "",
                   }}
@@ -87,6 +90,7 @@ function SignUp() {
                 >
                   {({ values, errors, handleSubmit }) => (
                     <Form onSubmit={handleSubmit} className="mt-5">
+
                       <Field
                         type="name"
                         name="name"

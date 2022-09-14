@@ -20,9 +20,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { number } from "echarts";
 
-import HocLandingPage from "../Components/HocLandingPage";
+import swal from "sweetalert";
 
-// import swal from 'sweetalert';
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const token = localStorage.getItem("endUser_token");
@@ -72,7 +71,9 @@ const OfficesDetailPage = () => {
       amount: propertyPrice,
     };
 
+
     console.log(amount);
+
 
     axios
       .post(`${BaseUrl}/endUser/book-space?id=${id}`, amount, {
@@ -82,19 +83,32 @@ const OfficesDetailPage = () => {
       })
       .then((res) => {
         console.log(res);
-        // swal("Space Booked", "Thank you for booking sapce", "success");
+
+        swal("Space Booked", "Thank you for booking sapce", "success");
+
       })
       .catch((err) => {
         console.log(err);
         console.log(err.response.data.error);
         if (err.response.data.error === "space aleready booked") {
           setAlreadyBooked(false);
+
+
+          swal({
+            title: "Already Booked",
+            text: "You already booked this space",
+            icon: "error",
+          });
         }
-        // swal({
-        //   title: "Already Booked",
-        //   text: "You already booked this space",
-        //   icon: "error",
-        // });
+        else{
+          swal({
+            title: "Please login",
+            text: "you doesn't have access",
+            icon: "error",
+          });
+        }
+        
+
       });
   };
   // setTimeout(() => {
@@ -225,23 +239,14 @@ const OfficesDetailPage = () => {
               <hr />
               <div className="decription-paragraph">
                 <p>{categaryDetails.description}</p>
-                <p>
-                  The community here ranges from freelance consultants to
-                  growing SMEs and enterprise businesses across a variety of
-                  industries. The space provides networking opportunities and
-                  business services relevant to their needs.
-                </p>
-                <p>
-                  Here, a community is formed where a business can grow with
-                  fellow peers, share and brainstorm ideas with the members, and
-                  exchange services from each other. This is a new, unique and
-                  better way of working, growing, and expanding.
-                </p>
+
               </div>
             </div>
             <div className="detail-property-owner">
               <div className="heading-detail-property-owner d-flex justify-content-between">
-                <h5 className="office-sub-heading">Detail </h5>
+
+                <h5 className="office-sub-heading">Details </h5>
+
                 <p>
                   {" "}
                   <BiCalendar className="fs-5 me-2 icon-featured" />
@@ -255,10 +260,11 @@ const OfficesDetailPage = () => {
                     <div className="">
                       <div className="d-flex  one my-3">
                         <p className="heading-proprty-detail fw-bold fw-bold">
-                          PropertyId :
+
+                          Working Days :
                         </p>
                         <p className="property-details-value">
-                          {categaryDetails.property_id}
+                          {categaryDetails.working_days}
                         </p>
                       </div>
 
@@ -274,12 +280,12 @@ const OfficesDetailPage = () => {
                   </div>
                   <div className="col-6">
                     <div className="">
-                      <div className="d-flex  one my-3">
+                      {/* <div className="d-flex  one my-3">
                         <p className="heading-proprty-detail fw-bold">
                           Property Type :
                         </p>
                         <p className="property-details-value">Co-working </p>
-                      </div>
+                      </div> */}
 
                       <div className="d-flex one my-3">
                         <p className="heading-proprty-detail fw-bold">
@@ -290,6 +296,7 @@ const OfficesDetailPage = () => {
                         </p>
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -320,14 +327,7 @@ const OfficesDetailPage = () => {
                         </p>
                       </div>
 
-                      <div className="d-flex  one my-3">
-                        <p className="heading-proprty-detail fw-bold">
-                          Price :
-                        </p>
-                        <p className="property-details-value">
-                          $64.99/Seats/Month
-                        </p>
-                      </div>
+
                     </div>
                   </div>
                   <div className="col-6">
@@ -356,7 +356,9 @@ const OfficesDetailPage = () => {
             </div>
             <div className="features-setion-offices">
               <div className="heading-features-offices">
-                <h5 className="office-sub-heading">Features</h5>
+
+                <h5 className="office-sub-heading">Manager Details</h5>
+
               </div>
               <hr />
               <div className="features-group">
@@ -364,34 +366,38 @@ const OfficesDetailPage = () => {
                   <div className="col-lg-4 col-md-6 col-sm-12">
                     <div className="f-one">
                       <p>
-                        <FiCheckCircle className="fs-5 mx-2 icon-featured" />{" "}
-                        24/7 Office Access
+
+                        <span className="fw-bold">Name : </span>{" "}
+                        {categaryDetails.manager_name}
+
                       </p>
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-6 col-sm-12">
                     <div className="f-one">
                       <p>
-                        {" "}
-                        <FiCheckCircle className="fs-5 mx-2 icon-featured" />
-                        24/7 Office Access
+
+                        <span className="fw-bold">Email : </span>{" "}
+                        {categaryDetails.manager_email}
+
                       </p>
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-6 col-sm-12">
                     <div className="f-one">
                       <p>
-                        <FiCheckCircle className="fs-5 mx-2 icon-featured" />
-                        24/7 Office Access
+
+                        <span className="fw-bold">Contact No : </span>{" "}
+                        {categaryDetails.manager_contactNumber}
+
                       </p>
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-6 col-sm-12">
                     <div className="f-one">
-                      <p>
-                        <FiCheckCircle className="fs-5 mx-2 icon-featured" />
-                        24/7 Office Access
-                      </p>
+
+                      <p></p>
+
                     </div>
                   </div>
                 </div>
@@ -437,11 +443,13 @@ const OfficesDetailPage = () => {
                         <div className="ofice-name-type">
                           <p className="offices-similar-heading">
                             Co-working office in Baner balewadi 411045
+
                           </p>
                           <p className="sub-heading">
                             <HiOutlineLocationMarker className="me-2" /> Elite
                             premio, Balewadi, Baner, Pune, 411045
                           </p>
+
                           <p className="name">Co-working space</p>
                         </div>
 
@@ -565,7 +573,9 @@ const OfficesDetailPage = () => {
                               <ErrorMessage name="name" />
                             </p>
                             <Field
-                              type="number"
+
+                              type="name"
+
                               name="contact_number"
                               placeholder="contact"
                               className="form-control w-75 mx-auto my-3"
@@ -688,5 +698,7 @@ const OfficesDetailPage = () => {
 };
 
 
+
 export default HocLandingPage(OfficesDetailPage);
+
 

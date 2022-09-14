@@ -34,7 +34,7 @@ const BrantfordPage = () => {
         <PromiseSection />
         <Cities />
         <CallToActionSection />
-        <TestimonialSection />
+        {/* <TestimonialSection /> */}
         <Sponsers />
       </div>
     </div>
