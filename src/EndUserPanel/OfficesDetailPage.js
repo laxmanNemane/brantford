@@ -21,7 +21,9 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import HocLandingPage from "../Components/HocLandingPage";
 
+
 import { usersContext } from "../Context/UserContext";
+
 
 import swal from 'sweetalert';
 
@@ -123,11 +125,11 @@ const OfficesDetailPage = () => {
       })
       .then((res) => {
         console.log(res);
-        // swal({
-        //   title: "Submited ",
-        //   text: "Your requirement added",
-        //   icon: "success",
-        // });
+        swal({
+          title: "Submited ",
+          text: "Your requirement added",
+          icon: "success",
+        });
       })
       .catch((err) => {
         console.log(err);
