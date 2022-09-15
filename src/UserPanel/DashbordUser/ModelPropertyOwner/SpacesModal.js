@@ -161,7 +161,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           </label>
 
                           <Field
-                            type="number"
+                            type="text"
                             name="cabin_capacity"
                             placeholder="cabin_capacity"
                             className="form-control  mb-3  m"
@@ -171,7 +171,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           </label>
 
                           <Field
-                            type="Number"
+                            type="text"
                             name="total_desks"
                             placeholder="total_desks"
                             className="form-control  mb-3  m"
