@@ -21,7 +21,7 @@ import { useParams } from "react-router-dom";
 import { number } from "echarts";
 
 import HocLandingPage from "../Components/HocLandingPage";
-// import swal from 'sweetalert';
+import swal from 'sweetalert';
 
 
 const BaseUrl = "http://bantford.prometteur.in";
@@ -136,11 +136,11 @@ const OfficesDetailPage = () => {
       })
       .then((res) => {
         console.log(res);
-        // swal({
-        //   title: "Submited ",
-        //   text: "Your requirement added",
-        //   icon: "success",
-        // });
+        swal({
+          title: "Submited ",
+          text: "Your requirement added",
+          icon: "success",
+        });
       })
       .catch((err) => {
         console.log(err);

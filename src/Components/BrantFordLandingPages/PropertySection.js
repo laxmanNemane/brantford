@@ -63,6 +63,7 @@ const PropertySection = () => {
 
   return (
     <div>
+      <div><p className="container mx-5">Get Property by category</p></div>
       <div className="categary-list">
         <ul className="">
           {categaries.map((item, index) => {

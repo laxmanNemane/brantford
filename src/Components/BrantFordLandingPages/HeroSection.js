@@ -17,14 +17,21 @@ const HeroSection = () => {
   const [text, setText] = useState("");
   const [suggestion, setSuggestion] = useState([]);
 
+
+  // let matches = [];
+
+  // setSuggestion(matches)
+
   const onChangeHandler = (e) => {
-    console.log(e.target.value);
+    // setText(text)
+    // console.log(e.target.value);
     setText(e.target.value);
-    let matches = [];
+    const text = e.target.value;
+    
 
     // if(text.length>0){
     //   matches = city.filter(city=>{
-    //     const regx = new RegExp(`${text}`, "hin");
+    //     const regx = new RegExp(`${text}`,matches );
     //     return city.city.match(regx)
     //   })
     // }
@@ -37,6 +44,7 @@ const HeroSection = () => {
   const searchHandler = (event) => {
     event.preventDefault();
     console.log(text);
+    loadCity()
     setCity(text);
     console.log(searchKey);
     // const searchData = {'city': searchKey}
@@ -63,18 +71,21 @@ const HeroSection = () => {
 
   // console.log(searchData);
 
+  const loadCity = () => {
+    axios
+      .get(`${BaseUrl}/endUser/all-cities-listing`)
+      .then((res) => {
+        console.log(res.data);
+        setCity(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
-    const loadCity = () => {
-      axios
-        .get(`${BaseUrl}/endUser/all-cities-listing`)
-        .then((res) => {
-          console.log(res);
-          setCity(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
+    loadCity()
+    
   }, []);
 
   return (

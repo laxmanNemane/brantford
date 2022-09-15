@@ -178,7 +178,7 @@ useEffect(()=>{
 {/* ///////////////////////////////// */}
  
     
-    <div className="find-property-section land-page py-3">
+    {/* <div className="find-property-section land-page py-3">
       <div className="container py-5">
         <div className="heading-section-findsection text-center">
           <p className="sub-heading">All property Needs one portal</p>
@@ -212,7 +212,7 @@ useEffect(()=>{
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
     </div>
   
   );

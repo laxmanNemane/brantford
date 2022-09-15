@@ -30,7 +30,7 @@ const BrantfordPage = () => {
       <div className="">
         <FindsProperty />
         <PropertySection />
-        <PostAddFree />
+        {/* <PostAddFree /> */}
         <PromiseSection />
         <Cities />
         <CallToActionSection />
