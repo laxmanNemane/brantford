@@ -24,8 +24,8 @@ const PropertyOverview = ({ isModalVisible, setIsModalVisible }) => {
     setIsModalVisible(false);
   };
 
-  const setNewSpace = () => {
-    navigate("/office-detail");
+  const setNewSpace = (data) => {
+    navigate(`/office-detail/${data.space.split(" ").join("-")}`);
   };
   return (
     <>
@@ -80,11 +80,11 @@ const PropertyOverview = ({ isModalVisible, setIsModalVisible }) => {
             <div className="col-6">
               <div className="carousel-description">
                 <div className="property-description-lannding-modal">
-                  {/* <h5 className="name">{endUserSpace.space}</h5> */}
-                  {/* <p className="sub-heading pb-2">{endUserSpace.address}</p> */}
+                  <h5 className="name">{endUserSpace.space}</h5>
+                  <p className="sub-heading pb-2">{endUserSpace.address}</p>
                   <hr />
                   <h5 className="name fs-4 py-2">
-                    {/* ₹<span className="fw-bold mx-1">{endUserSpace.price}</span> */}
+                    ₹<span className="fw-bold mx-1">{endUserSpace.price}</span>
                     /Seat/Month
                   </h5>
                   <hr />
@@ -96,7 +96,7 @@ const PropertyOverview = ({ isModalVisible, setIsModalVisible }) => {
                   <div className="button text-end mt-5">
                     <button
                       className="btn-for-all-landpage mt-5  "
-                      onClick={() => setNewSpace()}
+                      onClick={() => setNewSpace(endUserSpace)}
                     >
                       <BsArrowRight className="ms-2" />
                       Detail
