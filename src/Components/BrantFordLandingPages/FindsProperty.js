@@ -124,7 +124,7 @@ useEffect(()=>{
                           </div>
                           <div className="price-section d-flex justify-content-between mx-4">
                             <div className="w-75 ">
-                              <p className="price">765654/sqr</p>
+                              <p className="price">$ {item.price}</p>
                             </div>
                             <div className="d-flex justify-content-between w-25 gx-2 icon-group">
                               <p onClick={() => setIsModalVisible(true)}>

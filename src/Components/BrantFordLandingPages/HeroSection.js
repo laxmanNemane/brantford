@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import "../../Styles/LandingPage/HeroSection.css";
 // import videoBg from "../../Assets/video/pexels-alena-darmel-7646596.mp4";
 import { Dropdown } from "react-bootstrap";
@@ -7,30 +7,62 @@ import { AiOutlineSearch } from "react-icons/ai";
 import FindsProperty from "./FindsProperty";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsHeart, BsPlusCircle } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
+import { AutoComplete } from 'antd';
+const { Option } = AutoComplete;
 
 const BaseUrl = "http://bantford.prometteur.in";
 
 const HeroSection = () => {
   const [searchData, setSearchData] = useState();
   const [searchKey, setSearchKey] = useState("");
-  const [city, setCity] = useState();
+  const [city, setCity] = useState([]);
   const [text, setText] = useState("");
   const [suggestion, setSuggestion] = useState([]);
+  const [result , setResult] = useState([]);
+
+
+  const handleSearch = (value) => {
+    let res = [];
+
+    if (!value || value.indexOf('@') >= 0) {
+      res = [];
+    } else {
+
+      res = city.map((domain) => `${domain}`);
+    }
+
+    setResult(res);
+  };
+
+
+  const setCategary = (categaryId) => {
+    console.log(categaryId);
+    localStorage.setItem("singlecategaryId", categaryId);
+  };
 
   const onChangeHandler = (e) => {
     console.log(e.target.value);
     setText(e.target.value);
     const text = e.target.value;
-    let matches = [];
 
-    // if(text.length>0){
-    //   matches = city.filter(city=>{
-    //     const regx = new RegExp(`${text}`, "hin");
-    //     return city.city.match(regx)
-    //   })
-    // }
+    let matches = city.map((item)=>{
+      if(item.includes(text)){
+        setCity(text)
+      }
+      
+    });
+    console.log(city)
+
+
+    if(text.length>0){
+      matches = city.includes(city=>{
+        const regx = new RegExp(`${text}`, "hin");
+        return city.city.match(regx)
+      })
+    }
     // console.log('matches',matches);
-    // setSuggestion(matches)
+    setSuggestion(matches)
     // setText(text)
     // setSearchData(e.target.value)
   };
@@ -91,6 +123,24 @@ const HeroSection = () => {
               <div className="title-landPage">
                 <h2 className="title">Let's Find your office!</h2>
               </div>
+              <div>
+
+
+              <AutoComplete
+                  style={{
+                    width: 200,
+                  }}
+                  onSearch={handleSearch}
+                  placeholder="input here"
+                >
+                  { result.map((city) => (
+                    <Option key={city} value={city}>
+                      {city}
+                    </Option>
+                  ))}
+              </AutoComplete>
+
+              </div>
               {/* <p className="expant-paragraph">Expand. Renew. Relocate</p> */}
               <div className="search-section d-flex">
                 {/* <Dropdown>
@@ -111,7 +161,7 @@ const HeroSection = () => {
               </Dropdown> */}
                 <div className="input_search">
                   <div className="input1">
-                    <form onSubmit={searchHandler}>
+                    <form onSubmit={searchHandler}> 
                       <input
                         type="text"
                         placeholder="Search By Location"
@@ -135,6 +185,8 @@ const HeroSection = () => {
                     </form>
                   </div>
                 </div>
+
+                
               </div>
             </div>
           </div>
@@ -188,9 +240,20 @@ const HeroSection = () => {
                       <p className="property-location-card description-why-page">
                         {item.address}
                       </p>
+                     
                       <div className="button-space d-flex justify-content-between btn-area">
-                        <p className=" fw-bold">{item.description}</p>
-                      </div>
+                              <p className=" fw-bold">{item.description}</p>
+                              <NavLink to={`/office-detail/${item.id}`}>
+                                <button
+                                  className="btn-first"
+                                  onClick={() => setCategary(item.id)}
+                                >
+                                  Detail
+                                </button>
+                              </NavLink>
+                            </div>
+
+
                     </div>
                   </div>
                 </div>
