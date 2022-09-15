@@ -4,8 +4,7 @@ import React, { useState, useEffect } from "react";
 
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsHeart, BsPlusCircle } from "react-icons/bs";
-import { BsArrowRight } from "react-icons/bs";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropertyOverview from "../../EndUserPanel/PropertyOverview";
 
 const BaseUrl = "http://bantford.prometteur.in";
@@ -16,11 +15,12 @@ const PropertySection = () => {
 
   const [categaries, setCategories] = useState([]);
   const [singleCategory, setSinglecategory] = useState([]);
-  const [detailId, setDetailId] = useState(null);
 
-  const setCategary = (categaryId) => {
+  const setCategary = (categaryId, data) => {
     console.log(categaryId);
-    localStorage.setItem("singlecategaryId", categaryId);
+
+    // localStorage.setItem("singlecategaryId", categaryId);
+    console.log(data);
   };
 
   const getallCategaries = () => {
@@ -137,14 +137,14 @@ const PropertySection = () => {
                             </p>
                             <div className="button-space d-flex justify-content-between btn-area">
                               <p className=" fw-bold">{item.description}</p>
-                              <NavLink to={`/office-detail/${item.id}`}>
-                                <button
-                                  className="btn-first"
-                                  onClick={() => setCategary(item.id)}
-                                >
-                                  Detail
-                                </button>
-                              </NavLink>
+                              <button
+                                className="btn-first"
+                                onClick={() => {
+                                  alert("hello");
+                                }}
+                              >
+                                Detail
+                              </button>
                             </div>
                           </div>
                         </div>

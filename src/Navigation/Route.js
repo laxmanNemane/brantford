@@ -56,7 +56,7 @@ const Routing = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route
           exact
-          path="/office-detail/:id"
+          path="/office-detail/:name"
           element={<OfficesDetailPage />}
         />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
