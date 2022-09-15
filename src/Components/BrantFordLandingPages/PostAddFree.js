@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const PostAddFree = () => {
   return (
@@ -33,9 +35,14 @@ const PostAddFree = () => {
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptatibus enim excepturi facere.
               </p>
-              <button className="btn-second">
-                Post Your Property for FREE
-              </button>
+              <Link to="/login" className="text-">
+                <button
+                  className="btn-second"
+                  onClick={() => toast.warning("Login with Brantford ")}
+                >
+                  Post Your Property for FREE
+                </button>
+              </Link>
             </div>
           </div>
         </div>

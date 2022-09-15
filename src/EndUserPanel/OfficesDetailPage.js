@@ -21,7 +21,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import HocLandingPage from "../Components/HocLandingPage";
 import { usersContext } from "../Context/UserContext";
-// import swal from 'sweetalert';
+import swal from "sweetalert";
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const token = localStorage.getItem("endUser_token");
@@ -78,7 +78,7 @@ const OfficesDetailPage = () => {
       .then((res) => {
         console.log(res);
 
-        // swal("Space Booked", "Thank you for booking sapce", "success");
+        swal("Space Booked", "Thank you for booking sapce", "success");
       })
       .catch((err) => {
         console.log(err);
@@ -86,17 +86,17 @@ const OfficesDetailPage = () => {
         if (err.response.data.error === "space aleready booked") {
           setAlreadyBooked(false);
 
-          // swal({
-          //   title: "Already Booked",
-          //   text: "You already booked this space",
-          //   icon: "error",
-          // });
+          swal({
+            title: "Already Booked",
+            text: "You already booked this space",
+            icon: "error",
+          });
         } else {
-          // swal({
-          //   title: "Please login",
-          //   text: "you doesn't have access",
-          //   icon: "error",
-          // });
+          swal({
+            title: "Please login",
+            text: "you doesn't have access",
+            icon: "error",
+          });
         }
       });
   };
@@ -120,11 +120,11 @@ const OfficesDetailPage = () => {
       })
       .then((res) => {
         console.log(res);
-        // swal({
-        //   title: "Submited ",
-        //   text: "Your requirement added",
-        //   icon: "success",
-        // });
+        swal({
+          title: "Submited ",
+          text: "Your requirement added",
+          icon: "success",
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -435,7 +435,17 @@ const OfficesDetailPage = () => {
                                     {element.address}
                                   </p>
 
-                                  <p className="name">{element.categaryId}</p>
+                                  <p className="name">
+                                    {element.categaryId === 1
+                                      ? "Update value"
+                                      : element.categaryId === 2
+                                      ? "Co working Space"
+                                      : element.categaryId === 3
+                                      ? "flexy desk"
+                                      : element.categaryId === 4
+                                      ? "Private space"
+                                      : ""}
+                                  </p>
                                 </div>
 
                                 <div className="row">

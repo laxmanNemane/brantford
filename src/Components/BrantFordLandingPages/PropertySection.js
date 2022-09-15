@@ -1,10 +1,11 @@
 import axios from "axios";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsHeart, BsPlusCircle } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
+import { usersContext } from "../../Context/UserContext";
 import PropertyOverview from "../../EndUserPanel/PropertyOverview";
 
 const BaseUrl = "http://bantford.prometteur.in";
@@ -16,11 +17,14 @@ const PropertySection = () => {
   const [categaries, setCategories] = useState([]);
   const [singleCategory, setSinglecategory] = useState([]);
 
+  const { endUserSpace, setEndUserSpace } = useContext(usersContext);
+
   const setCategary = (categaryId, data) => {
     console.log(categaryId);
 
     // localStorage.setItem("singlecategaryId", categaryId);
-    console.log(data);
+    setEndUserSpace(data);
+    navigate(`/office-detail/${data.space.split(" ").join("-")}`);
   };
 
   const getallCategaries = () => {
@@ -139,9 +143,7 @@ const PropertySection = () => {
                               <p className=" fw-bold">{item.description}</p>
                               <button
                                 className="btn-first"
-                                onClick={() => {
-                                  alert("hello");
-                                }}
+                                onClick={() => setCategary(item.id, item)}
                               >
                                 Detail
                               </button>
