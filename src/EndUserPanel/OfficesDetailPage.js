@@ -20,8 +20,11 @@ import axios from "axios";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import HocLandingPage from "../Components/HocLandingPage";
+
 import { usersContext } from "../Context/UserContext";
-// import swal from 'sweetalert';
+
+import swal from 'sweetalert';
+
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const token = localStorage.getItem("endUser_token");
