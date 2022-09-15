@@ -98,7 +98,6 @@ const AdminTenants = () => {
             </div>
           </div>
         </div>
-        
         <AdminUserTable />
       </div>
     </div>

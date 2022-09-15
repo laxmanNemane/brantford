@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -12,14 +13,16 @@ const Cities = () => {
       .then((res) => {
         console.log(res.data);
 
+
+        // .replace(/\s+/g, '').trim()
         const unique = (value, index, self) => {
           return self.indexOf(value) === index;
         };
 
-        const ages = res.data;
-        const uniqueAges = ages.filter(unique);
-        console.log(uniqueAges);
-        // setCity(uniqueAges);
+        const city = res.data;
+        const uniqueCity = city.filter(unique);
+        console.log(uniqueCity);
+        // setCity(uniqueCity);
 
 
         //property count according to city
@@ -61,6 +64,7 @@ const Cities = () => {
         <div className="row my-4 all-cities">
           {Object.keys(city).map((item, index) => {
             return (
+              // <NavLink to="/office-detail" key={index}>
               <div
                 className="col-lg-3 col-md-3 col-sm-6 d-flex my-2"
                 key={index}
@@ -83,6 +87,7 @@ const Cities = () => {
                   </div>
                 </div>
               </div>
+              // </NavLink>
             );
           })}
           {/* <div className="col-lg-3 col-md-3 col-sm-6 d-flex my-2">

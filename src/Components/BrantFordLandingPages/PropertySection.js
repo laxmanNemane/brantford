@@ -63,6 +63,7 @@ const PropertySection = () => {
 
   return (
     <div>
+      <div><p className="container mx-5">Get Property by category</p></div>
       <div className="categary-list">
         <ul className="">
           {categaries.map((item, index) => {
@@ -114,7 +115,7 @@ const PropertySection = () => {
                           </div>
                           <div className="price-section d-flex justify-content-between mx-4">
                             <div className="w-75 ">
-                              <p className="price">765654/sqr</p>
+                              <p className="price">${item.price}</p>
                             </div>
                             <div className="d-flex justify-content-between w-25 gx-2 icon-group">
                               <p onClick={() => setIsModalVisible(true)}>
