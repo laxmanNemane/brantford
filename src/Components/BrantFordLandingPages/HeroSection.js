@@ -17,21 +17,15 @@ const HeroSection = () => {
   const [text, setText] = useState("");
   const [suggestion, setSuggestion] = useState([]);
 
-
-  // let matches = [];
-
-  // setSuggestion(matches)
-
   const onChangeHandler = (e) => {
-    // setText(text)
-    // console.log(e.target.value);
+    console.log(e.target.value);
     setText(e.target.value);
     const text = e.target.value;
-    
+    let matches = [];
 
     // if(text.length>0){
     //   matches = city.filter(city=>{
-    //     const regx = new RegExp(`${text}`,matches );
+    //     const regx = new RegExp(`${text}`, "hin");
     //     return city.city.match(regx)
     //   })
     // }
@@ -75,7 +69,7 @@ const HeroSection = () => {
     axios
       .get(`${BaseUrl}/endUser/all-cities-listing`)
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
         setCity(res.data);
       })
       .catch((err) => {
