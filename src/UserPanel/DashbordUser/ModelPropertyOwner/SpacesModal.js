@@ -1,15 +1,22 @@
 import { Modal } from "antd";
 import { Field, Form, Formik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { FetchAllCategories } from "../../../Redux/PropertyOwnerSlices/allcategoriesSlice";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
 console.log(parseInt("2"));
 
 const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
-  console.log(spaceId);
-  // console.log(element);
+  const categories = useSelector(
+    (state) => state.POCategories.AllPropertyOwnerCategories
+  );
+  console.log(categories);
+  const dispatch = useDispatch();
+
   const handleSubmit = (values) => {
     console.log(values.categaryId);
     if (spaceId) {
@@ -24,11 +31,13 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
         .then((res) => {
           console.log(res.data);
           console.log(res.data.spaces);
+          toast.success("Space updated successfully");
           // showSpacesPropertyOwner();
           setshowStatus(false);
         })
         .catch((err) => {
           console.log(err);
+          toast.error("space is not updated!");
         });
       console.log(values);
     } else {
@@ -49,31 +58,20 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
         .then((res) => {
           console.log(res.data);
           console.log(res.data.spaces);
+          toast.success("Space added successfully");
           // showSpacesPropertyOwner();
           setshowStatus(false);
         })
         .catch((err) => {
           console.log(err);
+          toast.error("Space not added");
         });
     }
-
-    //add spaces
-    axios
-      .post(`${BaseUrl}/admin/add-space?categaryId=${spaceId}`, values, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        console.log(res.data.spaces);
-        // showSpacesPropertyOwner();
-        setshowStatus(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
+
+  useEffect(() => {
+    dispatch(FetchAllCategories());
+  }, []);
 
   const handleOk = () => {
     setshowStatus(false);
@@ -163,7 +161,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           </label>
 
                           <Field
-                            type="number"
+                            type="text"
                             name="cabin_capacity"
                             placeholder="cabin_capacity"
                             className="form-control  mb-3  m"
@@ -173,7 +171,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           </label>
 
                           <Field
-                            type="Number"
+                            type="text"
                             name="total_desks"
                             placeholder="total_desks"
                             className="form-control  mb-3  m"
@@ -201,7 +199,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                         </div>
                         <div className="col-6">
                           <label htmlFor="manager_name" className="label-user">
-                            category -id:{" "}
+                            category{" "}
                           </label>
                           <Field
                             as="select"
@@ -210,15 +208,11 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             id="workspace"
                             name="categaryId"
                           >
-                            <option value="1">Co working spaces</option>
-
-                            <option value="2">private office</option>
-
-                            <option value="3">Flexi Desk</option>
-
-                            <option value="4">Free space</option>
-
-                            <option value="5">Other</option>
+                            {categories.map((ele, index) => (
+                              <option key={index} value={ele.id}>
+                                {ele.categary}
+                              </option>
+                            ))}
                           </Field>
                           <label htmlFor="manager_name" className="label-user">
                             manager name:{" "}
@@ -441,15 +435,11 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             id="workspace"
                             name="categaryId"
                           >
-                            <option value="1">Co working spaces</option>
-
-                            <option value="2">private office</option>
-
-                            <option value="3">Flexi Desk</option>
-
-                            <option value="4">Free space</option>
-
-                            <option value="5">Other</option>
+                            {categories.map((ele, index) => (
+                              <option key={index} value={ele.id}>
+                                {ele.categary}
+                              </option>
+                            ))}{" "}
                           </Field>
                           <label htmlFor="manager_name" className="label-user">
                             manager name:{" "}

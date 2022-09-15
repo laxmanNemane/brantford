@@ -16,19 +16,23 @@ const PropertyBookings = () => {
     console.log(bookedProp[0].admininfoId);
     console.log(value);
 
-  axios
-  .patch(`${BaseUrl}/adminDashboard/approveOrreject-property?id=${bookedProp[0].admininfoId}`,value, {
-    headers: {
-      Authorization: localStorage.getItem("token"),
-    },
-  })
-  .then((res) => {
-    console.log(res.data);
-    setBookedProperties(res.data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+    axios
+      .patch(
+        `${BaseUrl}/adminDashboard/approveOrreject-property?id=${bookedProp[0].admininfoId}`,
+        value,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setBookedProperties(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const declineHandler = () => {
@@ -49,7 +53,7 @@ const PropertyBookings = () => {
         setBookedProperties(res.data);
       })
       .catch((err) => {
-        // console.log(err);  
+        // console.log(err);
       });
   }, []);
 

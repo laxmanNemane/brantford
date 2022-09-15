@@ -23,15 +23,6 @@ const UserSidebar = () => {
         {
           key: "1",
           label: (
-            <NavLink to="/privacy-policy" className="fs-5">
-              <MdNoteAdd className="mx-2" />
-              Privacy Policy
-            </NavLink>
-          ),
-        },
-        {
-          key: "2",
-          label: (
             <NavLink to="/" className="fs-5">
               <AiOutlineSetting className="mx-2" />
               Setting
@@ -43,7 +34,7 @@ const UserSidebar = () => {
           type: "divider",
         },
         {
-          key: "3",
+          key: "2",
           label: (
             <NavLink to="/" className="fs-5">
               <AiFillQuestionCircle className="mx-2" />

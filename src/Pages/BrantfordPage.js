@@ -17,7 +17,6 @@ import HocLandingPage from "../Components/HocLandingPage";
 
 import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
 
-
 const BrantfordPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,7 +34,7 @@ const BrantfordPage = () => {
         <PromiseSection />
         <Cities />
         <CallToActionSection />
-        <TestimonialSection />
+        {/* <TestimonialSection /> */}
         <Sponsers />
       </div>
     </div>

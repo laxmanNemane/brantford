@@ -226,12 +226,12 @@ const UserDashbord = () => {
                                 .length
                             }
                           </p>
-                          <p className="user-dash-heading">All Booked Space</p>
+                          <p className="user-dash-heading">All Pending Space</p>
                         </div>
                       </div>
                       <div className="col-2">
                         <div className="right-arrow">
-                          <NavLink to="/spaces">
+                          <NavLink to="/pendingSpaces">
                             <IoIosArrowForward />
                           </NavLink>
                         </div>

@@ -3,9 +3,13 @@ import axios from "axios";
 
 export const FetchAllVisitors = createAsyncThunk(
   "visitors/FetchAllVisitors",
-  async () => {
+  async (data) => {
+    console.log(data);
+    console.log("data is not here");
     const response = await axios.get(
-      `http://bantford.prometteur.in/propertyOwner/all-visitors?visits=7 days`,
+      `http://bantford.prometteur.in/propertyOwner/all-visitors?visits=${
+        data ? data : "yesterday"
+      }`,
       {
         headers: {
           Authorization: localStorage.getItem("token"),

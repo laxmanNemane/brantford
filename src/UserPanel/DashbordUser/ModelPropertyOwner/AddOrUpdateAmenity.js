@@ -308,7 +308,7 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
             )}
           </Formik>
         </>
-      ) : items.amenities_type === "Recreational_Zone" ? (
+      ) : items.amenities_type === "recreationalZone" ? (
         <>
           {" "}
           <Formik
@@ -630,6 +630,48 @@ const AddOrUpdateAmenity = ({ isModalOpen, setIsModalOpen, id, items }) => {
                       <Field
                         type="text"
                         name="Cafetarea"
+                        placeholder="Cafetarea message "
+                        className="form-control  mb-3 m "
+                      />
+
+                      <button type="submit " className="btn-unique">
+                        update
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </>
+      ) : items.amenities_type === "ondemandServices" ? (
+        <>
+          <Formik
+            initialValues={{
+              amenities_type: "ondemandServices",
+              ondemand_service: items.ondemand_service,
+            }}
+            validate={(values) => {
+              let errors = {};
+
+              return errors;
+            }}
+            onSubmit={(values, { resetForm }) => {
+              handleSubmit(values, resetForm);
+            }}
+            className=""
+          >
+            {({ values, errors }) => (
+              <Form>
+                <div className="formGroup">
+                  <div className="row">
+                    <div className="col-12 w-50 py-4">
+                      <label htmlFor="Message" className="messgge py-2">
+                        Message :
+                      </label>
+                      <Field
+                        type="text"
+                        name="ondemand_service"
                         placeholder="Cafetarea message "
                         className="form-control  mb-3 m "
                       />
