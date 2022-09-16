@@ -126,7 +126,7 @@ const HeroSection = () => {
               <div>
 
 
-              <AutoComplete
+              {/* <AutoComplete
                   style={{
                     width: 200,
                   }}
@@ -138,11 +138,11 @@ const HeroSection = () => {
                       {city}
                     </Option>
                   ))}
-              </AutoComplete>
+              </AutoComplete> */}
 
               </div>
               {/* <p className="expant-paragraph">Expand. Renew. Relocate</p> */}
-              <div className="search-section d-flex">
+              <div className="search-section">
                 {/* <Dropdown>
                 <Dropdown.Toggle
                   variant="light"
@@ -176,7 +176,7 @@ const HeroSection = () => {
                         })}
                       <input
                         type="submit"
-                        className="serch-icon"
+                        className="serch-icon "
                         style={{ cursor: "pointer" }}
                       />
 
@@ -261,7 +261,7 @@ const HeroSection = () => {
             })
           ) : (
             <div style={{ paddingTop: "30px" }}>
-              <p>no records available</p>
+              {/* <p>no records available</p> */}
             </div>
           )}
         </div>

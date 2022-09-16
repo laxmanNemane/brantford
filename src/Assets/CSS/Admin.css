@@ -372,13 +372,7 @@ table tr td {
   margin: 0 10px;
 }
 
-.Serach_icon {
-  position: relative;
-  left: 29px;
-  top: 5px;
-  z-index: 1;
-  font-size: 23px;
-}
+
 
 .list_item_header {
   margin: 30px 0;
@@ -772,3 +766,38 @@ table tr td {
   border: none;
 }
 
+/* common classes  */
+.brant-card{background-color: #fff; border-radius: 5px; border: none;}
+.brant-card .brant-card-body{padding: 30px }
+.brant-title h3{font-family: sans-serif; font-weight: 700; font-size: 20px;color: #ffff;}
+.brant-title p{font-family: sans-serif; font-weight: 500; font-size: 15px;color: #ffff;}
+.brant-btn{padding: 10px 15px; border: none; border-radius: 15px; background-color: #A951A5; color: #fff;}
+/* dashboard header  */
+.input_search{color: #86898e;font-size: 12px; height: 40px; width: 100%; padding-left: 50px; border: 0; padding-right: 15px;background: 0 0;border-radius: 30px;border: 0; border: 1px solid rgba(100,197,177,.6);font-weight: 400;}
+.Search_icon {left: 10px; top: 8px;z-index: 1;font-size: 20px;}
+
+/* dashboard main page  */
+.dashbord_section_page{z-index: 20; background-color: #f3f4f3; 
+  /* padding: 15px; */
+}
+.dashbord_section_page::before{position: absolute;left: 0;top: 0;right: 0;height: 160px;z-index: -1;background: #64c5b1;content: '';border-radius: 0;left: 0;}
+.Analytic_heading{}
+/* .transaction-list ul li::after{content: ''; height: 2px; color: #0f0f0f; background-color: #0f0f0f; width: 100%;} */
+.transaction-list ul {list-style: none; padding: 0;}
+.transaction-list ul li{    border-bottom: 1px solid #f3f4f3;}
+.total-balance{background: #f8faff;border-radius: 5px;padding: 18px 30px;}
+.calendar{border: none;}
+.react-calendar button{border: none; padding: 5px;}
+.footer{text-align: center;padding-bottom: 0;padding-top: 6px;background: 0 0;  left: 0; right: 0; bottom: 0; background: #f3f4f3;background: #64c5b1;
+  /* position: absolute; */
+  /* padding-left: 270px; */
+}
+.footer-inner{padding: 30px;}
+.top-scroller{position: fixed;right: 20px; bottom: 30px;cursor: pointer;z-index: 9999999;display: none;}
+.top-scroller a{ height: 50px; width: 50px; background-color: #f6f6f6;box-shadow: 0 10px 20px 0 rgb(76 110 248 / 40%); border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+
+/* sidebar style  */
+/* .list-unstyled li::after{content:">"; color: #fff;transform: rotate(-90deg) translate(0,-50%); opacity: 1;font-size: 10px;right: 15px;color: #a1a4b9;} */
+.brant-card-body table tr th{padding: 20px;}
+.brant-card-body table thead{border-radius: 30px; background-color: #e9d9e0;}
+.brant-label{padding: 5px 10px; border-radius: 5px; background-color: #e9d9e0; border: none; color: #0f0f0f;}

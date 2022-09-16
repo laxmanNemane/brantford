@@ -2,7 +2,7 @@ import { Badge, Dropdown, Input, Menu } from "antd";
 import React, { useState } from "react";
 import { BsSearch, BsBell, BsBookmarkStar } from "react-icons/bs";
 import { NavLink, useNavigate } from "react-router-dom";
-import { AiOutlinePoweroff, AiOutlineUser } from "react-icons/ai";
+import { AiOutlinePoweroff, AiOutlineUser, AiOutlineMail } from "react-icons/ai";
 import axios from "axios";
 
 const BaseUrl = "http://bantford.prometteur.in";
@@ -66,12 +66,12 @@ const Header = () => {
         {
           key: "3",
           label: (
-            <button onClick={logOutHandler}>
-              {/* <NavLink to="/" className="fs-5"> */}
+            
+               <NavLink to="/" className="fs-5" onClick={logOutHandler}> 
               <AiOutlinePoweroff className="mx-2" />
               Logout
-              {/* </NavLink> */}
-            </button>
+               </NavLink> 
+            
           ),
         },
       ]}
@@ -84,23 +84,22 @@ const Header = () => {
     <div className=" w-100 header_admin ">
       <div className=" mx-3" style={{ margin: "-10px 0 5px 0" }}>
         <div className="d-flex align-items-center mb-2">
-          <div className=" d-flex me-auto" style={{ width: "320px" }}>
-            <BsSearch className="Serach_icon" />
+          <div className=" d-flex me-auto position-relative" style={{ width: "320px" }}>
+            <BsSearch className="Search_icon position-absolute" />
             <Input
-              placeholder="search"
-              className="input_serach"
+              placeholder="search here..."
+              className="input_search position-relative"
               style={{
                 paddingLeft: "35px",
                 borderRadius: "10px",
                 height: "35px",
               }}
             />
-          </div>
-          <div><button onClick={logoutHandler}>logout</button></div>
+          </div>  
           <div className="">
             <ul className="d-flex list-unstyled list_item_header">
               <li className="header_list">
-                <BsBookmarkStar className="header_icons mt-2" />
+                <AiOutlineMail className="header_icons mt-2" />
               </li>
               <li>
                 <BsBell className="header_icons mt-2" />

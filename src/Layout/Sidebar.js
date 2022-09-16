@@ -60,7 +60,7 @@ const Sidebar = () => {
       <h5 className="Logo_admin fw-bold text-center">
         <AiOutlineHome />
       </h5>
-      <div className=" Sidebar_otption_section">
+      <div className="Sidebar_otption_section">
         <ul className="list-unstyled">
           <li className="my-3    list-sidebar-menu">
             <NavLink to="/dashbord" className="text-dark">
