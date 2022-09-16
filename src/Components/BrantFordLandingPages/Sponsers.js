@@ -11,22 +11,38 @@ const Sponsers = () => {
     <div className="client-page">
       <div className="container">
         <div className="row">
-          <ul className="list-unstyled client">
-            <li>
+          <ul className="list-unstyled">
+            <li className="col-lg-3 col-md-4 col-sm-6 py-1">
+
               <img src={first} alt="" />
+
             </li>
-            <li>
+
+            <li className="col-lg-3 col-md-4 col-sm-6 py-1">
+
               <img src={second} alt="" />
+
             </li>
-            <li>
+            <li className="col-lg-3 col-md-4 col-sm-6 py-1">
+
               <img src={third} alt="" />
+
             </li>
-            <li>
+            <li className="col-lg-3 col-md-4 col-sm-6 py-1">
+
               <img src={fourth} alt="" />
+
             </li>
-            <li>
+            <li className="col-lg-3 col-md-4 col-sm-6 py-1">
+
               <img src={fifth} alt="" />
+
             </li>
+
+
+
+
+
           </ul>
         </div>
       </div>

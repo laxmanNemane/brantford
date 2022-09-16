@@ -140,13 +140,11 @@ const HeroSection = () => {
         className=""
         style={{ backgroundColor: "#ffff", display: "flex", padding: "30px" }}
       >
-        
-          
-            {/* <div className="container">
+        {/* <div className="container">
               <p>{city && `results for ${city}`}</p>
             </div> */}
-       
-        <div className="row">
+
+        {/* <div className="row">
           {searchData ? (
             searchData.map((item, index) => {
               return (
@@ -188,15 +186,15 @@ const HeroSection = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-              );
+                </div> */}
+        {/* );
             })
           ) : (
             <div style={{ paddingTop: "30px" }}>
               <p>no records available</p>
             </div>
-          )}
-        </div>
+          )} */}
+        {/* </div> */}
       </div>
     </>
   );

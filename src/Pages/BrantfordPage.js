@@ -22,7 +22,7 @@ const BrantfordPage = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="brantford-landing-page">
+    <div className="brantford-landing-page w-100">
       <div className="landing_section">
         <video src={videoBg} autoPlay loop muted></video>
         <HeroSection />
