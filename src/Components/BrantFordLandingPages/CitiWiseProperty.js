@@ -40,8 +40,8 @@ const CitiWiseProperty = () => {
     getAllProperties();
   }, []);
   return (
-    <div className="container  w-100 py-5 mx-1">
-      <div className="row">
+    <div className="container    py-5">
+      <div className="row mx-1">
         <div className="col-lg-12 col-md-12 col-sm-12">
           <h5 className="name">{name.name} properties</h5>
         </div>

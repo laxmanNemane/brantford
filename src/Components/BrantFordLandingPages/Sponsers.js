@@ -10,40 +10,72 @@ const Sponsers = () => {
   return (
     <div className="client-page">
       <div className="container">
+        <p className="main-heading text-center mb-5">
+          Our Client
+        </p>
         <div className="row">
-          <ul className="list-unstyled">
-            <li className="col-lg-3 col-md-4 col-sm-6 py-1">
+          <div className="col-lg-2 col-md-3 col-sm-6 text-center">
+            <ul className="list-unstyled">
+              <li className=" py-1">
+                <img src={first} alt="" />
+              </li>
 
-              <img src={first} alt="" />
+            </ul>
+          </div>
+          <div className="col-lg-2 col-md-3 col-sm-6 text-center">
+            <ul className="list-unstyled">
 
-            </li>
+              <li className=" py-1">
+                <img src={fourth} alt="" />
+              </li>
 
-            <li className="col-lg-3 col-md-4 col-sm-6 py-1">
+            </ul>
+          </div>
+          <div className="col-lg-2 col-md-3 col-sm-6 text-center">
+            <ul className="list-unstyled">
 
-              <img src={second} alt="" />
+              <li className=" py-1">
+                <img src={third} alt="" />
+              </li>
 
-            </li>
-            <li className="col-lg-3 col-md-4 col-sm-6 py-1">
+            </ul>
+          </div>
+          <div className="col-lg-2 col-md-3 col-sm-6 text-center">
+            <ul className="list-unstyled">
 
-              <img src={third} alt="" />
+              <li className="py-1">
+                <img src={second} alt="" />
+              </li>
 
-            </li>
-            <li className="col-lg-3 col-md-4 col-sm-6 py-1">
+            </ul>
+          </div>
+          <div className="col-lg-2 col-md-3 col-sm-6 text-center">
+            <ul className="list-unstyled">
 
-              <img src={fourth} alt="" />
+              <li className="py-1">
+                <img src={fifth} alt="" />
+              </li>
 
-            </li>
-            <li className="col-lg-3 col-md-4 col-sm-6 py-1">
+            </ul>
+          </div>
+          <div className="col-lg-2 col-md-3 col-sm-6 text-center">
+            <ul className="list-unstyled">
 
-              <img src={fifth} alt="" />
+              <li className="py-1">
+                <img src={second} alt="" />
+              </li>
 
-            </li>
+            </ul>
+          </div>
 
 
 
 
 
-          </ul>
+
+
+
+
         </div>
       </div>
     </div>

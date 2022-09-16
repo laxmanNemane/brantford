@@ -989,3 +989,21 @@ video {
   width: 25%;
   border-radius: 20px;
 }
+
+@media (max-width: 600px) {
+  .discription-findpage {
+    padding: 0 10px;
+  }
+  .main-heading {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 950px) {
+  .discription-findpage {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 600px) {
+}

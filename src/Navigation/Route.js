@@ -62,6 +62,7 @@ const Routing = () => {
         />
         <Route path="/city/:name" element={<CitiWiseProperty />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
+        <Route path="/contactUs" element={<ContactForm />} />
 
         {/* =================property owner=================== */}
         <Route element={<PrivateRouteForuser />}>
