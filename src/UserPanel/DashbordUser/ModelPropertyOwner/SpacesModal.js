@@ -519,11 +519,9 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           >
                             <option value="">Pick a Working Day..</option>
                             <option value="Monday-Friday">Monday-Friday</option>
-                            <option value="Hybrid">Hybrid</option>
+                            <option value="Sat">Sat</option>
 
-                            <option value="Saturday-Sunday">
-                              Saturday-Sunday
-                            </option>
+                            <option value="Sun">Sun</option>
                           </Field>
                           <span className="text-danger">
                             <ErrorMessage name="working_days" />
