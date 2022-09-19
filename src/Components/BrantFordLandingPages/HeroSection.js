@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+
 // import "../../Styles/LandingPage/HeroSection.css";
 // import videoBg from "../../Assets/video/pexels-alena-darmel-7646596.mp4";
 import { Dropdown } from "react-bootstrap";
@@ -7,6 +8,8 @@ import { AiOutlineSearch } from "react-icons/ai";
 import FindsProperty from "./FindsProperty";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsHeart, BsPlusCircle } from "react-icons/bs";
+import { AutoComplete } from "antd";
+const { Option } = AutoComplete;
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -16,6 +19,19 @@ const HeroSection = () => {
   const [city, setCity] = useState();
   const [text, setText] = useState("");
   const [suggestion, setSuggestion] = useState([]);
+  const [result, setResult] = useState([]);
+
+  const handleSearch = (value) => {
+    let res = [];
+
+    if (!value) {
+      res = [];
+    } else {
+      res = ['gmail.com', '163.com', 'qq.com'].map((domain) => `${value}@${domain}`);
+    }
+
+    setResult(res);
+  };
 
   const onChangeHandler = (e) => {
     console.log(e.target.value);
@@ -39,7 +55,6 @@ const HeroSection = () => {
     console.log(text);
     setCity(text);
     console.log(searchKey);
-    // const searchData = {'city': searchKey}
 
     axios
       .get(`${BaseUrl}/endUser/get-spacesbycity?city=${text}`)
@@ -63,18 +78,20 @@ const HeroSection = () => {
 
   // console.log(searchData);
 
+  const loadCity = () => {
+    axios
+      .get(`${BaseUrl}/endUser/all-cities-listing`)
+      .then((res) => {
+        console.log(res);
+        setCity(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
-    const loadCity = () => {
-      axios
-        .get(`${BaseUrl}/endUser/all-cities-listing`)
-        .then((res) => {
-          console.log(res);
-          setCity(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
+    loadCity()
   }, []);
 
   return (
@@ -87,23 +104,8 @@ const HeroSection = () => {
                 <h2 className="title">Let's Find your office!</h2>
               </div>
               {/* <p className="expant-paragraph">Expand. Renew. Relocate</p> */}
-              <div className="search-section d-flex">
-                {/* <Dropdown>
-                <Dropdown.Toggle
-                  variant="light"
-                  id="dropdown-basic"
-                  className="drop-btn"
-                  
-                >
-                  Select City
-                </Dropdown.Toggle>
+              <div className="search-section d-flex align-items-center">
 
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">pune</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Mumbai</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">Banglore</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown> */}
                 <div className="input_search">
                   <div className="input1">
                     <form onSubmit={searchHandler}>
@@ -119,16 +121,46 @@ const HeroSection = () => {
                         suggestion.map((item, i) => {
                           <div>{suggestion}</div>;
                         })}
-                      <input
-                        type="submit"
-                        className="serch-icon"
-                        style={{ cursor: "pointer" }}
-                      />
+
 
                       {/* <AiOutlineSearch className="fs-3" /> */}
                       {/* </div> */}
                     </form>
                   </div>
+                </div>
+                <div>
+                  <i className="fa-solid fa-magnifying-glass fs-4"  ></i>
+                </div>
+              </div>
+
+              {/* <AutoComplete
+                style={{
+                  width: 200,
+                }}
+                onSearch={handleSearch}
+                placeholder="input here"
+              >
+                {result.map((email) => (
+                  <Option key={email} value={email}>
+                    {email}
+                  </Option>
+                ))}
+              </AutoComplete> */}
+
+              <div className="top-banner-serach position-relative" style={{ width: "530px" }}>
+                <div id="houzez-auto-complete-banner position-absolute" className="auto-complete" style={{ top: "370.4px" }}>
+                  {
+                    // city.map((e, index) => {
+                    //   return (
+                    //     <ul key={index}>
+                    //       <li>{e}</li>
+                    //     </ul>
+                    //   )
+                    // })
+                  }
+                  <ul className="list-group">
+
+                  </ul>
                 </div>
               </div>
             </div>

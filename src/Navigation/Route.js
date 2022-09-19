@@ -39,6 +39,7 @@ import PrivateRouteForuser from "./PrivteRouteForOwner";
 import UpdateProperty from "../UserPanel/DashbordUser/ModelPropertyOwner/UpdateProperty";
 import BookedSpaces from "../UserPanel/DashbordUser/BookedSpaces";
 import CitiWiseProperty from "../Components/BrantFordLandingPages/CitiWiseProperty";
+import CompareSidebar from "../Components/BrantFordLandingPages/CompareSidebar";
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 // import PrivateRouteForAdmin from "./PrivateRoute";
@@ -63,6 +64,8 @@ const Routing = () => {
         <Route path="/city/:name" element={<CitiWiseProperty />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/contactUs" element={<ContactForm />} />
+
+        <Route path="/button" element={<CompareSidebar />} />
 
         {/* =================property owner=================== */}
         <Route element={<PrivateRouteForuser />}>

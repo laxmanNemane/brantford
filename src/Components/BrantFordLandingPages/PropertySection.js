@@ -7,12 +7,14 @@ import { BsHeart, BsPlusCircle } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { usersContext } from "../../Context/UserContext";
 import PropertyOverview from "../../EndUserPanel/PropertyOverview";
+import CompareSidebar from "./CompareSidebar";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
-const PropertySection = () => {
+const PropertySection = ({ slide, setSlide }) => {
   const navigate = useNavigate();
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [show, setShow] = useState(false);
 
   const [categaries, setCategories] = useState([]);
   const [singleCategory, setSinglecategory] = useState([]);
@@ -84,7 +86,6 @@ const PropertySection = () => {
       </div> */}
       <div className="property-page-section">
         <div className="container">
-
           <div className="row">
             <div className="col-lg-12 col-md-12 col-sm-12   property-section-headings">
               <div className="container property-section">
@@ -99,7 +100,7 @@ const PropertySection = () => {
               </div>
 
               <div className="row">
-                <div className="col-lg-4 col-md-6 col-sm-12 " >
+                <div className="col-lg-4 col-md-6 col-sm-12 ">
                   <div className="properties">
                     <div className="image-section1 w-100">
                       <img
@@ -113,7 +114,52 @@ const PropertySection = () => {
                         <p className="price">765654/sqr</p>
                       </div>
                       <div className="d-flex justify-content-between w-25 gx-2 icon-group">
-                        <p >
+                        <p>
+                          {/* onClick={() => modalToDetailPage(item)} */}
+                          <AiOutlineArrowsAlt className="icons-recomanded-property text-white" />
+                        </p>
+                        <p>
+                          <BsHeart className="icons-recomanded-property text-white" />
+                        </p>
+                        <p onClick={() => setShow(true)}>
+                          <BsPlusCircle className="icons-recomanded-property text-white" />
+                        </p>
+                      </div>
+                    </div>
+                    <div className="properties-description-card mx-2 my-3">
+                      <p className="property-name-heading name">item.space</p>
+                      <p className="property-location-card description-why-page">
+                        item.address
+                      </p>
+                      <div className="button-space d-flex justify-content-between btn-area">
+                        <p className=" fw-bold">item.description</p>
+                        {/* <NavLink to={`/office-detail/${item.id}`}> */}
+                        <button
+                          className="btn-first"
+                          // onClick={() => setCategary(item.id, item)}
+                        >
+                          Detail
+                        </button>
+                        {/* </NavLink> */}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-6 col-sm-12 ">
+                  <div className="properties">
+                    <div className="image-section1 w-100">
+                      <img
+                        src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        alt=""
+                        className="image-find-section"
+                      />
+                    </div>
+                    <div className="price-section d-flex justify-content-between mx-4">
+                      <div className="w-75 ">
+                        <p className="price">765654/sqr</p>
+                      </div>
+                      <div className="d-flex justify-content-between w-25 gx-2 icon-group">
+                        <p>
                           {/* onClick={() => modalToDetailPage(item)} */}
                           <AiOutlineArrowsAlt className="icons-recomanded-property text-white" />
                         </p>
@@ -135,7 +181,7 @@ const PropertySection = () => {
                         {/* <NavLink to={`/office-detail/${item.id}`}> */}
                         <button
                           className="btn-first"
-                        // onClick={() => setCategary(item.id, item)}
+                          // onClick={() => setCategary(item.id, item)}
                         >
                           Detail
                         </button>
@@ -144,52 +190,7 @@ const PropertySection = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 " >
-                  <div className="properties">
-                    <div className="image-section1 w-100">
-                      <img
-                        src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        alt=""
-                        className="image-find-section"
-                      />
-                    </div>
-                    <div className="price-section d-flex justify-content-between mx-4">
-                      <div className="w-75 ">
-                        <p className="price">765654/sqr</p>
-                      </div>
-                      <div className="d-flex justify-content-between w-25 gx-2 icon-group">
-                        <p >
-                          {/* onClick={() => modalToDetailPage(item)} */}
-                          <AiOutlineArrowsAlt className="icons-recomanded-property text-white" />
-                        </p>
-                        <p>
-                          <BsHeart className="icons-recomanded-property text-white" />
-                        </p>
-                        <p>
-                          <BsPlusCircle className="icons-recomanded-property text-white" />
-                        </p>
-                      </div>
-                    </div>
-                    <div className="properties-description-card mx-2 my-3">
-                      <p className="property-name-heading name">item.space</p>
-                      <p className="property-location-card description-why-page">
-                        item.address
-                      </p>
-                      <div className="button-space d-flex justify-content-between btn-area">
-                        <p className=" fw-bold">item.description</p>
-                        {/* <NavLink to={`/office-detail/${item.id}`}> */}
-                        <button
-                          className="btn-first"
-                        // onClick={() => setCategary(item.id, item)}
-                        >
-                          Detail
-                        </button>
-                        {/* </NavLink> */}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 " >
+                <div className="col-lg-4 col-md-6 col-sm-12 ">
                   <div className="properties w-100">
                     <div className="image-section1 w-100">
                       <img
@@ -203,7 +204,7 @@ const PropertySection = () => {
                         <p className="price">765654/sqr</p>
                       </div>
                       <div className="d-flex justify-content-between w-25 gx-2 icon-group">
-                        <p >
+                        <p>
                           {/* onClick={() => modalToDetailPage(item)} */}
                           <AiOutlineArrowsAlt className="icons-recomanded-property text-white" />
                         </p>
@@ -225,7 +226,7 @@ const PropertySection = () => {
                         {/* <NavLink to={`/office-detail/${item.id}`}> */}
                         <button
                           className="btn-first"
-                        // onClick={() => setCategary(item.id, item)}
+                          // onClick={() => setCategary(item.id, item)}
                         >
                           Detail
                         </button>
@@ -308,6 +309,7 @@ const PropertySection = () => {
           </div>
         </div>
       </div>
+      <CompareSidebar show={show} setShow={setShow} />
     </div>
   );
 };

@@ -67,7 +67,7 @@ function ContactForm() {
                         type="name"
                         name="name"
                         placeholder="name"
-                        className="form-control w-75 mx-auto my-3"
+                        className="form-control  mx-auto my-3"
                       />
                       <p className="ms-5 ps-2 text-danger">
                         <ErrorMessage name="name" />
@@ -76,7 +76,7 @@ function ContactForm() {
                         type="number"
                         name="contact"
                         placeholder="contact"
-                        className="form-control w-75 mx-auto my-3"
+                        className="form-control  mx-auto my-3"
                       />
                       <p className="ms-5 ps-2 text-danger">
                         <ErrorMessage name="contact" />
@@ -86,7 +86,7 @@ function ContactForm() {
                         type="email"
                         name="email"
                         placeholder="Email"
-                        className="form-control w-75 mx-auto my-3"
+                        className="form-control  mx-auto my-3"
                       />
                       <p className="ms-5 ps-2 text-danger">
                         <ErrorMessage name="email" />
@@ -97,7 +97,7 @@ function ContactForm() {
                         type="textarea"
                         name="textarea"
                         placeholder="Enter your message"
-                        className="form-control w-75 mx-auto my-3"
+                        className="form-control  mx-auto my-3"
                       />
                       <p className="ms-5 ps-2 text-danger">
                         <ErrorMessage name="textarea" />
@@ -106,7 +106,7 @@ function ContactForm() {
                       <button
                         onClick={resetForm}
                         type="submit"
-                        className="form-control border-none w-75 mx-auto my-5 fw-bold contact_btn "
+                        className="form-control btn-first border-none mx-auto my-5 fw-bold  "
                       >
                         Submit
                       </button>
