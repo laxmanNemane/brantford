@@ -99,7 +99,7 @@ const RevenuAdmin = () => {
     <div
       style={{
         background: "rgb(244, 240, 242)",
-        padding: "0",
+        paddingLeft: "270px",
         height: "100vh",
       }}
     >

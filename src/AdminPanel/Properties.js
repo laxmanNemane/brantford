@@ -14,6 +14,7 @@ import { FiCheckSquare, FiCheck, FiList } from "react-icons/fi";
 import axios from "axios";
 import AllProperties from "./TabsPages/AllProperties/AllProperties";
 import AllProperty from "./TabsPages/AllProperty";
+import AdminFooter from "./AdminFooter";
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const Admin_token = localStorage.getItem("token");
@@ -107,137 +108,157 @@ const Properties = () => {
       className=""
       style={{
         background: "rgb(244, 240, 242)",
-        padding: "0",
+        paddingLeft: "270px",
         height: "100vh",
       }}
     >
-      <div className="row  mx-3  ">
-        <div className="col-12 my-2">
-          <h5 className="Analytic_heading">Quick Staks </h5>
-        </div>
-
-        <div className="ms-2" style={{ width: "99%" }}>
-          <div className="d-flex justify-content-between ">
-            <div className="card d-flex align-items-center shadow Main_card_usertenants_properties ">
-              <div
-                className="d-flex align-items-center"
-                style={{ height: "180px" }}
-              >
-                <div className="me-2">
-                  <div className="property-section-icon-background first-icon">
-                    <BsBuilding className="property-section-icons" />
-                  </div>
-                </div>
-                <div className="ms-2 " style={{ lineHeight: "0.7" }}>
-                  <p className=" properties-sectionCard_headeing" style={{}}>
-                    Total Properties
-                  </p>
-                  <p className="People_tenant ">{propertyCount}</p>
-                </div>
-              </div>
-            </div>
-            <div className="card d-flex align-items-center shadow Main_card_usertenants_properties ">
-              <div
-                className="d-flex align-items-center"
-                style={{ height: "180px" }}
-              >
-                <div className="me-2">
-                  <div className="property-section-icon-background second-icon">
-                    <FiCheckSquare className="property-section-icons" />
-                  </div>
-                </div>
-                <div className="ms-2 " style={{ lineHeight: "0.7" }}>
-                  <p className=" properties-sectionCard_headeing" style={{}}>
-                    Total Booking
-                  </p>
-                  <p className="People_tenant ">
-                    {Object.keys(bookedProperties).length}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="card d-flex align-items-center shadow Main_card_usertenants_properties ">
-              <div
-                className="d-flex align-items-center"
-                style={{ height: "180px" }}
-              >
-                <div className="me-2">
-                  <div className="property-section-icon-background third-icon">
-                    <FiCheck className="property-section-icons" />
-                  </div>
-                </div>
-                <div className="ms-2 " style={{ lineHeight: "0.7" }}>
-                  <p className="properties-sectionCard_headeing" style={{}}>
-                    Approval
-                  </p>
-                  <p className="People_tenant ">15</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="card d-flex align-items-center shadow  Main_card_usertenants_properties">
-              <div
-                className="d-flex align-items-center"
-                style={{ height: "180px" }}
-              >
-                <div className="me-2">
-                  <div className="property-section-icon-background fourth-icon">
-                    <FiList className="property-section-icons" />
-                  </div>
-                </div>
-                <div className="ms-2 " style={{ lineHeight: "0.7" }}>
-                  <p className=" properties-sectionCard_headeing" style={{}}>
-                    New Listed
-                  </p>
-                  <p className="People_tenant ">{newListedCount}</p>
-                </div>
+      <div className="top-banner">
+        <div className="dashboard-title">
+          <div className="row align-items-center">
+            {/* <div className="col-lg-1 text-center ">
+            <IoIosAirplane
+              className="plane_icon"
+              style={{ fontSize: "40px" }}
+            />
+           </div> */}
+            <div className="col-lg-8">
+              <div className="brant-title">
+                <h3 className="">Properties</h3>
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item">
+                    <a href="#">Home</a>
+                  </li>
+                  <li className="breadcrumb-item active">Quick Staks</li>
+                </ol>
               </div>
             </div>
           </div>
         </div>
 
-        <div
-          className="ms-2 mt-5 property-tab-section"
-          style={{ width: "99%" }}
-        >
-          <Tabs
-            defaultActiveKey="Booking"
-            id="uncontrolled-tab-example"
-            className="mb-3 tabs_property"
+        <div className="row  mx-3  ">
+          <div className="ms-2" style={{ width: "99%" }}>
+            <div className="d-flex justify-content-between ">
+              <div className="card d-flex align-items-center shadow Main_card_usertenants_properties ">
+                <div
+                  className="d-flex align-items-center"
+                  style={{ height: "180px" }}
+                >
+                  <div className="me-2">
+                    <div className="property-section-icon-background first-icon">
+                      <BsBuilding className="property-section-icons" />
+                    </div>
+                  </div>
+                  <div className="ms-2 " style={{ lineHeight: "0.7" }}>
+                    <p className=" properties-sectionCard_headeing" style={{}}>
+                      Total Properties
+                    </p>
+                    <p className="People_tenant ">{propertyCount}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="card d-flex align-items-center shadow Main_card_usertenants_properties ">
+                <div
+                  className="d-flex align-items-center"
+                  style={{ height: "180px" }}
+                >
+                  <div className="me-2">
+                    <div className="property-section-icon-background second-icon">
+                      <FiCheckSquare className="property-section-icons" />
+                    </div>
+                  </div>
+                  <div className="ms-2 " style={{ lineHeight: "0.7" }}>
+                    <p className=" properties-sectionCard_headeing" style={{}}>
+                      Total Booking
+                    </p>
+                    <p className="People_tenant ">
+                      {Object.keys(bookedProperties).length}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="card d-flex align-items-center shadow Main_card_usertenants_properties ">
+                <div
+                  className="d-flex align-items-center"
+                  style={{ height: "180px" }}
+                >
+                  <div className="me-2">
+                    <div className="property-section-icon-background third-icon">
+                      <FiCheck className="property-section-icons" />
+                    </div>
+                  </div>
+                  <div className="ms-2 " style={{ lineHeight: "0.7" }}>
+                    <p className="properties-sectionCard_headeing" style={{}}>
+                      Approval
+                    </p>
+                    <p className="People_tenant ">15</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="card d-flex align-items-center shadow  Main_card_usertenants_properties">
+                <div
+                  className="d-flex align-items-center"
+                  style={{ height: "180px" }}
+                >
+                  <div className="me-2">
+                    <div className="property-section-icon-background fourth-icon">
+                      <FiList className="property-section-icons" />
+                    </div>
+                  </div>
+                  <div className="ms-2 " style={{ lineHeight: "0.7" }}>
+                    <p className=" properties-sectionCard_headeing" style={{}}>
+                      New Listed
+                    </p>
+                    <p className="People_tenant ">{newListedCount}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="ms-2 mt-5 property-tab-section"
+            style={{ width: "99%" }}
           >
-            <Tab
-              eventKey="Booking"
-              title="Booking"
-              tabClassName="profile-tabitem"
+            <hr />
+            <Tabs
+              defaultActiveKey="Booking"
+              id="uncontrolled-tab-example"
+              className="mb-3 tabs_property"
             >
-              <PropertyBookings />
-            </Tab>
-            <Tab
-              eventKey="New Listed Properties"
-              title="New Listed Properties"
-              tabClassName="profile-tabitem"
-            >
-              <NewListedProperty />
-            </Tab>
-            <Tab
-              eventKey="Services"
-              title="Services"
-              tabClassName="profile-tabitem"
-            >
-              <Services />
-            </Tab>
+              <Tab
+                eventKey="Booking"
+                title="Booking"
+                tabClassName="profile-tabitem"
+              >
+                <PropertyBookings />
+              </Tab>
+              <Tab
+                eventKey="New Listed Properties"
+                title="New Listed Properties"
+                tabClassName="profile-tabitem"
+              >
+                <NewListedProperty />
+              </Tab>
+              <Tab
+                eventKey="Services"
+                title="Services"
+                tabClassName="profile-tabitem"
+              >
+                <Services />
+              </Tab>
 
-            <Tab
-              eventKey="All Properties"
-              title="All Properties"
-              tabClassName="profile-tabitem"
-            >
-              <AllProperty />
-            </Tab>
-          </Tabs>
-        </div>
+              <Tab
+                eventKey="All Properties"
+                title="All Properties"
+                tabClassName="profile-tabitem"
+              >
+                <AllProperty />
+              </Tab>
+            </Tabs>
+          </div>
 
-        {/* <div className="col-8 card shadow my-2">
+          {/* <div className="col-8 card shadow my-2">
         <div className="d-flex py-2">
           <h4 className="pt-2 me-auto">New Listed </h4>
           <button className="btn border px-4 ">View all</button>
@@ -337,7 +358,9 @@ const Properties = () => {
           </div>
         </div>
       </div> */}
+        </div>
       </div>
+      <AdminFooter />
     </div>
   );
 };

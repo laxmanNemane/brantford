@@ -56,54 +56,69 @@ const Sidebar = () => {
   );
 
   return (
-    <div className="sidebar_main shadow ">
+    <nav className="admin-sidebar">
+      {/* <div className="sidebar_main shadow "> */}
       <h5 className="Logo_admin fw-bold text-center">
         <AiOutlineHome />
       </h5>
       <div className="Sidebar_otption_section">
         <ul className="list-unstyled">
-          <li className="my-3    list-sidebar-menu">
+          <li className="my-3  list-sidebar-menu">
             <NavLink to="/dashbord" className="text-dark">
-              <TiChartBar className="Sidebar_icons" />
-              Dashbord
+              <div className="d-flex align-items-center justify-content-center">
+                <TiChartBar className="Sidebar_icons" />
+                <span>Dashbord</span>
+              </div>
             </NavLink>
           </li>
           <li className="my-3   list-sidebar-menu">
             <NavLink to="/properties" className="text-dark">
-              <BsBuilding className="Sidebar_icons" /> properties
+              <div className="d-flex align-items-center justify-content-center">
+                <BsBuilding className="Sidebar_icons" />
+                <span> properties </span>
+              </div>
             </NavLink>
           </li>
           <li className="my-3   list-sidebar-menu">
             <NavLink to="/tenants" className="text-dark">
-              <AiOutlineUsergroupAdd className="Sidebar_icons" />
-              Tenants
+              <div className="d-flex align-items-center justify-content-center">
+                <AiOutlineUsergroupAdd className="Sidebar_icons" />
+                <span>Tenants</span>
+              </div>
             </NavLink>
           </li>
           <li className="my-3   list-sidebar-menu">
             <NavLink to="/categories" className="text-dark">
-              <AiOutlineInsurance className="Sidebar_icons" />
-              Categories
+              <div className="d-flex align-items-center justify-content-center">
+                <AiOutlineInsurance className="Sidebar_icons" />
+                <span>Categories</span>
+              </div>
             </NavLink>
           </li>
           <li className="my-3  list-sidebar-menu">
             <NavLink to="/revenu" className="text-dark">
-              <AiOutlineCreditCard className="Sidebar_icons" />
-              Income
+              <div className="d-flex align-items-center justify-content-center">
+                <AiOutlineCreditCard className="Sidebar_icons" />
+                <span>Income</span>
+              </div>
             </NavLink>
           </li>
           <li className="my-3  list-sidebar-menu">
-
             <NavLink to="/requirements" className="text-dark">
-
-              <AiOutlineCreditCard className="Sidebar_icons" />
-              Requirements
+              <div className="d-flex align-items-center justify-content-center">
+                <AiOutlineCreditCard className="Sidebar_icons" />
+                <span>Requirements</span>
+              </div>
             </NavLink>
           </li>
           <li className="my-3 list-sidebar-menu">
             {/* <NavLink to="/dashbord" className="text-dark"> */}
+            <div className="d-flex align-items-center justify-content-center">
+
             <AiOutlineWechat className="Sidebar_icons" />
-            Chat
+          <span>Chat</span>  
             {/* </NavLink> */}
+            </div>
           </li>
         </ul>
         <p className="sidebar-setting">
@@ -112,7 +127,8 @@ const Sidebar = () => {
           </Dropdown>
         </p>
       </div>
-    </div>
+      {/* </div> */}
+    </nav>
   );
 };
 

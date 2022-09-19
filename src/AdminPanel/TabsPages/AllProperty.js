@@ -83,10 +83,21 @@ const AllProperty = () => {
   console.log(properties);
   return (
     <div className=" my-2 ms-2" style={{ width: "99%" }}>
-      <div className=" py-2">
-        <table className="table-border">
+     
+      <div className=" brant-card">
+        <div className="brant-card-body">
+        <div>
+        <h6> Property list</h6>
+       </div>
+       <div className="d-flex  justify-content-between align-items-center">
+        <h3>Properties</h3>
+        <div>
+          {/* <input type="text" /> */}
+        </div>
+       </div>
+        <table className="table-border w-100">
           <thead>
-            <tr>
+            <tr className="">
               <th>ID</th>
               <th>Space</th>
               <th>Manager Name</th>
@@ -99,19 +110,24 @@ const AllProperty = () => {
 
             { properties.map((item,index)=>{
                 return( 
-            <tr key={index}>
-              <td>{item.id}</td>
+            <tr key={index} className="">
+              <td>{index + 1}</td>
               <td>{item.space}</td>
               <td>{item.manager_name}</td>
               <td>{item.price}</td>
-              <td>{item.approve_status}</td>
-              <td><button className="btn btn-success" onClick={()=> approveProperty(item.id)} 
+              <td >
+               <div className={item.approve_status==="approved" ? 'brant-label btn-delivered' : item.approve_status==="rejected" ? "brant-label btn-pending": "brant-label btn-paid" }>{item.approve_status}
+                </div> </td>
+              <td>
+            <div>
+              <button className="brant-btn-blue" onClick={()=> approveProperty(item.id)} 
               disabled={item.approve_status==="approved"}
               >{item.approve_status==="approved" ? 'Already Approved':'Approve'}</button>
-              </td>
-              <td><button className="btn btn-danger" onClick={()=> rejectProperty(item.id)} 
+
+              <button className="brant-btn-red ms-4" onClick={()=> rejectProperty(item.id)} 
               disabled={item.approve_status==="rejected"}
               >reject</button>
+            </div>
               </td>
             </tr>
             )
@@ -120,6 +136,7 @@ const AllProperty = () => {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 };

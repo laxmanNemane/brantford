@@ -75,11 +75,11 @@ const AdminCategories = () => {
     <div
       style={{
         background: "rgb(244, 240, 242)",
-        padding: "0",
+        paddingLeft: "270px",
         height: "100vh",
       }}
     >
-      <div className="row  mx-3  ">
+      <div className="row mx-3">
         <div className="col-12  mx-2 d-flex justify-content-between my-3 mb-5">
           <h5 className="Analytic_heading ">Categories : </h5>
           <button

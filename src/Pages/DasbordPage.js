@@ -16,6 +16,8 @@ import Chart from "react-apexcharts";
 import ReactApexChart from "react-apexcharts";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Calendar from "react-calendar";
+import { AiFillDollarCircle, AiFillCaretDown } from "react-icons/ai";
+import AdminFooter from "../AdminPanel/AdminFooter";
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const Admin_token = localStorage.getItem("token");
@@ -39,6 +41,9 @@ const DasbordPage = () => {
       chart: {
         height: 350,
         type: "radar",
+        toolbar: {
+          show: false,
+        },
       },
       dataLabels: {
         enabled: true,
@@ -55,7 +60,7 @@ const DasbordPage = () => {
         },
       },
       title: {
-        text: "Radar with Polygon Fill",
+        show: false,
       },
       colors: ["#FF4560"],
       markers: {
@@ -124,8 +129,7 @@ const DasbordPage = () => {
         curve: "straight",
       },
       title: {
-        text: "Product Trends by Month",
-        align: "left",
+        show:false,
       },
       grid: {
         row: {
@@ -181,11 +185,17 @@ const DasbordPage = () => {
   });
   const [chartData, setChartData] = useState({
     options: {
+      
       chart: {
         // type: 'Line',
         id: "apexchart-example",
+        toolbar: {
+          show: false,
+        },
       },
       xaxis: {
+        show:false,
+
         categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
       },
       fill: {
@@ -203,8 +213,9 @@ const DasbordPage = () => {
         },
       },
       legend: {
+        show:false,
         // position: '',
-        width: 400,
+        // width: 400,
         // position: 'top',
       },
     },
@@ -297,918 +308,936 @@ const DasbordPage = () => {
 
   return (
     <div
-      className="dashbord_section_page position-relative"
+      className="main-section"
       style={{
         background: "rgb(244, 240, 242)",
       }}
     >
-      <div className="container-fluid  ">
-        <div className="row  align-items-center" style={{ height: "120px" }}>
-          {/* <div className="col-lg-1 text-center ">
+      <div className="">
+        <div className="top-banner">
+          <div className="dashboard-title">
+            <div className="row align-items-center">
+              {/* <div className="col-lg-1 text-center ">
             <IoIosAirplane
               className="plane_icon"
               style={{ fontSize: "40px" }}
             />
-          </div> */}
-          <div className="col-lg-8">
-            <div className="brant-title">
-              <h3 className="">Dashbord</h3>
-              <ol className="breadcrumb">
-                <li className="breadcrumb-item">
-                  <a href="#">Home</a>
-                </li>
-                <li className="breadcrumb-item active">Library</li>
-              </ol>
+           </div> */}
+              <div className="col-lg-8">
+                <div className="brant-title">
+                  <h3 className="">Dashbord</h3>
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <a href="#">Home</a>
+                    </li>
+                    <li className="breadcrumb-item active">Library</li>
+                  </ol>
+                </div>
+              </div>
+              <div className="col-lg-4 text-end">
+                {/* <BsPatchPlus className="fs-2 text-dark" /> */}
+                <button
+                  className="ms-3 btn border Buttons_dashbord"
+                  onClick={() => setshowStatus(true)}
+                >
+                  &nbsp;Create Category
+                </button>
+              </div>
             </div>
           </div>
-          <div className="col-lg-4 text-end">
-            <BsPatchPlus className="fs-2 text-dark" />
-            <button
-              className="ms-3 btn border Buttons_dashbord"
-              onClick={() => setshowStatus(true)}
-            >
-              &nbsp;Create Category
-            </button>
-          </div>
-        </div>
-      </div>
 
-      <div className="row    align-items-center">
-        <div className="col-12">
-          <div className="card brant-card-body mx-4 p-4">
-            <div className="mx-3 d-flex pb-3">
-              <h6 className="pt-3 me-auto card_heading_dashbord_heading">
-                All Detail
-              </h6>
-              <button className="btn border  Buttons_dashbord btn-view-all-dashbord mt-2">
-                View All
-              </button>
-            </div>
-            <Divider style={{ margin: "0", padding: "0" }} />
-            <div className="row py-4 px-3">
-              <div className="col-4 d-flex ">
-                <div className="col-left mt-">
-                  <Link to="/all-properties">
-                    <RiBuildingLine
-                      className="icons_dashbord"
-                      style={{ fontSize: "90px" }}
-                    />
-                  </Link>
-                </div>
-                <div className="col-right ms-3">
-                  <span className="title_overiew_dashbord_page">
-                    All Property
-                  </span>
-                  <br />
-                  <span className="dashbord_page_overview_number">
-                    {allPropertiesCount}
-                  </span>
-                  <br />
-                  <span className="dashbord_page_overview_description">
-                    grow rate 1%
-                  </span>
-                </div>
-              </div>
-              <div className="col-4 d-flex algn-items-center">
-                <div className="col-left ">
-                  <RiBuildingLine
-                    className="icons_dashbord"
-                    style={{ fontSize: "90px" }}
-                  />
-                  <FcApproval
-                    style={{
-                      fontSize: "30px",
-                      position: "relative",
-                      right: "30px",
-                      top: "30px",
-                    }}
-                  />
-                </div>
-                <div className="col-right ms-3 booked_section">
-                  <span className="title_overiew_dashbord_page">
-                    Booked Properties
-                  </span>
-                  <br />
-                  <span className="dashbord_page_overview_number">
-                    {Object.keys(bookedCount).length}
-                  </span>
-                  <br />
-                  <span className="dashbord_page_overview_description">
-                    Incresed By 1%
-                  </span>
-                </div>
-              </div>
-              <div className="col-4 d-flex">
-                <div className="col-left">
-                  <FcBullish
-                    style={{ fontSize: "80px", fontColor: "pink" }}
-                    className="mt-2 icons_dashbord"
-                  />
-                </div>
-                <div className="col-right ms-3">
-                  <span className="title_overiew_dashbord_page">
-                    {" "}
-                    Revenu (Profit)
-                  </span>
-                  <br />
-                  <span className="dashbord_page_overview_number">
-                    {revenue}
-                  </span>
-                  <br />
-                  <span className="dashbord_page_overview_description">
-                    hello
-                  </span>
-                </div>
-              </div>
-            </div>
-            <Divider style={{ margin: "0", padding: "0" }} />
-            <div className="row text-center">
-              <div className="col-12 py-2">
-                <NavLink to="/properties" className="text-dark">
-                  <button
-                    className="btn Buttons_dashbord view_all_btn "
-                    style={{ borderRadius: "40px", margin: "20px 0" }}
-                  >
-                    Overview Page
+          <div className="row    align-items-center">
+            <div className="col-12">
+              <div className="card brant-card-body mx-4 p-4">
+                <div className="mx-3 d-flex pb-3">
+                  <h6 className="pt-3 me-auto card_heading_dashbord_heading">
+                    All Detail
+                  </h6>
+                  <button className="btn border  Buttons_dashbord btn-view-all-dashbord mt-2">
+                    View All
                   </button>
-                </NavLink>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="row m-4">
-        <div className="col-md-8">
-          <div className="brant-card">
-            <div className="brant-card-body">
-              <ReactApexChart
-                options={chartData.options}
-                series={chartData.series}
-                type="line"
-                height={380}
-              />
-            </div>
-          </div>
-
-          <div className="brant-card mt-4">
-            <div className="brant-card-body">
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="text">
-                  <h4>Download your earnings report</h4>
-                  <p>There are many variations of passages.</p>
                 </div>
-                <div className="button">
-                  <Link rel="stylesheet" to="">
-                    <button className="brant-btn">create Report</button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="brant-card">
-            <div className="brant-card-body">
-              <ReactApexChart
-                options={circleChart.options}
-                series={circleChart.series}
-                type="polarArea"
-                height={380}
-              />
-            </div>
-            <div className="brant-card-body">
-              <div className="d-flex">
-                <div className="sales">
-                  <p>This Month Revenue</p>
-                  <h3>$57k</h3>
-                  <p>14.5% Up From Last Month</p>
-                </div>
-                <div className="sales">
-                  <p>This Month Revenue</p>
-                  <h3>$57k</h3>
-                  <p>14.5% Up From Last Month</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="row m-4">
-        <div className="col-md-4">
-          <div className="brant-card">
-            <div className="brant-card-body" style={{ height: "250px" }}>
-              <ReactApexChart
-                options={lineChart.options}
-                series={lineChart.series}
-                type="line"
-                // height={350}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="brant-card">
-            <div className="brant-card-body" style={{ height: "250px" }}>
-              <div className="chart-title d-flex justify-content-between align-items-center">
-                <p>Sumary</p>
-                <p>...</p>
-              </div>
-              <div className="prg-bar">
-                <div className="mt-4">
-                  <ProgressBar now={25} />
-                </div>
-                <div className="mt-4">
-                  <ProgressBar now={75} />
-                </div>
-                <div className="mt-4">
-                  <ProgressBar now={34} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="brant-card">
-            <div className="brant-card-body" style={{ height: "250px" }}>
-              <div className="d-flex">
-                <div className="total">
-                  <p>Total</p>
-                  <h3>356</h3>
-                </div>
-                <div className="bars">
-                  <div className="d-flex justify-content-end">
-                    <button className="brant-btn">Today</button>
-                    <button className="brant-btn">This Week</button>
+                <Divider style={{ margin: "0", padding: "0" }} />
+                <div className="row py-4 px-3">
+                  <div className="col-4 d-flex ">
+                    <div className="col-left mt-">
+                      <Link to="/all-properties">
+                        <RiBuildingLine
+                          className="icons_dashbord"
+                          style={{ fontSize: "90px" }}
+                        />
+                      </Link>
+                    </div>
+                    <div className="col-right ms-3">
+                      <span className="title_overiew_dashbord_page">
+                        All Property
+                      </span>
+                      <br />
+                      <span className="dashbord_page_overview_number">
+                        {allPropertiesCount}
+                      </span>
+                      <br />
+                      <span className="dashbord_page_overview_description">
+                        grow rate 1%
+                      </span>
+                    </div>
                   </div>
-                  {/* <ReactApexChart options={bars.options} series={bars.series}type="line"height={350}/> */}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4 mt-4">
-          <div className="brant-card">
-            <div className="brant-card-body" style={{ height: "400px" }}>
-              <div className="d-flex justify-content-between align-items-center">
-                <p>Transactions</p>
-                <p>...</p>
-              </div>
-              <div className="transaction-list">
-                <ul>
-                  <li className="d-flex justify-content-between align-items-center">
-                    <div>icon</div>
-                    <div>
-                      <h5>Electricity Bill</h5>
-                      <p>10 Aug 03:00PM</p>
+                  <div className="col-4 d-flex algn-items-center">
+                    <div className="col-left ">
+                      <RiBuildingLine
+                        className="icons_dashbord"
+                        style={{ fontSize: "90px" }}
+                      />
+                      <FcApproval
+                        style={{
+                          fontSize: "30px",
+                          position: "relative",
+                          right: "30px",
+                          top: "30px",
+                        }}
+                      />
                     </div>
-                    <div>
-                      <h6>- $ 1254.00</h6>
+                    <div className="col-right ms-3 booked_section">
+                      <span className="title_overiew_dashbord_page">
+                        Booked Properties
+                      </span>
+                      <br />
+                      <span className="dashbord_page_overview_number">
+                        {Object.keys(bookedCount).length}
+                      </span>
+                      <br />
+                      <span className="dashbord_page_overview_description">
+                        Incresed By 1%
+                      </span>
                     </div>
-                  </li>
-                  <li className="d-flex justify-content-between align-items-center">
-                    <div>icon</div>
-                    <div>
-                      <h5>Electricity Bill</h5>
-                      <p>10 Aug 03:00PM</p>
-                    </div>
-                    <div>
-                      <h6>- $ 1254.00</h6>
-                    </div>
-                  </li>
-                  <li className="d-flex justify-content-between align-items-center">
-                    <div>icon</div>
-                    <div>
-                      <h5>Electricity Bill</h5>
-                      <p>10 Aug 03:00PM</p>
-                    </div>
-                    <div>
-                      <h6>- $ 1254.00</h6>
-                    </div>
-                  </li>
-                  <li className="d-flex justify-content-between align-items-center">
-                    <div>icon</div>
-                    <div>
-                      <h5>Electricity Bill</h5>
-                      <p>10 Aug 03:00PM</p>
-                    </div>
-                    <div>
-                      <h6>- $ 1254.00</h6>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-4 mt-4">
-          <div className="brant-card">
-            <div className="brant-card-body" style={{ height: "400px" }}>
-              <div className="d-flex justify-content-between align-items-center">
-                <p>News and updates</p>
-                <div>
-                  <button className="brant-btn">Today</button>
-                </div>
-              </div>
-              <div className="transaction-list">
-                <ul>
-                  <li className=" p-2">
-                    <h6>36% off For pixel lights Couslations Types.</h6>
-                    <p>Sorem Kpsum is simply of the printing..</p>
-                  </li>
-                  <li className=" p-2">
-                    <h6>We are produce new product this</h6>
-                    <p>Gorem Rpsum is simply text of the printing...</p>
-                  </li>
-
-                  <li className=" p-2">
-                    <h6>50% off For COVID Couslations Types.</h6>
-                    <p>EoremHpsum is simply dummy...</p>
-                  </li>
-                  <li>
-                    <div className="text-center">
-                      <button className="brant-btn">Load more</button>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-4 mt-4">
-          <div className="brant-card">
-            <div className="brant-card-body" style={{ height: "400px" }}>
-              <div className="d-flex justify-content-between align-items-center">
-                <p>Account info</p>
-                <p>...</p>
-              </div>
-              <div className="transaction-list">
-                <ul>
-                  <li className="d-flex justify-content-between align-items-center">
-                    <div>
-                      <h5>Monthly Plan</h5>
-                    </div>
-                    <div>
-                      <h6>$25</h6>
-                    </div>
-                  </li>
-                  <li className="d-flex justify-content-between align-items-center">
-                    <div>
-                      <h5>Taxes</h5>
-                    </div>
-                    <div>
-                      <h6>$14</h6>
-                    </div>
-                  </li>
-                  <li className="d-flex justify-content-between align-items-center">
-                    <div>
-                      <h5>Monthly Plan</h5>
-                    </div>
-                    <div>
-                      <h6>$25</h6>
-                    </div>
-                  </li>
-                  <li className="d-flex justify-content-between align-items-center">
-                    <div className="d-flex">
-                      <div>
-                        <h5>Extera</h5>
-                        <p>Netflix and other bills in this month.</p>
-                      </div>
-                    </div>
-                    <div>
-                      <h6>$25</h6>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="total-balance">
-                      <span>Total Balance</span>
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div>
-                          <h5>$3650</h5>
-                          <p>+1235</p>
-                        </div>
-                        <div>
-                          <button className="d-block brant-btn">Today</button>
-                          <button className="mt-3 brant-btn">This week</button>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="row m-4">
-        <div className="col-md-4">
-          <div className="brant-card">
-            <div className="brant-card-body">
-              <Calendar
-                className="calendar"
-                onChange={onChange}
-                value={value}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="col-md-8">
-          <div className="brant-card">
-            <div className="brant-card-body">
-              {/* <VectorMap map={esMill}  /> */}
-              <div>
-                <p>map</p>
-              </div>
-              <div>
-                <div className="prg-bar">
-                  <div className="mt-4">
-                    <ProgressBar now={25} />
                   </div>
-                  <div className="mt-4">
-                    <ProgressBar now={75} />
+                  <div className="col-4 d-flex">
+                    <div className="col-left">
+                      <FcBullish
+                        style={{ fontSize: "80px", fontColor: "pink" }}
+                        className="mt-2 icons_dashbord"
+                      />
+                    </div>
+                    <div className="col-right ms-3">
+                      <span className="title_overiew_dashbord_page">
+                        {" "}
+                        Revenu (Profit)
+                      </span>
+                      <br />
+                      <span className="dashbord_page_overview_number">
+                        {revenue}
+                      </span>
+                      <br />
+                      <span className="dashbord_page_overview_description">
+                        hello
+                      </span>
+                    </div>
                   </div>
-                  <div className="mt-4">
-                    <ProgressBar now={34} />
+                </div>
+                <Divider style={{ margin: "0", padding: "0" }} />
+                <div className="row text-center">
+                  <div className="col-12 py-2">
+                    <NavLink to="/properties" className="text-dark">
+                      <button
+                        className="btn Buttons_dashbord view_all_btn "
+                        style={{ borderRadius: "40px", margin: "20px 0" }}
+                      >
+                        Overview Page
+                      </button>
+                    </NavLink>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="row m-4">
-        <div className="col-md-6">
-          <div className="brant-card">
-            <div className="brant-card-body">
-              <div className="d-flex justify-content-between align-items-center">
-                <p>Monthly Invoices</p>
-                <p>...</p>
+          <div className="row m-4">
+            <div className="col-md-8">
+              <div className="brant-card">
+                <div className="brant-card-body">
+                  <ReactApexChart
+                    options={chartData.options}
+                    series={chartData.series}
+                    type="line"
+                    height={380}
+                  />
+                </div>
               </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Customer</th>
-                    <th>Product</th>
-                    <th>Invoice</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
-                        </div>
-                        <p className="m-0 ps-2">Customer</p>
-                      </div>
-                    </td>
-                    <td>Sunglass</td>
-                    <td>#DE2548 </td>
-                    <td>$350 </td>
-                    <td>
-                      <button className="btn btn-primary brant-label">
-                        Pending
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
-                        </div>
-                        <p className="m-0 ps-2">Customer</p>
-                      </div>
-                    </td>
-                    <td>Sunglass</td>
-                    <td>#DE2548 </td>
-                    <td>$350 </td>
-                    <td>
-                      <button className="btn btn-primary brant-label">
-                        Pending
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
-                        </div>
-                        <p className="m-0 ps-2">Customer</p>
-                      </div>
-                    </td>
-                    <td>Sunglass</td>
-                    <td>#DE2548 </td>
-                    <td>$350 </td>
-                    <td>
-                      <button className="btn btn-primary brant-label">
-                        Pending
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
-                        </div>
-                        <p className="m-0 ps-2">Customer</p>
-                      </div>
-                    </td>
-                    <td>Sunglass</td>
-                    <td>#DE2548 </td>
-                    <td>$350 </td>
-                    <td>
-                      <button className="btn btn-primary brant-label">
-                        Pending
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
-                        </div>
-                        <p className="m-0 ps-2">Customer</p>
-                      </div>
-                    </td>
-                    <td>Sunglass</td>
-                    <td>#DE2548 </td>
-                    <td>$350 </td>
-                    <td>
-                      <button className="btn btn-primary brant-label">
-                        Pending
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
-                        </div>
-                        <p className="m-0 ps-2">Customer</p>
-                      </div>
-                    </td>
-                    <td>Sunglass</td>
-                    <td>#DE2548 </td>
-                    <td>$350 </td>
-                    <td>
-                      <button className="btn btn-primary brant-label">
-                        Pending
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+
+              <div className="brant-card mt-4">
+                <div className="brant-card-body">
+                  <div className="d-flex justify-content-between align-items-center">
+                    <div className="text">
+                      <h4>Download your earnings report</h4>
+                      <p>There are many variations of passages.</p>
+                    </div>
+                    <div className="button">
+                      <Link rel="stylesheet" to="">
+                        <button className="brant-btn">create Report</button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="brant-card">
+                <div className="brant-card-body">
+                  <ReactApexChart
+                    options={circleChart.options}
+                    series={circleChart.series}
+                    type="polarArea"
+                    height={380}
+                  />
+                </div>
+                <div className="brant-card-body">
+                  <div className="d-flex">
+                    <div className="sales">
+                      <p>This Month Revenue</p>
+                      <h3>$57k</h3>
+                      <p>14.5% Up From Last Month</p>
+                    </div>
+                    <div className="sales">
+                      <p>This Month Revenue</p>
+                      <h3>$57k</h3>
+                      <p>14.5% Up From Last Month</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="col-md-6">
-          <div className="brant-card">
-            <div className="brant-card-body">
-              <div className="d-flex justify-content-between align-items-center">
-                <p>Top Selling Product</p>
-                <p>...</p>
+          <div className="row m-4">
+            <div className="col-md-4">
+              <div className="brant-card">
+                <div className="brant-card-body" style={{ height: "250px" }}>
+                  <ReactApexChart
+                    options={lineChart.options}
+                    series={lineChart.series}
+                    type="line"
+                    // height={350}
+                  />
+                </div>
               </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Product 1</th>
-                    <th>Price</th>
-                    <th>Discount</th>
-                    <th>Sold</th>
-                    <th>Source</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
-                        </div>
-                        <p className="m-0 ps-2">Customer</p>
+            </div>
+            <div className="col-md-4">
+              <div className="brant-card">
+                <div className="brant-card-body" style={{ height: "250px" }}>
+                  <div className="chart-title d-flex justify-content-between align-items-center">
+                    <p>Sumary</p>
+                    <p>...</p>
+                  </div>
+                  <div className="prg-bar">
+                    <div className="mt-4">
+                      <ProgressBar variant="warning" now={25}  label={`25%`} />
+                    </div>
+                    <div className="mt-4">
+                      <ProgressBar  variant="primary" now={75}  label={`75%`} />
+                    </div>
+                    <div className="mt-4">
+                      <ProgressBar  variant="success"  now={34}  label={`34%`} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="brant-card">
+                <div className="brant-card-body" style={{ height: "250px" }}>
+                  <div className="d-flex align-items-center justify-content-between">
+                    <div className="total">
+                      <p>Total</p>
+                      <h3>356</h3>
+                    </div>
+                    <div className="bars">
+                      <div className="d-flex justify-content-end">
+                        <button className="brant-label">Today</button>
+                        <button className="brant-label ms-3">This Week</button>
                       </div>
-                    </td>
+                      {/* <ReactApexChart options={bars.options} series={bars.series}type="line"height={350}/> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4 mt-4">
+              <div className="brant-card">
+                <div className="brant-card-body" style={{  }}>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <h6>Transactions</h6>
+                    <p>...</p>
+                  </div>
+                  <div className="transaction-list">
+                    <ul>
+                      <li className="d-flex justify-content-between align-items-center">
+                        <div className="doller-icon">
+                        <AiFillDollarCircle style={{fontSize: "40px", color:"#64C5B1"}}/>
+                        </div>
+                        <div>
+                          <h5>Electricity Bill</h5>
+                          <p>10 Aug 03:00PM</p>
+                        </div>
+                        <div>
+                          <h6 className="btn-red">- $ 1254.00</h6>
+                        </div>
+                      </li>
+                      <li className="d-flex justify-content-between align-items-center">
+                        <div className="doller-icon"><AiFillDollarCircle style={{fontSize: "40px", color:"#64C5B1"}}/></div>
+                        <div>
+                          <h5>Electricity Bill</h5>
+                          <p>10 Aug 03:00PM</p>
+                        </div>
+                        <div>
+                          <h6 className="btn-green">- $ 1254.00</h6>
+                        </div>
+                      </li>
+                      <li className="d-flex justify-content-between align-items-center">
+                        <div className="doller-icon"><AiFillDollarCircle style={{fontSize: "40px", color:"#64C5B1"}}/></div>
+                        <div>
+                          <h5>Electricity Bill</h5>
+                          <p>10 Aug 03:00PM</p>
+                        </div>
+                        <div>
+                          <h6 className="btn-green">- $ 1254.00</h6>
+                        </div>
+                      </li>
+                      <li className="d-flex justify-content-between align-items-center">
+                        <div className="doller-icon"><AiFillDollarCircle style={{fontSize: "40px", color:"#64C5B1"}}/></div>
+                        <div>
+                          <h5>Electricity Bill</h5>
+                          <p>10 Aug 03:00PM</p>
+                        </div>
+                        <div>
+                          <h6 className="btn-green">- $ 1254.00</h6>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                    <td>$564 </td>
-                    <td>#DE2548 </td>
-                    <td>60 </td>
-                    <td>
-                      <button className="btn btn-primary brant-label">
-                        Google
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
+            <div className="col-md-4 mt-4">
+              <div className="brant-card">
+                <div className="brant-card-body" style={{  }}>
+                  <div className="d-flex justify-content-between align-items-center mb-4">
+                    <h6>News and updates</h6>
+                    <div className="select-options">
+                      <select name="" id="">
+                        <option value="today">today</option>
+                        <option value="tomorrow">tommorow</option>
+                        <option value="yesterday">yesterday</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="transaction-list">
+                    <ul>
+                      <li className=" p-2">
+                        <h6>36% off For pixel lights Couslations Types.</h6>
+                        <p>Sorem Kpsum is simply of the printing..</p>
+                      </li>
+                      <li className=" p-2">
+                        <h6>We are produce new product this</h6>
+                        <p>Gorem Rpsum is simply text of the printing...</p>
+                      </li>
+                      <li className=" p-2">
+                        <h6>50% off For COVID Couslations Types.</h6>
+                        <p>EoremHpsum is simply dummy...</p>
+                      </li>
+                      
+                    </ul>
+                        <div className="text-center">
+                          <button className="brant-label">Load more
+                          <span><AiFillCaretDown/></span>
+                          </button>
                         </div>
-                        <p className="m-0 ps-2">Customer</p>
-                      </div>
-                    </td>
-                    <td>Sunglass</td>
-                    <td>#DE2548 </td>
-                    <td>$350 </td>
-                    <td>
-                      <button className="btn btn-primary brant-label">
-                        Pending
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex justify-content-center align-items-center">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-4 mt-4">
+              <div className="brant-card">
+                <div className="brant-card-body" style={{ }}>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <h6>Account info</h6>
+                    <p>...</p>
+                  </div>
+                  <div className="transaction-list">
+                    <ul>
+                      <li className="d-flex justify-content-between align-items-center">
                         <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
+                          <h5>Monthly Plan</h5>
                         </div>
-                        <p className="m-0 ps-2">Customer</p>
-                      </div>
-                    </td>
-                    <td>Sunglass</td>
-                    <td>#DE2548 </td>
-                    <td>$350 </td>
-                    <td>
-                      <button className="btn btn-primary brant-label">
-                        Pending
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <td>
-                        <div className="d-flex justify-content-center align-items-center">
+                        <div>
+                          <h6>$25</h6>
+                        </div>
+                      </li>
+                      <li className="d-flex justify-content-between align-items-center">
+                        <div>
+                          <h5>Taxes</h5>
+                        </div>
+                        <div>
+                          <h6>$14</h6>
+                        </div>
+                      </li>
+                      <li className="d-flex justify-content-between align-items-center">
+                        <div>
+                          <h5>Monthly Plan</h5>
+                        </div>
+                        <div>
+                          <h6>$25</h6>
+                        </div>
+                      </li>
+                      <li className="d-flex justify-content-between align-items-center">
+                        <div className="d-flex">
                           <div>
-                            <img
-                              src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                              alt=""
-                              width={40}
-                              height={40}
-                              className="mb"
-                              style={{ borderRadius: "50%" }}
-                            />
+                            <h5>Extra</h5>
+                            <p>Netflix and other bills in this month.</p>
                           </div>
-                          <p className="m-0 ps-2">Customer</p>
                         </div>
-                      </td>
-                    </td>
-                    <td>Sunglass</td>
-                    <td>#DE2548 </td>
-                    <td>$350 </td>
-                    <td>
-                      <button className="btn btn-primary brant-label">
-                        Pending
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex justify-content-center align-items-center">
                         <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
+                          <h6>$25</h6>
                         </div>
-                        <p className="m-0 ps-2">Customer</p>
-                      </div>
-                    </td>
-                    <td>Sunglass</td>
-                    <td>#DE2548 </td>
-                    <td>$350 </td>
-                    <td>
-                      <button className="btn btn-primary brant-label">
-                        Pending
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
+                      </li>
+                     
+                    </ul>
+                    <div className="total-balance">
+                          <span>Total Balance</span>
+                          <div className="d-flex justify-content-between align-items-center">
+                            <div>
+                              <h4 className="amt-title">$3650</h4>
+                              <p className="brant-label">+1235</p>
+                            </div>
+                            <div>
+                              <button className="d-block brant-btn-red">
+                                Today
+                              </button>
+                              <button className="mt-3 brant-btn-blue">
+                                This week
+                              </button>
+                            </div>
+                          </div>
                         </div>
-                        <p className="m-0 ps-2">Customer</p>
-                      </div>
-                    </td>
-                    <td>Sunglass</td>
-                    <td>#DE2548 </td>
-                    <td>$350 </td>
-                    <td>
-                      <button className="btn btn-primary brant-label">
-                        Pending
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="row m-4">
-        <div className="col-md-8">
-          <div className="brant-card">
-            <div className="brant-card-body">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Product</th>
-                    <th>Product Code</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                  <td>
-                      <div className="d-flex justify-content-start align-items-center">
-                        <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
-                        </div>
-                        <h5 className="m-0 ps-2">Sport Shoe</h5>
-                      </div>
-                    </td>
-                    <td>#DE2548 </td>
-                    <td>$99.00 </td>
-                    <td>354 sold </td>
-                  </tr>
-                  <tr>
-                  <td>
-                      <div className="d-flex justify-content-start align-items-center">
-                        <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
-                        </div>
-                        <h5 className="m-0 ps-2">Unique Watch</h5>
-                      </div>
-                    </td>
-                    <td>#DE2548 </td>
-                    <td>$99.00 </td>
-                    <td>354 sold </td>
-                  </tr>
-                  <tr>
-                  <td>
-                      <div className="d-flex justify-content-start align-items-center">
-                        <div>
-                          <img
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                            alt=""
-                            width={40}
-                            height={40}
-                            className="mb"
-                            style={{ borderRadius: "50%" }}
-                          />
-                        </div>
-                        <h5 className="m-0 ps-2">Wireless Headphones</h5>
-                      </div>
-                    </td>
-                    <td>#DE2548 </td>
-                    <td>$99.00 </td>
-                    <td>354 sold </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div>
-                <button className="brant-btn">View All</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="col-md-4">
-          <div className="brant-card">
-            <div className="brant-card-body">
-              <ReactApexChart
-                options={radarChart.options}
-                series={radarChart.series}
-                type="radar"
-                height={300}
-              />
+
+          <div className="row m-4">
+            <div className="col-md-4">
+              <div className="brant-card">
+                <div className="brant-card-body">
+                  <Calendar
+                    className="calendar"
+                    onChange={onChange}
+                    value={value}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="col-md-8">
+              <div className="brant-card">
+                <div className="brant-card-body">
+                  {/* <VectorMap map={esMill}  /> */}
+                  <div>
+                    <p>map</p>
+                  </div>
+                  <div>
+                    <div className="prg-bar">
+                      <div className="mt-4">
+                        <ProgressBar variant="warning" now={25}  label={`25%`} style={{}} />
+                      </div>
+                      <div className="mt-4">
+                        <ProgressBar variant="primary"  label={`75%`} now={75} />
+                      </div>
+                      <div className="mt-4">
+                        <ProgressBar variant="success"  label={`34%`} now={34} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="top-scroller" style={{ display: "block" }}>
-        <a href="#">
-          <p>^</p>
-        </a>
-      </div>
+          <div className="row m-4">
+            <div className="col-md-6">
+              <div className="brant-card">
+                <div className="brant-card-body">
+                  <div className="d-flex justify-content-between align-items-center">
+                    <h6>Monthly Invoices</h6>
+                    <p>...</p>
+                  </div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Customer</th>
+                        <th>Product</th>
+                        <th>Invoice</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <p className="m-0 ps-2">Customer</p>
+                          </div>
+                        </td>
+                        <td>Sunglass</td>
+                        <td>#DE2548 </td>
+                        <td>$350 </td>
+                        <td>
+                          <button className="brant-label btn-pending">
+                            Pending
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <p className="m-0 ps-2">Customer</p>
+                          </div>
+                        </td>
+                        <td>Sunglass</td>
+                        <td>#DE2548 </td>
+                        <td>$350 </td>
+                        <td>
+                          <button className="brant-label btn-paid">Paid</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <p className="m-0 ps-2">Customer</p>
+                          </div>
+                        </td>
+                        <td>Sunglass</td>
+                        <td>#DE2548 </td>
+                        <td>$350 </td>
+                        <td>
+                          <button className="brant-label btn-shipped">
+                            Shipped
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <p className="m-0 ps-2">Customer</p>
+                          </div>
+                        </td>
+                        <td>Sunglass</td>
+                        <td>#DE2548 </td>
+                        <td>$350 </td>
+                        <td>
+                          <button className="brant-label btn-shipped">
+                            Shipped
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <p className="m-0 ps-2">Customer</p>
+                          </div>
+                        </td>
+                        <td>Sunglass</td>
+                        <td>#DE2548 </td>
+                        <td>$350 </td>
+                        <td>
+                          <button className="brant-label btn-paid">Paid</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <p className="m-0 ps-2">Customer</p>
+                          </div>
+                        </td>
+                        <td>Sunglass</td>
+                        <td>#DE2548 </td>
+                        <td>$350 </td>
+                        <td>
+                          <button className="brant-label btn-delivered">
+                            Delivered
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
 
-      <footer className="footer">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="footer-inner">{/* <p>Footer</p> */}</div>
+            <div className="col-md-6">
+              <div className="brant-card">
+                <div className="brant-card-body">
+                  <div className="d-flex justify-content-between align-items-center">
+                    <h6>Top Selling Product</h6>
+                    <p>...</p>
+                  </div>
+                  <table className="w-100">
+                    <thead>
+                      <tr>
+                        <th>Product 1</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                        <th>Sold</th>
+                        <th>Source</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <p className="m-0 ps-2">Customer</p>
+                          </div>
+                        </td>
+
+                        <td>$564 </td>
+                        <td>#DE2548 </td>
+                        <td>60 </td>
+                        <td>
+                          <span className=" btn-red">Google</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <p className="m-0 ps-2">Customer</p>
+                          </div>
+                        </td>
+                        <td>Sunglass</td>
+                        <td>#DE2548 </td>
+                        <td>$350 </td>
+                        <td>
+                          <span className=" btn-green">Direct</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <p className="m-0 ps-2">Customer</p>
+                          </div>
+                        </td>
+                        <td>Sunglass</td>
+                        <td>#DE2548 </td>
+                        <td>$350 </td>
+                        <td>
+                          <span className="btn-red">Email</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <p className="m-0 ps-2">Customer</p>
+                          </div>
+                        </td>
+                        <td>Sunglass</td>
+                        <td>#DE2548 </td>
+                        <td>$350 </td>
+                        <td>
+                          <span className=" btn-blue">Refferal</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <p className="m-0 ps-2">Customer</p>
+                          </div>
+                        </td>
+                        <td>Sunglass</td>
+                        <td>#DE2548 </td>
+                        <td>$350 </td>
+                        <td>
+                          <span className="btn-green">Direct</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <p className="m-0 ps-2">Customer</p>
+                          </div>
+                        </td>
+                        <td>Sunglass</td>
+                        <td>#DE2548 </td>
+                        <td>$350 </td>
+                        <td>
+                          <span className=" btn-blue">Refferel</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </footer>
 
-      {/* <MidSectionCards /> */}
-      {/* <AdminDashbordFooter /> */}
-      <AddCategoryModel showStatus={showStatus} setshowStatus={setshowStatus} />
+          <div className="row m-4">
+            <div className="col-md-8">
+              <div className="brant-card">
+                <div className="brant-card-body">
+                  <div className="d-flex align-items-center justify-content-between mb-3">
+                    <h6>Popular products</h6>
+                    <p>...</p>
+                  </div>
+                  <table className="w-100">
+                    <thead>
+                      <tr className="table-head">
+                        <th>Product</th>
+                        <th>Product Code</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-start align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={70}
+                                height={70}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <h5 className="m-0 ps-2">Sport Shoe</h5>
+                          </div>
+                        </td>
+                        <td>#DE2548 </td>
+                        <td>$99.00 </td>
+                        <td>
+                          <div className="brant-label bg-r text-r">
+                            354 sold
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-start align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={70}
+                                height={70}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <h5 className="m-0 ps-2">Unique Watch</h5>
+                          </div>
+                        </td>
+                        <td>#DE2548 </td>
+                        <td>$99.00 </td>
+                        <td>
+                          <div className="brant-label bg-r text-r">
+                            354 sold
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="d-flex justify-content-start align-items-center">
+                            <div>
+                              <img
+                                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                alt=""
+                                width={70}
+                                height={70}
+                                className="mb"
+                                style={{ borderRadius: "50%" }}
+                              />
+                            </div>
+                            <h5 className="m-0 ps-2">Wireless Headphones</h5>
+                          </div>
+                        </td>
+                        <td>#DE2548 </td>
+                        <td>$99.00 </td>
+                        <td>
+                          <div className="brant-label bg-r text-r">
+                            354 sold
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tr>
+                      <div>
+                        <button className="viewAll-btn">View All</button>
+                      </div>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="brant-card">
+                <div className="brant-card-body">
+                  <div className="d-flex align-items-center justify-content-between mb-5">
+                    <h6>Market Value</h6>
+                    <div className="select-options">
+                      <select name="" id="">
+                        <option value="year">year</option>
+                        <option value="month">month</option>
+                        <option value="day">day</option>
+                      </select>
+                    </div>
+                  </div>
+                  <ReactApexChart
+                    options={radarChart.options}
+                    series={radarChart.series}
+                    type="radar"
+                    height={300}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="top-scroller" style={{ display: "block" }}>
+            <a href="#">
+              <p>^</p>
+            </a>
+          </div>
+
+          {/* <MidSectionCards /> */}
+          {/* <AdminDashbordFooter /> */}
+          <AddCategoryModel
+            showStatus={showStatus}
+            setshowStatus={setshowStatus}
+          />
+        </div>
+      </div>
+      <AdminFooter/>
     </div>
   );
 };

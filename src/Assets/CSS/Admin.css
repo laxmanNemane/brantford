@@ -355,16 +355,17 @@ a{
   font-size: 16px;
   color: var(--paragraph);
 }
-
+/* 
 table tr td {
   padding: 10px 10px !important;
   font-size: 16px;
   color: var(--secondary);
-}
+} */
 
 /* =====================Admin Dashbord Header==================== */
 .header_admin {
   height: 90px;
+  padding-left: 270px;
   /* border-bottom: 1px solid grey; */
 }
 .header_icons {
@@ -469,15 +470,30 @@ table tr td {
 }
 
 .Buttons_dashbord {
-  background-color: var(--primary);
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
+  border: 1px solid #fff;
+  display: inline-block;
+  padding: 14px 30px!important;
+  text-transform: capitalize;
+  line-height: 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 5px;
+  background-color: #fff;
+  white-space: nowrap;
+  -webkit-transition: .3s;
+  transition: .3s;
+  background: #fff!important;
+  text-shadow: none!important;
+  opacity: 1;
+  color: #101038;
+  box-shadow: 0 3px 11px rgb(0 0 0 / 17%);
 }
 
 .Buttons_dashbord:hover {
-  background-color: var(--success);
-  font-weight: 600;
+  background-color: #567aed!important;
+  border: 1px solid #567aed!important;
+  color: #fff;
+  opacity: 1!important;
 }
 
 .view_all_btn {
@@ -718,10 +734,11 @@ table tr td {
   /* text-align: center; */
   margin: 23px 0 0 0;
   font-weight: 700;
+  padding: 20px;
 }
 
 .Sidebar_otption_section {
-  margin: 80px 0 0 60px;
+  /* margin: 80px 0 0 60px; */
   line-height: 2.5;
 }
 
@@ -772,6 +789,10 @@ table tr td {
 .brant-title h3{font-family: sans-serif; font-weight: 700; font-size: 20px;color: #ffff;}
 .brant-title p{font-family: sans-serif; font-weight: 500; font-size: 15px;color: #ffff;}
 .brant-btn{padding: 10px 15px; border: none; border-radius: 15px; background-color: #A951A5; color: #fff;}
+.brant-label{padding: 5px 15px !important; border: none; border-radius: 5px; text-align: center;}
+.text-r{color:#A951A5 }
+.bg-r{background-color:#FFF0EB;}
+
 /* dashboard header  */
 .input_search{color: #86898e;font-size: 12px; height: 40px; width: 100%; padding-left: 50px; border: 0; padding-right: 15px;background: 0 0;border-radius: 30px;border: 0; border: 1px solid rgba(100,197,177,.6);font-weight: 400;}
 .Search_icon {left: 10px; top: 8px;z-index: 1;font-size: 20px;}
@@ -784,7 +805,8 @@ table tr td {
 .Analytic_heading{}
 /* .transaction-list ul li::after{content: ''; height: 2px; color: #0f0f0f; background-color: #0f0f0f; width: 100%;} */
 .transaction-list ul {list-style: none; padding: 0;}
-.transaction-list ul li{    border-bottom: 1px solid #f3f4f3;}
+.transaction-list ul li{    border-bottom: 1px solid #f3f4f3; padding: 15px 10px;}
+.transaction-list ul li{}
 .total-balance{background: #f8faff;border-radius: 5px;padding: 18px 30px;}
 .calendar{border: none;}
 .react-calendar button{border: none; padding: 5px;}
@@ -798,6 +820,45 @@ table tr td {
 
 /* sidebar style  */
 /* .list-unstyled li::after{content:">"; color: #fff;transform: rotate(-90deg) translate(0,-50%); opacity: 1;font-size: 10px;right: 15px;color: #a1a4b9;} */
-.brant-card-body table tr th{padding: 20px;}
-.brant-card-body table thead{border-radius: 30px; background-color: #e9d9e0;}
-.brant-label{padding: 5px 10px; border-radius: 5px; background-color: #e9d9e0; border: none; color: #0f0f0f;}
+.brant-card-body table tr td{padding:15px !important;}
+.brant-card-body table thead{border-radius: 30px; background-color: #F8FAFF; padding: 10px 15px; color: #64C5B8;}
+.viewAll-btn{padding: 10px 70px; background-color: #567aed; color: #ffff; border: none; border-radius: 5px;}
+.viewAll-btn:hover{color: #fff; box-shadow: 0 3px 11px #508ff4;}
+.table-head{padding: 20px;}
+.brant-card-body table thead tr th{padding: 20px;}
+.brant-card-body table tbody tr td{color: #7DC5B1; 
+  /* text-align: right; */
+}
+.brant-card-body table tbody tr td div h5{color: #7DC5B1;}
+
+.admin-sidebar{width: 270px; height: 100vh; left: 0; top: 0; position: fixed; z-index: 999; background-color: #ffff;}
+.main-section{ padding-left: 270px; width: 100%;padding-top: 0!important;transition: .5s; position: relative;min-height: 100vh; overflow: hidden;}
+.top-banner::before{    position: absolute; left: 0; top: 0; right: 0;height: 160px; z-index: -1; background: #64c5b1;content: ''; border-radius: 0; left: 0;}
+.top-banner{ transition: .5s;position: relative; background: #f3f4f3; margin: 0; z-index: 22; border-radius: 0;}
+.dashboard-title{ height: "120px"; position: relative; padding: 30px;}
+.select-options select{background-color:#f3f4f3 ; color: #64c5b1; padding: 10px 15px; border: none; border-radius: 5px;}
+
+/* status buttons  */
+.btn-pending{background-color: #FFF0EB; color: #FF7F57;}
+.btn-paid{background-color: #FDEBFF; color: #C862DB;}
+.btn-shipped{background-color: #E6F8FF; color: #4FA3D8;}
+.btn-delivered{background-color: #E8FFEB; color: #55D863;}
+.btn-red{color: #FF7F57;}
+.btn-violet{color: #C862DB;}
+.btn-blue{color: #4FA3D8;}
+.btn-green{color: #55D863;}
+.list-sidebar-menu div span::after{content: '>'; position: absolute; opacity: 1; font-size: 10px; right: 15px; color: #a1a4b9;}
+.doller-icon{height: 50px; width: 50px; background-color: #F8FAFF; border-radius: 50%; text-align: center; line-height: 30px;}
+
+.brant-btn-red{padding: 5px 15px ; color: #ffff; background-color: #F16060; border: none;}
+.brant-btn-red:hover{ color: #fff; box-shadow: 0 4px 7px rgb(255 0 0 / 31%);}
+.brant-btn-blue{padding: 5px 15px ; color: #ffff; background-color: #567AED; border: none; }
+.brant-btn-blue:hover{color: #fff; box-shadow: 0 4px 7px rgb(86 122 237 / 31%);}
+.amt-title{font-size: 30px; font-weight: 700; color: #64C5B1;}
+.progress-bar{background-color:"#FFBF43"!important;}
+
+
+/* //properties page  */
+
+
+
