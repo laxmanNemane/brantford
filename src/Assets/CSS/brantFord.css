@@ -81,6 +81,21 @@
   font-weight: 600;
 }
 
+.tr-icon {
+  animation-name: example;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes example {
+  from {
+    left: 5px;
+  }
+  to {
+    left: 15px;
+  }
+}
+
 .btn-view-all:hover {
   color: #4263eb;
 }
