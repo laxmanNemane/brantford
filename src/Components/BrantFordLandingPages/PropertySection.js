@@ -15,6 +15,7 @@ const PropertySection = ({ slide, setSlide }) => {
   const navigate = useNavigate();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [show, setShow] = useState(false);
+  const [allspaces, setAllSpaces] = useState([]);
 
   const [categaries, setCategories] = useState([]);
   const [singleCategory, setSinglecategory] = useState([]);
@@ -27,6 +28,11 @@ const PropertySection = ({ slide, setSlide }) => {
     // localStorage.setItem("singlecategaryId", categaryId);
     setEndUserSpace(data);
     navigate(`/office-detail/${data.space.split(" ").join("-")}`);
+  };
+
+  const modalToDetailPage = (data) => {
+    setIsModalVisible(true);
+    setEndUserSpace(data);
   };
 
   const getallCategaries = () => {
@@ -63,9 +69,23 @@ const PropertySection = ({ slide, setSlide }) => {
       });
   };
 
+  const getAllProperties = () => {
+    axios
+      .get(`${BaseUrl}/endUser/get-all-spces-wr`)
+      .then((res) => {
+        console.log(res.data);
+        setAllSpaces(res.data);
+        // setSinglecategory(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     getallCategaries();
-  }, []);
+    getAllProperties();
+  }, [show, isModalVisible]);
 
   return (
     <div>
@@ -100,141 +120,64 @@ const PropertySection = ({ slide, setSlide }) => {
               </div>
 
               <div className="row">
-                <div className="col-lg-4 col-md-6 col-sm-12 ">
-                  <div className="properties">
-                    <div className="image-section1 w-100">
-                      <img
-                        src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        alt=""
-                        className="image-find-section"
-                      />
-                    </div>
-                    <div className="price-section d-flex justify-content-between mx-4">
-                      <div className="w-75 ">
-                        <p className="price">765654/sqr</p>
-                      </div>
-                      <div className="d-flex justify-content-between w-25 gx-2 icon-group">
-                        <p>
-                          {/* onClick={() => modalToDetailPage(item)} */}
-                          <AiOutlineArrowsAlt className="icons-recomanded-property text-white" />
-                        </p>
-                        <p>
-                          <BsHeart className="icons-recomanded-property text-white" />
-                        </p>
-                        <p onClick={() => setShow(true)}>
-                          <BsPlusCircle className="icons-recomanded-property text-white" />
-                        </p>
-                      </div>
-                    </div>
-                    <div className="properties-description-card mx-2 my-3">
-                      <p className="property-name-heading name">item.space</p>
-                      <p className="property-location-card description-why-page">
-                        item.address
-                      </p>
-                      <div className="button-space d-flex justify-content-between btn-area">
-                        <p className=" fw-bold">item.description</p>
-                        {/* <NavLink to={`/office-detail/${item.id}`}> */}
-                        <button
-                          className="btn-first"
-                          // onClick={() => setCategary(item.id, item)}
-                        >
-                          Detail
-                        </button>
-                        {/* </NavLink> */}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 ">
-                  <div className="properties">
-                    <div className="image-section1 w-100">
-                      <img
-                        src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        alt=""
-                        className="image-find-section"
-                      />
-                    </div>
-                    <div className="price-section d-flex justify-content-between mx-4">
-                      <div className="w-75 ">
-                        <p className="price">765654/sqr</p>
-                      </div>
-                      <div className="d-flex justify-content-between w-25 gx-2 icon-group">
-                        <p>
-                          {/* onClick={() => modalToDetailPage(item)} */}
-                          <AiOutlineArrowsAlt className="icons-recomanded-property text-white" />
-                        </p>
-                        <p>
-                          <BsHeart className="icons-recomanded-property text-white" />
-                        </p>
-                        <p>
-                          <BsPlusCircle className="icons-recomanded-property text-white" />
-                        </p>
+                {allspaces.splice(0, 6).map((ele, index) => {
+                  return (
+                    <div className="col-lg-4 col-md-6 col-sm-12 " key={index}>
+                      <div className="properties">
+                        <div className="image-section1 w-100">
+                          <img
+                            src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt=""
+                            className="image-find-section"
+                          />
+                        </div>
+                        <div className="price-section d-flex justify-content-between mx-4">
+                          <div className="w-75 ">
+                            <p className="price">{ele.price}/sqr</p>
+                          </div>
+                          <div className="d-flex justify-content-between w-25 gx-2 icon-group">
+                            <p onClick={() => modalToDetailPage(ele)}>
+                              <AiOutlineArrowsAlt className="icons-recomanded-property text-white" />
+                            </p>
+                            <p>
+                              <BsHeart className="icons-recomanded-property text-white" />
+                            </p>
+                            <p onClick={() => setShow(true)}>
+                              <BsPlusCircle className="icons-recomanded-property text-white" />
+                            </p>
+                          </div>
+                        </div>
+                        <div className="properties-description-card mx-2 my-3">
+                          <p className="property-name-heading name">
+                            {ele.space}
+                          </p>
+                          <p className="property-location-card description-why-page">
+                            {ele.address}
+                          </p>
+                          <div className="button-space d-flex justify-content-between btn-area">
+                            <p className=" fw-bold">{ele.description}</p>
+                            {/* <NavLink to={`/office-detail/${item.id}`}> */}
+                            <button
+                              className="btn-first"
+                              onClick={() => setCategary(ele.id, ele)}
+                            >
+                              Detail
+                            </button>
+                            {/* </NavLink> */}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="properties-description-card mx-2 my-3">
-                      <p className="property-name-heading name">item.space</p>
-                      <p className="property-location-card description-why-page">
-                        item.address
-                      </p>
-                      <div className="button-space d-flex justify-content-between btn-area">
-                        <p className=" fw-bold">item.description</p>
-                        {/* <NavLink to={`/office-detail/${item.id}`}> */}
-                        <button
-                          className="btn-first"
-                          // onClick={() => setCategary(item.id, item)}
-                        >
-                          Detail
-                        </button>
-                        {/* </NavLink> */}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-sm-12 ">
-                  <div className="properties w-100">
-                    <div className="image-section1 w-100">
-                      <img
-                        src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        alt=""
-                        className="image-find-section"
-                      />
-                    </div>
-                    <div className="price-section d-flex justify-content-between mx-4">
-                      <div className="w-75 ">
-                        <p className="price">765654/sqr</p>
-                      </div>
-                      <div className="d-flex justify-content-between w-25 gx-2 icon-group">
-                        <p>
-                          {/* onClick={() => modalToDetailPage(item)} */}
-                          <AiOutlineArrowsAlt className="icons-recomanded-property text-white" />
-                        </p>
-                        <p>
-                          <BsHeart className="icons-recomanded-property text-white" />
-                        </p>
-                        <p>
-                          <BsPlusCircle className="icons-recomanded-property text-white" />
-                        </p>
-                      </div>
-                    </div>
-                    <div className="properties-description-card mx-2 my-3">
-                      <p className="property-name-heading name">item.space</p>
-                      <p className="property-location-card description-why-page">
-                        item.address
-                      </p>
-                      <div className="button-space d-flex justify-content-between btn-area">
-                        <p className=" fw-bold">item.description</p>
-                        {/* <NavLink to={`/office-detail/${item.id}`}> */}
-                        <button
-                          className="btn-first"
-                          // onClick={() => setCategary(item.id, item)}
-                        >
-                          Detail
-                        </button>
-                        {/* </NavLink> */}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
+              </div>
+              <div>
+                <p className="btn-view-all position-relative">
+                  View All{" "}
+                  <span className="tr-icon position-relative">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                </p>
               </div>
 
               {/* <div className="row">
