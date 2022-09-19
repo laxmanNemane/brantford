@@ -9,71 +9,42 @@ import FindsProperty from "./FindsProperty";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsHeart, BsPlusCircle } from "react-icons/bs";
 import { AutoComplete } from "antd";
+import { Field, Form, Formik } from "formik";
 const { Option } = AutoComplete;
+
+const data = ["pune", "nashik", "Aurangbad", "jalgaon"];
 
 const BaseUrl = "http://bantford.prometteur.in";
 
 const HeroSection = () => {
-  const [searchData, setSearchData] = useState();
-  const [searchKey, setSearchKey] = useState("");
   const [city, setCity] = useState();
   const [text, setText] = useState("");
-  const [suggestion, setSuggestion] = useState([]);
-  const [result, setResult] = useState([]);
+  const [serchResult, setSerchResult] = useState([]);
+  const [serchItem, setSerchItem] = useState("");
+  const [item, setItem] = useState([]);
 
-  const handleSearch = (value) => {
-    let res = [];
 
-    if (!value) {
-      res = [];
+  const onchangeHandlear = (e) => {
+    if (e.target.value === "") {
+      setItem("");
     } else {
-      res = ['gmail.com', '163.com', 'qq.com'].map((domain) => `${value}@${domain}`);
-    }
-
-    setResult(res);
-  };
-
-  const onChangeHandler = (e) => {
-    console.log(e.target.value);
-    setText(e.target.value);
-    let matches = [];
-
-    // if(text.length>0){
-    //   matches = city.filter(city=>{
-    //     const regx = new RegExp(`${text}`, "hin");
-    //     return city.city.match(regx)
-    //   })
-    // }
-    // console.log('matches',matches);
-    // setSuggestion(matches)
-    // setText(text)
-    // setSearchData(e.target.value)
-  };
-
-  const searchHandler = (event) => {
-    event.preventDefault();
-    console.log(text);
-    setCity(text);
-    console.log(searchKey);
-
-    axios
-      .get(`${BaseUrl}/endUser/get-spacesbycity?city=${text}`)
-      .then((res) => {
-        console.log(res);
-        setSearchData(res.data);
-        setSearchKey("");
-        // swal({
-        //   title: "Submited ",
-        //   text: "Your requirement added",
-        //   icon: "success",
-        // });
-      })
-      .catch((err) => {
-        console.log(err);
-        setSearchData("");
-        setSearchKey("");
+      const nes = e.target.value;
+      const filterdItem = serchResult.filter((value) => {
+        return value.includes(nes);
       });
-    setText("");
+      setItem(filterdItem);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(serchItem)
+    // axios
+    //   .get(
+    //     `http://bantford.prometteur.in/endUser/get-spacesbycity?city=${text}`
+    //   )
+    //   .then((res) => console.log(res.data))
+    //   .catch((err) => console.log(err));
   };
 
   // console.log(searchData);
@@ -90,9 +61,28 @@ const HeroSection = () => {
       });
   };
 
+  const getAllCities = () => {
+    axios
+      .get(`${BaseUrl}/endUser/all-cities-listing`)
+      .then((res) => {
+        console.log(res.data);
+        setSerchResult(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // const handleSubmit=()=>{
+
+  // }
+
   useEffect(() => {
-    loadCity()
+    loadCity();
+    getAllCities();
   }, []);
+
+  console.log(serchItem);
 
   return (
     <>
@@ -104,129 +94,94 @@ const HeroSection = () => {
                 <h2 className="title">Let's Find your office!</h2>
               </div>
               {/* <p className="expant-paragraph">Expand. Renew. Relocate</p> */}
-              <div className="search-section d-flex align-items-center">
-
+              <div className="search-section align-items-center d-flex">
                 <div className="input_search">
-                  <div className="input1">
-                    <form onSubmit={searchHandler}>
+                  <div className="input1 ">
+                    <form
+                      onSubmit={handleSubmit}
+                      className="d-flex align-items-center"
+                    >
+                      <i
+                        className="fa-solid fa-magnifying-glass fs-5 ms-2 "
+                        style={{ color: "grey" }}
+                      ></i>
                       <input
                         type="text"
                         placeholder="Search By Location"
                         className="input-serchboox"
-                        value={text}
-                        // onChange={(e) => setSearchKey(e.target.value)}
-                        onChange={(e) => onChangeHandler(e)}
+                        onChange={(e) => onchangeHandlear(e)}
                       />
-                      {suggestion &&
-                        suggestion.map((item, i) => {
-                          <div>{suggestion}</div>;
-                        })}
 
-
-                      {/* <AiOutlineSearch className="fs-3" /> */}
-                      {/* </div> */}
+                      <button type="submit" className="btn ms-4 btn-second">
+                        search
+                      </button>
                     </form>
                   </div>
                 </div>
-                <div>
-                  <i className="fa-solid fa-magnifying-glass fs-4"  ></i>
-                </div>
-              </div>
 
-              {/* <AutoComplete
-                style={{
-                  width: 200,
-                }}
-                onSearch={handleSearch}
-                placeholder="input here"
-              >
-                {result.map((email) => (
-                  <Option key={email} value={email}>
-                    {email}
-                  </Option>
-                ))}
-              </AutoComplete> */}
+                <div
+                  className="top-banner-serach position-relative"
+                  style={{ width: "100%", borderRadius: "10px" }}
+                >
+                  <div
+                    id="houzez-auto-complete-banner position-absolute"
+                    className="auto-complete"
+                    style={{
+                      top: "370.4px",
+                      display: "block",
+                      background: "white",
+                      padding: "10px",
+                      width: "100%",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <ul className="list-group">
+                      {item
+                        ? item.map((val, index) => {
+                          return (
+                            <li
+                              key={index}
+                              className="list-group-item"
+                              data-text="Pune"
+                              style={{ margin: "2px 0" }}
+                            >
+                              <div className="d-flex align-items-center">
+                                <div className="auto-complete-image-wrap">
+                                  {/* <a href="https://brantfordindia.com/city/pune-archives-brantfordindia-com/"> */}
+                                  <img
+                                    width="40"
+                                    height="40"
+                                    src="https://brantfordindia.com/wp-content/uploads/2021/08/Pune-150x150.png"
+                                    className="attachment-40x40 size-40x40"
+                                    alt=""
+                                    loading="lazy"
+                                    srcSet="https://brantfordindia.com/wp-content/uploads/2021/08/Pune-150x150.png 150w, https://brantfordindia.com/wp-content/uploads/2021/08/Pune-300x300.png 300w, https://brantfordindia.com/wp-content/uploads/2021/08/Pune-600x600.png 600w, https://brantfordindia.com/wp-content/uploads/2021/08/Pune-496x496.png 496w, https://brantfordindia.com/wp-content/uploads/2021/08/Pune.png 700w"
+                                    sizes="(max-width: 40px) 100vw, 40px"
+                                  />
+                                </div>
+                                <div className="auto-complete-content-wrap flex-fill ml-3 d-flex justify-content-around align-items-center">
+                                  <div className="auto-complete-title ms-3 fs-5">
+                                    {val}
+                                  </div>
 
-              <div className="top-banner-serach position-relative" style={{ width: "530px" }}>
-                <div id="houzez-auto-complete-banner position-absolute" className="auto-complete" style={{ top: "370.4px" }}>
-                  {
-                    // city.map((e, index) => {
-                    //   return (
-                    //     <ul key={index}>
-                    //       <li>{e}</li>
-                    //     </ul>
-                    //   )
-                    // })
-                  }
-                  <ul className="list-group">
-
-                  </ul>
+                                  <div className="auto-complete-content-wrap ml-3">
+                                    <button className="btn-first py-4">
+                                      View Listing
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          );
+                        })
+                        : "no records"}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div
-        className=""
-        style={{ backgroundColor: "#ffff", display: "flex", padding: "30px" }}
-      >
-        {/* <div className="container">
-              <p>{city && `results for ${city}`}</p>
-            </div> */}
-
-        {/* <div className="row">
-          {searchData ? (
-            searchData.map((item, index) => {
-              return (
-                // console.log(item.id);
-
-                // <p key={index}>{item.id}</p>
-                <div className="col-lg-4 col-md-6 col-sm-12 my-3" key={index}>
-                  <div className="properties">
-                    <div className="img">
-                      <img
-                        src="https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        alt=""
-                        className="properties-image-land"
-                      />
-                    </div>
-                    <div className="price-section d-flex justify-content-between mx-4">
-                      <div className="w-75 ">
-                        <p className="price">765654/sqr</p>
-                      </div>
-                      <div className="d-flex justify-content-between w-25 gx-2 icon-group">
-                        <p>
-                          <AiOutlineArrowsAlt className="icons-recomanded-property  text-white" />
-                        </p>
-                        <p>
-                          <BsHeart className="icons-recomanded-property text-white" />
-                        </p>
-                        <p>
-                          <BsPlusCircle className="icons-recomanded-property text-white" />
-                        </p>
-                      </div>
-                    </div>
-                    <div className="properties-description-card mx-2 my-3">
-                      <p className="property-name-heading name">{item.space}</p>
-                      <p className="property-location-card description-why-page">
-                        {item.address}
-                      </p>
-                      <div className="button-space d-flex justify-content-between btn-area">
-                        <p className=" fw-bold">{item.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
-        {/* );
-            })
-          ) : (
-            <div style={{ paddingTop: "30px" }}>
-              <p>no records available</p>
-            </div>
-          )} */}
-        {/* </div> */}
       </div>
     </>
   );

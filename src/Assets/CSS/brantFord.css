@@ -230,11 +230,11 @@ video {
   z-index: 3;
   min-width: 450px;
   font-size: 14px;
-  left: 50%;
+  right: 50%;
   text-align: center;
-  -webkit-transform: translate(-50%, 0);
+  /* -webkit-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
+  transform: translate(-50%, 0); */
 }
 
 .auto-complete .list-group {
@@ -243,8 +243,15 @@ video {
   overflow-y: scroll;
 }
 
+.auto-complete .list-group-item {
+  border: 1px solid #dce0e0;
+  padding: 15px;
+}
+
 .list-group {
-  display: -ms-flexbox;
+  /* display: -ms-flexbox; */
+  color: #000000;
+
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -1042,4 +1049,19 @@ video {
   height: 100%;
   top: 0;
   z-index: 100;
+}
+
+/* ========================filter page ====================== */
+
+.accordion__item {
+  position: relative;
+}
+.accordion__arrow {
+  display: inline-block;
+  width: 24px;
+  height: 12px;
+  position: absolute;
+  top: 40px;
+  right: 15px;
+  margin-top: -6px;
 }
