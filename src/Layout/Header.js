@@ -1,7 +1,7 @@
 import { Badge, Dropdown, Input, Menu } from "antd";
 import React, { useState } from "react";
 import { BsSearch, BsBell, BsBookmarkStar } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AiOutlinePoweroff, AiOutlineUser } from "react-icons/ai";
 import axios from "axios";
 
@@ -10,24 +10,38 @@ const BaseUrl = "http://bantford.prometteur.in";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   // const [isLogout, setIsLogout] = useState(false);
+  const logoutHandler = () => {
+    axios.post(`http://bantford.prometteur.in/admin/admin-logout`,{
+      headers:{
+        Authorization: localStorage.getItem("token")
+      }
+    }).then((res)=>{
+      console.log(res.data)
+    })
+    .catch((err)=> {console.log(err)})
+  }
+  
 
   const logOutHandler = () => {
     // e.preventDefault();
     // setIsLogout(true);
-
+    console.log("clicked logout")
     axios
-      .post(`${BaseUrl}/admin/admin-logout`, {
+      .post(`http://bantford.prometteur.in/admin/admin-logout`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
       })
       .then((res) => {
         console.log(res);
+        navigate("/");
         localStorage.clear();
       })
       .catch((err) => {
         console.log(err);
+        navigate("/");
       });
     console.log("clicked");
   };
@@ -82,6 +96,7 @@ const Header = () => {
               }}
             />
           </div>
+          <div><button onClick={logoutHandler}>logout</button></div>
           <div className="">
             <ul className="d-flex list-unstyled list_item_header">
               <li className="header_list">

@@ -96,34 +96,26 @@ const AllProperty = () => {
             </tr>
           </thead>
           <tbody>
-            {properties.map((item, index) => {
-              return (
-                <tr key={index}>
-                  <td>{item.id}</td>
-                  <td>{item.space}</td>
-                  <td>{item.manager_name}</td>
-                  <td>{item.price}</td>
-                  <td>{item.approve_status}</td>
-                  <td>
-                    <button
-                      onClick={() => approveProperty(item.id)}
-                      //   disabled={item.approve_status==="approved"}
-                    >
-                      {item.approve_status === "approved"
-                        ? "Already Approved"
-                        : "Approve"}
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => rejectProperty(item.id)}
-                      //   disabled={item.approve_status==="approved"}
-                    >
-                      reject
-                    </button>
-                  </td>
-                </tr>
-              );
+
+            { properties.map((item,index)=>{
+                return( 
+            <tr key={index}>
+              <td>{item.id}</td>
+              <td>{item.space}</td>
+              <td>{item.manager_name}</td>
+              <td>{item.price}</td>
+              <td>{item.approve_status}</td>
+              <td><button className="btn btn-success" onClick={()=> approveProperty(item.id)} 
+              disabled={item.approve_status==="approved"}
+              >{item.approve_status==="approved" ? 'Already Approved':'Approve'}</button>
+              </td>
+              <td><button className="btn btn-danger" onClick={()=> rejectProperty(item.id)} 
+              disabled={item.approve_status==="rejected"}
+              >reject</button>
+              </td>
+            </tr>
+            )
+
             })}
           </tbody>
         </table>

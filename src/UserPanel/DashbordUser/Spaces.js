@@ -3,6 +3,7 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 // import { NavLink } from "react-router-dom";
 import HocComponent from "../../Components/HocComponent";
 import { usersContext } from "../../Context/UserContext";
@@ -38,10 +39,12 @@ const Spaces = () => {
       .then((res) => {
         console.log(res.data);
         // showSpacesPropertyOwner();
+        toast.success("space deleted Successfully!");
         setRender(true);
       })
       .catch((err) => {
         console.log(err);
+        toast.error("Something went wrong space  not deleted!");
       });
   }, []);
 
