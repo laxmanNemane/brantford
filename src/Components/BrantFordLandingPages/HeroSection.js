@@ -99,7 +99,7 @@ const HeroSection = () => {
                   <div className="input1 ">
                     <form
                       onSubmit={handleSubmit}
-                      className="d-flex align-items-center"
+                      className="d-flex align-items-center justify-content-between"
                     >
                       <i
                         className="fa-solid fa-magnifying-glass fs-5 ms-2 "
@@ -130,7 +130,7 @@ const HeroSection = () => {
                       top: "370.4px",
                       display: "block",
                       background: "white",
-                      padding: "10px",
+                      // padding: "10px",
                       width: "100%",
                       borderRadius: "10px",
                     }}
