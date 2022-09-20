@@ -19,7 +19,7 @@ import { fetchAllSpaces } from "../../Redux/enduserSlices/enduserSlice";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { GrAttachment } from "react-icons/gr";
 import { BiUser } from "react-icons/bi";
-import { Dropdown, Menu } from "antd";
+import { Dropdown, Menu, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import { usersContext } from "../../Context/UserContext";
 
@@ -28,6 +28,7 @@ const FilterdPage = () => {
     const [price, setPrice] = useState(data.map((ele) => ele.price));
     const [sortedItems, setSortedItems] = useState(data);
     const { endUserSpace, setEndUserSpace } = useContext(usersContext);
+    const [spin, setSpin] = useState(false)
     const navigate = useNavigate();
     const spaceManagement = (data) => {
         setEndUserSpace(data);
@@ -53,20 +54,29 @@ const FilterdPage = () => {
     }, []);
 
     const onChangeAscending = () => {
-        setSortedItems(
-            data
-                .slice()
-                .sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? 1 : -1))
-        );
+        setSpin(true)
+        setTimeout(() => {
+
+            setSortedItems(
+                data
+                    .slice()
+                    .sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? 1 : -1))
+            );
+            setSpin(false)
+        }, 300);
+
     };
     const onChangeDescending = () => {
-        console.log("hellooo");
+        setSpin(true)
+        setTimeout(() => {
 
-        setSortedItems(
-            data
-                .slice()
-                .sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? -1 : 1))
-        );
+            setSortedItems(
+                data
+                    .slice()
+                    .sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? -1 : 1))
+            );
+            setSpin(false)
+        }, 300);
     };
 
     const menu = (
@@ -74,11 +84,11 @@ const FilterdPage = () => {
             items={[
                 {
                     key: "1",
-                    label: <p onClick={onChangeAscending}>Low to Haigh</p>,
+                    label: <p onClick={onChangeAscending}>Low to High</p>,
                 },
                 {
                     key: "2",
-                    label: <p onClick={onChangeDescending}>Haigh to Low</p>,
+                    label: <p onClick={onChangeDescending}>High to Low</p>,
                 },
             ]}
         />
@@ -177,6 +187,7 @@ const FilterdPage = () => {
                         </Dropdown>
                     </div>
 
+                    {spin && <div className="w-100 text-center"><Spin /></div>}
                     {/* <div className="filterd-card  w-100 shadow px-4 py-4">helo</div> */}
                     {sortedItems.length !== 0
                         ? sortedItems.map((element, index) => {
