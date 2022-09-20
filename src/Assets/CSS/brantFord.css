@@ -1080,3 +1080,7 @@ video {
   right: 15px;
   margin-top: -6px;
 }
+
+.ant-dropdown-menu-title-content {
+  height: 25px;
+}

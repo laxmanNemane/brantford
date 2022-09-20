@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import HocLandingPage from "../HocLandingPage";
+import { MdSort } from "react-icons/md";
 
 import {
     Accordion,
@@ -13,18 +14,87 @@ import {
 import "react-accessible-accordion/dist/fancy-example.css";
 import { Field, Form, Formik } from "formik";
 import { Collapse } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllSpaces } from "../../Redux/enduserSlices/enduserSlice";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { GrAttachment } from "react-icons/gr";
+import { BiUser } from "react-icons/bi";
+import { Dropdown, Menu } from "antd";
+import { useNavigate } from "react-router-dom";
+import { usersContext } from "../../Context/UserContext";
 
 const FilterdPage = () => {
-    const [Recreational_Zone, setRecreational_Zone] = useState(false);
-    const handleSubmit = (values) => { console.log(values) };
+    const data = useSelector((state) => state.enduser.AllSpacesEndUser);
+    const [price, setPrice] = useState(data.map((ele) => ele.price));
+    const [sortedItems, setSortedItems] = useState(data);
+    const { endUserSpace, setEndUserSpace } = useContext(usersContext);
+    const navigate = useNavigate();
+    const spaceManagement = (data) => {
+        setEndUserSpace(data);
+        navigate(`/office-detail/${data.space.split(" ").join("-")}`);
+    };
+
+    //   useEffect(() => {
+    //     console.log(sortedItems);
+    //   }, [sortedItems]);
+    console.log(sortedItems);
+
+    console.log(data);
+    console.log(price);
+
+    //   ========================asc and des order of price=========================================
+    //   console.log(
+    //     books.sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? -1 : 1))
+    //   );
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchAllSpaces());
+    }, []);
+
+    const onChangeAscending = () => {
+        setSortedItems(
+            data
+                .slice()
+                .sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? 1 : -1))
+        );
+    };
+    const onChangeDescending = () => {
+        console.log("hellooo");
+
+        setSortedItems(
+            data
+                .slice()
+                .sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? -1 : 1))
+        );
+    };
+
+    const menu = (
+        <Menu
+            items={[
+                {
+                    key: "1",
+                    label: <p onClick={onChangeAscending}>Low to Haigh</p>,
+                },
+                {
+                    key: "2",
+                    label: <p onClick={onChangeDescending}>Haigh to Low</p>,
+                },
+            ]}
+        />
+    );
 
     const onChange = () => { };
     return (
         <div className="container">
             <div className="row py-5">
-                <div className="col-lg-4 col-md-3 col-sm-12">
-                    <div className="filterd-card card w-100 shadow px-4 py-4">
-                        <div className="aplied-filter-section">
+                <div className="col-lg-4 col-md-3 ">
+                    <div className="heading">
+                        <p className="fs-5">Filter</p>
+                    </div>
+
+                    <div className="filterd-card card w-100 shadow px-4 py-4 ">
+                        <div className="aplied-filter-section ">
                             <p className="fw-bold fs-5">Applied Filter</p>
                             <ul
                                 className="tags list-unstyled d-flex "
@@ -53,154 +123,234 @@ const FilterdPage = () => {
                         <div className="budget ">
                             <div className="d-flex align-items-center justify-content-between">
                                 <p className="fw-bold fs-5">Budget</p>
-                                <button
-                                    className="btn"
-                                    onClick={() => setRecreational_Zone(!Recreational_Zone)}
-                                    aria-controls="example-collapse-text"
-                                    aria-expanded={Recreational_Zone}
-                                >
-                                    Clear<span className="text-danger ms-1">*</span>
-                                </button>
                             </div>
+                            <div id="example-collapse-text ">
+                                <div className="px-3 ">
+                                    <Formik
+                                        initialValues={{
+                                            upto: false,
+                                            twoThousand: false,
+                                            threeThousand: false,
+                                            fiveThousand: false,
+                                            sevenfiveThousand: false,
+                                            tenThousand: false,
+                                            twelveThousand: false,
+                                        }}
+                                        validate={(values) => {
+                                            let errors = {};
 
-                            <Collapse in={Recreational_Zone}>
-                                <div id="example-collapse-text ">
-                                    <div className="px-3 ">
-                                        <Formik
-                                            initialValues={{
-                                                min_value: "",
-                                                max_value: "",
-                                            }}
-                                            validate={(values) => {
-                                                let errors = {};
-
-                                                return errors;
-                                            }}
-                                            onSubmit={(values, { resetForm }) => {
-                                                handleSubmit(values, resetForm);
-                                            }}
-                                            className=""
-                                        >
-                                            {({ values, errors }) => (
-                                                <Form >
-                                                    <div className="formGroup">
-                                                        <div className="row">
-                                                            <div className="col-12 w-50 py-4 text-start">
-                                                                <Field
-                                                                    as="select"
-                                                                    className=" form-control w-75 mx-auto mb-3 "
-                                                                    component="select"
-                                                                    id="min_value"
-                                                                    name="min_value"
-                                                                    onSubmit={handleSubmit}
-                                                                >
-                                                                    <option
-                                                                        value="select profile "
-                                                                        className="py-3"
-                                                                    >
-                                                                        Min value
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="2500"
-                                                                        className="py-3"
-                                                                    >
-                                                                        2500
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="5000"
-                                                                        className="py-3"
-                                                                    >
-                                                                        5000
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="6000"
-                                                                        className="py-3"
-                                                                    >
-                                                                        6000
-                                                                    </option>
-                                                                    <option
-                                                                        value="7000"
-                                                                        className="py-3"
-                                                                    >
-                                                                        7000
-                                                                    </option>
-                                                                    <option
-                                                                        value="8000"
-                                                                        className="py-3"
-                                                                    >
-                                                                        8000
-                                                                    </option>
-
-                                                                </Field>
-                                                            </div>
-                                                            <div className="col-12 w-50 py-4 text-end">
-                                                                <Field
-                                                                    as="select"
-                                                                    className=" form-control w-75 mx-auto mb-3 "
-                                                                    component="select"
-                                                                    id="max_value"
-                                                                    name="max_value"
-                                                                    onSubmit={handleSubmit}
-                                                                >
-                                                                    <option
-                                                                        value="select profile "
-                                                                        className="py-3"
-                                                                    >
-                                                                        Max value
-                                                                    </option>
-
-                                                                    <option
-                                                                        value={25000}
-                                                                        className="py-3"
-                                                                    >
-                                                                        25000
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="50000"
-                                                                        className="py-3"
-                                                                    >
-                                                                        50000
-                                                                    </option>
-
-                                                                    <option
-                                                                        value="60000"
-                                                                        className="py-3"
-                                                                    >
-                                                                        60000
-                                                                    </option>
-                                                                    <option
-                                                                        value="70000"
-                                                                        className="py-3"
-                                                                    >
-                                                                        70000
-                                                                    </option>
-                                                                    <option
-                                                                        value="80000"
-                                                                        className="py-3"
-
-                                                                    >
-                                                                        80000
-                                                                    </option>
-
-                                                                </Field>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </Form>
-                                            )}
-                                        </Formik>
-                                    </div>
+                                            return errors;
+                                        }}
+                                        // onSubmit={(values, { resetForm }) => {
+                                        //     handleSubmit(values, resetForm);
+                                        // }}
+                                        className=""
+                                    >
+                                        {({ values, errors }) => (
+                                            <Form>
+                                                <div className="d-flex my-2">
+                                                    <Field
+                                                        type="checkbox"
+                                                        name="twoThousand"
+                                                        id="twoThousand"
+                                                        label="2000"
+                                                        style={{ width: "18px" }}
+                                                        onSubmit={(values) => {
+                                                            console.log(values);
+                                                        }}
+                                                    />
+                                                    <label className="">&nbsp; 2000 or above</label>
+                                                </div>
+                                            </Form>
+                                        )}
+                                    </Formik>
                                 </div>
-                            </Collapse>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="col-lg-8 col-md-9 col-sm-12">
-                    <div className="filterd-card  w-100 shadow px-4 py-4">helo</div>
+                    <div className="heading-properties mx-2 d-flex  align-items-center justify-content-between">
+                        <p className="fs-5">Properties ({sortedItems !== 0 ? data.length : sortedItems.length})</p>
+                        <Dropdown overlay={menu} placement="bottomLeft">
+                            <p className="fs-5"><MdSort className="me-2 fw-bold" />Sort</p>
+                        </Dropdown>
+                    </div>
+
+                    {/* <div className="filterd-card  w-100 shadow px-4 py-4">helo</div> */}
+                    {sortedItems.length !== 0
+                        ? sortedItems.map((element, index) => {
+                            return (
+                                <div className="similar-offices" key={index}>
+                                    <div className="officess mt-3">
+                                        <div className="row">
+                                            <div className="col-lg-4 col-md-4 col-sm-12">
+                                                <div className="image-office-sction py-1  mx-2">
+                                                    <img
+                                                        src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                                        alt="office image"
+                                                        width="100%"
+                                                        height={230}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-8 col-md-8 col-sm-12   ">
+                                                <div className="similar-office-description position-relative mx-2">
+                                                    <div className="price-tag-section d-flex justify-content-between pt-2">
+                                                        <p
+                                                            className=""
+                                                            style={{
+                                                                background: "#91a7ff",
+                                                                color: "white",
+                                                                padding: "5px 16px",
+                                                                fontWeight: "600",
+                                                            }}
+                                                        >
+                                                            For Rent
+                                                        </p>
+                                                        <p className="name me-3">
+                                                            $<span className="price1">{element.price}</span>
+                                                            month/seats
+                                                        </p>
+                                                    </div>
+                                                    <div className="ofice-name-type">
+                                                        <p className="offices-similar-heading">
+                                                            {element.space}
+                                                        </p>
+                                                        <p className="sub-heading">
+                                                            <HiOutlineLocationMarker className="me-2" />{" "}
+                                                            {element.address}
+                                                        </p>
+
+                                                        <p className="name">
+                                                            Space type:{" "}
+                                                            {1
+                                                                ? "Update value"
+                                                                : 2
+                                                                    ? "Co working Space"
+                                                                    : 3
+                                                                        ? "flexy desk"
+                                                                        : 4
+                                                                            ? "Private space"
+                                                                            : ""}
+                                                        </p>
+                                                    </div>
+
+                                                    <div className="row">
+                                                        <div className="col-3 mt-3">
+                                                            <p className="last-update">
+                                                                <BiUser className="m2-2" />
+                                                                Brantford Team
+                                                            </p>
+                                                        </div>
+                                                        <div className="col-3 mt-3">
+                                                            <p className="last-update">
+                                                                <GrAttachment className="me-2" />3 weeks Ago
+                                                            </p>
+                                                        </div>
+                                                        <div className="col-1"></div>
+                                                        <div className="col-3 ">
+                                                            <button
+                                                                className="btn-for-all-landpage px-4"
+                                                                onClick={() => spaceManagement(element)}
+                                                            >
+                                                                Detail
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })
+                        : data.map((element, index) => {
+                            return (
+                                <div className="similar-offices" key={index}>
+                                    <div className="officess mt-3">
+                                        <div className="row">
+                                            <div className="col-lg-4 col-md-4 col-sm-12">
+                                                <div className="image-office-sction py-1  mx-2">
+                                                    <img
+                                                        src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                                        alt="office image"
+                                                        width="100%"
+                                                        height={230}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-8 col-md-8 col-sm-12   ">
+                                                <div className="similar-office-description position-relative mx-2">
+                                                    <div className="price-tag-section d-flex justify-content-between pt-2">
+                                                        <p
+                                                            className=""
+                                                            style={{
+                                                                background: "#91a7ff",
+                                                                color: "white",
+                                                                padding: "5px 16px",
+                                                                fontWeight: "600",
+                                                            }}
+                                                        >
+                                                            For Rent
+                                                        </p>
+                                                        <p className="name me-3">
+                                                            $<span className="price1">{element.price}</span>
+                                                            month/seats
+                                                        </p>
+                                                    </div>
+                                                    <div className="ofice-name-type">
+                                                        <p className="offices-similar-heading">
+                                                            {element.space}
+                                                        </p>
+                                                        <p className="sub-heading">
+                                                            <HiOutlineLocationMarker className="me-2" />{" "}
+                                                            {element.address}
+                                                        </p>
+
+                                                        <p className="name">
+                                                            Space type:{" "}
+                                                            {1
+                                                                ? "Update value"
+                                                                : 2
+                                                                    ? "Co working Space"
+                                                                    : 3
+                                                                        ? "flexy desk"
+                                                                        : 4
+                                                                            ? "Private space"
+                                                                            : ""}
+                                                        </p>
+                                                    </div>
+
+                                                    <div className="row">
+                                                        <div className="col-3 mt-3">
+                                                            <p className="last-update">
+                                                                <BiUser className="m2-2" />
+                                                                Brantford Team
+                                                            </p>
+                                                        </div>
+                                                        <div className="col-3 mt-3">
+                                                            <p className="last-update">
+                                                                <GrAttachment className="me-2" />3 weeks Ago
+                                                            </p>
+                                                        </div>
+                                                        <div className="col-1"></div>
+                                                        <div className="col-3 ">
+                                                            <button
+                                                                className="btn-for-all-landpage px-4"
+                                                                onClick={() => spaceManagement(element)}
+                                                            >
+                                                                Detail
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
                 </div>
             </div>
         </div>

@@ -57,22 +57,6 @@ const FindsProperty = () => {
   //     });
   // };
 
-  // const getAllProperties = () => {
-  //   axios
-  //     .get(`${BaseUrl}/endUser/get-all-spces-wr`)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setAllProperties(res.data);
-  //       setSinglecategory(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   getAllProperties();
-  // }, []);
   return (
     <div>
       <div className="find-property-section land-page py-3">

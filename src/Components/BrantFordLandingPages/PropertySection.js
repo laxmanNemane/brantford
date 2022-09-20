@@ -4,9 +4,11 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsHeart, BsPlusCircle } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { usersContext } from "../../Context/UserContext";
 import PropertyOverview from "../../EndUserPanel/PropertyOverview";
+import { fetchAllSpaces } from "../../Redux/enduserSlices/enduserSlice";
 import CompareSidebar from "./CompareSidebar";
 
 const BaseUrl = "http://bantford.prometteur.in";
@@ -21,6 +23,12 @@ const PropertySection = ({ slide, setSlide }) => {
   const [singleCategory, setSinglecategory] = useState([]);
 
   const { endUserSpace, setEndUserSpace } = useContext(usersContext);
+
+  const data = useSelector((state) => state.enduser.AllSpacesEndUser);
+  console.log(data);
+  // dispatch(fetchAllSpaces());
+
+  const dispatch = useDispatch();
 
   const setCategary = (categaryId, data) => {
     console.log(categaryId);
@@ -69,23 +77,12 @@ const PropertySection = ({ slide, setSlide }) => {
       });
   };
 
-  const getAllProperties = () => {
-    axios
-      .get(`${BaseUrl}/endUser/get-all-spces-wr`)
-      .then((res) => {
-        console.log(res.data);
-        setAllSpaces(res.data);
-        // setSinglecategory(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   useEffect(() => {
     getallCategaries();
-    getAllProperties();
+    dispatch(fetchAllSpaces());
   }, [show, isModalVisible]);
+
+  // data.map((ele) => <p key={ele.id}>{console.log(ele.space)}</p>);
 
   return (
     <div>
@@ -120,64 +117,67 @@ const PropertySection = ({ slide, setSlide }) => {
               </div>
 
               <div className="row">
-                {allspaces.splice(0, 6).map((ele, index) => {
-                  return (
-                    <div className="col-lg-4 col-md-6 col-sm-12 " key={index}>
-                      <div className="properties">
-                        <div className="image-section1 w-100">
-                          <img
-                            src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                            alt=""
-                            className="image-find-section"
-                          />
-                        </div>
-                        <div className="price-section d-flex justify-content-between mx-4">
-                          <div className="w-75 ">
-                            <p className="price">{ele.price}/sqr</p>
+                {data &&
+                  data.slice(0, 6).map((ele, index) => {
+                    return (
+                      <div className="col-lg-4 col-md-6 col-sm-12 " key={index}>
+                        <div className="properties">
+                          <div className="image-section1 w-100">
+                            <img
+                              src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                              alt=""
+                              className="image-find-section"
+                            />
                           </div>
-                          <div className="d-flex justify-content-between w-25 gx-2 icon-group">
-                            <p onClick={() => modalToDetailPage(ele)}>
-                              <AiOutlineArrowsAlt className="icons-recomanded-property text-white" />
-                            </p>
-                            <p>
-                              <BsHeart className="icons-recomanded-property text-white" />
-                            </p>
-                            <p onClick={() => setShow(true)}>
-                              <BsPlusCircle className="icons-recomanded-property text-white" />
-                            </p>
+                          <div className="price-section d-flex justify-content-between mx-4">
+                            <div className="w-75 ">
+                              <p className="price">{ele.price}/sqr</p>
+                            </div>
+                            <div className="d-flex justify-content-between w-25 gx-2 icon-group">
+                              <p onClick={() => modalToDetailPage(ele)}>
+                                <AiOutlineArrowsAlt className="icons-recomanded-property text-white" />
+                              </p>
+                              <p>
+                                <BsHeart className="icons-recomanded-property text-white" />
+                              </p>
+                              <p onClick={() => setShow(true)}>
+                                <BsPlusCircle className="icons-recomanded-property text-white" />
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                        <div className="properties-description-card mx-2 my-3">
-                          <p className="property-name-heading name">
-                            {ele.space}
-                          </p>
-                          <p className="property-location-card description-why-page">
-                            {ele.address}
-                          </p>
-                          <div className="button-space d-flex justify-content-between btn-area">
-                            <p className=" fw-bold">{ele.description}</p>
-                            {/* <NavLink to={`/office-detail/${item.id}`}> */}
-                            <button
-                              className="btn-first"
-                              onClick={() => setCategary(ele.id, ele)}
-                            >
-                              Detail
-                            </button>
-                            {/* </NavLink> */}
+                          <div className="properties-description-card mx-2 my-3">
+                            <p className="property-name-heading name">
+                              {ele.space}
+                            </p>
+                            <p className="property-location-card description-why-page">
+                              {ele.address}
+                            </p>
+                            <div className="button-space d-flex justify-content-between btn-area">
+                              <p className=" fw-bold">{ele.description}</p>
+                              {/* <NavLink to={`/office-detail/${item.id}`}> */}
+                              <button
+                                className="btn-first"
+                                onClick={() => setCategary(ele.id, ele)}
+                              >
+                                Detail
+                              </button>
+                              {/* </NavLink> */}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
               </div>
               <div>
-                <p className="btn-view-all position-relative">
-                  View All{" "}
-                  <span className="tr-icon position-relative">
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </span>
-                </p>
+                <Link to="/allSpaces">
+                  <p className="btn-view-all position-relative">
+                    View All{" "}
+                    <span className="tr-icon position-relative">
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                  </p>
+                </Link>
               </div>
 
               {/* <div className="row">
