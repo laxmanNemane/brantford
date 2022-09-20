@@ -282,17 +282,7 @@ a{
   color: #0f0f0f;
 }
 
-.profile-tabitem:active {
-  font-family: Source Sans Pro;
-  font-size: 22px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 0.77;
-  letter-spacing: -0.6px;
-  text-align: left;
-  color: #2a2a2a;
-}
+/* .profile-tabitem:active {font-family: Source Sans Pro;font-size: 22px; font-weight: bold; font-stretch: normal; font-style: normal; line-height: 0.77; letter-spacing: -0.6px; text-align: left;color: #2a2a2a;} */
 
 .tabs_property {
   font-size: 18px;
@@ -847,7 +837,10 @@ table tr td {
 .btn-violet{color: #C862DB;}
 .btn-blue{color: #4FA3D8;}
 .btn-green{color: #55D863;}
-.list-sidebar-menu div span::after{content: '>'; position: absolute; opacity: 1; font-size: 10px; right: 15px; color: #a1a4b9;}
+.list-sidebar-menu .menu-list span::after{position: absolute; font-family: 'Font Awesome 5 Free'; content: '\f054'; font-weight: 900; position: absolute; opacity: 1; font-size: 10px; right: 15px; color: #a1a4b9; line-height: 50px;}
+.list-sidebar-menu .collapsed span::after{transform: rotate(90deg); }
+.list-sidebar-menu[aria-expanded="true"] span::after{transform: rotate(90deg); }
+.list-sidebar-menu ul li a{ position: relative;}
 .doller-icon{height: 50px; width: 50px; background-color: #F8FAFF; border-radius: 50%; text-align: center; line-height: 30px;}
 
 .brant-btn-red{padding: 5px 15px ; color: #ffff; background-color: #F16060; border: none;}
@@ -859,6 +852,68 @@ table tr td {
 
 
 /* //properties page  */
+.bg-gray{background-color: #323246; color: #ffff;}
+.sales h3{font-weight: 700; font-size: 28px; color: #ffff;}
+.sales2 h3{font-weight: 700; font-size: 28px; color: #72727F;}
+
+/* sidebar menu  */
+/* .sub-menu-div{padding-left: 85px;} */
+.sub-menu-div ul{list-style: none;}
+.Sidebar_otption_section ul .active{background-color: #34a853 !important; color: #4285f4 !important;}
+.Sidebar_otption_section ul{padding-left: 35px;}
+
+.breadcrumb .breadcrumb-item{color: #ffff; font-size: 15px; font-weight: 500;} 
+
+.adminCharList{list-style: none; padding-left: 0px;}
+.msg_description  .msg-info h4{margin: 0;}
+.msg_description  .msg-info p{margin: 0;}
+.adminCharList li a{border-bottom: 1px solid #eee1e2; padding: 20px 0; transition: ease-in 5s;}
+.adminCharList li:hover{ padding: 0px 10px; background-color: #FFFAFB; }
+.message-content{padding: 20px; border-radius: 15px; background-color: #4C6EF8; color: #ffff;}
+.reciever-message{padding: 20px; border-radius: 15px; background-color: #F5F6FF; color: #747FAC;}
+.msg-sender{padding-right: 250px;}
+.msg-reciever{padding-left: 250px;}
+
+.chat-input form input{padding: 10px 15px; border-radius: 5px; border: 1px solid #eee1e2; margin-left: 25px;}
+
+.req-table table tr td{padding: 10px 15px;}
+.req-table table tr th{padding: 10px 15px;}
+.select-options-input{display: none;}
+
+.ant-select-selection {
+  background-color: green;
+}
+.ant-select.ant-select-single.ant-select-show-arrow.ant-select-show-search{background-color: #E4FFFA !important; color: #34a853; width: 120px !important;}
+/* .ant-select-item-option-content{background-color: #34a853; color: #ffff; padding: 20px;} */
+.ant-select-item.ant-select-item-option.ant-select-item-option-active{background-color: #FBFBFB; color: #707070; }
+.ant-select-selector{background-color: #E4FFFA !important; color: #34a853; }
+/* .select-options{width: 80px !important;} */
+.react-calendar__month-view__weekdays__weekday.react-calendar__month-view__weekdays__weekday--weekend{
+  color: red;
+  text-decoration: none;
+}
+.react-calendar__month-view__weekdays__weekday.react-calendar__month-view__weekdays__weekday--weekend abbr{text-decoration: none;}
+.react-calendar__month-view__weekdays__weekday{color: #414141; font-size: 15px; font-weight: 500; text-decoration: none;}
+.react-calendar__month-view__weekdays__weekday abbr{text-decoration: none !important; font-size: 15px !important; font-weight: 500 !important;}
+.react-calendar__month-view__days button{background-color: unset; padding: 20px;}
+.react-calendar__month-view__weekdays div{padding: 20px;}
+.react-calendar__tile.react-calendar__tile--active{background-color: #64C5B1;}
+.react-calendar__tile.react-calendar__tile--active, .react-calendar__tile.react-calendar__month-view__days__day:hover{background-color: #64C5B1; border-radius: 10px; color: #ffff;}
+.react-calendar__navigation button{background-color: unset; text-align: center; font-size: 20px; font-weight: 700;}
+.react-calendar__navigation{text-align: center;}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

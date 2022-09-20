@@ -14,6 +14,8 @@ import {
 import { NavLink } from "react-router-dom";
 import { Dropdown, Menu } from "antd";
 import { MdNoteAdd } from "react-icons/md";
+import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
+import { DropdownButton } from "react-bootstrap";
 const Sidebar = () => {
   // this is dropdown option
   const menu = (
@@ -63,33 +65,86 @@ const Sidebar = () => {
       </h5>
       <div className="Sidebar_otption_section">
         <ul className="list-unstyled">
-          <li className="my-3  list-sidebar-menu">
+          <li
+            className="my-3  list-sidebar-menu"
+            data-bs-toggle="collapse"
+            data-bs-target="#getting-started-collapse2"
+            aria-expanded="false"
+          >
             <NavLink to="/dashbord" className="text-dark">
-              <div className="d-flex align-items-center justify-content-center">
+              <div className="menu-list align-items-center justify-content-center">
                 <TiChartBar className="Sidebar_icons" />
                 <span>Dashbord</span>
               </div>
             </NavLink>
+            <div
+              className="collapse sub-menu-div"
+              id="getting-started-collapse2"
+            >
+              <ul>
+                <li>
+                  <NavLink to="/properties" className="text-dark">
+                    <span>All Property </span>
+                  </NavLink>
+                </li>
+                <li>
+                  {/* <NavLink to="/properties" className="text-dark"> */}
+                    <span>Booked Property</span>
+                  {/* </NavLink> */}
+                </li>
+                <li>
+                  <NavLink to="/properties" className="text-dark">
+                    <span>Revenue</span>
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
           </li>
-          <li className="my-3   list-sidebar-menu">
+          <li className="my-3 list-sidebar-menu">
             <NavLink to="/properties" className="text-dark">
-              <div className="d-flex align-items-center justify-content-center">
+              <div className="  align-items-center justify-content-center">
                 <BsBuilding className="Sidebar_icons" />
                 <span> properties </span>
               </div>
             </NavLink>
           </li>
-          <li className="my-3   list-sidebar-menu">
+          <li
+            className="my-3   list-sidebar-menu"
+            data-bs-toggle="collapse"
+            data-bs-target="#getting-started-collapse"
+          >
             <NavLink to="/tenants" className="text-dark">
-              <div className="d-flex align-items-center justify-content-center">
+              <div className="menu-list align-items-center justify-content-center">
                 <AiOutlineUsergroupAdd className="Sidebar_icons" />
                 <span>Tenants</span>
               </div>
             </NavLink>
+            <div
+              className="collapse sub-menu-div"
+              id="getting-started-collapse"
+            >
+              <ul>
+                <li>
+                  <NavLink to="/properties" className="text-dark">
+                    <span>All Users</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/properties" className="text-dark">
+                    <span>Property Owner</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/properties" className="text-dark">
+                    <span>End Users</span>
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
           </li>
           <li className="my-3   list-sidebar-menu">
             <NavLink to="/categories" className="text-dark">
-              <div className="d-flex align-items-center justify-content-center">
+              <div className="menu-list align-items-center justify-content-center">
                 <AiOutlineInsurance className="Sidebar_icons" />
                 <span>Categories</span>
               </div>
@@ -97,7 +152,7 @@ const Sidebar = () => {
           </li>
           <li className="my-3  list-sidebar-menu">
             <NavLink to="/revenu" className="text-dark">
-              <div className="d-flex align-items-center justify-content-center">
+              <div className=" align-items-center justify-content-center">
                 <AiOutlineCreditCard className="Sidebar_icons" />
                 <span>Income</span>
               </div>
@@ -105,20 +160,19 @@ const Sidebar = () => {
           </li>
           <li className="my-3  list-sidebar-menu">
             <NavLink to="/requirements" className="text-dark">
-              <div className="d-flex align-items-center justify-content-center">
+              <div className=" align-items-center justify-content-center">
                 <AiOutlineCreditCard className="Sidebar_icons" />
                 <span>Requirements</span>
               </div>
             </NavLink>
           </li>
           <li className="my-3 list-sidebar-menu">
-            {/* <NavLink to="/dashbord" className="text-dark"> */}
-            <div className="d-flex align-items-center justify-content-center">
-
-            <AiOutlineWechat className="Sidebar_icons" />
-          <span>Chat</span>  
-            {/* </NavLink> */}
-            </div>
+            <NavLink to="/chat" className="text-dark">
+              <div className=" align-items-center justify-content-center">
+                <AiOutlineWechat className="Sidebar_icons" />
+                <span>Chat</span>
+              </div>
+            </NavLink>
           </li>
         </ul>
         <p className="sidebar-setting">

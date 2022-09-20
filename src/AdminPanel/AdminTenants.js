@@ -8,6 +8,7 @@ import { AiOutlineUserSwitch, AiOutlineTeam } from "react-icons/ai";
 import { BsArrowDownLeftCircle } from "react-icons/bs";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import AdminFooter from "./AdminFooter";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -35,7 +36,9 @@ const AdminTenants = () => {
         // height: "100vh",
       }}
     >
-      <div className="row  mx-3  d-flex">
+       <div className="top-banner">
+        <div className="dashboard-title">
+      <div className="row  mx-3  d-flex ">
         <div className="col-12 my-2">
           <h5 className="Analytic_heading">Connected Users</h5>
         </div>
@@ -101,6 +104,9 @@ const AdminTenants = () => {
         </div>
         <AdminUserTable />
       </div>
+      </div>
+      </div>
+      < AdminFooter/>
     </div>
   );
 };

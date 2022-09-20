@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import HocComponent from "../Components/HocComponent";
 import ReactEcharts from "echarts-for-react";
 import axios from "axios";
+import AdminFooter from "./AdminFooter";
 // import AdminSubUserstable from "./AdminSubUserstable";
 
 const option = {
@@ -96,6 +97,7 @@ const RevenuAdmin = () => {
 
   console.log(revenue);
   return (
+    <div>
     <div
       style={{
         background: "rgb(244, 240, 242)",
@@ -103,6 +105,8 @@ const RevenuAdmin = () => {
         height: "100vh",
       }}
     >
+       <div className="top-banner">
+        <div className="dashboard-title">
       <div className="row  mx-3 ">
         <div className="col-12 my-2  ">
           <h5 className="Analytic_heading">Revenu (Profit)</h5>
@@ -164,6 +168,10 @@ const RevenuAdmin = () => {
           </div> */}
         </div>
       </div>
+      </div>
+      </div>
+    </div>
+      <AdminFooter/>
     </div>
   );
 };

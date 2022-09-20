@@ -18,7 +18,10 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Calendar from "react-calendar";
 import { AiFillDollarCircle, AiFillCaretDown } from "react-icons/ai";
 import AdminFooter from "../AdminPanel/AdminFooter";
-
+import {Select} from "antd";
+import { BiArrowFromRight } from "react-icons/bi";
+import { IoArrowDownCircleOutline } from "react-icons/io5";
+const { Option } = Select;
 const BaseUrl = "http://bantford.prometteur.in";
 // const Admin_token = localStorage.getItem("token");
 
@@ -27,8 +30,68 @@ const DasbordPage = () => {
   const [showStatus, setshowStatus] = useState(false);
   const [allPropertiesCount, setAllPropertiesCount] = useState();
   const [bookedCount, setBookedCount] = useState({});
-  const [bars, setbars] = useState();
   const [value, onChange] = useState(new Date());
+  const [bars, setbars] = useState( {
+          
+    series: [{
+      name: 'Net Profit',
+      data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+    }],
+    options: {
+      chart: {
+        toolbar: {
+          show: false
+        },
+        background: '#fff',
+        type: 'bar',
+        height: 350
+      },
+      
+      fill: {
+        colors: ['#F44336', '#E91E63', '#9C27B0']
+      },
+      legend: {
+        show: false,},
+
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: '20%',
+          endingShape: 'rounded'
+        },
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        show: false,
+        width: 1,
+        colors: ['transparent']
+      },
+      // xaxis: {
+      //   show:false,
+      //   // categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+      // },
+      yaxis: {
+        show:false,
+        // title: {
+        //   text: '$ (thousands)'
+        // }
+      },
+      fill: {
+        opacity: 1
+      },
+      tooltip: {
+        y: {
+          formatter: function (val) {
+            return "$ " + val + " thousands"
+          }
+        }
+      }
+    },
+  
+  
+  });
 
   const [radarChart, setRadarChart] = useState({
     series: [
@@ -102,46 +165,43 @@ const DasbordPage = () => {
     },
   });
   const [lineChart, setLineChart] = useState({
-    series: [
-      {
-        name: "Desktops",
-        data: [10, 41, 30, 51, 34],
-      },
-    ],
+          
+    series: [{
+      data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
+    }],
     options: {
-      legend: {
-        show: false,
-      },
       chart: {
+        type: 'area',
+        height: 160,
         sparkline: {
-          enabled: false,
+          enabled: true
         },
-        height: 350,
-        type: "line",
-        zoom: {
-          enabled: false,
-        },
-      },
-      dataLabels: {
-        enabled: false,
       },
       stroke: {
-        curve: "straight",
+        curve: 'smooth'
       },
+      fill: {
+        opacity: 0.3,
+      },
+      yaxis: {
+        min: 0
+      },
+      colors: ['#008FFB'],
       title: {
-        show:false,
+        text: '$424,652',
+        offsetX: 0,
+        style: {
+          fontSize: '24px',
+        }
       },
-      grid: {
-        row: {
-          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-          opacity: 0.5,
-        },
+      subtitle: {
+        text: 'Sales',
+        offsetX: 0,
+        style: {
+          fontSize: '14px',
+        }
       },
-      xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr", "May"],
-      },
-    },
-  });
+    },});
 
   const [circleChart, setCircleChart] = useState({
     series: [42, 47, 52, 58, 65],
@@ -156,7 +216,7 @@ const DasbordPage = () => {
       },
       stroke: {
         width: 1,
-        colors: undefined,
+        colors: "#008FFB",
       },
       yaxis: {
         show: false,
@@ -185,8 +245,18 @@ const DasbordPage = () => {
   });
   const [chartData, setChartData] = useState({
     options: {
-      
+      bar: {
+        horizontal: false,
+        borderRadius: 0,
+        columnWidth: "10%",
+        barHeight: "10%",
+        width:"10%", 
+      },
+      dataLabels: {
+        enabled: false,
+      },
       chart: {
+          width: '20%',
         // type: 'Line',
         id: "apexchart-example",
         toolbar: {
@@ -194,7 +264,7 @@ const DasbordPage = () => {
         },
       },
       xaxis: {
-        show:false,
+        show: false,
 
         categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
       },
@@ -213,7 +283,7 @@ const DasbordPage = () => {
         },
       },
       legend: {
-        show:false,
+        show: false,
         // position: '',
         // width: 400,
         // position: 'top',
@@ -328,7 +398,7 @@ const DasbordPage = () => {
                   <h3 className="">Dashbord</h3>
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
-                      <a href="#">Home</a>
+                      <NavLink to="/dashbord">Home</NavLink>
                     </li>
                     <li className="breadcrumb-item active">Library</li>
                   </ol>
@@ -455,6 +525,17 @@ const DasbordPage = () => {
             <div className="col-md-8">
               <div className="brant-card">
                 <div className="brant-card-body">
+                  <div className="d-flex align-items-center justify-content-between">
+                    <div>
+                    <h6>Revenue</h6>
+                    </div>
+                    <div className="week-btn d-flex justify-content-between">
+                        <button className="brant-label">This Week</button>
+                        <button className="brant-label ms-3">Last Week</button>
+                        <button className="brant-label ms-3">Last Month</button>
+                    </div>
+
+                  </div>
                   <ReactApexChart
                     options={chartData.options}
                     series={chartData.series}
@@ -473,7 +554,9 @@ const DasbordPage = () => {
                     </div>
                     <div className="button">
                       <Link rel="stylesheet" to="">
-                        <button className="brant-btn">create Report</button>
+                        <button className="Buttons_dashbord">
+                          create Report
+                        </button>
                       </Link>
                     </div>
                   </div>
@@ -483,6 +566,10 @@ const DasbordPage = () => {
             <div className="col-md-4">
               <div className="brant-card">
                 <div className="brant-card-body">
+                  <div className="d-flex align-items-center justify-content-between">
+                    <h6>Total Sales Unit</h6>
+                    <p>..</p>
+                  </div>
                   <ReactApexChart
                     options={circleChart.options}
                     series={circleChart.series}
@@ -490,17 +577,20 @@ const DasbordPage = () => {
                     height={380}
                   />
                 </div>
-                <div className="brant-card-body">
-                  <div className="d-flex">
-                    <div className="sales">
-                      <p>This Month Revenue</p>
-                      <h3>$57k</h3>
-                      <p>14.5% Up From Last Month</p>
-                    </div>
-                    <div className="sales">
-                      <p>This Month Revenue</p>
-                      <h3>$57k</h3>
-                      <p>14.5% Up From Last Month</p>
+
+                <div className="bg-gray">
+                  <div className="brant-card-body">
+                    <div className="d-flex">
+                      <div className="sales">
+                        <p>This Month Revenue</p>
+                        <h3>$57k</h3>
+                        <p>14.5% Up From Last Month</p>
+                      </div>
+                      <div className="sales">
+                        <p>This Month Revenue</p>
+                        <h3>$57k</h3>
+                        <p>14.5% Up From Last Month</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -511,11 +601,16 @@ const DasbordPage = () => {
           <div className="row m-4">
             <div className="col-md-4">
               <div className="brant-card">
-                <div className="brant-card-body" style={{ height: "250px" }}>
+                <div className="brant-card-body" >
+                  <div className="d-flex align-items-center justify-content-between">
+                    <h6>Daily sales</h6>
+                    <p>...</p>
+                  </div>
                   <ReactApexChart
                     options={lineChart.options}
                     series={lineChart.series}
                     type="line"
+                    style={{ height: "250px" }}
                     // height={350}
                   />
                 </div>
@@ -525,18 +620,18 @@ const DasbordPage = () => {
               <div className="brant-card">
                 <div className="brant-card-body" style={{ height: "250px" }}>
                   <div className="chart-title d-flex justify-content-between align-items-center">
-                    <p>Sumary</p>
+                    <h6>Sumary</h6>
                     <p>...</p>
                   </div>
                   <div className="prg-bar">
                     <div className="mt-4">
-                      <ProgressBar variant="warning" now={25}  label={`25%`} />
+                      <ProgressBar variant="warning" now={25} label={`25%`} />
                     </div>
                     <div className="mt-4">
-                      <ProgressBar  variant="primary" now={75}  label={`75%`} />
+                      <ProgressBar variant="primary" now={75} label={`75%`} />
                     </div>
                     <div className="mt-4">
-                      <ProgressBar  variant="success"  now={34}  label={`34%`} />
+                      <ProgressBar variant="success" now={34} label={`34%`} />
                     </div>
                   </div>
                 </div>
@@ -555,7 +650,7 @@ const DasbordPage = () => {
                         <button className="brant-label">Today</button>
                         <button className="brant-label ms-3">This Week</button>
                       </div>
-                      {/* <ReactApexChart options={bars.options} series={bars.series}type="line"height={350}/> */}
+                      <ReactApexChart options={bars.options} series={bars.series}type="bar"/>
                     </div>
                   </div>
                 </div>
@@ -563,7 +658,7 @@ const DasbordPage = () => {
             </div>
             <div className="col-md-4 mt-4">
               <div className="brant-card">
-                <div className="brant-card-body" style={{  }}>
+                <div className="brant-card-body" style={{}}>
                   <div className="d-flex justify-content-between align-items-center">
                     <h6>Transactions</h6>
                     <p>...</p>
@@ -572,7 +667,9 @@ const DasbordPage = () => {
                     <ul>
                       <li className="d-flex justify-content-between align-items-center">
                         <div className="doller-icon">
-                        <AiFillDollarCircle style={{fontSize: "40px", color:"#64C5B1"}}/>
+                          <AiFillDollarCircle
+                            style={{ fontSize: "40px", color: "#64C5B1" }}
+                          />
                         </div>
                         <div>
                           <h5>Electricity Bill</h5>
@@ -583,7 +680,11 @@ const DasbordPage = () => {
                         </div>
                       </li>
                       <li className="d-flex justify-content-between align-items-center">
-                        <div className="doller-icon"><AiFillDollarCircle style={{fontSize: "40px", color:"#64C5B1"}}/></div>
+                        <div className="doller-icon">
+                          <AiFillDollarCircle
+                            style={{ fontSize: "40px", color: "#64C5B1" }}
+                          />
+                        </div>
                         <div>
                           <h5>Electricity Bill</h5>
                           <p>10 Aug 03:00PM</p>
@@ -593,7 +694,11 @@ const DasbordPage = () => {
                         </div>
                       </li>
                       <li className="d-flex justify-content-between align-items-center">
-                        <div className="doller-icon"><AiFillDollarCircle style={{fontSize: "40px", color:"#64C5B1"}}/></div>
+                        <div className="doller-icon">
+                          <AiFillDollarCircle
+                            style={{ fontSize: "40px", color: "#64C5B1" }}
+                          />
+                        </div>
                         <div>
                           <h5>Electricity Bill</h5>
                           <p>10 Aug 03:00PM</p>
@@ -603,7 +708,11 @@ const DasbordPage = () => {
                         </div>
                       </li>
                       <li className="d-flex justify-content-between align-items-center">
-                        <div className="doller-icon"><AiFillDollarCircle style={{fontSize: "40px", color:"#64C5B1"}}/></div>
+                        <div className="doller-icon">
+                          <AiFillDollarCircle
+                            style={{ fontSize: "40px", color: "#64C5B1" }}
+                          />
+                        </div>
                         <div>
                           <h5>Electricity Bill</h5>
                           <p>10 Aug 03:00PM</p>
@@ -620,15 +729,32 @@ const DasbordPage = () => {
 
             <div className="col-md-4 mt-4">
               <div className="brant-card">
-                <div className="brant-card-body" style={{  }}>
+                <div className="brant-card-body" style={{}}>
                   <div className="d-flex justify-content-between align-items-center mb-4">
                     <h6>News and updates</h6>
-                    <div className="select-options">
-                      <select name="" id="">
-                        <option value="today">today</option>
-                        <option value="tomorrow">tommorow</option>
-                        <option value="yesterday">yesterday</option>
-                      </select>
+                    <div className="single-wrap-input">
+                      <div className="select-options">
+                        {/* <select name="" id="">
+                          <option value="today">today</option>
+                          <option value="tomorrow">tommorow</option>
+                          <option value="yesterday">yesterday</option>
+                        </select> */}
+
+<Select
+    suffixIcon={<IoArrowDownCircleOutline />}
+    showSearch
+    style={{ width: 200 }}
+    // placeholder="Select a person"
+    optionFilterProp="children"
+    filterOption={(input, option) =>
+      option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+    }
+  >
+    <Option value="today">Today</Option>
+    <Option value="tomorrow">Tomorrow</Option>
+    <Option value="yesterday">Yesterday</Option>
+  </Select>
+                      </div>
                     </div>
                   </div>
                   <div className="transaction-list">
@@ -645,13 +771,15 @@ const DasbordPage = () => {
                         <h6>50% off For COVID Couslations Types.</h6>
                         <p>EoremHpsum is simply dummy...</p>
                       </li>
-                      
                     </ul>
-                        <div className="text-center">
-                          <button className="brant-label">Load more
-                          <span><AiFillCaretDown/></span>
-                          </button>
-                        </div>
+                    <div className="text-center">
+                      <button className="brant-label">
+                        Load more
+                        <span>
+                          <AiFillCaretDown />
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -659,7 +787,7 @@ const DasbordPage = () => {
 
             <div className="col-md-4 mt-4">
               <div className="brant-card">
-                <div className="brant-card-body" style={{ }}>
+                <div className="brant-card-body" style={{}}>
                   <div className="d-flex justify-content-between align-items-center">
                     <h6>Account info</h6>
                     <p>...</p>
@@ -701,25 +829,24 @@ const DasbordPage = () => {
                           <h6>$25</h6>
                         </div>
                       </li>
-                     
                     </ul>
                     <div className="total-balance">
-                          <span>Total Balance</span>
-                          <div className="d-flex justify-content-between align-items-center">
-                            <div>
-                              <h4 className="amt-title">$3650</h4>
-                              <p className="brant-label">+1235</p>
-                            </div>
-                            <div>
-                              <button className="d-block brant-btn-red">
-                                Today
-                              </button>
-                              <button className="mt-3 brant-btn-blue">
-                                This week
-                              </button>
-                            </div>
-                          </div>
+                      <span>Total Balance</span>
+                      <div className="d-flex justify-content-between align-items-center">
+                        <div>
+                          <h4 className="amt-title">$3650</h4>
+                          <p className="brant-label">+1235</p>
                         </div>
+                        <div>
+                          <button className="d-block brant-btn-red">
+                            Today
+                          </button>
+                          <button className="mt-3 brant-btn-blue">
+                            This week
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -748,13 +875,18 @@ const DasbordPage = () => {
                   <div>
                     <div className="prg-bar">
                       <div className="mt-4">
-                        <ProgressBar variant="warning" now={25}  label={`25%`} style={{}} />
+                        <ProgressBar
+                          variant="warning"
+                          now={25}
+                          label={`25%`}
+                          style={{}}
+                        />
                       </div>
                       <div className="mt-4">
-                        <ProgressBar variant="primary"  label={`75%`} now={75} />
+                        <ProgressBar variant="primary" label={`75%`} now={75} />
                       </div>
                       <div className="mt-4">
-                        <ProgressBar variant="success"  label={`34%`} now={34} />
+                        <ProgressBar variant="success" label={`34%`} now={34} />
                       </div>
                     </div>
                   </div>
@@ -1225,7 +1357,7 @@ const DasbordPage = () => {
 
           <div className="top-scroller" style={{ display: "block" }}>
             <a href="#">
-              <p>^</p>
+              <p className="m-0">^</p>
             </a>
           </div>
 
@@ -1237,7 +1369,7 @@ const DasbordPage = () => {
           />
         </div>
       </div>
-      <AdminFooter/>
+      <AdminFooter />
     </div>
   );
 };

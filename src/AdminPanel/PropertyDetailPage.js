@@ -22,7 +22,7 @@ const PropertyDetailPage = () => {
         paddingLeft: "270px",
         // height: "100vh",
       }}
-    >
+     >
       <div className="row mx-3">
         <div className="col-8">
           <div className="mx-2 py-2">

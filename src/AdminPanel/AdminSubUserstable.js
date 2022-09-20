@@ -156,7 +156,7 @@ const AdminUserTable = () => {
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    {/* <th>Role</th> */}
+                    {/* <th>Action</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -196,13 +196,13 @@ const AdminUserTable = () => {
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    {/* <th>profile role</th> */}
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {endUser.map((ele, index) => (
                     <tr className="" key={index}>
-                      <td className="table-td">{ele.id}</td>
+                      <td className="table-td">{ index + 1}</td>
                       <td className="table-td">{ele.name}</td>
                       <td className="table-td">{ele.email}</td>
                       <td className="table-td">
@@ -224,49 +224,55 @@ const AdminUserTable = () => {
         </div>
       </div>
 
-      <div>
+      <div className="mb-5">
         <div className="mt-4 ms-2">
-          <h5 className="Analytic_heading">Property Owners</h5>
-          <div
-            className="table table-responsive me-auto ms-2"
-            style={{ width: "99%", margin: "0 20px 0 0" }}
-          >
-            <table
-              id="dtDynamicVerticalScrollExample"
-              className="table  table-bordered table-sm"
-              cellSpacing="0"
-              width="90%"
-              style={{ overflowY: "auto", height: "400px" }}
-            >
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  {/* <th>Role</th> */}
-                </tr>
-              </thead>
-              <tbody>
-                {propertyOwner.map((ele, index) => (
-                  <tr className="" key={index}>
-                    <td className="table-td">{ele.id}</td>
-                    <td className="table-td">{ele.name}</td>
-                    <td className="table-td">{ele.email}</td>
-                    <td>
-                      <td className="table-td">
-                        <button
-                          className="userView-btn"
-                          onClick={() => getSinglePropertyOwner(ele.id, ele)}
-                        >
-                          {/* */}
-                          view
-                        </button>
-                      </td>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="brant-card">
+            <div className="brant-card-body">
+              <h5 className="Analytic_heading">Property Owners</h5>
+              <div
+                className="table table-responsive me-auto ms-2"
+                style={{ width: "99%", margin: "0 20px 0 0" }}
+              >
+                <table
+                  id="dtDynamicVerticalScrollExample"
+                  className="table  table-bordered table-sm"
+                  cellSpacing="0"
+                  width="90%"
+                  style={{ overflowY: "auto", height: "400px" }}
+                >
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {propertyOwner.map((ele, index) => (
+                      <tr className="" key={index}>
+                        <td className="table-td">{index + 1}</td>
+                        <td className="table-td">{ele.name}</td>
+                        <td className="table-td">{ele.email}</td>
+                        <td>
+                          <td className="table-td">
+                            <button
+                              className="userView-btn"
+                              onClick={() =>
+                                getSinglePropertyOwner(ele.id, ele)
+                              }
+                            >
+                              {/* */}
+                              view
+                            </button>
+                          </td>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>

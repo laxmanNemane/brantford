@@ -15,6 +15,7 @@ import axios from "axios";
 import AllProperties from "./TabsPages/AllProperties/AllProperties";
 import AllProperty from "./TabsPages/AllProperty";
 import AdminFooter from "./AdminFooter";
+import { NavLink } from "react-router-dom";
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const Admin_token = localStorage.getItem("token");
@@ -126,7 +127,7 @@ const Properties = () => {
                 <h3 className="">Properties</h3>
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <a href="#">Home</a>
+                    <NavLink to="/dashbord">Home</NavLink>
                   </li>
                   <li className="breadcrumb-item active">Quick Staks</li>
                 </ol>

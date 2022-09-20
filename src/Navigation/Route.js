@@ -38,6 +38,7 @@ import PrivateRouteForAdmin from "./PrivateRoute";
 import PrivateRouteForuser from "./PrivteRouteForOwner";
 import UpdateProperty from "../UserPanel/DashbordUser/ModelPropertyOwner/UpdateProperty";
 import BookedSpaces from "../UserPanel/DashbordUser/BookedSpaces";
+import AdminChat from "../AdminPanel/AdminChat";
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 // import PrivateRouteForAdmin from "./PrivateRoute";
@@ -88,6 +89,7 @@ const Routing = () => {
           <Route path="/detail" element={<PropertyDetailPage />} />
           <Route path="/profile" element={<AdminProfilePage />} />
           <Route path="/requirements" element={<AdminRequirements />} />
+          <Route path="/chat" element={<AdminChat />} />
         </Route>
       </Routes>
       {/* <Footer /> */}
