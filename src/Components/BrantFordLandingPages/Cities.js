@@ -1,10 +1,14 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { usersContext } from "../../Context/UserContext";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
 const Cities = () => {
-  const [city, setCity] = useState({});
+  const { cityName, setCityName } = useContext(usersContext);
+  const [city, setCity] = useState([]);
+  const navigate = useNavigate();
 
   const getAllCities = () => {
     axios
@@ -21,7 +25,6 @@ const Cities = () => {
         console.log(uniqueAges);
         // setCity(uniqueAges);
 
-
         //property count according to city
         const arr = res.data;
 
@@ -36,11 +39,17 @@ const Cities = () => {
         }
 
         console.log(count);
-        setCity(count)
+        setCity(count);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const getCitiwiseData = (data) => {
+    console.log(data);
+    setCityName(data);
+    navigate(`/city/${data}`);
   };
 
   useEffect(() => {
@@ -77,6 +86,7 @@ const Cities = () => {
                   <div
                     className="mx-4"
                     style={{ lineHeight: "0.5", marginTop: "20px" }}
+                    onClick={() => getCitiwiseData(item)}
                   >
                     <p className="name">{item}</p>
                     <p className="profile">{city[item]} properties</p>

@@ -1,5 +1,5 @@
 import { Modal } from "antd";
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -267,8 +267,9 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             as="select"
                             className=" form-control "
                             component="select"
-                            id="workspace"
+                            id="working_days"
                             name="working_days"
+                            value={values.working_days}
                           >
                             <option value="Monday-Friday">Monday-Friday</option>
                             <option value="Hybrid">Hybrid</option>
@@ -342,6 +343,15 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                 }}
                 validate={(values) => {
                   let errors = {};
+                  if (!values.categaryId) {
+                    errors.categaryId = "required!";
+                  }
+                  if (!values.property_status) {
+                    errors.property_status = "required!";
+                  }
+                  if (!values.working_days) {
+                    errors.working_days = "requires!";
+                  }
 
                   return errors;
                 }}
@@ -432,15 +442,20 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             as="select"
                             className=" form-control "
                             component="select"
-                            id="workspace"
+                            id="categaryId"
                             name="categaryId"
                           >
+                            <option value="">Pick a category</option>
                             {categories.map((ele, index) => (
                               <option key={index} value={ele.id}>
                                 {ele.categary}
                               </option>
                             ))}{" "}
                           </Field>
+                          <span className="text-danger">
+                            <ErrorMessage name="categaryId" />
+                          </span>
+                          <br />
                           <label htmlFor="manager_name" className="label-user">
                             manager name:{" "}
                           </label>
@@ -465,7 +480,6 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           <label htmlFor="price" className="label-user">
                             Price :
                           </label>
-
                           <Field
                             className=" form-control "
                             id="workspace"
@@ -474,7 +488,6 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           <label htmlFor="price" className="label-user  mt-2">
                             property status :
                           </label>
-
                           <Field
                             as="select"
                             className=" form-control mb-2 "
@@ -482,17 +495,21 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             id="workspace"
                             name="property_status"
                           >
+                            <option value="">Pick a Property Status...</option>
                             <option value="Rent">Rent</option>
 
                             <option value="Sale">Sale</option>
                           </Field>
+                          <span className="text-danger">
+                            <ErrorMessage name="property_status" />
+                          </span>{" "}
+                          <br />
                           <label
                             htmlFor="Working Days"
                             className="label-user mt-2"
                           >
                             Working Days:
                           </label>
-
                           <Field
                             as="select"
                             className=" form-control  mb-2"
@@ -500,13 +517,15 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             id="workspace"
                             name="working_days"
                           >
+                            <option value="">Pick a Working Day..</option>
                             <option value="Monday-Friday">Monday-Friday</option>
-                            <option value="Hybrid">Hybrid</option>
+                            <option value="Sat">Sat</option>
 
-                            <option value="Saturday-Sunday">
-                              Saturday-Sunday
-                            </option>
+                            <option value="Sun">Sun</option>
                           </Field>
+                          <span className="text-danger">
+                            <ErrorMessage name="working_days" />
+                          </span>
                         </div>
 
                         <div className="col-12">

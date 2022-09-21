@@ -38,6 +38,11 @@ import PrivateRouteForAdmin from "./PrivateRoute";
 import PrivateRouteForuser from "./PrivteRouteForOwner";
 import UpdateProperty from "../UserPanel/DashbordUser/ModelPropertyOwner/UpdateProperty";
 import BookedSpaces from "../UserPanel/DashbordUser/BookedSpaces";
+import CitiWiseProperty from "../Components/BrantFordLandingPages/CitiWiseProperty";
+import CompareSidebar from "../Components/BrantFordLandingPages/CompareSidebar";
+import FilterdPage from "../Components/BrantFordLandingPages/FilterdPage";
+import ViewAllRentedPage from "../Components/BrantFordLandingPages/allfilteredPages/ViewAllRentedPage";
+import ForSale from "../Components/BrantFordLandingPages/allfilteredPages/ForSale";
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 // import PrivateRouteForAdmin from "./PrivateRoute";
@@ -59,7 +64,13 @@ const Routing = () => {
           path="/office-detail/:name"
           element={<OfficesDetailPage />}
         />
+        <Route path="/city/:name" element={<CitiWiseProperty />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
+        <Route path="/contactUs" element={<ContactForm />} />
+
+        <Route path="/allSpaces" element={<FilterdPage />} />
+        <Route path="/allrentedspaces" element={<ViewAllRentedPage />} />
+        <Route path="/salingproperties" element={<ForSale />} />
 
         {/* =================property owner=================== */}
         <Route element={<PrivateRouteForuser />}>

@@ -1,4 +1,5 @@
 // import AllProperties from "../AdminPanel/TabsPages/AllProperties/AllProperties";
+import enduserSlice from "./enduserSlices/enduserSlice";
 import allapprovedSlice from "./PropertyOwnerSlices/allapprovedSlice";
 import allcategoriesSlice from "./PropertyOwnerSlices/allcategoriesSlice";
 import AllpendingSlice from "./PropertyOwnerSlices/AllpendingSlice";
@@ -22,6 +23,7 @@ const store = configureStore({
     // POAmount: totalAmountSlice,
     Profile: profileSlice,
     allvisitors: allVisitors,
+    enduser: enduserSlice,
   },
 });
 

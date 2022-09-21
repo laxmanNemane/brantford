@@ -21,7 +21,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import HocLandingPage from "../Components/HocLandingPage";
 import { usersContext } from "../Context/UserContext";
-// import swal from 'sweetalert';
+import swal from "sweetalert";
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const token = localStorage.getItem("endUser_token");
@@ -78,7 +78,7 @@ const OfficesDetailPage = () => {
       .then((res) => {
         console.log(res);
 
-        // swal("Space Booked", "Thank you for booking sapce", "success");
+        swal("Space Booked", "Thank you for booking sapce", "success");
       })
       .catch((err) => {
         console.log(err);
@@ -86,17 +86,17 @@ const OfficesDetailPage = () => {
         if (err.response.data.error === "space aleready booked") {
           setAlreadyBooked(false);
 
-          // swal({
-          //   title: "Already Booked",
-          //   text: "You already booked this space",
-          //   icon: "error",
-          // });
+          swal({
+            title: "Already Booked",
+            text: "You already booked this space",
+            icon: "error",
+          });
         } else {
-          // swal({
-          //   title: "Please login",
-          //   text: "you doesn't have access",
-          //   icon: "error",
-          // });
+          swal({
+            title: "Please login",
+            text: "you doesn't have access",
+            icon: "error",
+          });
         }
       });
   };
@@ -120,11 +120,11 @@ const OfficesDetailPage = () => {
       })
       .then((res) => {
         console.log(res);
-        // swal({
-        //   title: "Submited ",
-        //   text: "Your requirement added",
-        //   icon: "success",
-        // });
+        swal({
+          title: "Submited ",
+          text: "Your requirement added",
+          icon: "success",
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -160,7 +160,7 @@ const OfficesDetailPage = () => {
     <div className="office-detail-section hj py-5 position-relative">
       <div className="container ">
         <div className="row position-relative">
-          <div className="col-lg-8 mb-4">
+          <div className="col-lg-8 col-md-8 col-sm-12 mb-4">
             <div className="office-detail">
               <p className="fs-3 fw-bold">{endUserSpace.space}</p>
               <p className="tag pb-2 rounded-2">
@@ -172,9 +172,9 @@ const OfficesDetailPage = () => {
               </p>
             </div>
           </div>
-          <div className="col-lg-4">
+          <div className="col-lg-4 col-md-4 col-sm-12">
             <div className="offices-icons w-25 ms-auto    ">
-              <ul className="list-unstyled  text-end d-flex justify-content-between">
+              {/* <ul className="list-unstyled  text-end d-flex justify-content-between">
                 <li className="icon-offices fw-bold">
                   <AiOutlineArrowsAlt />
                 </li>
@@ -184,26 +184,26 @@ const OfficesDetailPage = () => {
                 <li className="icon-offices fw-bold">
                   <BsPlusCircle />
                 </li>
-              </ul>
+              </ul> */}
             </div>
-            <div className="w-50 ms-auto">
+            <div className="w-75 ">
               <p className="actual-price fs-3 fw-bold">
                 ₹<span className="price1">{endUserSpace.price}</span>
                 /Seat/Month
               </p>
-              <button
+              {/* <button
                 onClick={() =>
                   propertyBooking(endUserSpace.id, endUserSpace.price)
                 }
                 className={alreadyBooked ? "disable-btn" : "show-btn"}
               >
                 Book Property
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-8 col-md-8 col-sm-12">
+          <div className="col-lg-8 col-md-12 col-sm-12 my-3">
             <div className="office-view-named-carousel">
               <div className="carousel-group">
                 <Carousel>
@@ -241,7 +241,7 @@ const OfficesDetailPage = () => {
             </div>
             <div className="detail-property-owner">
               <div className="heading-detail-property-owner d-flex justify-content-between">
-                <h5 className="office-sub-heading">Details </h5>
+                <h5 className="office-sub-heading me-4">Details </h5>
 
                 <p>
                   {" "}
@@ -252,7 +252,7 @@ const OfficesDetailPage = () => {
               <hr />
               <div className="property-owner-detail">
                 <div className="row mt-3">
-                  <div className="col-6 ">
+                  <div className="col-lg-6 col-md-6 col-sm-12 ">
                     <div className="">
                       <div className="d-flex  one my-3">
                         <p className="heading-proprty-detail fw-bold fw-bold">
@@ -273,15 +273,8 @@ const OfficesDetailPage = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-6">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="">
-                      {/* <div className="d-flex  one my-3">
-                        <p className="heading-proprty-detail fw-bold">
-                          Property Type :
-                        </p>
-                        <p className="property-details-value">Co-working </p>
-                      </div> */}
-
                       <div className="d-flex one my-3">
                         <p className="heading-proprty-detail fw-bold">
                           Property Status :
@@ -301,9 +294,9 @@ const OfficesDetailPage = () => {
               <hr />
               <div className="additional-property-owner-detail">
                 <div className="row mt-3">
-                  <div className="col-6 ">
+                  <div className="col-lg-6 col-md-12 col-sm-12 ">
                     <div className="">
-                      <div className="d-flex  one my-3">
+                      <div className="d-flex  one my-2">
                         <p className="heading-proprty-detail fw-bold">
                           Cabin Capacity :
                         </p>
@@ -312,7 +305,7 @@ const OfficesDetailPage = () => {
                         </p>
                       </div>
 
-                      <div className="d-flex  one my-3">
+                      <div className="d-flex  one my-2">
                         <p className="heading-proprty-detail fw-bold">
                           seating Capacity :
                         </p>
@@ -322,9 +315,9 @@ const OfficesDetailPage = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-6">
+                  <div className="col-lg-6 col-md-12 col-sm-12">
                     <div>
-                      <div className="d-flex  one my-3">
+                      <div className="d-flex  one my-2">
                         <p className="heading-proprty-detail fw-bold">
                           Total Desk :
                         </p>
@@ -333,7 +326,7 @@ const OfficesDetailPage = () => {
                         </p>
                       </div>
 
-                      <div className="d-flex  one my-3">
+                      <div className="d-flex  one my-2">
                         <p className="heading-proprty-detail fw-bold">
                           working Days :
                         </p>
@@ -395,10 +388,10 @@ const OfficesDetailPage = () => {
                   if (element.categaryId === endUserSpace.categaryId) {
                     return (
                       <div className="similar-offices" key={index}>
-                        <div className="officess mt-5">
+                        <div className="officess mt-3">
                           <div className="row">
-                            <div className="col-lg-4">
-                              <div className="image-office-sction py-1 ps-1">
+                            <div className="col-lg-4 col-md-4 col-sm-12">
+                              <div className="image-office-sction py-1  mx-2">
                                 <img
                                   src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                                   alt="office image"
@@ -407,9 +400,9 @@ const OfficesDetailPage = () => {
                                 />
                               </div>
                             </div>
-                            <div className="col-lg-8 col-md-7 col-sm-12 pe-4 my-3">
-                              <div className="similar-office-description position-relative">
-                                <div className="price-tag-section d-flex justify-content-between">
+                            <div className="col-lg-8 col-md-8 col-sm-12   ">
+                              <div className="similar-office-description position-relative mx-2">
+                                <div className="price-tag-section d-flex justify-content-between pt-2">
                                   <p
                                     className=""
                                     style={{
@@ -421,8 +414,11 @@ const OfficesDetailPage = () => {
                                   >
                                     For Rent
                                   </p>
-                                  <p className="name">
-                                    $<span className="price1">663.2</span>
+                                  <p className="name me-3">
+                                    $
+                                    <span className="price1">
+                                      {element.price}
+                                    </span>
                                     month/seats
                                   </p>
                                 </div>
@@ -435,7 +431,18 @@ const OfficesDetailPage = () => {
                                     {element.address}
                                   </p>
 
-                                  <p className="name">{element.categaryId}</p>
+                                  <p className="name">
+                                    Space type:{" "}
+                                    {1
+                                      ? "Update value"
+                                      : 2
+                                      ? "Co working Space"
+                                      : 3
+                                      ? "flexy desk"
+                                      : 4
+                                      ? "Private space"
+                                      : ""}
+                                  </p>
                                 </div>
 
                                 <div className="row">
@@ -451,8 +458,8 @@ const OfficesDetailPage = () => {
                                       Ago
                                     </p>
                                   </div>
-                                  <div className="col-3"></div>
-                                  <div className="col-3 ">
+                                  <div className="col-1"></div>
+                                  <div className="col-3 text-end">
                                     <button
                                       className="btn-for-all-landpage px-4"
                                       onClick={() => spaceManagement(element)}
@@ -474,19 +481,19 @@ const OfficesDetailPage = () => {
             </div>
           </div>
 
-          <div className="col-lg-4">
+          <div className="col-lg-4 col-md-8 col-sm-12 my-3 ">
             <div className="end-user-requirement-setion  ">
               <div className="end-user ">
                 <div className="requirement-card py-4 px-5 ">
                   <div className="row">
-                    <div className="col-lg-4">
+                    <div className="col-lg-4 col-md-4 col-sm-6">
                       <div className="avtar-section">
                         <p className="mt-2">
                           <FaUserAlt />
                         </p>
                       </div>
                     </div>
-                    <div className="col-lg-8">
+                    <div className="col-lg-8 col-md-8 col-sm-6">
                       <div className="brantford-team">
                         <p className="team fs-5">BrantFord Team</p>
                         <p className="view-listing fw-bold ">View Listing</p>
@@ -561,7 +568,7 @@ const OfficesDetailPage = () => {
                               type="name"
                               name="name"
                               placeholder="name"
-                              className="form-control w-75 mx-auto my-3"
+                              className="form-control  mx-auto my-3"
                             />
                             <p className="ms-5 ps-2 text-danger">
                               <ErrorMessage name="name" />
@@ -570,7 +577,7 @@ const OfficesDetailPage = () => {
                               type="name"
                               name="contact_number"
                               placeholder="contact"
-                              className="form-control w-75 mx-auto my-3"
+                              className="form-control  mx-auto my-3"
                             />
                             <p className="ms-5 ps-2 text-danger">
                               <ErrorMessage name="contact" />
@@ -580,7 +587,7 @@ const OfficesDetailPage = () => {
                               type="email"
                               name="email_id"
                               placeholder="Email"
-                              className="form-control w-75 mx-auto my-3"
+                              className="form-control  mx-auto my-3"
                             />
                             <p className="ms-5 ps-2 text-danger">
                               <ErrorMessage name="email_id" />
@@ -590,7 +597,7 @@ const OfficesDetailPage = () => {
                               type="number"
                               name="number_of_persons"
                               placeholder="number_of_persons"
-                              className="form-control w-75 mx-auto my-3"
+                              className="form-control  mx-auto my-3"
                             />
                             <p className="ms-5 ps-2 text-danger">
                               <ErrorMessage name="number_of_persons" />
@@ -610,7 +617,7 @@ const OfficesDetailPage = () => {
                               type="name"
                               name="city_of_workspace"
                               placeholder="city_of_workspace"
-                              className="form-control w-75 mx-auto my-3"
+                              className="form-control  mx-auto my-3"
                             />
                             <p className="ms-5 ps-2 text-danger">
                               <ErrorMessage name="city_of_workspace" />
@@ -620,7 +627,7 @@ const OfficesDetailPage = () => {
                               type="name"
                               name="company"
                               placeholder="company"
-                              className="form-control w-75 mx-auto my-3"
+                              className="form-control  mx-auto my-3"
                             />
                             <p className="ms-5 ps-2 text-danger">
                               <ErrorMessage name="company" />
@@ -628,7 +635,7 @@ const OfficesDetailPage = () => {
 
                             <Field
                               as="select"
-                              className="my-select w-100"
+                              className=" form-control my-select w-100"
                               component="select"
                               id="workspace"
                               name="categary_of_workspace"
@@ -648,7 +655,7 @@ const OfficesDetailPage = () => {
                               type="date"
                               name="start_date"
                               placeholder="start_date"
-                              className="form-control w-75 mx-auto my-3"
+                              className="form-control  mx-auto my-3"
                             />
                             <p className="ms-5 ps-2 text-danger">
                               <ErrorMessage name="start_date" />
@@ -660,7 +667,7 @@ const OfficesDetailPage = () => {
                               type="textarea"
                               name="message"
                               placeholder="Enter your message"
-                              className="form-control w-75 mx-auto my-3"
+                              className="form-control  mx-auto my-3"
                             />
                             <p className="ms-5 ps-2 text-danger">
                               <ErrorMessage name="message" />
@@ -668,7 +675,7 @@ const OfficesDetailPage = () => {
 
                             <button
                               type="submit"
-                              className="form-control border-none w-75 mx-auto my-5 fw-bold contact_btn "
+                              className="form-control border-none  mx-auto my-5 fw-bold contact_btn "
                             >
                               Submit
                             </button>

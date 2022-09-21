@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CallToActionSection from "../Components/BrantFordLandingPages/CallToActionSection";
 import HeroSection from "../Components/BrantFordLandingPages/HeroSection";
 import PromiseSection from "../Components/BrantFordLandingPages/PromiseSection";
@@ -16,28 +16,32 @@ import Cities from "../Components/BrantFordLandingPages/Cities";
 import HocLandingPage from "../Components/HocLandingPage";
 
 import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
+import CompareSidebar from "../Components/BrantFordLandingPages/CompareSidebar";
 
 const BrantfordPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
-    <div className="brantford-landing-page">
-      <div className="landing_section">
-        <video src={videoBg} autoPlay loop muted></video>
-        <HeroSection />
+    <>
+      <div className="brantford-landing-page w-100">
+        <div className="landing_section">
+          <video src={videoBg} autoPlay loop muted></video>
+          <HeroSection />
+        </div>
+        <div className="">
+          <FindsProperty />
+          <PropertySection />
+          <PostAddFree />
+          <PromiseSection />
+          <Cities />
+          <CallToActionSection />
+          {/* <TestimonialSection /> */}
+          <Sponsers />
+        </div>
       </div>
-      <div className="">
-        <FindsProperty />
-        <PropertySection />
-        <PostAddFree />
-        <PromiseSection />
-        <Cities />
-        <CallToActionSection />
-        {/* <TestimonialSection /> */}
-        <Sponsers />
-      </div>
-    </div>
+    </>
   );
 };
 

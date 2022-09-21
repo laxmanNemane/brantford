@@ -7,6 +7,8 @@ const UseContext = (props) => {
   const [spaceDetail, setSpaceDetail] = useState([]);
   const [endUserSpace, setEndUserSpace] = useState([]);
 
+  const [cityName, setCityName] = useState();
+
   return (
     <usersContext.Provider
       value={{
@@ -16,6 +18,8 @@ const UseContext = (props) => {
         spaceDetail,
         endUserSpace,
         setEndUserSpace,
+        cityName,
+        setCityName,
       }}
     >
       {props.children}
