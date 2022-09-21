@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllSpaces } from "../../Redux/enduserSlices/enduserSlice";
 
 // import "../../Styles/LandingPage/HeroSection.css";
 // import videoBg from "../../Assets/video/pexels-alena-darmel-7646596.mp4";
@@ -12,13 +14,21 @@ const HeroSection = () => {
   const [serchItem, setSerchItem] = useState("");
   const [item, setItem] = useState([]);
 
+  const data = useSelector((state) => state.enduser.AllSpacesEndUser);
+  console.log(data);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllSpaces());
+  }, []);
+
   const onchangeHandlear = (e) => {
     if (e.target.value === "") {
       setItem("");
     } else {
       const nes = e.target.value;
-      const filterdItem = serchResult.filter((value) => {
-        return value.includes(nes);
+      const filterdItem = data.filter((value) => {
+        return value.city.includes(nes);
       });
       setItem(filterdItem);
     }
@@ -149,7 +159,7 @@ const HeroSection = () => {
                                   </div>
                                   <div className="auto-complete-content-wrap flex-fill ml-3 d-flex justify-content-around align-items-center">
                                     <div className="auto-complete-title ms-3 fs-5">
-                                      {val}
+                                      {val.city}
                                     </div>
 
                                     <div className="auto-complete-content-wrap ml-3">
