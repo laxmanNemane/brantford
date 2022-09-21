@@ -3,6 +3,7 @@ import HocComponent from "../Components/HocComponent";
 import ReactEcharts from "echarts-for-react";
 import axios from "axios";
 import AdminFooter from "./AdminFooter";
+import ApexCharts from "apexcharts";
 // import AdminSubUserstable from "./AdminSubUserstable";
 
 const option = {

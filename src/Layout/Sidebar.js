@@ -16,6 +16,12 @@ import { Dropdown, Menu } from "antd";
 import { MdNoteAdd } from "react-icons/md";
 import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 import { DropdownButton } from "react-bootstrap";
+import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
+import { FaMapMarkedAlt } from "react-icons/fa";
+import { BiMailSend } from "react-icons/bi";
+import { MdNotes } from "react-icons/md";
+
+
 const Sidebar = () => {
   // this is dropdown option
   const menu = (
@@ -161,7 +167,7 @@ const Sidebar = () => {
           <li className="my-3  list-sidebar-menu">
             <NavLink to="/requirements" className="text-dark">
               <div className=" align-items-center justify-content-center">
-                <AiOutlineCreditCard className="Sidebar_icons" />
+                <MdNotes className="Sidebar_icons" />
                 <span>Requirements</span>
               </div>
             </NavLink>
@@ -174,6 +180,24 @@ const Sidebar = () => {
               </div>
             </NavLink>
           </li>
+
+          <li className="my-3 list-sidebar-menu">
+            <NavLink to="/mail" className="text-dark">
+              <div className=" align-items-center justify-content-center">
+                <BiMailSend className="Sidebar_icons" />
+                <span>Mail</span>
+              </div>
+            </NavLink>
+          </li>
+          <li className="my-3 list-sidebar-menu">
+            <NavLink to="/market" className="text-dark">
+              <div className=" align-items-center justify-content-center">
+                <FaMapMarkedAlt className="Sidebar_icons" />
+                <span>Market</span>
+              </div>
+            </NavLink>
+          </li>
+
         </ul>
         <p className="sidebar-setting">
           <Dropdown overlay={menu} placement="topLeft" arrow>

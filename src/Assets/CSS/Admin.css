@@ -685,9 +685,9 @@ table tr td {
 /* =========================Sidebar  */
 
 .sidebar_main {
-  width: 18%;
+  width: 270px;
   height: 100%;
-  position: fixed;
+  /* position: fixed; */
 }
 
 .dropdown-toggle::after {
@@ -903,7 +903,19 @@ table tr td {
 .react-calendar__navigation{text-align: center;}
 
 
+/* .user-details{font-size: 15px; font-weight: 500; color: #34a853;}
+.ant-popover-inner-content{background-color: #34a853; padding: 0px !important;}
+.ant-popover-arrow{color: #34a853 !important;} */
 
+.notification-list{padding: 20px;}
+.notification-list ul{list-style: none; padding: 0px;}
+.notification-list ul li{padding: 15px 2px;}
+.notification-title{padding: 20px;text-align: center;background-color: #567AED; color: #ffff !important;}
+.notification-title h6{color: #ffff;}
+.ant-popover-inner-content{padding: 0px !important;}
+
+.Profile-container {text-align: center; background-color: #567AED; color: #ffff;padding: 5px;} 
+.Profile-container h6{color: #ffff;}
 
 
 

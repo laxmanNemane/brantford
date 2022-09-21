@@ -21,6 +21,20 @@ import AdminFooter from "../AdminPanel/AdminFooter";
 import {Select} from "antd";
 import { BiArrowFromRight } from "react-icons/bi";
 import { IoArrowDownCircleOutline } from "react-icons/io5";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as am5 from "@amcharts/amcharts5";
+import * as am5map from "@amcharts/amcharts5/map";
+import {
+  ComposableMap,
+  Geographies,
+  Geography,
+  Marker
+} from "react-simple-maps";
+
+
+
+const geoUrl =
+  "https://raw.githubusercontent.com/deldersveld/topojson/master/continents/north-america.json";
 const { Option } = Select;
 const BaseUrl = "http://bantford.prometteur.in";
 // const Admin_token = localStorage.getItem("token");
@@ -31,6 +45,8 @@ const DasbordPage = () => {
   const [allPropertiesCount, setAllPropertiesCount] = useState();
   const [bookedCount, setBookedCount] = useState({});
   const [value, onChange] = useState(new Date());
+
+
   const [bars, setbars] = useState( {
           
     series: [{
@@ -203,14 +219,15 @@ const DasbordPage = () => {
       },
     },});
 
+    const revenueData = [8344, 9678, 9824];
   const [circleChart, setCircleChart] = useState({
-    series: [42, 47, 52, 58, 65],
+    series: revenueData,
     options: {
       chart: {
         width: 380,
         type: "polarArea",
       },
-      labels: ["Rose A", "Rose B", "Rose C", "Rose D", "Rose E"],
+      labels: ["Daily", "Monthly", "Yearly"],
       fill: {
         opacity: 1,
       },
@@ -243,6 +260,8 @@ const DasbordPage = () => {
       },
     },
   });
+
+
   const [chartData, setChartData] = useState({
     options: {
       bar: {
@@ -318,7 +337,7 @@ const DasbordPage = () => {
       })
       .then((res) => {
         setRevenue(res.data.total_revenue);
-        // console.log(res);
+        console.log(res);
       })
       .catch((err) => {
         // console.log(err);
@@ -360,6 +379,9 @@ const DasbordPage = () => {
         // console.log(err);
       });
   };
+
+  
+
 
   // bookedCount.map((item)=> {
   //   setPropertyBookedCount(propertyBookedCount++);
@@ -503,6 +525,79 @@ const DasbordPage = () => {
                       </span>
                     </div>
                   </div>
+
+                  <div className="col-4 d-flex mt-4">
+                    <div className="col-left mt-">
+                      <Link to="/all-properties">
+                        <RiBuildingLine
+                          className="icons_dashbord"
+                          style={{ fontSize: "90px" }}
+                        />
+                      </Link>
+                    </div>
+                    <div className="col-right ms-3">
+                      <span className="title_overiew_dashbord_page">
+                        Total Property Listed
+                      </span>
+                      <br />
+                      <span className="dashbord_page_overview_number">
+                        {allPropertiesCount}
+                      </span>
+                      <br />
+                      <span className="dashbord_page_overview_description">
+                        grow rate 1%
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="col-4 d-flex mt-4">
+                    <div className="col-left mt-">
+                      <Link to="/all-properties">
+                        <RiBuildingLine
+                          className="icons_dashbord"
+                          style={{ fontSize: "90px" }}
+                        />
+                      </Link>
+                    </div>
+                    <div className="col-right ms-3">
+                      <span className="title_overiew_dashbord_page">
+                        Total properties unreview
+                      </span>
+                      <br />
+                      <span className="dashbord_page_overview_number">
+                        {allPropertiesCount}
+                      </span>
+                      <br />
+                      <span className="dashbord_page_overview_description">
+                        grow rate 1%
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="col-4 d-flex mt-4">
+                    <div className="col-left mt-">
+                      <Link to="/all-properties">
+                        <RiBuildingLine
+                          className="icons_dashbord"
+                          style={{ fontSize: "90px" }}
+                        />
+                      </Link>
+                    </div>
+                    <div className="col-right ms-3">
+                      <span className="title_overiew_dashbord_page">
+                      Total properties under agreement
+                      </span>
+                      <br />
+                      <span className="dashbord_page_overview_number">
+                        {allPropertiesCount}
+                      </span>
+                      <br />
+                      <span className="dashbord_page_overview_description">
+                        grow rate 1%
+                      </span>
+                    </div>
+                  </div>
+
                 </div>
                 <Divider style={{ margin: "0", padding: "0" }} />
                 <div className="row text-center">
@@ -583,12 +678,12 @@ const DasbordPage = () => {
                     <div className="d-flex">
                       <div className="sales">
                         <p>This Month Revenue</p>
-                        <h3>$57k</h3>
+                        <h3>{revenue}</h3>
                         <p>14.5% Up From Last Month</p>
                       </div>
                       <div className="sales">
                         <p>This Month Revenue</p>
-                        <h3>$57k</h3>
+                        <h3>{revenue}</h3>
                         <p>14.5% Up From Last Month</p>
                       </div>
                     </div>
@@ -603,7 +698,7 @@ const DasbordPage = () => {
               <div className="brant-card">
                 <div className="brant-card-body" >
                   <div className="d-flex align-items-center justify-content-between">
-                    <h6>Daily sales</h6>
+                    <h6>Total Property sales</h6>
                     <p>...</p>
                   </div>
                   <ReactApexChart
@@ -869,6 +964,24 @@ const DasbordPage = () => {
               <div className="brant-card">
                 <div className="brant-card-body">
                   {/* <VectorMap map={esMill}  /> */}
+                  <ComposableMap projection="geoAlbers">
+      <Geographies geography={geoUrl}>
+        {({ geographies }) =>
+          geographies.map((geo) => (
+            <Geography
+              key={geo.rsmKey}
+              geography={geo}
+              fill="#DDD"
+              stroke="#FFF"
+            />
+          ))
+        }
+      </Geographies>
+      <Marker coordinates={[-74.006, 40.7128]}>
+        <circle r={8} fill="#F53" />
+      </Marker>
+    </ComposableMap>
+
                   <div>
                     <p>map</p>
                   </div>
@@ -900,7 +1013,7 @@ const DasbordPage = () => {
               <div className="brant-card">
                 <div className="brant-card-body">
                   <div className="d-flex justify-content-between align-items-center">
-                    <h6>Monthly Invoices</h6>
+                    <h6>Appointments</h6>
                     <p>...</p>
                   </div>
                   <table>

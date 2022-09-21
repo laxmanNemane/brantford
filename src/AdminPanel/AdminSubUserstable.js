@@ -207,12 +207,13 @@ const AdminUserTable = () => {
                       <td className="table-td">{ele.email}</td>
                       <td className="table-td">
                         <button
-                          className="userView-btn"
+                          className="brant-btn-blue"
                           onClick={() => getSingleEndUser(ele.id, ele)}
                         >
                           {/* */}
                           view
                         </button>
+                        <button className="brant-btn-red ms-3">Delete</button>
                       </td>
                       {/* <td className="table-td">{ele.profile}</td> */}
                     </tr>
@@ -257,7 +258,7 @@ const AdminUserTable = () => {
                         <td>
                           <td className="table-td">
                             <button
-                              className="userView-btn"
+                              className="brant-btn-blue"
                               onClick={() =>
                                 getSinglePropertyOwner(ele.id, ele)
                               }
@@ -265,6 +266,7 @@ const AdminUserTable = () => {
                               {/* */}
                               view
                             </button>
+                            <button className="brant-btn-red ms-3">Delete</button>
                           </td>
                         </td>
                       </tr>
