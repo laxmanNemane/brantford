@@ -21,11 +21,21 @@ const PropertySection = ({ slide, setSlide }) => {
 
   const [categaries, setCategories] = useState([]);
   const [singleCategory, setSinglecategory] = useState([]);
+  const [ss, SetSs] = useState();
 
-  const { endUserSpace, setEndUserSpace } = useContext(usersContext);
+  const {
+    endUserSpace,
+    setEndUserSpace,
+    selectedProperty,
+    setSelectedProperty,
+  } = useContext(usersContext);
+
+  console.log("values idbfg", selectedProperty);
 
   const data = useSelector((state) => state.enduser.AllSpacesEndUser);
   console.log(data);
+
+  const [dataCompare, setDatacompare] = useState([]);
   // dispatch(fetchAllSpaces());
 
   const dispatch = useDispatch();
@@ -81,6 +91,15 @@ const PropertySection = ({ slide, setSlide }) => {
     getallCategaries();
     dispatch(fetchAllSpaces());
   }, [show, isModalVisible]);
+
+  const setProerties = (data) => {
+    // console.log(data);
+    // dt.push(data);
+
+    setSelectedProperty([...selectedProperty, data]);
+    setShow(true);
+  };
+  console.log("hsgdt", dataCompare);
 
   // data.map((ele) => <p key={ele.id}>{console.log(ele.space)}</p>);
 
@@ -140,7 +159,7 @@ const PropertySection = ({ slide, setSlide }) => {
                               <p>
                                 <BsHeart className="icons-recomanded-property text-white" />
                               </p>
-                              <p onClick={() => setShow(true)}>
+                              <p onClick={() => setProerties(ele)}>
                                 <BsPlusCircle className="icons-recomanded-property text-white" />
                               </p>
                             </div>
@@ -179,71 +198,6 @@ const PropertySection = ({ slide, setSlide }) => {
                   </p>
                 </Link>
               </div>
-
-              {/* <div className="row">
-                {singleCategory ? (
-                  singleCategory.map((item, index) => {
-                    if (singleCategory === "") {
-                      console.log(singleCategary);
-                      return <p>No records</p>;
-                    } else {
-                      return (
-                        <div
-                          className="col-lg-4 col-md-6 col-sm-12 my-3"
-                          key={index}
-                        >
-                          <div className="properties">
-                            <div className="img">
-                              <img
-                                src="https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                alt=""
-                                className="properties-image-land"
-                              />
-                            </div>
-                            <div className="price-section d-flex justify-content-between mx-4">
-                              <div className="w-75 ">
-                                <p className="price">765654/sqr</p>
-                              </div>
-                              <div className="d-flex justify-content-between w-25 gx-2 icon-group">
-                                <p onClick={() => setIsModalVisible(true)}>
-                                  <AiOutlineArrowsAlt className="icons-recomanded-property  text-white" />
-                                </p>
-                                <p>
-                                  <BsHeart className="icons-recomanded-property text-white" />
-                                </p>
-                                <p>
-                                  <BsPlusCircle className="icons-recomanded-property text-white" />
-                                </p>
-                              </div>
-                            </div>
-                            <div className="properties-description-card mx-2 my-3">
-                              <p className="property-name-heading name">
-                                {item.space}
-                              </p>
-                              <p className="property-location-card description-why-page">
-                                {item.address}
-                              </p>
-                              <div className="button-space d-flex justify-content-between btn-area">
-                                <p className=" fw-bold">{item.description}</p>
-                                <button
-                                  className="btn-first"
-                                  onClick={() => setCategary(item.id, item)}
-                                >
-                                  Detail
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    }
-                  })
-                ) : (
-                  <div className="empty-records">
-                    <p>This Category does not added spaces into it.</p>
-                  </div>
-                )}
-              </div> */}
             </div>
             <PropertyOverview
               isModalVisible={isModalVisible}
@@ -252,7 +206,7 @@ const PropertySection = ({ slide, setSlide }) => {
           </div>
         </div>
       </div>
-      <CompareSidebar show={show} setShow={setShow} />
+      <CompareSidebar show={show} setShow={setShow} dataCompare={dataCompare} />
     </div>
   );
 };
