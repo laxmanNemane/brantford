@@ -63,7 +63,7 @@ const FilterdPage = () => {
                     .sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? 1 : -1))
             );
             setSpin(false)
-        }, 300);
+        }, 500);
 
     };
     const onChangeDescending = () => {
@@ -76,7 +76,7 @@ const FilterdPage = () => {
                     .sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? -1 : 1))
             );
             setSpin(false)
-        }, 300);
+        }, 500);
     };
 
     const menu = (
@@ -179,7 +179,7 @@ const FilterdPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-8 col-md-9 col-sm-12">
+                <div className="col-lg-8 col-md-9 col-sm-12 position-relative">
                     <div className="heading-properties mx-2 d-flex  align-items-center justify-content-between">
                         <p className="fs-5">Properties ({sortedItems !== 0 ? data.length : sortedItems.length})</p>
                         <Dropdown overlay={menu} placement="bottomLeft">
@@ -187,7 +187,7 @@ const FilterdPage = () => {
                         </Dropdown>
                     </div>
 
-                    {spin && <div className="w-100 text-center"><Spin /></div>}
+                    {spin && <div className="w-100 text-center" style={{ position: "absolute", top: "10%" }}><Spin style={{ color: "pink" }} /></div>}
                     {/* <div className="filterd-card  w-100 shadow px-4 py-4">helo</div> */}
                     {sortedItems.length !== 0
                         ? sortedItems.map((element, index) => {

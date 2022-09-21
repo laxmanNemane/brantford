@@ -1084,3 +1084,7 @@ video {
 .ant-dropdown-menu-title-content {
   height: 25px;
 }
+
+.ant-spin-dot-item {
+  background-color: #c2255c !important;
+}
