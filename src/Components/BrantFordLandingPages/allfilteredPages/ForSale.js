@@ -261,12 +261,58 @@ const ForSale = () => {
                   }
                 })}
           </div>
-          <div className="col-lg-3 col-md-3 col-sm-12">
+          <div className="col-lg-3 col-md-3 col-sm-12 mt-5">
             <div
-              className="adv-section card px-3 py-2 mt-3"
-              style={{ boxShadow: "0 2px 4px rgba(0,0,0,30%)" }}
+              className="adv-section card px-2 py-2 "
+              style={{
+                boxShadow: "0 2px 4px rgba(0,0,0,30%)",
+                margin: "18px 0 0 0",
+              }}
             >
-              <h5 className="fw-bold">Advertise section</h5>
+              <div className="position-relative">
+                <div className="featured-image-section mb-2">
+                  <img
+                    src="https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt=""
+                    width="100%"
+                  />
+                </div>
+                <div className="featured-image-section ">
+                  <img
+                    src="https://images.pexels.com/photos/236730/pexels-photo-236730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt=""
+                    width="100%"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="property-Type-retrive card px-2 py-2 shadow "
+              style={{
+                boxShadow: "0 2px 4px rgba(0,0,0,30%)",
+                margin: "18px 0 0 0",
+              }}
+            >
+              <p className="fs-5">Property Type</p>
+              <ul className="property-show-in-rent-page list-unstyled ">
+                <li style={{ color: "#c2255c" }} className="fs-5">
+                  <i className="fa-solid fa-angle-right me-2"></i>Co-working
+                </li>
+                <li style={{ color: "#c2255c" }} className="fs-5">
+                  <i className="fa-solid fa-angle-right me-2"></i>Co spacing
+                </li>
+                <li style={{ color: "#c2255c" }} className="fs-5">
+                  <i className="fa-solid fa-angle-right me-2"></i>Private office
+                </li>
+                <li style={{ color: "#c2255c" }} className="fs-5">
+                  <i className="fa-solid fa-angle-right me-2"></i>Updated office{" "}
+                </li>
+                <li style={{ color: "#c2255c" }} className="fs-5">
+                  <i className="fa-solid fa-angle-right me-2"></i>Flexy desk
+                  office
+                </li>
+              </ul>
             </div>
           </div>
         </div>

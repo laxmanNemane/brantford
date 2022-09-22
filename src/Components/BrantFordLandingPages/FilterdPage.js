@@ -28,7 +28,7 @@ const FilterdPage = () => {
     const [price, setPrice] = useState(data.map((ele) => ele.price));
     const [sortedItems, setSortedItems] = useState(data);
     const { endUserSpace, setEndUserSpace } = useContext(usersContext);
-    const [spin, setSpin] = useState(false)
+    const [spin, setSpin] = useState(false);
     const navigate = useNavigate();
     const spaceManagement = (data) => {
         setEndUserSpace(data);
@@ -54,28 +54,25 @@ const FilterdPage = () => {
     }, []);
 
     const onChangeAscending = () => {
-        setSpin(true)
+        setSpin(true);
         setTimeout(() => {
-
             setSortedItems(
                 data
                     .slice()
                     .sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? 1 : -1))
             );
-            setSpin(false)
+            setSpin(false);
         }, 500);
-
     };
     const onChangeDescending = () => {
-        setSpin(true)
+        setSpin(true);
         setTimeout(() => {
-
             setSortedItems(
                 data
                     .slice()
                     .sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? -1 : 1))
             );
-            setSpin(false)
+            setSpin(false);
         }, 500);
     };
 
@@ -136,44 +133,24 @@ const FilterdPage = () => {
                             </div>
                             <div id="example-collapse-text ">
                                 <div className="px-3 ">
-                                    <Formik
-                                        initialValues={{
-                                            upto: false,
-                                            twoThousand: false,
-                                            threeThousand: false,
-                                            fiveThousand: false,
-                                            sevenfiveThousand: false,
-                                            tenThousand: false,
-                                            twelveThousand: false,
-                                        }}
-                                        validate={(values) => {
-                                            let errors = {};
-
-                                            return errors;
-                                        }}
-                                        // onSubmit={(values, { resetForm }) => {
-                                        //     handleSubmit(values, resetForm);
-                                        // }}
-                                        className=""
-                                    >
-                                        {({ values, errors }) => (
-                                            <Form>
-                                                <div className="d-flex my-2">
-                                                    <Field
-                                                        type="checkbox"
-                                                        name="twoThousand"
-                                                        id="twoThousand"
-                                                        label="2000"
-                                                        style={{ width: "18px" }}
-                                                        onSubmit={(values) => {
-                                                            console.log(values);
-                                                        }}
-                                                    />
-                                                    <label className="">&nbsp; 2000 or above</label>
-                                                </div>
-                                            </Form>
-                                        )}
-                                    </Formik>
+                                    <form>
+                                        <div className="d-flex align-items-center fs-5">
+                                            <input type="checkbox" />
+                                            <label htmlFor="pune" className="ms-3 ">Pune</label>
+                                        </div>
+                                        <div className="d-flex align-items-center fs-5">
+                                            <input type="checkbox" />
+                                            <label htmlFor="pune" className="ms-3">Ahmedabad</label>
+                                        </div>
+                                        <div className="d-flex align-items-center fs-5">
+                                            <input type="checkbox" />
+                                            <label htmlFor="pune" className="ms-3">Mumbai</label>
+                                        </div>
+                                        <div className="d-flex align-items-center fs-5">
+                                            <input type="checkbox" />
+                                            <label htmlFor="pune" className="ms-3">Hydrabad</label>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -181,13 +158,26 @@ const FilterdPage = () => {
                 </div>
                 <div className="col-lg-8 col-md-9 col-sm-12 position-relative">
                     <div className="heading-properties mx-2 d-flex  align-items-center justify-content-between">
-                        <p className="fs-5">Properties ({sortedItems !== 0 ? data.length : sortedItems.length})</p>
+                        <p className="fs-5">
+                            Properties ({sortedItems !== 0 ? data.length : sortedItems.length}
+                            )
+                        </p>
                         <Dropdown overlay={menu} placement="bottomLeft">
-                            <p className="fs-5"><MdSort className="me-2 fw-bold" />Sort</p>
+                            <p className="fs-5">
+                                <MdSort className="me-2 fw-bold" />
+                                Sort
+                            </p>
                         </Dropdown>
                     </div>
 
-                    {spin && <div className="w-100 text-center" style={{ position: "absolute", top: "10%" }}><Spin style={{ color: "pink" }} /></div>}
+                    {spin && (
+                        <div
+                            className="w-100 text-center"
+                            style={{ position: "absolute", top: "10%" }}
+                        >
+                            <Spin style={{ color: "pink" }} />
+                        </div>
+                    )}
                     {/* <div className="filterd-card  w-100 shadow px-4 py-4">helo</div> */}
                     {sortedItems.length !== 0
                         ? sortedItems.map((element, index) => {
