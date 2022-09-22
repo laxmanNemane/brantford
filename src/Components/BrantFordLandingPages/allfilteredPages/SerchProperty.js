@@ -10,18 +10,24 @@ import { usersContext } from "../../../Context/UserContext";
 import HocLandingPage from "../../HocLandingPage";
 
 const SerchProperty = () => {
-  const { searchArray, setSearchArray, endUserSpace,
-    setEndUserSpace, filterRange, setFilterRange } = useContext(usersContext);
+  const {
+    searchArray,
+    setSearchArray,
+    endUserSpace,
+    setEndUserSpace,
+    filterRange,
+    setFilterRange,
+  } = useContext(usersContext);
   console.log(searchArray);
-  const [items, setItems] = useState(searchArray)
-  console.log("search values", items)
+  const [items, setItems] = useState(searchArray);
+  console.log("search values", items);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const spaceManagement = (data) => {
-    setEndUserSpace(data)
+    setEndUserSpace(data);
     navigate(`/office-detail/${data.space.split(" ").join("-")}`);
-  }
+  };
 
   const onChangeAscending = () => {
     setItems(
@@ -55,22 +61,95 @@ const SerchProperty = () => {
     />
   );
 
-  return <div className="container">
-    <div className="row py-5">
-      <div className="col-lg-4 col-md-3"></div>
-      <div className="col-lg-8 col-md-9">
-        <div className="d-flex align-items-center justify-content-between">
+  return (
+    <div className="container">
+      <div className="row py-5">
+        <div className="col-lg-4 col-md-3 ">
+          <div className="heading">
+            <p className="fs-5 mx-2 mt-3 fw-bold">Filter</p>
+          </div>
 
-          <h5 className="name"> <span className="fs-5"> {items.length}</span>  results  </h5>
-          <Dropdown overlay={menu} placement="bottomLeft">
-            <p className="fs-5">
-              <MdSort className="me-2 fw-bold" />
-              Sort
-            </p>
-          </Dropdown>
+          <div
+            className="filterd-card card w-100 shadow px-4 py-4 "
+            // style={{ margin: "32px 0 0 0" }}
+          >
+            <div className="aplied-filter-section ">
+              <p className="fw-bold fs-5">Applied Filter</p>
+              <ul
+                className="tags list-unstyled d-flex "
+                style={{ gap: "10px" }}
+              >
+                <li
+                  className="tag my-2 d-flex align-items-center justify-content-between"
+                  style={{ borderRadius: "100px" }}
+                >
+                  Home &nbsp;&nbsp;<i class="fa-solid fa-xmark"></i>
+                </li>
+                <li
+                  className="tag my-2 d-flex align-items-center justify-content-between"
+                  style={{ borderRadius: "100px" }}
+                >
+                  soft &nbsp;&nbsp;<i class="fa-solid fa-xmark"></i>
+                </li>
+                <li
+                  className="tag my-2 d-flex align-items-center justify-content-between"
+                  style={{ borderRadius: "100px" }}
+                >
+                  git &nbsp;&nbsp;<i class="fa-solid fa-xmark"></i>
+                </li>
+              </ul>
+            </div>
+            <div className="budget ">
+              <div className="d-flex align-items-center justify-content-between">
+                <p className="fw-bold fs-5">Budget</p>
+              </div>
+              <div id="example-collapse-text ">
+                <div className="px-3 ">
+                  <form>
+                    <div className="d-flex align-items-center fs-5">
+                      <input type="checkbox" />
+                      <label htmlFor="pune" className="ms-3 ">
+                        Pune
+                      </label>
+                    </div>
+                    <div className="d-flex align-items-center fs-5">
+                      <input type="checkbox" />
+                      <label htmlFor="pune" className="ms-3">
+                        Ahmedabad
+                      </label>
+                    </div>
+                    <div className="d-flex align-items-center fs-5">
+                      <input type="checkbox" />
+                      <label htmlFor="pune" className="ms-3">
+                        Mumbai
+                      </label>
+                    </div>
+                    <div className="d-flex align-items-center fs-5">
+                      <input type="checkbox" />
+                      <label htmlFor="pune" className="ms-3">
+                        Hydrabad
+                      </label>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        {
-          items.map((element, index) => {
+        <div className="col-lg-8 col-md-9">
+          <div className="d-flex align-items-center justify-content-between">
+            <h5 className="name">
+              {" "}
+              <span className="fs-5"> {items.length}</span> results{" "}
+            </h5>
+            <Dropdown overlay={menu} placement="bottomLeft">
+              <p className="fs-5">
+                <MdSort className="me-2 fw-bold" />
+                Sort
+              </p>
+            </Dropdown>
+          </div>
+          {items.map((element, index) => {
             return (
               <div className="similar-offices" key={index}>
                 <div className="officess mt-3">
@@ -118,12 +197,12 @@ const SerchProperty = () => {
                             {1
                               ? "Update value"
                               : 2
-                                ? "Co working Space"
-                                : 3
-                                  ? "flexy desk"
-                                  : 4
-                                    ? "Private space"
-                                    : ""}
+                              ? "Co working Space"
+                              : 3
+                              ? "flexy desk"
+                              : 4
+                              ? "Private space"
+                              : ""}
                           </p>
                         </div>
 
@@ -154,12 +233,12 @@ const SerchProperty = () => {
                   </div>
                 </div>
               </div>
-            )
-          })
-        }
+            );
+          })}
+        </div>
       </div>
     </div>
-  </div>;
+  );
 };
 
 export default HocLandingPage(SerchProperty);
