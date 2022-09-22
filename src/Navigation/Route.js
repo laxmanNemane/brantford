@@ -41,6 +41,7 @@ import BookedSpaces from "../UserPanel/DashbordUser/BookedSpaces";
 import AdminChat from "../AdminPanel/AdminChat";
 import AdminMail from "../AdminPanel/AdminMail";
 import AdminMarket from "../AdminPanel/AdminMarket";
+import AdminCalendar from "../AdminPanel/AdminCalendar";
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 // import PrivateRouteForAdmin from "./PrivateRoute";
@@ -94,6 +95,7 @@ const Routing = () => {
           <Route path="/chat" element={<AdminChat />} />
           <Route path="/mail" element={<AdminMail />} />
           <Route path="/market" element={<AdminMarket />} />
+          <Route path="/calendar" element={<AdminCalendar />} />
         </Route>
       </Routes>
       {/* <Footer /> */}

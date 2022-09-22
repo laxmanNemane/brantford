@@ -198,6 +198,15 @@ const Sidebar = () => {
             </NavLink>
           </li>
 
+          <li className="my-3 list-sidebar-menu">
+            <NavLink to="/calendar" className="text-dark">
+              <div className=" align-items-center justify-content-center">
+                <FaMapMarkedAlt className="Sidebar_icons" />
+                <span>Calendar</span>
+              </div>
+            </NavLink>
+          </li>
+
         </ul>
         <p className="sidebar-setting">
           <Dropdown overlay={menu} placement="topLeft" arrow>

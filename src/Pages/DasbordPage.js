@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import HocComponent from "../Components/HocComponent";
 import { IoIosAirplane } from "react-icons/io";
 import { FcApproval, FcBullish } from "react-icons/fc";
@@ -18,24 +18,110 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Calendar from "react-calendar";
 import { AiFillDollarCircle, AiFillCaretDown } from "react-icons/ai";
 import AdminFooter from "../AdminPanel/AdminFooter";
-import {Select} from "antd";
+import { Select } from "antd";
 import { BiArrowFromRight } from "react-icons/bi";
 import { IoArrowDownCircleOutline } from "react-icons/io5";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-  Marker
-} from "react-simple-maps";
+// import {
+//   ComposableMap,
+//   Geographies,
+//   Geography,
+//   Marker,
+// } from "react-simple-maps";
+import DatamapsIndia from "react-datamaps-india";
+import { IgrGeographicMapModule } from "igniteui-react-maps";
+import { IgrGeographicMap } from "igniteui-react-maps";
+import { IgrGeographicProportionalSymbolSeries } from "igniteui-react-maps";
+import { IgrDataChartInteractivityModule } from "igniteui-react-charts";
+import { IgrValueBrushScale } from "igniteui-react-charts";
+// import { IgrCustomPaletteBrushScale } from 'igniteui-react-charts';
+import { IgrSizeScale } from "igniteui-react-charts";
+import { IgrDataContext } from "igniteui-react-core";
+import { MarkerType } from "igniteui-react-charts";
+// import { BrushSelectionMode } from 'igniteui-react-charts';
+// import importMapG, { NavigationControl, Marker, Popup } from "react-map-gl";
+// import { Map, Marker } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+// import mapboxgl from "mapbox-gl";
+import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import Map, {
+  Marker,
+  Popup,
+  NavigationControl,
+  FullscreenControl,
+  ScaleControl,
+  GeolocateControl
+} from 'react-map-gl';
+
+mapboxgl.accessToken ="pk.eyJ1IjoibmlraGlsYm9yZ2UiLCJhIjoiY2w4Y296eXBwMDR6ajN1bXltb2cxOXoyeCJ9.DgZ7KWKaUNJDltG3weSwEw";
 
 
 
-const geoUrl =
-  "https://raw.githubusercontent.com/deldersveld/topojson/master/continents/north-america.json";
+// const MAPBOX_TOKEN ="sk.eyJ1IjoibmlraGlsYm9yZ2UiLCJhIjoiY2w4Y3BnaG00MGs1MDNvcTk4eGh6anUzZiJ9.2RsWZKwwcyZoKG1aakDRbQ";
+
+const geojson = {
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      properties: {},
+      geometry: {
+        type: "Point",
+        coordinates: [78.33251953125, 22.370396344320053],
+      },
+    },
+    {
+      type: "Feature",
+      properties: {},
+      geometry: {
+        type: "Point",
+        coordinates: [73.828125, 18.58377568837094],
+      },
+    },
+    {
+      type: "Feature",
+      properties: {},
+      geometry: {
+        type: "Point",
+        coordinates: [77.62939453125, 12.983147716796578],
+      },
+    },
+    {
+      type: "Feature",
+      properties: {},
+      geometry: {
+        type: "Point",
+        coordinates: [71.35345458984375, 23.581608838550334],
+      },
+    },
+  ],
+};
+
+
+const geoUrl = geojson;
 const { Option } = Select;
+
+const markers = [
+  {
+    markerOffset: -15,
+    name: "Buenos Aires",
+    coordinates: [-58.3816, -34.6037],
+  },
+  { markerOffset: -15, name: "La Paz", coordinates: [-68.1193, -16.4897] },
+  { markerOffset: 25, name: "Brasilia", coordinates: [-47.8825, -15.7942] },
+  { markerOffset: 25, name: "Santiago", coordinates: [-70.6693, -33.4489] },
+  { markerOffset: 25, name: "Bogota", coordinates: [-74.0721, 4.711] },
+  { markerOffset: 25, name: "Quito", coordinates: [-78.4678, -0.1807] },
+  { markerOffset: -15, name: "Georgetown", coordinates: [-58.1551, 6.8013] },
+  { markerOffset: -15, name: "Asuncion", coordinates: [-57.5759, -25.2637] },
+  { markerOffset: 25, name: "Paramaribo", coordinates: [-55.2038, 5.852] },
+  { markerOffset: 25, name: "Montevideo", coordinates: [-56.1645, -34.9011] },
+  { markerOffset: -15, name: "Caracas", coordinates: [-66.9036, 10.4806] },
+  { markerOffset: -15, name: "Lima", coordinates: [-77.0428, -12.0464] },
+];
+
 const BaseUrl = "http://bantford.prometteur.in";
 // const Admin_token = localStorage.getItem("token");
 
@@ -46,67 +132,74 @@ const DasbordPage = () => {
   const [bookedCount, setBookedCount] = useState({});
   const [value, onChange] = useState(new Date());
 
+  const mapContainer = useRef(null);
+  const map = useRef(null);
+  const [lng, setLng] = useState(78.44238281249999);
+  const [lat, setLat] = useState(22.79643932091949);
+  const [zoom, setZoom] = useState(9);
+  const [popupInfo, setPopupInfo] = useState(null);
 
-  const [bars, setbars] = useState( {
-          
-    series: [{
-      name: 'Net Profit',
-      data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-    }],
+
+  const [bars, setbars] = useState({
+    series: [
+      {
+        name: "Net Profit",
+        data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+      },
+    ],
     options: {
       chart: {
         toolbar: {
-          show: false
+          show: false,
         },
-        background: '#fff',
-        type: 'bar',
-        height: 350
+        background: "#fff",
+        type: "bar",
+        height: 350,
       },
-      
+
       fill: {
-        colors: ['#F44336', '#E91E63', '#9C27B0']
+        colors: ["#F44336", "#E91E63", "#9C27B0"],
       },
       legend: {
-        show: false,},
+        show: false,
+      },
 
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: '20%',
-          endingShape: 'rounded'
+          columnWidth: "20%",
+          endingShape: "rounded",
         },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       stroke: {
         show: false,
         width: 1,
-        colors: ['transparent']
+        colors: ["transparent"],
       },
       // xaxis: {
       //   show:false,
       //   // categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
       // },
       yaxis: {
-        show:false,
+        show: false,
         // title: {
         //   text: '$ (thousands)'
         // }
       },
       fill: {
-        opacity: 1
+        opacity: 1,
       },
       tooltip: {
         y: {
           formatter: function (val) {
-            return "$ " + val + " thousands"
-          }
-        }
-      }
+            return "$ " + val + " thousands";
+          },
+        },
+      },
     },
-  
-  
   });
 
   const [radarChart, setRadarChart] = useState({
@@ -181,45 +274,47 @@ const DasbordPage = () => {
     },
   });
   const [lineChart, setLineChart] = useState({
-          
-    series: [{
-      data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
-    }],
+    series: [
+      {
+        data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2],
+      },
+    ],
     options: {
       chart: {
-        type: 'area',
+        type: "area",
         height: 160,
         sparkline: {
-          enabled: true
+          enabled: true,
         },
       },
       stroke: {
-        curve: 'smooth'
+        curve: "smooth",
       },
       fill: {
         opacity: 0.3,
       },
       yaxis: {
-        min: 0
+        min: 0,
       },
-      colors: ['#008FFB'],
+      colors: ["#008FFB"],
       title: {
-        text: '$424,652',
+        text: "$424,652",
         offsetX: 0,
         style: {
-          fontSize: '24px',
-        }
+          fontSize: "24px",
+        },
       },
       subtitle: {
-        text: 'Sales',
+        text: "Sales",
         offsetX: 0,
         style: {
-          fontSize: '14px',
-        }
+          fontSize: "14px",
+        },
       },
-    },});
+    },
+  });
 
-    const revenueData = [8344, 9678, 9824];
+  const revenueData = [8344, 9678, 9824];
   const [circleChart, setCircleChart] = useState({
     series: revenueData,
     options: {
@@ -261,7 +356,6 @@ const DasbordPage = () => {
     },
   });
 
-
   const [chartData, setChartData] = useState({
     options: {
       bar: {
@@ -269,13 +363,13 @@ const DasbordPage = () => {
         borderRadius: 0,
         columnWidth: "10%",
         barHeight: "10%",
-        width:"10%", 
+        width: "10%",
       },
       dataLabels: {
         enabled: false,
       },
       chart: {
-          width: '20%',
+        width: "20%",
         // type: 'Line',
         id: "apexchart-example",
         toolbar: {
@@ -380,9 +474,6 @@ const DasbordPage = () => {
       });
   };
 
-  
-
-
   // bookedCount.map((item)=> {
   //   setPropertyBookedCount(propertyBookedCount++);
   // })
@@ -390,6 +481,16 @@ const DasbordPage = () => {
   console.log(Object.keys(bookedCount).length);
 
   useEffect(() => {
+    if (map.current) return; // initialize map only once
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: "mapbox://styles/mapbox/streets-v11",
+      center: [lng, lat],
+      zoom: 3,
+    });
+
+    console.log(map.current);
+
     getBookedProperties();
     getallProperties();
     getRevenue();
@@ -585,7 +686,7 @@ const DasbordPage = () => {
                     </div>
                     <div className="col-right ms-3">
                       <span className="title_overiew_dashbord_page">
-                      Total properties under agreement
+                        Total properties under agreement
                       </span>
                       <br />
                       <span className="dashbord_page_overview_number">
@@ -597,7 +698,6 @@ const DasbordPage = () => {
                       </span>
                     </div>
                   </div>
-
                 </div>
                 <Divider style={{ margin: "0", padding: "0" }} />
                 <div className="row text-center">
@@ -622,14 +722,13 @@ const DasbordPage = () => {
                 <div className="brant-card-body">
                   <div className="d-flex align-items-center justify-content-between">
                     <div>
-                    <h6>Revenue</h6>
+                      <h6>Revenue</h6>
                     </div>
                     <div className="week-btn d-flex justify-content-between">
-                        <button className="brant-label">This Week</button>
-                        <button className="brant-label ms-3">Last Week</button>
-                        <button className="brant-label ms-3">Last Month</button>
+                      <button className="brant-label">This Week</button>
+                      <button className="brant-label ms-3">Last Week</button>
+                      <button className="brant-label ms-3">Last Month</button>
                     </div>
-
                   </div>
                   <ReactApexChart
                     options={chartData.options}
@@ -696,7 +795,7 @@ const DasbordPage = () => {
           <div className="row m-4">
             <div className="col-md-4">
               <div className="brant-card">
-                <div className="brant-card-body" >
+                <div className="brant-card-body">
                   <div className="d-flex align-items-center justify-content-between">
                     <h6>Total Property sales</h6>
                     <p>...</p>
@@ -745,7 +844,11 @@ const DasbordPage = () => {
                         <button className="brant-label">Today</button>
                         <button className="brant-label ms-3">This Week</button>
                       </div>
-                      <ReactApexChart options={bars.options} series={bars.series}type="bar"/>
+                      <ReactApexChart
+                        options={bars.options}
+                        series={bars.series}
+                        type="bar"
+                      />
                     </div>
                   </div>
                 </div>
@@ -835,20 +938,22 @@ const DasbordPage = () => {
                           <option value="yesterday">yesterday</option>
                         </select> */}
 
-<Select
-    suffixIcon={<IoArrowDownCircleOutline />}
-    showSearch
-    style={{ width: 200 }}
-    // placeholder="Select a person"
-    optionFilterProp="children"
-    filterOption={(input, option) =>
-      option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-    }
-  >
-    <Option value="today">Today</Option>
-    <Option value="tomorrow">Tomorrow</Option>
-    <Option value="yesterday">Yesterday</Option>
-  </Select>
+                        <Select
+                          suffixIcon={<IoArrowDownCircleOutline />}
+                          showSearch
+                          style={{ width: 200 }}
+                          // placeholder="Select a person"
+                          optionFilterProp="children"
+                          filterOption={(input, option) =>
+                            option.children
+                              .toLowerCase()
+                              .indexOf(input.toLowerCase()) >= 0
+                          }
+                        >
+                          <Option value="today">Today</Option>
+                          <Option value="tomorrow">Tomorrow</Option>
+                          <Option value="yesterday">Yesterday</Option>
+                        </Select>
                       </div>
                     </div>
                   </div>
@@ -964,26 +1069,71 @@ const DasbordPage = () => {
               <div className="brant-card">
                 <div className="brant-card-body">
                   {/* <VectorMap map={esMill}  /> */}
-                  <ComposableMap projection="geoAlbers">
-      <Geographies geography={geoUrl}>
-        {({ geographies }) =>
-          geographies.map((geo) => (
-            <Geography
-              key={geo.rsmKey}
-              geography={geo}
-              fill="#DDD"
-              stroke="#FFF"
-            />
-          ))
-        }
-      </Geographies>
-      <Marker coordinates={[-74.006, 40.7128]}>
-        <circle r={8} fill="#F53" />
-      </Marker>
-    </ComposableMap>
+                  <div className="india-map-chart">
+                    {/* <DatamapsIndia
+                      regionData={{
+                        Maharashtra: {
+                          value: 10,
+                        },
+                        Rajasthan: {
+                          value: 1000,
+                        },
+                        Gujarat: {
+                          value: 800,
+                        },
+                        Karnataka: {
+                          value: 700,
+                        },
+                        TamilNadu: {
+                          value: 190,
+                        },
+                        Kerala: {
+                          value: 890,
+                        },
+                      }}
+                      hoverComponent={({ value }) => {
+                        return (
+                          <div>
+                            <div>{value.value} tenders</div>
+                          </div>
+                        );
+                      }}
+                      mapLayout={{
+                        title: "Statewise",
+                        legendTitle: "Number of Tenders",
+                        startColor: "#FFDAB9",
+                        endColor: "#FF6347",
+                        hoverTitle: "Count",
+                        noDataColor: "#f5f5f5",
+                        borderColor: "#8D8D8D",
+                        hoverBorderColor: "#8D8D8D",
+                        hoverColor: "green",
+                        height: 70,
+                        weight: 30,
+                      }}
+                    /> */}
+
+                    {/* <Map
+                      initialViewState={{
+                        longitude: -100,
+                        latitude: 40,
+                        zoom: 3.5,
+                      }}
+                      style={{ width: 600, height: 400 }}
+                      mapStyle="mapbox://styles/mapbox/streets-v11"
+                    /> */}
+
+
+                    <div
+                      ref={mapContainer}
+                      className="map-container"
+                      style={{ height: "400px" }}
+                    />
+                  </div>
 
                   <div>
                     <p>map</p>
+                    
                   </div>
                   <div>
                     <div className="prg-bar">

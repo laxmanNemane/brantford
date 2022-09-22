@@ -918,6 +918,9 @@ table tr td {
 .Profile-container h6{color: #ffff;}
 
 
+.india-map-chart{position: relative;}
+.india-map-chart svg{position: relative !important;}
+
 
 
 

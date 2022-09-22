@@ -233,6 +233,8 @@ const Header = () => {
       });
   };
 
+
+
   useEffect(() => {
     // getMarketPrices();
   }, []);
@@ -240,14 +242,11 @@ const Header = () => {
 
   return (
     <>
-      <marquee>
-        {/* <div className="d-flex">
-      {marketPrices.map((item,index)=>{
-        <span>{item.symbol}</span>
-      })}
-      </div> */}
-        <p>Market Prices</p>
-      </marquee>
+     <marquee behavior="" direction="">
+       <p>market prices</p>
+       </marquee>
+     
+
       <div className=" w-100 header_admin ">
         <div className=" mx-3" style={{ margin: "-10px 0 5px 0" }}>
           <div className="d-flex align-items-center mb-2">
