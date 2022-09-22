@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Collapse } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { usersContext } from "../../Context/UserContext";
 import { fetchAllSpaces } from "../../Redux/enduserSlices/enduserSlice";
 
@@ -17,15 +18,22 @@ const HeroSection = () => {
   const [serchResult, setSerchResult] = useState([]);
   const [serchItem, setSerchItem] = useState("");
   const [item, setItem] = useState([]);
-  const [Recreational_Zone, setRecreational_Zone] = useState(false)
+  const [serchName, setSerchName] = useState();
+  const [Recreational_Zone, setRecreational_Zone] = useState(false);
   const navigate = useNavigate();
   const [price, setPrice] = useState({
     minValue: "",
-    maxValue: ""
-  })
+    maxValue: "",
+  });
 
-  const { searchArray, setSearchArray, endUserSpace,
-    setEndUserSpace, filterRange, setFilterRange } = useContext(usersContext)
+  const {
+    searchArray,
+    setSearchArray,
+    endUserSpace,
+    setEndUserSpace,
+    filterRange,
+    setFilterRange,
+  } = useContext(usersContext);
   const data = useSelector((state) => state.enduser.AllSpacesEndUser);
   console.log(data);
 
@@ -35,9 +43,9 @@ const HeroSection = () => {
   }, []);
 
   const onchangehandler = (e) => {
-    console.log(e.target.name)
-    console.log(e.target.value)
-  }
+    console.log(e.target.name);
+    console.log(e.target.value);
+  };
 
   const onchangeHandlear = (e) => {
     if (e.target.value === "") {
@@ -45,48 +53,78 @@ const HeroSection = () => {
     } else {
       const nes = e.target.value;
       const filterdItem = data.filter((value) => {
-        return value.city.includes(nes);
+        return value.city.toLowerCase().includes(nes);
       });
       setItem(filterdItem);
-
+      // setSearchArray(filterdItem);
     }
+    setSerchName(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(price)
-    console.log(item)
+    console.log(price);
 
+    // if (
+    //   (price.minValue.length !== 0 && price.maxValue.length !== 0) ||
+    //   serchName !== 0
+    // ) {
+    //   // price and serchname
     const filterdItem = data.filter((value) => {
-      return parseInt(value.price) > price.minValue && parseInt(value.price) < price.maxValue;
+      return (
+        (parseInt(value.price) > price.minValue &&
+          parseInt(value.price) < price.maxValue) ||
+        value.city.trim().toLowerCase() === serchName
+      );
     });
+    console.log("inside logic", filterdItem);
+    setSearchArray(filterdItem);
+    navigate("/searchproperties");
+    console.log("inside other loop", filterdItem);
+    // console.log(
+    //     "======================================third================================"
+    //   );
+    // } else if (
+    //   price.minValue.length !== 0 &&
+    //   price.maxValue.length !== 0 &&
+    //   serchName
+    // ) {
+    //   // price and serchname
+    //   const filterdItem = data.filter((value) => {
+    //     return (
+    //       (parseInt(value.price) > price.minValue &&
+    //         parseInt(value.price) < price.maxValue) ||
+    //       value.city.trim().toLowerCase() === serchName
+    //     );
+    //   });
+    //   setSearchArray(filterdItem);
+    //   console.log("inside second loop", filterdItem);
+    //   navigate("/searchproperties");
+    //   console.log(
+    //     "======================================second================================"
+    //   );
+    // }
+    // if (serchName) {
+    //   const filterdItem = data.filter((value) => {
+    //     return value.city.trim().toLowerCase() === serchName;
+    //   });
+    //   console.log("inside logic", filterdItem);
+    //   setSearchArray(filterdItem);
+    //   console.log("inside other loop", filterdItem);
+    //   console.log(
+    //     "======================================first================================"
+    //   );
+    //   navigate("/searchproperties");
+    // } else {
+    //   toast.warning("please enter location");
+    // }
 
-    filterdItem.map((ele, index) => {
-      if (ele.city === item.city) {
-        console.log("double", ele)
-      } else {
-        console.log("value")
-      }
-    })
-    // setSearchArray(filterdItem);
-    // navigate('/searchproperties')
+    // console.log(item);
+    // console.log("serach name", serchName);
 
-    console.log("item value", filterdItem)
+    // console.log("item value", filterdItem);
 
-
-
-    // setFilterRange(price);
-    // setRecreational_Zone(false);
-
-
-
-
-
-
-
-
-
-
+    setRecreational_Zone(false);
   };
 
   // console.log(searchData);
@@ -115,11 +153,10 @@ const HeroSection = () => {
       });
   };
 
-
   const setCategory = (data) => {
-    setEndUserSpace(data)
+    setEndUserSpace(data);
     navigate(`/office-detail/${data.space.split(" ").join("-")}`);
-  }
+  };
   // const handleSubmit=()=>{
 
   // }
@@ -137,12 +174,14 @@ const HeroSection = () => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col col-xl-8 col-md-10 col-12">
-
               <div className="title-landPage">
                 <h2 className="title">Let's Find your office!</h2>
               </div>
               {/* <p className="expant-paragraph">Expand. Renew. Relocate</p> */}
-              <div className="search-section align-items-center d-flex " style={{ boxShadow: "0px 2px 8px rgb(0,0,0,0.78)" }}>
+              <div
+                className="search-section align-items-center d-flex "
+                style={{ boxShadow: "0px 2px 8px rgb(0,0,0,0.78)" }}
+              >
                 <div className="w-100  px-2">
                   <Tabs defaultActiveKey="1">
                     <Tabs.TabPane tab="Buy" key="1">
@@ -150,19 +189,27 @@ const HeroSection = () => {
                         <div className="w-25">
                           <p
                             className="btn  fw-bold"
-                            onClick={() => setRecreational_Zone(!Recreational_Zone)}
+                            onClick={() =>
+                              setRecreational_Zone(!Recreational_Zone)
+                            }
                             aria-controls="example-collapse-text"
                             aria-expanded={Recreational_Zone}
                             style={{ padding: "10px 0 0 28px" }}
                           >
-                            Budget  <i className="fa-solid fa-filter-circle-dollar " style={{ color: "#c2255c", margin: "10px 20px", backdropColor: "#f9e9ef" }}></i>
+                            Budget{" "}
+                            <i
+                              className="fa-solid fa-filter-circle-dollar "
+                              style={{
+                                color: "#c2255c",
+                                margin: "10px 20px",
+                                backdropColor: "#f9e9ef",
+                              }}
+                            ></i>
                           </p>
                           <br />
-
                         </div>
                         <div className="w-75">
                           <div className="input1  ">
-
                             <form
                               onSubmit={handleSubmit}
                               className="d-flex align-items-center justify-content-between"
@@ -178,7 +225,10 @@ const HeroSection = () => {
                                 onChange={(e) => onchangeHandlear(e)}
                               />
 
-                              <button type="submit" className="btn ms-4 btn-second">
+                              <button
+                                type="submit"
+                                className="btn ms-4 btn-second"
+                              >
                                 search
                               </button>
                             </form>
@@ -191,7 +241,9 @@ const HeroSection = () => {
                         <div className="w-25">
                           <p
                             className="btn  fw-bold"
-                            onClick={() => setRecreational_Zone(!Recreational_Zone)}
+                            onClick={() =>
+                              setRecreational_Zone(!Recreational_Zone)
+                            }
                             aria-controls="example-collapse-text"
                             aria-expanded={Recreational_Zone}
                             style={{ padding: "10px 0 0 28px" }}
@@ -199,11 +251,9 @@ const HeroSection = () => {
                             Budget
                           </p>
                           <br />
-
                         </div>
                         <div className="w-75">
                           <div className="input1  ">
-
                             <form
                               onSubmit={handleSubmit}
                               className="d-flex align-items-center justify-content-between"
@@ -219,7 +269,10 @@ const HeroSection = () => {
                                 onChange={(e) => onchangeHandlear(e)}
                               />
 
-                              <button type="submit" className="btn ms-4 btn-second">
+                              <button
+                                type="submit"
+                                className="btn ms-4 btn-second"
+                              >
                                 search
                               </button>
                             </form>
@@ -232,7 +285,9 @@ const HeroSection = () => {
                         <div className="w-25">
                           <p
                             className="btn  fw-bold"
-                            onClick={() => setRecreational_Zone(!Recreational_Zone)}
+                            onClick={() =>
+                              setRecreational_Zone(!Recreational_Zone)
+                            }
                             aria-controls="example-collapse-text"
                             aria-expanded={Recreational_Zone}
                             style={{ padding: "10px 0 0 28px" }}
@@ -240,11 +295,9 @@ const HeroSection = () => {
                             Budget
                           </p>
                           <br />
-
                         </div>
                         <div className="w-75">
                           <div className="input1  ">
-
                             <form
                               onSubmit={handleSubmit}
                               className="d-flex align-items-center justify-content-between"
@@ -260,7 +313,10 @@ const HeroSection = () => {
                                 onChange={(e) => onchangeHandlear(e)}
                               />
 
-                              <button type="submit" className="btn ms-4 btn-second">
+                              <button
+                                type="submit"
+                                className="btn ms-4 btn-second"
+                              >
                                 search
                               </button>
                             </form>
@@ -273,7 +329,9 @@ const HeroSection = () => {
                         <div className="w-25">
                           <p
                             className="btn  fw-bold"
-                            onClick={() => setRecreational_Zone(!Recreational_Zone)}
+                            onClick={() =>
+                              setRecreational_Zone(!Recreational_Zone)
+                            }
                             aria-controls="example-collapse-text"
                             aria-expanded={Recreational_Zone}
                             style={{ padding: "10px 0 0 28px" }}
@@ -281,11 +339,9 @@ const HeroSection = () => {
                             Budget
                           </p>
                           <br />
-
                         </div>
                         <div className="w-75">
                           <div className="input1  ">
-
                             <form
                               onSubmit={handleSubmit}
                               className="d-flex align-items-center justify-content-between"
@@ -301,17 +357,18 @@ const HeroSection = () => {
                                 onChange={(e) => onchangeHandlear(e)}
                               />
 
-                              <button type="submit" className="btn ms-4 btn-second">
+                              <button
+                                type="submit"
+                                className="btn ms-4 btn-second"
+                              >
                                 search
                               </button>
                             </form>
                           </div>
                         </div>
                       </div>
-
                     </Tabs.TabPane>
                   </Tabs>
-
                 </div>
                 {/* <div className="input_search">
                   <div className="input1 ">
@@ -336,13 +393,8 @@ const HeroSection = () => {
                     </form>
                   </div>
                 </div> */}
-
-
-
-
               </div>
-              {
-                !Recreational_Zone &&
+              {!Recreational_Zone && (
                 <div
                   className="top-banner-serach position-relative"
                   style={{ width: "60%", borderRadius: "0px", left: "28%" }}
@@ -362,62 +414,106 @@ const HeroSection = () => {
                     <ul className="list-group">
                       {item
                         ? item.map((val, index) => {
-                          return (
-                            <li
-                              key={index}
-                              className="list-group-item"
-                              data-text="Pune"
-                              style={{ margin: "2px 0" }}
-                            >
-                              <div className="d-flex align-items-center">
-                                <div className="auto-complete-image-wrap">
-                                  {/* <a href="https://brantfordindia.com/city/pune-archives-brantfordindia-com/"> */}
-                                  <img
-                                    width="40"
-                                    height="40"
-                                    src="https://brantfordindia.com/wp-content/uploads/2021/08/Pune-150x150.png"
-                                    className="attachment-40x40 size-40x40"
-                                    alt=""
-                                    loading="lazy"
-                                    srcSet="https://brantfordindia.com/wp-content/uploads/2021/08/Pune-150x150.png 150w, https://brantfordindia.com/wp-content/uploads/2021/08/Pune-300x300.png 300w, https://brantfordindia.com/wp-content/uploads/2021/08/Pune-600x600.png 600w, https://brantfordindia.com/wp-content/uploads/2021/08/Pune-496x496.png 496w, https://brantfordindia.com/wp-content/uploads/2021/08/Pune.png 700w"
-                                    sizes="(max-width: 40px) 100vw, 40px"
-                                  />
-                                </div>
-                                <div className="auto-complete-content-wrap flex-fill ml-3 d-flex justify-content-around align-items-center">
-                                  <div className="auto-complete-title ms-3 fs-5">
-                                    {val.city}
+                            return (
+                              <li
+                                key={index}
+                                className="list-group-item"
+                                data-text="Pune"
+                                style={{ margin: "2px 0" }}
+                              >
+                                <div className="d-flex align-items-center">
+                                  <div className="auto-complete-image-wrap">
+                                    {/* <a href="https://brantfordindia.com/city/pune-archives-brantfordindia-com/"> */}
+                                    <img
+                                      width="40"
+                                      height="40"
+                                      src="https://brantfordindia.com/wp-content/uploads/2021/08/Pune-150x150.png"
+                                      className="attachment-40x40 size-40x40"
+                                      alt=""
+                                      loading="lazy"
+                                      srcSet="https://brantfordindia.com/wp-content/uploads/2021/08/Pune-150x150.png 150w, https://brantfordindia.com/wp-content/uploads/2021/08/Pune-300x300.png 300w, https://brantfordindia.com/wp-content/uploads/2021/08/Pune-600x600.png 600w, https://brantfordindia.com/wp-content/uploads/2021/08/Pune-496x496.png 496w, https://brantfordindia.com/wp-content/uploads/2021/08/Pune.png 700w"
+                                      sizes="(max-width: 40px) 100vw, 40px"
+                                    />
                                   </div>
+                                  <div className="auto-complete-content-wrap flex-fill ml-3 d-flex justify-content-around align-items-center">
+                                    <div className="auto-complete-title ms-3 fs-5">
+                                      {val.city}
+                                    </div>
 
-                                  <div className="auto-complete-content-wrap ml-3">
-                                    <button className="btn-first py-3" onClick={() => setCategory(val)}>
-                                      View Listing
-                                    </button>
+                                    <div className="auto-complete-content-wrap ml-3">
+                                      <button
+                                        className="btn-first py-3"
+                                        onClick={() => setCategory(val)}
+                                      >
+                                        View Listing
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            </li>
-                          );
-                        })
+                              </li>
+                            );
+                          })
                         : "no records"}
                     </ul>
                   </div>
                 </div>
-              }
-              <Collapse className="px-3 py-4 " in={Recreational_Zone} style={{ background: "white", lineHeight: "1.3", borderRadius: " 5px 5px 10px 10px" }}>
+              )}
+              <Collapse
+                className="px-3 py-4 "
+                in={Recreational_Zone}
+                style={{
+                  background: "white",
+                  lineHeight: "1.3",
+                  borderRadius: " 5px 5px 10px 10px",
+                }}
+              >
                 <div id="example-collapse-text ">
                   <p className="fs-5 fw-bold">select price</p>
                   <div className="price text-dark">
                     <form action="filtering price" onSubmit={handleSubmit}>
                       <div className="row">
                         <div className="col-lg-6 col-md-6 col-sm-12">
-                          <label htmlFor="min-value" style={{ fontWeight: "500", fontSize: "16px" }}>Min Value : </label>
-                          &nbsp; <input type="text" name="minValue" value={price.minValue} onChange={(e) => setPrice({ ...price, [e.target.name]: e.target.value })} style={{ border: "1px solid black" }} />
+                          <label
+                            htmlFor="min-value"
+                            style={{ fontWeight: "500", fontSize: "16px" }}
+                          >
+                            Min Value :{" "}
+                          </label>
+                          &nbsp;{" "}
+                          <input
+                            type="text"
+                            name="minValue"
+                            value={price.minValue}
+                            onChange={(e) =>
+                              setPrice({
+                                ...price,
+                                [e.target.name]: e.target.value,
+                              })
+                            }
+                            style={{ border: "1px solid black" }}
+                          />
                           &nbsp; &nbsp;
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-12">
-                          <label htmlFor="max-value" style={{ fontWeight: "500", fontSize: "16px" }}>Max Value : </label>
-
-                          &nbsp;<input type="text" name="maxValue" value={price.maxValue} onChange={(e) => setPrice({ ...price, [e.target.name]: e.target.value })} style={{ border: "1px solid black" }} />
+                          <label
+                            htmlFor="max-value"
+                            style={{ fontWeight: "500", fontSize: "16px" }}
+                          >
+                            Max Value :{" "}
+                          </label>
+                          &nbsp;
+                          <input
+                            type="text"
+                            name="maxValue"
+                            value={price.maxValue}
+                            onChange={(e) =>
+                              setPrice({
+                                ...price,
+                                [e.target.name]: e.target.value,
+                              })
+                            }
+                            style={{ border: "1px solid black" }}
+                          />
                         </div>
                       </div>
                       {/* <label htmlFor="min-value" style={{ fontWeight: "500", fontSize: "16px" }}>Min Value : </label>

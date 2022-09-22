@@ -13,11 +13,11 @@ const ComparisonProperty = () => {
           <p className="fs-5 fw-bold">Compare Properties</p>
           <Table striped bordered hover>
             <thead>
-              <tr>
+              {/* <tr>
                 <th></th>
                 <th></th>
                 <th></th>
-              </tr>
+              </tr> */}
             </thead>
             <tbody>
               {/* {selectedProperty.map((e, index) => {
@@ -30,42 +30,42 @@ const ComparisonProperty = () => {
             })} */}
               {/* space name */}
               <tr>
-                <td>space name</td>
+                <td className="text-end fw-bold fs-5">space name</td>
                 {selectedProperty.map((e, index) => {
                   return <td key={index}>{e.space}</td>;
                 })}
               </tr>
               {/* categaryId */}
               <tr>
-                <td>categaryId</td>
+                <td className="text-end fw-bold fs-5">categaryId</td>
                 {selectedProperty.map((e, index) => {
                   return <td key={index}>{e.categaryId}</td>;
                 })}
               </tr>
               {/* price */}
               <tr>
-                <td>price</td>
+                <td className="text-end fw-bold fs-5">price</td>
                 {selectedProperty.map((e, index) => {
                   return <td key={index}>{e.price}</td>;
                 })}
               </tr>
               {/* city */}
               <tr>
-                <td>city</td>
+                <td className="text-end fw-bold fs-5">city</td>
                 {selectedProperty.map((e, index) => {
                   return <td key={index}>{e.city}</td>;
                 })}
               </tr>
               {/* approve_status */}
               <tr>
-                <td>approve_status</td>
+                <td className="text-end fw-bold fs-5">approve_status</td>
                 {selectedProperty.map((e, index) => {
                   return <td key={index}>{e.approve_status}</td>;
                 })}
               </tr>
               {/* cabin_capacity */}
               <tr>
-                <td>cabin_capacity</td>
+                <td className="text-end fw-bold fs-5">cabin_capacity</td>
                 {selectedProperty.map((e, index) => {
                   return <td key={index}>{e.cabin_capacity}</td>;
                 })}
@@ -73,7 +73,7 @@ const ComparisonProperty = () => {
 
               {/* manager_name */}
               <tr>
-                <td>manager_name</td>
+                <td className="text-end fw-bold fs-5">manager_name</td>
                 {selectedProperty.map((e, index) => {
                   return <td key={index}>{e.manager_name}</td>;
                 })}
@@ -81,7 +81,7 @@ const ComparisonProperty = () => {
               {/* manager_email */}
 
               <tr>
-                <td>manager_email</td>
+                <td className="text-end fw-bold fs-5">manager_email</td>
                 {selectedProperty.map((e, index) => {
                   return <td key={index}>{e.manager_email}</td>;
                 })}
@@ -89,21 +89,21 @@ const ComparisonProperty = () => {
 
               {/* property_status */}
               <tr>
-                <td>property_status</td>
+                <td className="text-end fw-bold fs-5">property_status</td>
                 {selectedProperty.map((e, index) => {
                   return <td key={index}>{e.property_status}</td>;
                 })}
               </tr>
               {/* seating_capacity */}
               <tr>
-                <td>seating_capacity</td>
+                <td className="text-end fw-bold fs-5">seating_capacity</td>
                 {selectedProperty.map((e, index) => {
                   return <td key={index}>{e.seating_capacity}</td>;
                 })}
               </tr>
               {/* working_days */}
               <tr>
-                <td>working_days</td>
+                <td className="text-end fw-bold fs-5">working_days</td>
                 {selectedProperty.map((e, index) => {
                   return <td key={index}>{e.working_days}</td>;
                 })}

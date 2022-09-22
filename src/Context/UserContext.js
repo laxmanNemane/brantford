@@ -9,6 +9,9 @@ const UseContext = (props) => {
 
   const [cityName, setCityName] = useState();
 
+  const [searchArray, setSearchArray] = useState([]);
+  const [filterRange, setFilterRange] = useState();
+
   const [selectedProperty, setSelectedProperty] = useState([]);
 
   return (
@@ -22,6 +25,10 @@ const UseContext = (props) => {
         setEndUserSpace,
         cityName,
         setCityName,
+        searchArray,
+        setSearchArray,
+        filterRange,
+        setFilterRange,
         selectedProperty,
         setSelectedProperty,
       }}
