@@ -427,10 +427,22 @@ video {
   line-height: 0.4;
 }
 
-.image-section1::before {
+.image-section1:before {
+  position: relative;
+}
+
+.property-image-in-section::before {
   content: "";
-  z-index: -1;
-  background-color: #000000;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  bottom: 0%;
+  left: 0%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0)
+  ) !important;
 }
 
 /* .properties::before {
@@ -1104,4 +1116,9 @@ video {
 
 .ant-spin-dot-item {
   background-color: #c2255c !important;
+}
+
+/* ===================compare-sidebar================== */
+.offcanvas-end {
+  width: 340px !important;
 }

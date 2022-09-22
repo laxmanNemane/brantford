@@ -2,6 +2,7 @@ import { validateYupSchema } from "formik";
 import { useContext } from "react";
 import { Button, Container, Offcanvas } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { usersContext } from "../../Context/UserContext";
 function CompareSidebar({ show, setShow }) {
   const closeSidebar = () => setShow(false);
@@ -11,7 +12,12 @@ function CompareSidebar({ show, setShow }) {
   const navigate = useNavigate();
 
   const goOnComparePage = () => {
-    navigate("/copareproperty");
+    if (selectedProperty.length <= 1) {
+      toast.warning("select another one");
+    } else {
+      navigate("/copareproperty");
+      // toast.warning("select property");
+    }
   };
 
   const onDeleteSelectedProperty = (id) => {
@@ -34,7 +40,7 @@ function CompareSidebar({ show, setShow }) {
                 {selectedProperty &&
                   selectedProperty.map((ele, index) => {
                     return (
-                      <ul key={index} className="list-unstyled col-lg-4">
+                      <ul key={index} className="list-unstyled col-lg-6">
                         <div className="">
                           <li>
                             <div className="px-4 py-4 card shadow position-relative">
