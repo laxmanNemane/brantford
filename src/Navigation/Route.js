@@ -43,6 +43,8 @@ import CompareSidebar from "../Components/BrantFordLandingPages/CompareSidebar";
 import FilterdPage from "../Components/BrantFordLandingPages/FilterdPage";
 import ViewAllRentedPage from "../Components/BrantFordLandingPages/allfilteredPages/ViewAllRentedPage";
 import ForSale from "../Components/BrantFordLandingPages/allfilteredPages/ForSale";
+import SerchProperty from "../Components/BrantFordLandingPages/allfilteredPages/SerchProperty";
+import ComparisonProperty from "../Components/BrantFordLandingPages/ComparisonProperty";
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 // import PrivateRouteForAdmin from "./PrivateRoute";
@@ -71,6 +73,8 @@ const Routing = () => {
         <Route path="/allSpaces" element={<FilterdPage />} />
         <Route path="/allrentedspaces" element={<ViewAllRentedPage />} />
         <Route path="/salingproperties" element={<ForSale />} />
+        <Route path="/searchproperties" element={<SerchProperty />} />
+        <Route path="/copareproperty" element={<ComparisonProperty />} />
 
         {/* =================property owner=================== */}
         <Route element={<PrivateRouteForuser />}>

@@ -9,6 +9,8 @@ const UseContext = (props) => {
 
   const [cityName, setCityName] = useState();
 
+  const [selectedProperty, setSelectedProperty] = useState([]);
+
   return (
     <usersContext.Provider
       value={{
@@ -20,6 +22,8 @@ const UseContext = (props) => {
         setEndUserSpace,
         cityName,
         setCityName,
+        selectedProperty,
+        setSelectedProperty,
       }}
     >
       {props.children}

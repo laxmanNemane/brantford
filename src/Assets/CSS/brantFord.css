@@ -322,6 +322,23 @@ video {
   font-size: 16px;
 }
 
+.ant-tabs-tab {
+  margin: 0 30px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.ant-tabs-top > .ant-tabs-nav {
+  margin: 0 !important;
+}
+
+/* .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #c2255c !important;
+  border-bottom: 2px solid #c2255c;
+} */
+
+/* .ant-tabs-tab.ant-tabs-tab-active  */
+
 /* ------------------------Finds property section ---------------------*/
 /* .find-property-section {
   /* background-color: #ffe3e3; */
@@ -1083,4 +1100,8 @@ video {
 
 .ant-dropdown-menu-title-content {
   height: 25px;
+}
+
+.ant-spin-dot-item {
+  background-color: #c2255c !important;
 }
