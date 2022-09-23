@@ -58,7 +58,7 @@ const UpdateProperty = () => {
 
   return (
     <>
-      <div className="mx-3 mt-4">
+      <div className="mx-3 mt-4" style={{paddingLeft:"270px", backgroundColor:"#E7E5E5"}}>
         <div className="row mx-3">
           <div className="col-12 bg-light px-3 py-4 my-2 ">
             <h3 className="fw-bold">Amenities</h3>

@@ -94,6 +94,7 @@ const Routing = () => {
           <Route path="/profile" element={<AdminProfilePage />} />
           <Route path="/pendingSpaces" element={<BookedSpaces />} />
           <Route path="/propertycalc" element={<PropertyCalc />} />
+          <Route path="/market" element={<AdminMarket />} />
         </Route>
 
         {/* </Route> */}

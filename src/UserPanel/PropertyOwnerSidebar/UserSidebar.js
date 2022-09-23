@@ -142,6 +142,14 @@ const UserSidebar = () => {
                   </div>
                 </NavLink>
               </li>
+              <li className="my-3 list-sidebar-menu">
+                <NavLink to="/market" className="text-dark">
+                  <div className="  align-items-center justify-content-center">
+                    <AiOutlineCreditCard className="Sidebar_icons" />
+                    <span> Market </span>
+                  </div>
+                </NavLink>
+              </li>
             </ul>
           </div>
           {/* </div> */}
