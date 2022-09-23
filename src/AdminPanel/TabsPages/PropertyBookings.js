@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { AiOutlineDoubleRight } from "react-icons/ai";
+import { AiOutlineDoubleRight, GoLocation } from "react-icons/ai";
 import "./StyleTabs/BookingProperty.css";
+import { FaLocationArrow } from "react-icons/fa";
+import { HiLocationMarker } from "react-icons/hi";
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const admin_token = localStorage.getItem("token");
@@ -74,24 +76,28 @@ const PropertyBookings = () => {
         {Object.keys(bookedProperties).map((key, index) => {
           return (
             <div className="col-3" key={index}>
-              <div className="card booking_card_notification shadow">
-                <div className="mx-1 card-booking">
-                  <h4 className="headinofBookingNotificatonTab">
+              <div className="brant-card ">
+                <div className="mx-1 brant-card-body">
+                  <h4 className="headinofBookingNotificatonTab mb-4"> Name :
                     {bookedProperties[index].manager_name}
                   </h4>
                   <p className="status_office-notificaton">
                     {" "}
                     <span className="status_office"> Status : </span>
+                    <span className={bookedProperties[index].approve_status==="approved" ? "brant-label btn-delivered": "brant-label btn-pending"}>
                     {bookedProperties[index].approve_status}
+                    </span>
                   </p>
+                  
                   <p className="location_booking-notification">
-                    Location : {bookedProperties[index].address}
+                  <HiLocationMarker style={{fontSize:"25px"}}/>
+                  <span className=""> Location : {bookedProperties[index].address}</span>
                   </p>
-                </div>
+                
                 <hr />
                 <div className="mb-2 text-">
                   <button
-                    className="btn px-3 ms-3  border  accept_booking "
+                    className="btn px-3 ms-3  border  brant-label"
                     onClick={() => acceptHandler(bookedProperties)}
                   >
                     Accept
@@ -104,6 +110,7 @@ const PropertyBookings = () => {
                     Decline
                   </button>
                 </div>
+              </div>
               </div>
             </div>
           );
