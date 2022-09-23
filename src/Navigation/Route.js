@@ -52,6 +52,8 @@ import ForSale from "../Components/BrantFordLandingPages/allfilteredPages/ForSal
 import SerchProperty from "../Components/BrantFordLandingPages/allfilteredPages/SerchProperty";
 import ComparisonProperty from "../Components/BrantFordLandingPages/ComparisonProperty";
 
+import PropertyCalc from "../Redux/PropertyOwnerSlices/PropertyCalc";
+
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 // import PrivateRouteForAdmin from "./PrivateRoute";
@@ -95,6 +97,7 @@ const Routing = () => {
           <Route path="/updatePage" element={<UpdateProperty />} />
           <Route path="/profile" element={<AdminProfilePage />} />
           <Route path="/pendingSpaces" element={<BookedSpaces />} />
+          <Route path="/propertycalc" element={<PropertyCalc />} />
         </Route>
 
         {/* </Route> */}

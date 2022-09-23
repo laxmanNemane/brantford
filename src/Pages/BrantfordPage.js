@@ -41,7 +41,11 @@ const BrantfordPage = () => {
   //   geoLocation();
   // }, []);
 
-  console.log(locationCords);
+
+  }, []);
+
+  console.log(locationCords)
+
   return (
     <>
       <div className="brantford-landing-page w-100">
@@ -60,6 +64,7 @@ const BrantfordPage = () => {
           <Sponsers />
         </div>
       </div>
+
     </>
   );
 };
