@@ -37,10 +37,7 @@ const BrantfordPage = () => {
 
   }, []);
 
-<<<<<<< HEAD
   console.log(locationCords)
-=======
->>>>>>> 70d13f3af14d2caa13abea1541d35e8e2044017b
   return (
     <>
       <div className="brantford-landing-page w-100">
@@ -59,7 +56,6 @@ const BrantfordPage = () => {
           <Sponsers />
         </div>
       </div>
-<<<<<<< HEAD
       <div className="">
         <FindsProperty />
         <PropertySection />
@@ -70,10 +66,7 @@ const BrantfordPage = () => {
         {/* <TestimonialSection /> */}
         <Sponsers />
       </div>
-    </div>
-=======
     </>
->>>>>>> 70d13f3af14d2caa13abea1541d35e8e2044017b
   );
 };
 
