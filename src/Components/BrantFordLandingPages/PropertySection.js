@@ -125,38 +125,6 @@ const PropertySection = ({ slide, setSlide }) => {
 
   return (
     <div>
-<<<<<<< HEAD
-      <div><p className="container mx-5">Get Property by category</p></div>
-      <div className="categary-list">
-        <ul className="">
-          {categaries.map((item, index) => {
-            return (
-              <li
-                key={index}
-                onClick={() => singleCategary(item.id)}
-                className="category-name"
-              >
-                {item.categary}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-      <div className="property-page-section">
-        <div className="container property-section">
-          <div className="heading-property">
-            <div className="row">
-              <div className="col-lg-12 col-sm-12 s-l-md-12 property-section-headings ">
-                <p className="sub-main-heading pr-heading-main">
-                  Handpicked Properties for you
-                </p>
-                <p className="sub-heading pr-heading-sub ">
-                  Featured commercial & co-working properties across India
-                </p>
-              </div>
-            </div>
-=======
->>>>>>> 70d13f3af14d2caa13abea1541d35e8e2044017b
 
       <div className="property-page-section">
         <div className="container">
@@ -191,11 +159,7 @@ const PropertySection = ({ slide, setSlide }) => {
                           </div>
                           <div className="price-section d-flex justify-content-between mx-4">
                             <div className="w-75 ">
-<<<<<<< HEAD
-                              <p className="price">${item.price}</p>
-=======
                               <p className="price">{ele.price}/sqr</p>
->>>>>>> 70d13f3af14d2caa13abea1541d35e8e2044017b
                             </div>
                             <div className="d-flex justify-content-between w-25 gx-2 icon-group">
                               <p onClick={() => modalToDetailPage(ele)}>
