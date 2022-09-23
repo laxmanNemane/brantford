@@ -2,18 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import HocLandingPage from "../HocLandingPage";
 import { MdSort } from "react-icons/md";
 
-import {
-    Accordion,
-    AccordionItem,
-    AccordionItemHeading,
-    AccordionItemButton,
-    AccordionItemPanel,
-} from "react-accessible-accordion";
 
-// Demo styles, see 'Styles' section below for some notes on use.
-import "react-accessible-accordion/dist/fancy-example.css";
-import { Field, Form, Formik } from "formik";
-import { Collapse } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllSpaces } from "../../Redux/enduserSlices/enduserSlice";
 import { HiOutlineLocationMarker } from "react-icons/hi";

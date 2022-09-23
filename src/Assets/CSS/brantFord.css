@@ -35,6 +35,10 @@
   font-size: 18px;
 }
 
+.navbar-collapse {
+  align-items: center;
+}
+
 .user-icons-tag {
   position: absolute;
 
