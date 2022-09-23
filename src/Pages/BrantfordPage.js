@@ -17,30 +17,31 @@ import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
 import CompareSidebar from "../Components/BrantFordLandingPages/CompareSidebar";
 
 const BrantfordPage = () => {
-
   const [locationCords, setLocationCords] = useState();
 
-  const geoLocation = () => {
-    
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(getPosition);
-    }
-    function getPosition(position) {
-      setLocationCords({latitude:position.coords.latitude, longitude:position.coords.longitude})
-      console.log(position.coords.latitude, position.coords.longitude,position.coords.speed,position);
-    }
+  // const geoLocation = () => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(getPosition);
+  //   }
+  //   function getPosition(position) {
+  //     setLocationCords({
+  //       latitude: position.coords.latitude,
+  //       longitude: position.coords.longitude,
+  //     });
+  //     console.log(
+  //       position.coords.latitude,
+  //       position.coords.longitude,
+  //       position.coords.speed,
+  //       position
+  //     );
+  //   }
+  // };
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  //   geoLocation();
+  // }, []);
 
-  }
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    geoLocation()
-
-  }, []);
-
-<<<<<<< HEAD
-  console.log(locationCords)
-=======
->>>>>>> 70d13f3af14d2caa13abea1541d35e8e2044017b
+  console.log(locationCords);
   return (
     <>
       <div className="brantford-landing-page w-100">
@@ -59,21 +60,7 @@ const BrantfordPage = () => {
           <Sponsers />
         </div>
       </div>
-<<<<<<< HEAD
-      <div className="">
-        <FindsProperty />
-        <PropertySection />
-        {/* <PostAddFree /> */}
-        <PromiseSection />
-        <Cities />
-        <CallToActionSection />
-        {/* <TestimonialSection /> */}
-        <Sponsers />
-      </div>
-    </div>
-=======
     </>
->>>>>>> 70d13f3af14d2caa13abea1541d35e8e2044017b
   );
 };
 

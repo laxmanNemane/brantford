@@ -37,11 +37,8 @@
     "jvectormap": "^2.0.4",
     "mapbox-gl": "^2.10.0",
     "react": "^18.2.0",
-<<<<<<< HEAD
-    "react-apexcharts": "^1.4.0",
-=======
     "react-accessible-accordion": "^5.0.0",
->>>>>>> 70d13f3af14d2caa13abea1541d35e8e2044017b
+    "react-apexcharts": "^1.4.0",
     "react-bootstrap": "^2.4.0",
     "react-calendar": "^3.8.0",
     "react-circular-progressbar": "^2.1.0",

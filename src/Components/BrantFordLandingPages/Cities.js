@@ -1,12 +1,7 @@
 import axios from "axios";
-<<<<<<< HEAD
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-=======
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { usersContext } from "../../Context/UserContext";
->>>>>>> 70d13f3af14d2caa13abea1541d35e8e2044017b
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -20,7 +15,6 @@ const Cities = () => {
       .get(`${BaseUrl}/endUser/all-cities-listing`)
       .then((res) => {
         console.log(res.data);
-
 
         // .replace(/\s+/g, '').trim()
         const unique = (value, index, self) => {
