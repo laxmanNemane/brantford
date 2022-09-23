@@ -11,6 +11,7 @@ import canteenOffice from "../Assets/Images/canteen.avif";
 import { Badge } from "react-bootstrap";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FiCheckCircle } from "react-icons/fi";
+import AdminFooter from "./AdminFooter";
 
 const PropertyDetailPage = () => {
 
@@ -18,13 +19,12 @@ const PropertyDetailPage = () => {
     <div
       style={{
         background: "rgb(244, 240, 242)",
-        padding: "0",
+        paddingLeft: "270px",
         // height: "100vh",
       }}
-    >
+     >
       <div className="row mx-3">
         <div className="col-8">
-          <div className="card"></div>
           <div className="mx-2 py-2">
             <h3 className="property-name-detailpage">
               Co-working Space In Baner , pune-123456
@@ -189,6 +189,7 @@ const PropertyDetailPage = () => {
           </div>
         </div>
       </div>
+      <AdminFooter/>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { AiOutlineUserSwitch, AiOutlineTeam } from "react-icons/ai";
 import { BsArrowDownLeftCircle } from "react-icons/bs";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import AdminFooter from "./AdminFooter";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -31,15 +32,18 @@ const AdminTenants = () => {
     <div
       style={{
         background: "rgb(244, 240, 242)",
-        padding: "0",
+        paddingLeft: "270px",
         // height: "100vh",
       }}
     >
-      <div className="row  mx-3  d-flex">
+       <div className="top-banner">
+        <div className="dashboard-title">
+      <div className="row  mx-3  d-flex ">
         <div className="col-12 my-2">
           <h5 className="Analytic_heading">Connected Users</h5>
         </div>
-        <div className="ms-2" style={{ width: "65%" }}>
+
+        <div className="ms-2" style={{}}>
           <div className="d-flex justify-content-between ">
             <div className="card d-flex align-items-center shadow Main_card_usertenants ">
               <div
@@ -98,9 +102,11 @@ const AdminTenants = () => {
             </div>
           </div>
         </div>
-        
         <AdminUserTable />
       </div>
+      </div>
+      </div>
+      < AdminFooter/>
     </div>
   );
 };

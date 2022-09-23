@@ -38,6 +38,12 @@ import PrivateRouteForAdmin from "./PrivateRoute";
 import PrivateRouteForuser from "./PrivteRouteForOwner";
 import UpdateProperty from "../UserPanel/DashbordUser/ModelPropertyOwner/UpdateProperty";
 import BookedSpaces from "../UserPanel/DashbordUser/BookedSpaces";
+<<<<<<< HEAD
+import AdminChat from "../AdminPanel/AdminChat";
+import AdminMail from "../AdminPanel/AdminMail";
+import AdminMarket from "../AdminPanel/AdminMarket";
+import AdminCalendar from "../AdminPanel/AdminCalendar";
+=======
 import CitiWiseProperty from "../Components/BrantFordLandingPages/CitiWiseProperty";
 import CompareSidebar from "../Components/BrantFordLandingPages/CompareSidebar";
 import FilterdPage from "../Components/BrantFordLandingPages/FilterdPage";
@@ -45,6 +51,7 @@ import ViewAllRentedPage from "../Components/BrantFordLandingPages/allfilteredPa
 import ForSale from "../Components/BrantFordLandingPages/allfilteredPages/ForSale";
 import SerchProperty from "../Components/BrantFordLandingPages/allfilteredPages/SerchProperty";
 import ComparisonProperty from "../Components/BrantFordLandingPages/ComparisonProperty";
+>>>>>>> 70d13f3af14d2caa13abea1541d35e8e2044017b
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 // import PrivateRouteForAdmin from "./PrivateRoute";
@@ -103,6 +110,10 @@ const Routing = () => {
           <Route path="/detail" element={<PropertyDetailPage />} />
           <Route path="/profile" element={<AdminProfilePage />} />
           <Route path="/requirements" element={<AdminRequirements />} />
+          <Route path="/chat" element={<AdminChat />} />
+          <Route path="/mail" element={<AdminMail />} />
+          <Route path="/market" element={<AdminMarket />} />
+          <Route path="/calendar" element={<AdminCalendar />} />
         </Route>
       </Routes>
       {/* <Footer /> */}
