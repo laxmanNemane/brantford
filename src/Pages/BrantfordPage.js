@@ -14,6 +14,7 @@ import PostAddFree from "../Components/BrantFordLandingPages/PostAddFree";
 import Cities from "../Components/BrantFordLandingPages/Cities";
 import HocLandingPage from "../Components/HocLandingPage";
 import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
+import CompareSidebar from "../Components/BrantFordLandingPages/CompareSidebar";
 
 const BrantfordPage = () => {
 
@@ -36,13 +37,29 @@ const BrantfordPage = () => {
 
   }, []);
 
+<<<<<<< HEAD
   console.log(locationCords)
+=======
+>>>>>>> 70d13f3af14d2caa13abea1541d35e8e2044017b
   return (
-    <div className="brantford-landing-page">
-      <div className="landing_section">
-        <video src={videoBg} autoPlay loop muted></video>
-        <HeroSection />
+    <>
+      <div className="brantford-landing-page w-100">
+        <div className="landing_section">
+          <video src={videoBg} autoPlay loop muted></video>
+          <HeroSection />
+        </div>
+        <div className="">
+          <FindsProperty />
+          <PropertySection />
+          <PostAddFree />
+          <PromiseSection />
+          <Cities />
+          <CallToActionSection />
+          {/* <TestimonialSection /> */}
+          <Sponsers />
+        </div>
       </div>
+<<<<<<< HEAD
       <div className="">
         <FindsProperty />
         <PropertySection />
@@ -54,6 +71,9 @@ const BrantfordPage = () => {
         <Sponsers />
       </div>
     </div>
+=======
+    </>
+>>>>>>> 70d13f3af14d2caa13abea1541d35e8e2044017b
   );
 };
 

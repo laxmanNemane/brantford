@@ -7,6 +7,13 @@ const UseContext = (props) => {
   const [spaceDetail, setSpaceDetail] = useState([]);
   const [endUserSpace, setEndUserSpace] = useState([]);
 
+  const [cityName, setCityName] = useState();
+
+  const [searchArray, setSearchArray] = useState([]);
+  const [filterRange, setFilterRange] = useState();
+
+  const [selectedProperty, setSelectedProperty] = useState([]);
+
   return (
     <usersContext.Provider
       value={{
@@ -16,6 +23,14 @@ const UseContext = (props) => {
         spaceDetail,
         endUserSpace,
         setEndUserSpace,
+        cityName,
+        setCityName,
+        searchArray,
+        setSearchArray,
+        filterRange,
+        setFilterRange,
+        selectedProperty,
+        setSelectedProperty,
       }}
     >
       {props.children}

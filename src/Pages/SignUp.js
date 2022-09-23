@@ -19,10 +19,10 @@ function SignUp() {
     axios
       .post("http://bantford.prometteur.in/admin/create-admin", values)
       .then((res) => {
-        if (res.status === "200") {
-          console.log(res.data);
-          alert("Registerd Successfully");
-        }
+        // if (res.status === "200") {
+        console.log(res.data);
+        alert("Registerd Successfully");
+        // }
       })
       .catch((err) => console.log(err));
     resetForm();
@@ -55,9 +55,6 @@ function SignUp() {
                     email: "",
                     password: "",
                     contact: "",
-
-                    address: "",
-
                     profile: "",
                     address: "",
                   }}
@@ -90,7 +87,6 @@ function SignUp() {
                 >
                   {({ values, errors, handleSubmit }) => (
                     <Form onSubmit={handleSubmit} className="mt-5">
-
                       <Field
                         type="name"
                         name="name"

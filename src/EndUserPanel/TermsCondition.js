@@ -34,16 +34,15 @@ const TermsCondition = () => {
           <h5 className="name ">Terms and Conditions &nbsp;:</h5>
           <div className="col-12 ">
             <div className="descriptive-term-conditions py-5">
-
-              {terms.map((item, index) => {
-                return (
-                  <div>
-                    <p className="fw-bold">{item.title}</p>
-                    <p>{item.description}</p>
-                  </div>
-                );
-              })}
-
+              {terms &&
+                terms.map((item, index) => {
+                  return (
+                    <div key={index}>
+                      <p className="fw-bold">{item.title}</p>
+                      <p>{item.description}</p>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>

@@ -38,10 +38,20 @@ import PrivateRouteForAdmin from "./PrivateRoute";
 import PrivateRouteForuser from "./PrivteRouteForOwner";
 import UpdateProperty from "../UserPanel/DashbordUser/ModelPropertyOwner/UpdateProperty";
 import BookedSpaces from "../UserPanel/DashbordUser/BookedSpaces";
+<<<<<<< HEAD
 import AdminChat from "../AdminPanel/AdminChat";
 import AdminMail from "../AdminPanel/AdminMail";
 import AdminMarket from "../AdminPanel/AdminMarket";
 import AdminCalendar from "../AdminPanel/AdminCalendar";
+=======
+import CitiWiseProperty from "../Components/BrantFordLandingPages/CitiWiseProperty";
+import CompareSidebar from "../Components/BrantFordLandingPages/CompareSidebar";
+import FilterdPage from "../Components/BrantFordLandingPages/FilterdPage";
+import ViewAllRentedPage from "../Components/BrantFordLandingPages/allfilteredPages/ViewAllRentedPage";
+import ForSale from "../Components/BrantFordLandingPages/allfilteredPages/ForSale";
+import SerchProperty from "../Components/BrantFordLandingPages/allfilteredPages/SerchProperty";
+import ComparisonProperty from "../Components/BrantFordLandingPages/ComparisonProperty";
+>>>>>>> 70d13f3af14d2caa13abea1541d35e8e2044017b
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 // import PrivateRouteForAdmin from "./PrivateRoute";
@@ -63,7 +73,15 @@ const Routing = () => {
           path="/office-detail/:name"
           element={<OfficesDetailPage />}
         />
+        <Route path="/city/:name" element={<CitiWiseProperty />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
+        <Route path="/contactUs" element={<ContactForm />} />
+
+        <Route path="/allSpaces" element={<FilterdPage />} />
+        <Route path="/allrentedspaces" element={<ViewAllRentedPage />} />
+        <Route path="/salingproperties" element={<ForSale />} />
+        <Route path="/searchproperties" element={<SerchProperty />} />
+        <Route path="/copareproperty" element={<ComparisonProperty />} />
 
         {/* =================property owner=================== */}
         <Route element={<PrivateRouteForuser />}>
