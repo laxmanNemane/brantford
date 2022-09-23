@@ -7,57 +7,62 @@ import { BsHeart, BsPlusCircle } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import PropertyOverview from "../../EndUserPanel/PropertyOverview";
 
-
-
-
 // import "../../Styles/LandingPage/FindsProperty.css";
 
-const BaseUrl = "http://bantford.prometteur.in"
+const BaseUrl = "http://bantford.prometteur.in";
 
 const FindsProperty = () => {
-  // const [allProperties, setAllProperties] = useState();
+
+  const [allProperties, setAllProperties] = useState();
 
   // const navigate = useNavigate();
-  // const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-  // const [categaries, setCategories] = useState([]);
-  // const [singleCategory, setSinglecategory] = useState([]);
+
+  const [categaries, setCategories] = useState([]);
+  const [singleCategory, setSinglecategory] = useState([]);
   // const [detailId, setDetailId] = useState(null);
 
-  // const { endUserSpace, setEndUserSpace } = useContext(usersContext);
 
-  // const setCategary = (categaryId, data) => {
-  //   console.log(categaryId);
-  //   localStorage.setItem("singlecategaryId", categaryId);
-  //   console.log(data);
-  //   setEndUserSpace(data);
-  //   navigate(`/office-detail/${data.space.split(" ").join("-")}`);
-  // };
-  // // /office-detail/:space-name
+  const setCategary = (categaryId) => {
+    console.log(categaryId);
+    localStorage.setItem("singlecategaryId", categaryId);
+  };
 
-  // const modalToDetailPage = (data) => {
-  //   console.log(data);
-  //   setEndUserSpace(data);
-  //   setIsModalVisible(true);
-  // };
+  const singleCategary = (id) => {
+    console.log(id);
+    axios
+      .get(`${BaseUrl}/endUser/get-categary?id=${id}`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setSinglecategory(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSinglecategory("");
+      });
+  };
 
-  // const singleCategary = (id) => {
-  //   console.log(id);
-  //   axios
-  //     .get(`${BaseUrl}/endUser/get-categary?id=${id}`, {
-  //       headers: {
-  //         Authorization: localStorage.getItem("token"),
-  //       },
-  //     })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setSinglecategory(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       setSinglecategory("");
-  //     });
-  // };
+  const getAllProperties = () => {
+    axios
+      .get(`${BaseUrl}/endUser/get-all-spces-wr`)
+      .then((res) => {
+        console.log(res.data);
+        setAllProperties(res.data);
+        setSinglecategory(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getAllProperties();
+  }, []);
 
   return (
     <div>
@@ -80,7 +85,7 @@ const FindsProperty = () => {
                 />
               </div>
             </div>
-            <div className="col-lg-6 col-md-6 col-sm-12 ">
+            <div className="col-lg-6 col-md-6 col-sm-12">
               <div className="discription-findpage  my-5  ">
                 <p className="sub-heading text-uppercase">Buy A Office</p>
                 <h4 className="sub-main-heading  ">
@@ -98,7 +103,6 @@ const FindsProperty = () => {
       </div>
     </div>
 
-  
   );
 };
 

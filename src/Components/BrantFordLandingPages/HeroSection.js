@@ -177,24 +177,6 @@ const HeroSection = () => {
               <div className="title-landPage">
                 <h2 className="title">Let's Find your office!</h2>
               </div>
-              <div>
-
-
-              {/* <AutoComplete
-                  style={{
-                    width: 200,
-                  }}
-                  onSearch={handleSearch}
-                  placeholder="input here"
-                >
-                  { result.map((city) => (
-                    <Option key={city} value={city}>
-                      {city}
-                    </Option>
-                  ))}
-              </AutoComplete> */}
-
-              </div>
               {/* <p className="expant-paragraph">Expand. Renew. Relocate</p> */}
               <div
                 className="search-section align-items-center d-flex "
