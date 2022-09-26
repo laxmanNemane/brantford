@@ -42,9 +42,16 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <ul>
-        <li>Avatar</li>
-      </ul>
+
+      <div className="login-btn-container">
+        
+        <NavLink to="/login">
+          <button className="navbar-login-btn me-3 btn-second">Login</button>
+        </NavLink>
+        <NavLink to="/signup">
+          <button className="navbar-login-btn me-3 btn-first">Register</button>
+        </NavLink>
+      </div>
     </nav>
   );
 };

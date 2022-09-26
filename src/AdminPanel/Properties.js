@@ -127,7 +127,7 @@ const Properties = () => {
                 <h3 className="">Properties</h3>
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <NavLink to="/dashbord">Home</NavLink>
+                    <NavLink to="/dashboard">Home</NavLink>
                   </li>
                   <li className="breadcrumb-item active">Quick Staks</li>
                 </ol>

@@ -98,11 +98,12 @@ const Routing = () => {
           <Route path="/profile" element={<AdminProfilePage />} />
           <Route path="/pendingSpaces" element={<BookedSpaces />} />
           <Route path="/propertycalc" element={<PropertyCalc />} />
+          <Route path="/market" element={<AdminMarket />} />
         </Route>
 
         {/* </Route> */}
         <Route element={<PrivateRouteForAdmin />}>
-          <Route path="/dashbord" element={<DasbordPage />} />
+          <Route path="/dashboard" element={<DasbordPage />} />
           <Route path="/properties" element={<Properties />} />
           <Route path="/revenu" element={<RevenuAdmin />} />
           <Route path="/tenants" element={<AdminTenants />} />

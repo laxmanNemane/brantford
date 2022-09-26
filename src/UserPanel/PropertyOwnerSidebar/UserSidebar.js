@@ -12,8 +12,12 @@ import {
   AiFillQuestionCircle,
 } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
-import { Dropdown, Menu } from "antd";
+import { Dropdown, Menu  } from "antd";
 import { MdNoteAdd } from "react-icons/md";
+import { FaMapMarkedAlt } from "react-icons/fa";
+const {SubMenu} = Menu;
+
+
 const UserSidebar = () => {
   // this is dropdown option
   const menu = (
@@ -50,10 +54,12 @@ const UserSidebar = () => {
     <div>
       <div>
         <nav className="admin-sidebar">
-          {/* <div className="sidebar_main shadow "> */}
+          <div className="dashboard_logo">
           <h5 className="Logo_admin fw-bold text-center">
             <AiOutlineHome />
           </h5>
+          </div>
+
           <div className="Sidebar_otption_section">
             <ul className="list-unstyled">
               <li
@@ -65,7 +71,7 @@ const UserSidebar = () => {
                 <NavLink to="/userdashbord" className="text-dark">
                   <div className="menu-list align-items-center justify-content-center">
                     <TiChartBar className="Sidebar_icons" />
-                    <span>Dashbord</span>
+                    <span>Dashboard</span>
                   </div>
                 </NavLink>
                 <div
@@ -79,9 +85,7 @@ const UserSidebar = () => {
                       </NavLink>
                     </li>
                     <li>
-                      {/* <NavLink to="/properties" className="text-dark"> */}
                       <span>Booked Property</span>
-                      {/* </NavLink> */}
                     </li>
                     <li>
                       <NavLink to="/properties" className="text-dark">
@@ -142,18 +146,30 @@ const UserSidebar = () => {
                   </div>
                 </NavLink>
               </li>
+              <li className="my-3 list-sidebar-menu">
+                <NavLink to="/market" className="text-dark">
+                  <div className="  align-items-center justify-content-center">
+                    <FaMapMarkedAlt className="Sidebar_icons" />
+                    <span> Market </span>
+                  </div>
+                </NavLink>
+              </li>
             </ul>
           </div>
-          {/* </div> */}
+          <div className="sideScrollBar">
+
+          </div>
         </nav>
       </div>
 
-      <p className="sidebar-setting">
+           
+
+     <p className="sidebar-setting">
         <Dropdown overlay={menu} placement="topLeft" arrow>
-          <AiOutlineSetting className="setting_icon" />
-        </Dropdown>
-      </p>
-    </div>
+           <AiOutlineSetting className="setting_icon" />
+         </Dropdown>
+       </p>
+     </div> 
   );
 };
 
