@@ -9,49 +9,31 @@ const Cities = () => {
   const { cityName, setCityName } = useContext(usersContext);
   const [city, setCity] = useState([]);
   const navigate = useNavigate();
+  const [cityDistinct, setCityDistinct] = useState([]);
+  const [Distinct, setDistinct] = useState([]);
 
   const getAllCities = () => {
-    axios
-      .get(`${BaseUrl}/endUser/all-cities-listing`)
-      .then((res) => {
-        console.log(res.data);
-
-        // .replace(/\s+/g, '').trim()
-        const unique = (value, index, self) => {
-          return self.indexOf(value) === index;
-        };
-
-        const city = res.data;
-        const uniqueCity = city.filter(unique);
-        console.log(uniqueCity);
-        // setCity(uniqueCity);
-
-        //property count according to city
-        const arr = res.data;
-
-        const count = {};
-
-        for (const element of arr) {
-          if (count[element]) {
-            count[element] += 1;
-          } else {
-            count[element] = 1;
-          }
-        }
-
-        console.log(count);
-        setCity(count);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axios.get(`${BaseUrl}/endUser/all-cities-listing`).then((res) => {
+      console.log("all city list", res.data);
+      setCityDistinct(res.data.trim());
+    });
   };
 
-  const getCitiwiseData = (data) => {
-    console.log(data);
-    setCityName(data);
-    navigate(`/city/${data}`);
-  };
+  // console.log("city data", cityDistinct.trim());
+  // cityDistinct.map((value) => setDistinct(value));
+  // {
+  //   cityDistinct.map((value) => {
+  //     return setDistinct([...new set()]);
+  //   });
+  // }
+
+  console.log("distinct value ", Distinct);
+
+  // const getCitiwiseData = (data) => {
+  //   console.log(data);
+  //   setCityName(data);
+  //   navigate(`/city/${data}`);
+  // };
 
   useEffect(() => {
     getAllCities();
@@ -69,7 +51,7 @@ const Cities = () => {
           </div>
         </div>
         <div className="row my-4 all-cities">
-          {Object.keys(city).map((item, index) => {
+          {/* {Object.keys(city).map((item, index) => {
             return (
               // <NavLink to="/office-detail" key={index}>
               <div
@@ -85,7 +67,7 @@ const Cities = () => {
                       height={100}
                     />
                   </div> */}
-                  <div
+          {/* <div
                     className="mx-4"
                     style={{ lineHeight: "0.5", marginTop: "20px" }}
                     onClick={() => getCitiwiseData(item)}
@@ -97,9 +79,29 @@ const Cities = () => {
               </div>
               // </NavLink>
             );
-          })}
-          {/* <div className="col-lg-3 col-md-3 col-sm-6 d-flex my-2">
-            <div className="city-section d-flex py-3">
+          })} */}
+          <div className="col-lg-3 col-md-3 col-sm-6 d-flex my-2">
+            <div className=" d-flex py-3">
+              <div className="  image-cities ps-1 ">
+                <img
+                  src="https://images.unsplash.com/photo-1568626231555-03e303627953?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+                  alt=""
+                  width={100}
+                  height={100}
+                  className="cities-images-according"
+                />
+              </div>
+              <div
+                className="mx-4"
+                style={{ lineHeight: "0.5", marginTop: "20px" }}
+              >
+                <p className="name">Lahor</p>
+                <p className="profile">!000+ properties</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-3 col-md-3 col-sm-6 d-flex my-2">
+            <div className=" d-flex py-3">
               <div className="image-cities ps-1">
                 <img
                   src="https://images.unsplash.com/photo-1568626231555-03e303627953?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
@@ -118,7 +120,7 @@ const Cities = () => {
             </div>
           </div>
           <div className="col-lg-3 col-md-3 col-sm-6 d-flex my-2">
-            <div className="city-section d-flex py-3">
+            <div className=" d-flex py-3">
               <div className="image-cities ps-1">
                 <img
                   src="https://images.unsplash.com/photo-1568626231555-03e303627953?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
@@ -137,7 +139,7 @@ const Cities = () => {
             </div>
           </div>
           <div className="col-lg-3 col-md-3 col-sm-6 d-flex my-2">
-            <div className="city-section d-flex py-3">
+            <div className=" d-flex py-3">
               <div className="image-cities ps-1">
                 <img
                   src="https://images.unsplash.com/photo-1568626231555-03e303627953?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
@@ -156,13 +158,24 @@ const Cities = () => {
             </div>
           </div>
           <div className="col-lg-3 col-md-3 col-sm-6 d-flex my-2">
-            <div className="city-section d-flex py-3">
-              <div className="image-cities ps-1">
+            <div className=" d-flex py-3">
+              <div
+                className="image-cities ps-1"
+                style={{ borderRadius: "10px" }}
+              >
                 <img
                   src="https://images.unsplash.com/photo-1568626231555-03e303627953?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
                   alt=""
                   width={100}
                   height={100}
+                  className="cities-images-according"
+                  // style={{
+                  //   borderRadius: "10px",
+                  //   animationName: "gracefulimage",
+                  //   animationDuration: "0.3s",
+                  //   animationIterationCount: "1",
+                  //   animationTimingFunction: "ease-in",
+                  // }}
                 />
               </div>
               <div
@@ -174,25 +187,6 @@ const Cities = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-3 col-md-3 col-sm-6 d-flex my-2">
-            <div className="city-section d-flex py-3">
-              <div className="image-cities ps-1">
-                <img
-                  src="https://images.unsplash.com/photo-1568626231555-03e303627953?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
-                  alt=""
-                  width={100}
-                  height={100}
-                />
-              </div>
-              <div
-                className="mx-4"
-                style={{ lineHeight: "0.5", marginTop: "20px" }}
-              >
-                <p className="name">Lahor</p>
-                <p className="profile">!000+ properties</p>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>
