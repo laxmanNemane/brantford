@@ -18,6 +18,8 @@ const CitiWiseProperty = () => {
   const name = useParams();
   console.log(name.name);
 
+  console.log("city name", cityName);
+
   const [citiSpace, setCitiSpace] = useState([]);
   const getAllProperties = () => {
     axios
