@@ -77,10 +77,10 @@ const Sidebar = () => {
             data-bs-target="#getting-started-collapse2"
             aria-expanded="false"
           >
-            <NavLink to="/dashbord" className="text-dark">
+            <NavLink to="/dashboard" className="text-dark">
               <div className="menu-list align-items-center justify-content-center">
                 <TiChartBar className="Sidebar_icons" />
-                <span>Dashbord</span>
+                <span>Dashboard</span>
               </div>
             </NavLink>
             <div

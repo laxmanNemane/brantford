@@ -103,7 +103,7 @@ const Routing = () => {
 
         {/* </Route> */}
         <Route element={<PrivateRouteForAdmin />}>
-          <Route path="/dashbord" element={<DasbordPage />} />
+          <Route path="/dashboard" element={<DasbordPage />} />
           <Route path="/properties" element={<Properties />} />
           <Route path="/revenu" element={<RevenuAdmin />} />
           <Route path="/tenants" element={<AdminTenants />} />

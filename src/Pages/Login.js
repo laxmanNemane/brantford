@@ -14,6 +14,11 @@ import Navbar from "../Layout/Navbar";
 import Footer from "../Layout/Footer";
 import HocLandingPage from "../Components/HocLandingPage";
 import { toast } from "react-toastify";
+import { gapi } from "gapi-script";
+import GoogleLogin from "react-google-login";
+import { useEffect } from "react";
+
+const clientId = "1080370152932-oaiv7jc9ql83iiqd0grfl0h1vmc3vsp2.apps.googleusercontent.com";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -21,6 +26,17 @@ const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [error, setError] = useState();
   const navigate = useNavigate();
+
+  const loginWithGoogle = () => {
+    axios
+      .get(`${BaseUrl}/auth`)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleSubmit = (values) => {
     // console.log(values);
@@ -43,7 +59,7 @@ const Login = () => {
         toast.success("successfully logged in ");
         localStorage.setItem("user", JSON.stringify(res.data));
         if (res.data.admin.profile === "admin") {
-          navigate("/dashbord");
+          navigate("/dashboard");
         } else {
           navigate("/userDashbord");
         }
@@ -58,6 +74,24 @@ const Login = () => {
         toast.error("please check detail");
       });
   };
+
+  const onSuccess = (res) => {
+    console.log("success:", res);
+    // navigate("/");
+  };
+  const onFailure = (err) => {
+    console.log("failed:", err);
+  };
+
+  useEffect(() => {
+    const initClient = () => {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    };
+    gapi.load("client:auth2", initClient);
+  }, []);
 
   return (
     <div>
@@ -151,10 +185,19 @@ const Login = () => {
                         &ndash;&ndash; or sign in with &ndash;&ndash;
                       </p>
 
-                      <p className="form-control w-75  mx-auto  ">
+                      <GoogleLogin
+                        clientId={clientId}
+                        buttonText="Sign in with Google"
+                        onSuccess={onSuccess}
+                        onFailure={onFailure}
+                        cookiePolicy={"single_host_origin"}
+                        isSignedIn={true}
+                      />
+
+                      {/* <button className="form-control w-75  mx-auto" onClick={loginWithGoogle}>
                         <i className="fab fa-google fa-x mx-5"></i> Continue
                         with Google
-                      </p>
+                      </button> */}
                       {/* <LoginWithGoogle /> */}
 
                       {/* <LogoutFromGoogle/> */}

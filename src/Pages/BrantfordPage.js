@@ -17,6 +17,7 @@ import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
 import CompareSidebar from "../Components/BrantFordLandingPages/CompareSidebar";
 import ChatBot from "../Components/ChatBot";
 
+
 const BrantfordPage = () => {
   const [locationCords, setLocationCords] = useState();
 

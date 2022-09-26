@@ -1126,3 +1126,5 @@ video {
 .offcanvas-end {
   width: 340px !important;
 }
+
+.login-btn-container{position: absolute; right: 0;}

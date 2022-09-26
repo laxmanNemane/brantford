@@ -338,7 +338,6 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                   property_status: "",
                   description: "",
                   working_days: "",
-                  property_id: "",
                   categaryId: "",
                 }}
                 validate={(values) => {
@@ -413,16 +412,8 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="total_desks"
                             className="form-control  mb-3  m"
                           />
-                          <label htmlFor="Property-id" className="label-user">
-                            Property id:{" "}
-                          </label>
-
-                          <Field
-                            type="text"
-                            name="property_id"
-                            placeholder="property_id"
-                            className="form-control  mb-3  m"
-                          />
+                         
+                         
                           <label htmlFor="city" className="label-user">
                             City:{" "}
                           </label>
