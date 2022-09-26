@@ -7,15 +7,19 @@ function ContactForm() {
     console.log(values);
     Formik.resetForm();
   };
-  const resetForm = () => { };
+  const resetForm = () => {};
   setTimeout(resetForm, 2000);
 
   return (
     <div className="contact-bg">
       <div className="contact-header position-relative">
         <div className=" container">
-
-          <h3 className="text-light position-absolute fw-bold" style={{ bottom: "0px", }}>Contact</h3>
+          <h3
+            className="text-light position-absolute fw-bold"
+            style={{ bottom: "0px" }}
+          >
+            Contact
+          </h3>
         </div>
       </div>
       <div className="contact-container container pb-5">
@@ -106,7 +110,7 @@ function ContactForm() {
                       <button
                         onClick={resetForm}
                         type="submit"
-                        className="form-control btn-first border-none mx-auto my-5 fw-bold  "
+                        className="form-control btn-second border-none mx-auto my-5 fw-bold  "
                       >
                         Submit
                       </button>
@@ -142,7 +146,6 @@ function ContactForm() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
