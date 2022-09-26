@@ -154,6 +154,14 @@ const UserSidebar = () => {
                   </div>
                 </NavLink>
               </li>
+              <li className="my-3 list-sidebar-menu">
+                <NavLink to="/appointments" className="text-dark">
+                  <div className="  align-items-center justify-content-center">
+                    <FaMapMarkedAlt className="Sidebar_icons" />
+                    <span> Appointments </span>
+                  </div>
+                </NavLink>
+              </li>
             </ul>
           </div>
           <div className="sideScrollBar">

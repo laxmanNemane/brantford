@@ -53,6 +53,7 @@ import SerchProperty from "../Components/BrantFordLandingPages/allfilteredPages/
 import ComparisonProperty from "../Components/BrantFordLandingPages/ComparisonProperty";
 
 import PropertyCalc from "../Redux/PropertyOwnerSlices/PropertyCalc";
+import Appointments from "../Redux/PropertyOwnerSlices/Appointments";
 
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
@@ -99,6 +100,7 @@ const Routing = () => {
           <Route path="/pendingSpaces" element={<BookedSpaces />} />
           <Route path="/propertycalc" element={<PropertyCalc />} />
           <Route path="/market" element={<AdminMarket />} />
+          <Route path="/appointments" element={<Appointments />} />
         </Route>
 
         {/* </Route> */}

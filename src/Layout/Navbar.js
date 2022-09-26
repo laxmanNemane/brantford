@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import logo from "../Assets/Icons/logo.png";
 
 const Navbar = () => {
+
+  const [loginProfile, setLoginProfile] = useState();
+
+  const logindata = localStorage.getItem('user');
+  console.log(logindata);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light ">
       <div className="container ">
@@ -44,6 +50,7 @@ const Navbar = () => {
       </div>
 
       <div className="login-btn-container">
+
         
         <NavLink to="/login">
           <button className="navbar-login-btn me-3 btn-second">Login</button>
@@ -51,6 +58,7 @@ const Navbar = () => {
         <NavLink to="/signup">
           <button className="navbar-login-btn me-3 btn-first">Register</button>
         </NavLink>
+        
       </div>
     </nav>
   );
