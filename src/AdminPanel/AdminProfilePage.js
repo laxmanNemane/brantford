@@ -4,6 +4,7 @@ import HocComponent from "../Components/HocComponent";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { Field, Form, Formik } from "formik";
 import axios from "axios";
+import AdminFooter from "./AdminFooter";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -82,10 +83,29 @@ const AdminProfilePage = () => {
         height: "100vh",
       }}
     >
-      <div className="heading-page-profile">
+
+<div className="top-banner">
+    <div className="dashboard-title ">
+              <div className="row align-items-center ">
+                <div className="col-lg-8">
+                  <div className="brant-title">
+                    <h3 className="">Profile</h3>
+                    <ol className="breadcrumb">
+                      <li className="breadcrumb-item">
+                        <a href="#">Home</a>
+                      </li>
+                      <li className="breadcrumb-item active">Profile</li>
+                    </ol>
+                  </div>
+                </div>
+                <div className="col-lg-4 text-end"></div>
+              </div>
+            </div>
+
+      {/* <div className="heading-page-profile">
         <p className="overview-user-profile_page">Overview</p>
         <h5 className="Analytic_heading">Your Profile</h5>
-      </div>
+      </div> */}
       <div className="row mx-3  ">
         <div className="col-4 gx-5 ">
           <div className="card user-detail-overview px-3">
@@ -137,9 +157,8 @@ const AdminProfilePage = () => {
                     lastName: `${profileDetail.name}`,
                     email: `${setinitialValues.email}`,
                     contact: `${profileDetail.contact}`,
-                    password: `${profileDetail.password}`,
                     profile: `${profileDetail.profile}`,
-                    description: `${profileDetail.description}`,
+                    // description: `${profileDetail.description}`,
                     address: `${profileDetail.address}`,
                     state: `${setinitialValues.state}`,
                   }}
@@ -154,9 +173,7 @@ const AdminProfilePage = () => {
                     ) {
                       errors.email = "Invalid email address";
                     }
-                    if (!values.password) {
-                      errors.password = "required*";
-                    }
+                   
                     return errors;
                   }}
                   onSubmit={handleSubmit}
@@ -208,15 +225,7 @@ const AdminProfilePage = () => {
                               placeholder="profile"
                               className="form-control"
                             />
-                            <label htmlFor="Password " className="label-user">
-                              Password{" "}
-                            </label>
-                            <Field
-                              type="password"
-                              name="password"
-                              placeholder="password"
-                              className="form-control "
-                            />
+                            
                           </div>
                           <div className="col-12">
                             <label htmlFor="Address " className="label-user">
@@ -230,7 +239,7 @@ const AdminProfilePage = () => {
                             />
                           </div>
 
-                          <div className="col-12">
+                          {/* <div className="col-12">
                             <label htmlFor="Zip " className="label-user">
                               Description{" "}
                             </label>
@@ -241,7 +250,7 @@ const AdminProfilePage = () => {
                               placeholder="description"
                               className="form-control "
                             />
-                          </div>
+                          </div> */}
                         </div>
                         <div>
                           <button
@@ -260,6 +269,8 @@ const AdminProfilePage = () => {
           </div>
         </div>
       </div>
+      <AdminFooter/>
+    </div>
     </div>
   );
 };

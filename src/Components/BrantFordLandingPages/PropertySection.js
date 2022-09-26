@@ -94,38 +94,25 @@ const PropertySection = ({ slide, setSlide }) => {
   }, [show, isModalVisible]);
 
   const setProerties = (data) => {
-
-
-    let c = selectedProperty.findIndex(
-      element => element.id === data.id
-    );
+    let c = selectedProperty.findIndex((element) => element.id === data.id);
     if (c >= 0) {
-      toast.warning("this property already added")
+      toast.warning("this property already added");
     } else {
-      setShow(true)
+      setShow(true);
       if (selectedProperty.length < 4) {
         setSelectedProperty([...selectedProperty, data]);
       } else {
         // alert("you can add only 4 proprty")
-        toast.warning("Minimun 4 items you can compare ")
+        toast.warning("Minimun 4 items you can compare ");
         setSelectedProperty([...selectedProperty]);
-
-
       }
-
     }
-    setShow(true)
-
-
-
-
+    setShow(true);
   };
   console.log("hsgdt", dataCompare);
 
-
   return (
     <div>
-
       <div className="property-page-section">
         <div className="container">
           <div className="row">
@@ -149,7 +136,6 @@ const PropertySection = ({ slide, setSlide }) => {
                         <div className="properties">
                           <div className="image-section1 w-100 position-relative">
                             <div className="property-image-in-section">
-
                               <img
                                 src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                                 alt=""

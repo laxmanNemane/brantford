@@ -62,7 +62,6 @@ const UpdateProperty = () => {
         <div className="row mx-3">
           <div className="col-12 bg-light px-3 py-4 my-2 ">
             <h3 className="fw-bold">Amenities</h3>
-
             <br />
 
             <div id="example-collapse-text">

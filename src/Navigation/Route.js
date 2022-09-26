@@ -38,10 +38,12 @@ import PrivateRouteForAdmin from "./PrivateRoute";
 import PrivateRouteForuser from "./PrivteRouteForOwner";
 import UpdateProperty from "../UserPanel/DashbordUser/ModelPropertyOwner/UpdateProperty";
 import BookedSpaces from "../UserPanel/DashbordUser/BookedSpaces";
+
 import AdminChat from "../AdminPanel/AdminChat";
 import AdminMail from "../AdminPanel/AdminMail";
 import AdminMarket from "../AdminPanel/AdminMarket";
 import AdminCalendar from "../AdminPanel/AdminCalendar";
+
 import CitiWiseProperty from "../Components/BrantFordLandingPages/CitiWiseProperty";
 import CompareSidebar from "../Components/BrantFordLandingPages/CompareSidebar";
 import FilterdPage from "../Components/BrantFordLandingPages/FilterdPage";
@@ -49,7 +51,9 @@ import ViewAllRentedPage from "../Components/BrantFordLandingPages/allfilteredPa
 import ForSale from "../Components/BrantFordLandingPages/allfilteredPages/ForSale";
 import SerchProperty from "../Components/BrantFordLandingPages/allfilteredPages/SerchProperty";
 import ComparisonProperty from "../Components/BrantFordLandingPages/ComparisonProperty";
+
 import PropertyCalc from "../Redux/PropertyOwnerSlices/PropertyCalc";
+
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 // import PrivateRouteForAdmin from "./PrivateRoute";

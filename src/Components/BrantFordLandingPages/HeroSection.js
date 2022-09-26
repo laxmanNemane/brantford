@@ -63,66 +63,44 @@ const HeroSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(price);
-
-    // if (
-    //   (price.minValue.length !== 0 && price.maxValue.length !== 0) ||
-    //   serchName !== 0
-    // ) {
-    //   // price and serchname
-    const filterdItem = data.filter((value) => {
-      return (
-        (parseInt(value.price) > price.minValue &&
-          parseInt(value.price) < price.maxValue) ||
-        value.city.trim().toLowerCase() === serchName
-      );
-    });
-    console.log("inside logic", filterdItem);
-    setSearchArray(filterdItem);
-    navigate("/searchproperties");
-    console.log("inside other loop", filterdItem);
-    // console.log(
-    //     "======================================third================================"
-    //   );
-    // } else if (
-    //   price.minValue.length !== 0 &&
-    //   price.maxValue.length !== 0 &&
-    //   serchName
-    // ) {
-    //   // price and serchname
-    //   const filterdItem = data.filter((value) => {
-    //     return (
-    //       (parseInt(value.price) > price.minValue &&
-    //         parseInt(value.price) < price.maxValue) ||
-    //       value.city.trim().toLowerCase() === serchName
-    //     );
-    //   });
-    //   setSearchArray(filterdItem);
-    //   console.log("inside second loop", filterdItem);
-    //   navigate("/searchproperties");
-    //   console.log(
-    //     "======================================second================================"
-    //   );
-    // }
-    // if (serchName) {
-    //   const filterdItem = data.filter((value) => {
-    //     return value.city.trim().toLowerCase() === serchName;
-    //   });
-    //   console.log("inside logic", filterdItem);
-    //   setSearchArray(filterdItem);
-    //   console.log("inside other loop", filterdItem);
-    //   console.log(
-    //     "======================================first================================"
-    //   );
-    //   navigate("/searchproperties");
-    // } else {
-    //   toast.warning("please enter location");
-    // }
-
-    // console.log(item);
-    // console.log("serach name", serchName);
-
-    // console.log("item value", filterdItem);
+    if (
+      price.minValue.length !== 0 &&
+      price.maxValue !== 0 &&
+      serchName.length !== 0
+    ) {
+      // for three field
+      const filterdItem = data.filter((value) => {
+        return (
+          parseInt(value.price) > price.minValue &&
+          parseInt(value.price) < price.maxValue &&
+          value.city.trim().toLowerCase() === serchName
+        );
+      });
+      console.log("three filede", filterdItem);
+      setSearchArray(filterdItem);
+      navigate("/searchproperties");
+    } else if (price.minValue.length !== 0 && price.maxValue !== 0) {
+      //  for only price field
+      const filterdItem = data.filter((value) => {
+        return (
+          parseInt(value.price) > price.minValue &&
+          parseInt(value.price) < price.maxValue
+        );
+      });
+      console.log("three filede", filterdItem);
+      setSearchArray(filterdItem);
+      navigate("/searchproperties");
+    } else if (serchName) {
+      // for only serch field
+      const filterdItem = data.filter((value) => {
+        return value.city.trim().toLowerCase() === serchName;
+      });
+      console.log("three filede", filterdItem);
+      setSearchArray(filterdItem);
+      navigate("/searchproperties");
+    } else {
+      alert("enter somethings on seraching ");
+    }
 
     setRecreational_Zone(false);
   };
@@ -176,24 +154,6 @@ const HeroSection = () => {
             <div className="col col-xl-8 col-md-10 col-12">
               <div className="title-landPage">
                 <h2 className="title">Let's Find your office!</h2>
-              </div>
-              <div>
-
-
-              {/* <AutoComplete
-                  style={{
-                    width: 200,
-                  }}
-                  onSearch={handleSearch}
-                  placeholder="input here"
-                >
-                  { result.map((city) => (
-                    <Option key={city} value={city}>
-                      {city}
-                    </Option>
-                  ))}
-              </AutoComplete> */}
-
               </div>
               {/* <p className="expant-paragraph">Expand. Renew. Relocate</p> */}
               <div

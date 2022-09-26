@@ -42,6 +42,9 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+      <ul>
+        <li>Avatar</li>
+      </ul>
     </nav>
   );
 };
