@@ -258,7 +258,7 @@ const HeroSection = () => {
                         </div>
                       </div>
                     </Tabs.TabPane>
-                    <Tabs.TabPane tab="Commercial" key="3">
+                    {/* <Tabs.TabPane tab="Commercial" key="3">
                       <div className=" d-flex align-items-center justfy-content-center w-100">
                         <div className="w-25">
                           <p
@@ -345,7 +345,7 @@ const HeroSection = () => {
                           </div>
                         </div>
                       </div>
-                    </Tabs.TabPane>
+                    </Tabs.TabPane> */}
                   </Tabs>
                 </div>
                 {/* <div className="input_search">
