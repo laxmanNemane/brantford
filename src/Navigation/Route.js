@@ -54,6 +54,7 @@ import ComparisonProperty from "../Components/BrantFordLandingPages/ComparisonPr
 
 import PropertyCalc from "../Redux/PropertyOwnerSlices/PropertyCalc";
 import Appointments from "../Redux/PropertyOwnerSlices/Appointments";
+import AdminAppointments from "../AdminPanel/AdminAppointments";
 
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
@@ -99,7 +100,7 @@ const Routing = () => {
           <Route path="/profile" element={<AdminProfilePage />} />
           <Route path="/pendingSpaces" element={<BookedSpaces />} />
           <Route path="/propertycalc" element={<PropertyCalc />} />
-          <Route path="/market" element={<AdminMarket />} />
+          <Route path="/propertymarket" element={<AdminMarket />} />
           <Route path="/appointments" element={<Appointments />} />
         </Route>
 
@@ -120,6 +121,7 @@ const Routing = () => {
           <Route path="/mail" element={<AdminMail />} />
           <Route path="/market" element={<AdminMarket />} />
           <Route path="/calendar" element={<AdminCalendar />} />
+          <Route path="/adminappointments" element={<AdminAppointments />} />
         </Route>
       </Routes>
       {/* <Footer /> */}

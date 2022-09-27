@@ -804,7 +804,8 @@ table tr td {
 .react-calendar button{border: none; padding: 5px;}
 .footer{text-align: center;padding-bottom: 0;padding-top: 6px;background: 0 0;  left: 0; right: 0; bottom: 0; background: #f3f4f3;background: #64c5b1;
   /* position: absolute; */
-  /* padding-left: 270px; */
+  /* position: fixed;
+  padding-left: 270px; */
 }
 .footer-inner{padding: 30px;}
 .top-scroller{position: fixed;right: 20px; bottom: 30px;cursor: pointer;z-index: 9999999;display: none;}

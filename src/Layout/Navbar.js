@@ -51,7 +51,6 @@ const Navbar = () => {
 
       <div className="login-btn-container">
 
-        
         <NavLink to="/login">
           <button className="navbar-login-btn me-3 btn-second">Login</button>
         </NavLink>
