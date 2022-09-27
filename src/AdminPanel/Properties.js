@@ -27,6 +27,15 @@ const Properties = () => {
   const [newListedCount, setNewListedCount] = useState();
   const [countAproved, setCountAproved] = useState(0);
 
+
+  const totalApproved = () => {
+    const count = 0;
+    Object.keys(properties).map((item, index)=> {
+      count ++;
+    })
+    console.log(count);
+  }
+
   console.log("properties", properties);
   // allProperties
   const allProperties = () => {
@@ -40,6 +49,7 @@ const Properties = () => {
         console.log(res.data);
         setProperties(res.data.spaces);
         setPropertyCount(res.data.spaces.length);
+
       })
       .catch((err) => {
         // console.log(err);
@@ -97,7 +107,8 @@ const Properties = () => {
   //     console.log(key, index);
   //     console.log(bookedProperties[key]);
   //     console.log(bookedProperties[key].approve_status);
-  //     if (bookedProperties[key].approve_status === "pending") {
+  //     if (bookedProperties[key].approve_status === "approved") {
+  //       setCountAproved(index + 1)
   //     }
   //   });
   // }
