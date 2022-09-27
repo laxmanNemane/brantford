@@ -44,6 +44,7 @@
     "react-calendar": "^3.8.0",
     "react-circular-progressbar": "^2.1.0",
     "react-datamaps-india": "^0.5.1",
+    "react-datetime-picker": "^4.0.1",
     "react-dom": "^18.2.0",
     "react-draft-wysiwyg": "^1.15.0",
     "react-geolocated": "^4.0.3",

@@ -22,6 +22,9 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import HocLandingPage from "../Components/HocLandingPage";
 import { usersContext } from "../Context/UserContext";
 import swal from "sweetalert";
+import AppointmentModel from "./AppointmentModel";
+
+
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const token = localStorage.getItem("endUser_token");
@@ -31,6 +34,9 @@ const BaseUrl = "http://bantford.prometteur.in";
 const OfficesDetailPage = () => {
   const [alreadyBooked, setAlreadyBooked] = useState(true);
   const [allspace, setAllSpace] = useState([]);
+  const [showStatus, setshowStatus] = useState(false);
+  const [spaceId, setSpaceId] = useState();
+  const [countVisitor, setCountVisitor] = useState();
 
   const { endUserSpace, setEndUserSpace } = useContext(usersContext);
 
@@ -60,7 +66,17 @@ const OfficesDetailPage = () => {
       });
   };
 
+  const addvisitor = (countVisitor) => {
+    const visitorcnt = {"spaceId":countVisitor}
+      axios.post(`${BaseUrl}/endUser/insert-visitor`, visitorcnt, {headers:{
+        Authorization:localStorage.getItem("token")
+      }})
+      .then((res)=> {console.log(res.data)})
+      .catch((err)=>console.log(err))
+  }
+
   const propertyBooking = (id, price) => {
+
     console.log(id, price);
     const propertyPrice = Number(price);
     const amount = {
@@ -104,8 +120,14 @@ const OfficesDetailPage = () => {
 
   // }, 3000);
 
+  const onBookAppointment = (id) => {
+    setshowStatus(true);
+    setSpaceId(id);
+  };
+  // addvisitor();
   useEffect(() => {
     showdetails();
+   
     window.scrollTo(0, 0);
   }, [endUserSpace]);
 
@@ -162,6 +184,7 @@ const OfficesDetailPage = () => {
         <div className="row position-relative">
           <div className="col-lg-8 col-md-8 col-sm-12 mb-4">
             <div className="office-detail">
+              {/* {setCountVisitor(endUserSpace.id)} */}
               <p className="fs-3 fw-bold">{endUserSpace.space}</p>
               <p className="tag pb-2 rounded-2">
                 {endUserSpace.property_status}
@@ -191,14 +214,17 @@ const OfficesDetailPage = () => {
                 ₹<span className="price1">{endUserSpace.price}</span>
                 /Seat/Month
               </p>
-              {/* <button
+              <button
                 onClick={() =>
                   propertyBooking(endUserSpace.id, endUserSpace.price)
                 }
                 className={alreadyBooked ? "disable-btn" : "show-btn"}
               >
                 Book Property
-              </button> */}
+              </button>
+
+              <button className="disable-btn ms-3" onClick={()=>onBookAppointment(endUserSpace.id)}>Book an Appointment</button>
+
             </div>
           </div>
         </div>
@@ -495,8 +521,8 @@ const OfficesDetailPage = () => {
                     </div>
                     <div className="col-lg-8 col-md-8 col-sm-6">
                       <div className="brantford-team">
-                        <p className="team fs-5">BrantFord Team</p>
-                        <p className="view-listing fw-bold ">View Listing</p>
+                        <p className="team fs-5">Requirement</p>
+                        <p className="view-listing fw-bold ">Send your requirement</p>
                       </div>
                     </div>
 
@@ -639,7 +665,7 @@ const OfficesDetailPage = () => {
                               component="select"
                               id="workspace"
                               name="categary_of_workspace"
-                            >
+                             >
                               <option value="working spaces">
                                 Co working spaces
                               </option>
@@ -689,6 +715,12 @@ const OfficesDetailPage = () => {
             </div>
           </div>
         </div>
+        <AppointmentModel
+                setshowStatus={setshowStatus}
+                showStatus={showStatus}
+                spaceId={endUserSpace.id}
+                element={endUserSpace}
+              />
       </div>
       {/* );
       })} */}
