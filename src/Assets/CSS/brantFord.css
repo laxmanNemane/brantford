@@ -1149,3 +1149,13 @@ video {
 .offcanvas-end {
   width: 340px !important;
 }
+
+/* =======================filter form========== */
+
+.appliedtag {
+  background-color: #c2255c;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+}

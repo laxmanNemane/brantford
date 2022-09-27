@@ -10,11 +10,15 @@ import { BiUser } from "react-icons/bi";
 import { Dropdown, Menu, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import { usersContext } from "../../Context/UserContext";
+import FilterForm from "./allfilteredPages/FilterForm";
 
 const FilterdPage = () => {
   const data = useSelector((state) => state.enduser.AllSpacesEndUser);
   const [price, setPrice] = useState(data.map((ele) => ele.price));
   const [sortedItems, setSortedItems] = useState(data);
+
+  // filtering
+  const [propertyType, setpPropetrtyType] = useState();
   const { endUserSpace, setEndUserSpace } = useContext(usersContext);
   const [spin, setSpin] = useState(false);
   const navigate = useNavigate();
@@ -23,13 +27,16 @@ const FilterdPage = () => {
     navigate(`/office-detail/${data.space.split(" ").join("-")}`);
   };
 
-  //   useEffect(() => {
-  //     console.log(sortedItems);
-  //   }, [sortedItems]);
   console.log(sortedItems);
 
   console.log(data);
   console.log(price);
+
+  const datafilter = sortedItems.filter((val) => {
+    return val.categaryId === parseInt(propertyType);
+  });
+  console.log(" sorted items ", sortedItems);
+  console.log("data filter ", datafilter);
 
   //   ========================asc and des order of price=========================================
   //   console.log(
@@ -37,31 +44,58 @@ const FilterdPage = () => {
   //   );
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAllSpaces());
-  }, []);
 
   const onChangeAscending = () => {
     setSpin(true);
-    setTimeout(() => {
-      setSortedItems(
-        data
-          .slice()
-          .sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? 1 : -1))
-      );
-      setSpin(false);
-    }, 500);
+    {
+      datafilter.length !== 0
+        ? setTimeout(() => {
+            setSortedItems(
+              datafilter
+                .slice()
+                .sort((a, b) =>
+                  parseInt(a.price) > parseInt(b.price) ? 1 : -1
+                )
+            );
+            setSpin(false);
+          }, 500)
+        : setTimeout(() => {
+            setSortedItems(
+              data
+                .slice()
+                .sort((a, b) =>
+                  parseInt(a.price) > parseInt(b.price) ? 1 : -1
+                )
+            );
+            setSpin(false);
+          }, 500);
+    }
   };
   const onChangeDescending = () => {
     setSpin(true);
-    setTimeout(() => {
-      setSortedItems(
-        data
-          .slice()
-          .sort((a, b) => (parseInt(a.price) > parseInt(b.price) ? -1 : 1))
-      );
-      setSpin(false);
-    }, 500);
+    {
+      datafilter.length !== 0
+        ? setTimeout(() => {
+            setSortedItems(
+              datafilter
+                .slice()
+                .sort((a, b) =>
+                  parseInt(a.price) > parseInt(b.price) ? -1 : 1
+                )
+            );
+            setSpin(false);
+          }, 500)
+        : setTimeout(() => {
+            setSortedItems(
+              data
+                .slice()
+                .sort((a, b) =>
+                  parseInt(a.price) > parseInt(b.price) ? -1 : 1
+                )
+            );
+            setSpin(false);
+          }, 500);
+    }
   };
 
   const menu = (
@@ -78,50 +112,35 @@ const FilterdPage = () => {
       ]}
     />
   );
+  useEffect(() => {
+    dispatch(fetchAllSpaces());
+  }, []);
+  console.log("in filterpage ", propertyType);
 
-  const onChange = () => {};
   return (
-    <div className="container">
+    <div className="container ">
       <div className="row py-5">
-        <div className="col-lg-4 col-md-3 ">
+        <div className="col-lg-4 col-md-3  position-relative">
           <div className="heading">
             <p className="fs-5">Filter</p>
           </div>
 
-          <div className="filterd-card card w-100 shadow px-4 py-4 ">
-            <div className="aplied-filter-section "></div>
-            <div className="budget ">
-              <div className="d-flex align-items-center justify-content-between">
-                <p className="fw-bold fs-5">Budget</p>
-              </div>
-              <div id="example-collapse-text ">
-                <div className="px-3 ">
-                  <form>
-                    <div className="d-flex align-items-center fs-5">
-                      <input type="checkbox" />
-                      <label htmlFor="pune" className="ms-3 ">
-                        Pune
-                      </label>
-                    </div>
-                    <div className="d-flex align-items-center fs-5">
-                      <input type="checkbox" />
-                      <label htmlFor="pune" className="ms-3">
-                        Ahmedabad
-                      </label>
-                    </div>
-                    <div className="d-flex align-items-center fs-5">
-                      <input type="checkbox" />
-                      <label htmlFor="pune" className="ms-3">
-                        Mumbai
-                      </label>
-                    </div>
-                    <div className="d-flex align-items-center fs-5">
-                      <input type="checkbox" />
-                      <label htmlFor="pune" className="ms-3">
-                        Hydrabad
-                      </label>
-                    </div>
-                  </form>
+          <div className="filterd-card  w-100 ">
+            <div
+              className="aplied-filter-section px-4 py-4  card shadow  fixed  "
+              style={{ width: "400px", marginBottom: "20px" }}
+            >
+              <div className="budget position-sticky">
+                <div className="d-flex align-items-center justify-content-between">
+                  {/* <p className="fw-bold fs-5">Budget</p> */}
+                </div>
+                <div id="example-collapse-text ">
+                  <div className="px-3 ">
+                    <FilterForm
+                      propertyType={propertyType}
+                      setpPropetrtyType={setpPropetrtyType}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -130,7 +149,12 @@ const FilterdPage = () => {
         <div className="col-lg-8 col-md-9 col-sm-12 position-relative">
           <div className="heading-properties mx-2 d-flex  align-items-center justify-content-between">
             <p className="fs-5">
-              Properties ({sortedItems !== 0 ? data.length : sortedItems.length}
+              Properties (
+              {datafilter.length !== 0
+                ? datafilter.length
+                : sortedItems !== 0
+                ? data.length
+                : sortedItems.length}
               )
             </p>
             <Dropdown overlay={menu} placement="bottomLeft">
@@ -150,8 +174,9 @@ const FilterdPage = () => {
             </div>
           )}
           {/* <div className="filterd-card  w-100 shadow px-4 py-4">helo</div> */}
-          {sortedItems.length !== 0
-            ? sortedItems.map((element, index) => {
+
+          {datafilter.length !== 0
+            ? datafilter.map((element, index) => {
                 return (
                   <div className="similar-offices" key={index}>
                     <div className="officess mt-3">
