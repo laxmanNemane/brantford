@@ -435,7 +435,7 @@ const DasbordPage = () => {
       })
       .catch((err) => {
         // console.log(err);
-        navigate("/dashbord");
+        navigate("/dashboard");
       });
   };
   //  //All Properties
@@ -521,7 +521,7 @@ const DasbordPage = () => {
                   <h3 className="">Dashbord</h3>
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
-                      <NavLink to="/dashbord">Home</NavLink>
+                      <NavLink to="/dashboard">Home</NavLink>
                     </li>
                     <li className="breadcrumb-item active">Library</li>
                   </ol>

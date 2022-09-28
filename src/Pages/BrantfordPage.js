@@ -15,33 +15,39 @@ import Cities from "../Components/BrantFordLandingPages/Cities";
 import HocLandingPage from "../Components/HocLandingPage";
 import ContactForm from "../Components/BrantFordLandingPages/ContactForm";
 import CompareSidebar from "../Components/BrantFordLandingPages/CompareSidebar";
+import ChatBot from "../Components/ChatBot";
+
 
 const BrantfordPage = () => {
   const [locationCords, setLocationCords] = useState();
 
-  // const geoLocation = () => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(getPosition);
-  //   }
-  //   function getPosition(position) {
-  //     setLocationCords({
-  //       latitude: position.coords.latitude,
-  //       longitude: position.coords.longitude,
-  //     });
-  //     console.log(
-  //       position.coords.latitude,
-  //       position.coords.longitude,
-  //       position.coords.speed,
-  //       position
-  //     );
-  //   }
-  // };
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  //   geoLocation();
-  // }, []);
+  const geoLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(getPosition);
+    }
+    function getPosition(position) {
+      setLocationCords({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
+      console.log(
+        position.coords.latitude,
+        position.coords.longitude,
+        position.coords.speed,
+        position
+      );
+    }
+  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    geoLocation();
+  }, []);
 
-  console.log(locationCords);
+
+ 
+
+  console.log(locationCords)
+
   return (
     <>
       <div className="brantford-landing-page w-100">
@@ -59,7 +65,9 @@ const BrantfordPage = () => {
           {/* <TestimonialSection /> */}
           <Sponsers />
         </div>
+        <ChatBot/>
       </div>
+
     </>
   );
 };

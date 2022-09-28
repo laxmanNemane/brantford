@@ -64,7 +64,9 @@ const Sidebar = () => {
   );
 
   return (
-    <nav className="admin-sidebar">
+    <nav className="admin-sidebar" 
+    style={{overflowY:"scroll"}}
+    >
       {/* <div className="sidebar_main shadow "> */}
       <h5 className="Logo_admin fw-bold text-center">
         <AiOutlineHome />
@@ -77,10 +79,10 @@ const Sidebar = () => {
             data-bs-target="#getting-started-collapse2"
             aria-expanded="false"
           >
-            <NavLink to="/dashbord" className="text-dark">
+            <NavLink to="/dashboard" className="text-dark">
               <div className="menu-list align-items-center justify-content-center">
                 <TiChartBar className="Sidebar_icons" />
-                <span>Dashbord</span>
+                <span>Dashboard</span>
               </div>
             </NavLink>
             <div
@@ -203,6 +205,15 @@ const Sidebar = () => {
               <div className=" align-items-center justify-content-center">
                 <FaMapMarkedAlt className="Sidebar_icons" />
                 <span>Calendar</span>
+              </div>
+            </NavLink>
+          </li>
+
+          <li className="my-3 list-sidebar-menu">
+            <NavLink to="/adminappointments" className="text-dark">
+              <div className=" align-items-center justify-content-center">
+                <FaMapMarkedAlt className="Sidebar_icons" />
+                <span>Appointments</span>
               </div>
             </NavLink>
           </li>

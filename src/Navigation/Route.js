@@ -52,6 +52,10 @@ import ForSale from "../Components/BrantFordLandingPages/allfilteredPages/ForSal
 import SerchProperty from "../Components/BrantFordLandingPages/allfilteredPages/SerchProperty";
 import ComparisonProperty from "../Components/BrantFordLandingPages/ComparisonProperty";
 
+import PropertyCalc from "../Redux/PropertyOwnerSlices/PropertyCalc";
+import Appointments from "../Redux/PropertyOwnerSlices/Appointments";
+import AdminAppointments from "../AdminPanel/AdminAppointments";
+
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 // import PrivateRouteForAdmin from "./PrivateRoute";
@@ -95,11 +99,14 @@ const Routing = () => {
           <Route path="/updatePage" element={<UpdateProperty />} />
           <Route path="/profile" element={<AdminProfilePage />} />
           <Route path="/pendingSpaces" element={<BookedSpaces />} />
+          <Route path="/propertycalc" element={<PropertyCalc />} />
+          <Route path="/propertymarket" element={<AdminMarket />} />
+          <Route path="/appointments" element={<Appointments />} />
         </Route>
 
         {/* </Route> */}
         <Route element={<PrivateRouteForAdmin />}>
-          <Route path="/dashbord" element={<DasbordPage />} />
+          <Route path="/dashboard" element={<DasbordPage />} />
           <Route path="/properties" element={<Properties />} />
           <Route path="/revenu" element={<RevenuAdmin />} />
           <Route path="/tenants" element={<AdminTenants />} />
@@ -114,6 +121,7 @@ const Routing = () => {
           <Route path="/mail" element={<AdminMail />} />
           <Route path="/market" element={<AdminMarket />} />
           <Route path="/calendar" element={<AdminCalendar />} />
+          <Route path="/adminappointments" element={<AdminAppointments />} />
         </Route>
       </Routes>
       {/* <Footer /> */}

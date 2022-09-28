@@ -73,7 +73,7 @@ const PropertyOwnerPropertyDetail = () => {
   };
 
   return (
-    <div className="property-Detail-property-owner">
+    <div className="property-Detail-property-owner" style={{paddingLeft:"270px", backgroundColor:"#E7E5E5"}}>
       <div className="row mx-3 mt-3">
         <div className="col-12">
           <div className="dashbord-section-content d-flex justify-content-between align-items-center bg-light  px-4 py-4 mt-3  rounded">

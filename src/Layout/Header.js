@@ -169,9 +169,12 @@ const Header = () => {
 
   const popovermessages = (
     <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}  style={{ top: 20, left:10 }}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <div className="message-box">
+        div
+        <p></p>
+        <p></p>
+        <p></p>
+      </div>
       </Modal>
   )
 
@@ -242,9 +245,9 @@ const Header = () => {
 
   return (
     <>
-     <marquee behavior="" direction="">
+     {/* <marquee behavior="" direction="">
        <p>market prices</p>
-       </marquee>
+       </marquee> */}
      
 
       <div className=" w-100 header_admin ">
@@ -253,7 +256,7 @@ const Header = () => {
             <div
               className=" d-flex me-auto position-relative"
               style={{ width: "320px" }}
-            >
+             >
               <BsSearch className="Search_icon position-absolute" />
               <Input
                 placeholder="search here..."

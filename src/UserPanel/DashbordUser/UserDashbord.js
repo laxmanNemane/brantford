@@ -166,7 +166,7 @@ const UserDashbord = () => {
           <div className="col-12 mb-5">
             <div className="dashbord-section-content d-flex justify-content-between align-items-center   px-4 py-2   rounded">
               <div className="heading-section-dashbord ">
-                <h1 className="heading-second mb-1"> Dashbord</h1>
+                <h1 className="heading-second mb-1"> Dashboard</h1>
                 <p className="paragraph">
                   Welcome to Brantford property portal
                 </p>

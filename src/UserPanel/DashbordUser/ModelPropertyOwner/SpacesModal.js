@@ -110,7 +110,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                   property_status: element.property_status,
                   description: element.description,
                   working_days: element.working_days,
-                  property_id: element.property_id,
+                  // property_id: element.property_id,
                   categaryId: element.categaryId,
                 }}
                 validate={(values) => {
@@ -141,7 +141,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             type="text"
                             name="manager_email"
                             placeholder="manager_email"
-                            className="form-control  mb-3 m "
+                            className="form-control  mb-3 m"
                           />
                           <label
                             htmlFor="Seating capacity "
@@ -176,7 +176,8 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="total_desks"
                             className="form-control  mb-3  m"
                           />
-                          <label htmlFor="Property-id" className="label-user">
+
+                          {/* <label htmlFor="Property-id" className="label-user">
                             Property id:{" "}
                           </label>
 
@@ -185,17 +186,42 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             name="property_id"
                             placeholder="property_id"
                             className="form-control  mb-3  m"
-                          />
+                          /> */}
+
                           <label htmlFor="city" className="label-user">
                             City:{" "}
                           </label>
 
-                          <Field
+                          {/* <Field
                             type="text"
                             name="city"
                             placeholder="city"
                             className="form-control  mb-3  m"
-                          />
+                          /> */}
+
+
+                          <Field
+                          as="select"
+                          component="select"
+                          id="city"
+                            type="text"
+                            name="city"
+                            placeholder="city"
+                            className="form-control  mb-3  m"
+                            >
+                           <option value="city">
+                                select an option
+                              </option>
+                              <option value="pune">
+                                Pune
+                              </option>
+                              <option value="mumbai">Mumbai</option>
+                              <option value="bangolore">Bangolore</option>
+                              <option value="delhi">Delhi</option>
+                              <option value="surat">Surat</option>
+                              <option value="hydrabad">Hydrabad</option>
+                            </Field>
+
                         </div>
                         <div className="col-6">
                           <label htmlFor="manager_name" className="label-user">
@@ -338,7 +364,6 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                   property_status: "",
                   description: "",
                   working_days: "",
-                  property_id: "",
                   categaryId: "",
                 }}
                 validate={(values) => {
@@ -413,26 +438,36 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="total_desks"
                             className="form-control  mb-3  m"
                           />
-                          <label htmlFor="Property-id" className="label-user">
-                            Property id:{" "}
-                          </label>
-
-                          <Field
-                            type="text"
-                            name="property_id"
-                            placeholder="property_id"
-                            className="form-control  mb-3  m"
-                          />
+                         
+                         
                           <label htmlFor="city" className="label-user">
                             City:{" "}
                           </label>
 
                           <Field
+                          as="select"
+                          component="select"
+                          id="city"
                             type="text"
                             name="city"
                             placeholder="city"
                             className="form-control  mb-3  m"
-                          />
+                          >
+                          <option value="select city">
+                                Select City Name
+                              </option>
+                              <option value="pune">
+                                Pune
+                              </option>
+                              <option value="mumbai">Mumbai</option>
+                              <option value="bangolore">Bangolore</option>
+                              <option value="delhi">Delhi</option>
+                              <option value="surat">Surat</option>
+                              <option value="hydrabad">Hydrabad</option>
+                            </Field>
+
+
+
                         </div>
                         <div className="col-6">
                           <label htmlFor="manager_name" className="label-user">

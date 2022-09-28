@@ -37,7 +37,7 @@ const AdminMarket = () => {
               </div>
             </div>
 
-            <div className="adminChat-container">
+            <div className="adminChat-container mx-4">
               <div className="container">
                 <div className="brant-card">
                   <div className="brant-card-body">

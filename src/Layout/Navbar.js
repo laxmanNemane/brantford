@@ -1,12 +1,17 @@
+
 import { Dropdown, Menu } from "antd";
 import React from "react";
 import { AiOutlineSetting } from "react-icons/ai";
 import { MdNoteAdd } from "react-icons/md";
+
+import React, { useState } from "react";
+
 import { Link, NavLink } from "react-router-dom";
 
 import logo from "../Assets/Icons/logo.png";
 
 const Navbar = () => {
+
   // const user = JSON.parse(localStorage.getItem("user"));
   // console.log("user in navbar section", user.admin.profile);
   const menu = (
@@ -34,6 +39,13 @@ const Navbar = () => {
       ]}
     />
   );
+
+  const [loginProfile, setLoginProfile] = useState();
+
+  const logindata = localStorage.getItem('user');
+  console.log(logindata);
+
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
       <div className="collapse navbar-collapse" id="navbarNav">
@@ -91,6 +103,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="list-unstyled  mx-auto">
           {/* {user.admin === null ? (
@@ -108,6 +121,18 @@ const Navbar = () => {
           </Link>
           {/* )} */}
         </ul>
+
+
+      <div className="login-btn-container">
+
+        <NavLink to="/login">
+          <button className="navbar-login-btn me-3 btn-second">Login</button>
+        </NavLink>
+        <NavLink to="/signup">
+          <button className="navbar-login-btn me-3 btn-first">Register</button>
+        </NavLink>
+        
+
       </div>
     </nav>
   );

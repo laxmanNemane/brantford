@@ -12,14 +12,17 @@ import PropertyOverview from "../../EndUserPanel/PropertyOverview";
 const BaseUrl = "http://bantford.prometteur.in";
 
 const FindsProperty = () => {
+
   const [allProperties, setAllProperties] = useState();
 
   // const navigate = useNavigate();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+
   const [categaries, setCategories] = useState([]);
   const [singleCategory, setSinglecategory] = useState([]);
   // const [detailId, setDetailId] = useState(null);
+
 
   const setCategary = (categaryId) => {
     console.log(categaryId);
@@ -60,6 +63,7 @@ const FindsProperty = () => {
   useEffect(() => {
     getAllProperties();
   }, []);
+
   return (
     <div>
       <div className="find-property-section land-page py-3">
@@ -98,6 +102,7 @@ const FindsProperty = () => {
         </div>
       </div>
     </div>
+
   );
 };
 
