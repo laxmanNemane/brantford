@@ -14,13 +14,15 @@ import FilterForm from "./allfilteredPages/FilterForm";
 
 const FilterdPage = () => {
   const data = useSelector((state) => state.enduser.AllSpacesEndUser);
-  const [price, setPrice] = useState(data.map((ele) => ele.price));
+  const [price, setPrice] = useState();
   const [sortedItems, setSortedItems] = useState(data);
 
   // filtering
-  const [propertyType, setpPropetrtyType] = useState();
+  const [propertyType, setpPropetrtyType] = useState([]);
   const { endUserSpace, setEndUserSpace } = useContext(usersContext);
   const [spin, setSpin] = useState(false);
+
+  const [render, setRender] = useState(false);
   const navigate = useNavigate();
   const spaceManagement = (data) => {
     setEndUserSpace(data);
@@ -32,9 +34,16 @@ const FilterdPage = () => {
   console.log(data);
   console.log(price);
 
-  const datafilter = sortedItems.filter((val) => {
-    return val.categaryId === parseInt(propertyType);
+  let datafilter = data.filter((val) => {
+    return propertyType?.some((item) => {
+      return val.categaryId === item.id;
+    });
   });
+
+  datafilter.filter((value) => {
+    return value.price <= price;
+  });
+
   console.log(" sorted items ", sortedItems);
   console.log("data filter ", datafilter);
 
@@ -114,7 +123,8 @@ const FilterdPage = () => {
   );
   useEffect(() => {
     dispatch(fetchAllSpaces());
-  }, []);
+    setRender(true);
+  }, [render]);
   console.log("in filterpage ", propertyType);
 
   return (
@@ -139,6 +149,8 @@ const FilterdPage = () => {
                     <FilterForm
                       propertyType={propertyType}
                       setpPropetrtyType={setpPropetrtyType}
+                      price={price}
+                      setPrice={setPrice}
                     />
                   </div>
                 </div>

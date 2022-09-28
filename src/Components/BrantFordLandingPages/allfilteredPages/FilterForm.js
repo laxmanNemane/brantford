@@ -1,9 +1,10 @@
 import { use } from "echarts";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { fetchAllCategory } from "../../../Redux/enduserSlices/enduserSlice";
 
-const FilterForm = ({ propertyType, setpPropetrtyType }) => {
+const FilterForm = ({ propertyType, setpPropetrtyType, price, setPrice }) => {
   const dispatch = useDispatch();
   const [isActive, setActive] = useState(false);
   const data = useSelector((state) => state.enduser.categoryEndUser);
@@ -12,18 +13,44 @@ const FilterForm = ({ propertyType, setpPropetrtyType }) => {
 
   const toggleClass = (id, typedate) => {
     // setActive(id ? !isActive : "");
-    setpPropetrtyType(id);
-    setAppliedFilter([...appliedFilter, typedate]);
+    let c = appliedFilter.findIndex((element) => element.id === typedate.id);
+    if (c >= 0) {
+      toast.warning("this property already added");
+    } else {
+      // setShow(true);
+      if (appliedFilter.length < 4) {
+        setAppliedFilter([...appliedFilter, typedate]);
+        toast.success("successfully added this property");
+      } else {
+        // alert("you can add only 4 proprty")
+        toast.warning("Minimun 4 items you can compare ");
+        setAppliedFilter([...appliedFilter]);
+      }
+    }
+    // setpPropetrtyType(id);
+    setpPropetrtyType([...appliedFilter, typedate]);
   };
   useEffect(() => {
     dispatch(fetchAllCategory());
-  }, [appliedFilter]);
+  }, []);
 
   const onTypeFilter = (id, typedate) => {};
 
   const onDeleteAppliedFilter = (id) => {
-    setpPropetrtyType("");
-    setAppliedFilter("");
+    console.log("ondelete id", id);
+    const newList = appliedFilter.filter((val) => {
+      return val.id === id;
+    });
+    setAppliedFilter(newList);
+  };
+
+  const onPriceFilter = (price1) => {
+    console.log("price click", price1);
+    setPrice(price1);
+  };
+
+  const onLocationFilter = (val) => {
+    console.log("Location", val);
   };
 
   console.log("applied filetre data ", appliedFilter);
@@ -36,27 +63,25 @@ const FilterForm = ({ propertyType, setpPropetrtyType }) => {
               <p className="name">Applied Filter</p>
               <ul className="list-unstyled">
                 <div className="row">
-                  {/* <div className="col-lg-12 col-md-12 col-sm-12 my-2">
-                    {appliedFilter.length !== 0 ? (
-                      <li className="appliedtag ">
-                        {" "}
-                        {appliedFilter.categary}
-                        <span className="ms-5">
-                          <i
-                            className="fa-sharp fa-solid fa-xmark"
-                            onClick={() =>
-                              onDeleteAppliedFilter(appliedFilter.id)
-                            }
-                          ></i>
-                        </span>
-                      </li>
-                    ) : (
-                      "No applied filter"
-                    )}
-                  </div> */}
+                  <div className="col-lg-6 col-md-12 col-sm-12 ">
+                    <ul></ul>
+                    {appliedFilter.length !== 0
+                      ? appliedFilter.map((val, index) => {
+                          return (
+                            <li key={index} className="appliedtag my-2">
+                              {val.categary}{" "}
+                              <i
+                                class="fa-sharp fa-solid fa-xmark"
+                                onClick={() => onDeleteAppliedFilter(val.id)}
+                              ></i>
+                            </li>
+                          );
+                        })
+                      : "No filter records"}
+                  </div>
                   {/* <div className="col-6 my-2">
 
-                    <li className="appliedtag ">applied tag <span className="ms-5"><i class="fa-sharp fa-solid fa-xmark"></i></span></li>
+                    <li >applied tag <span className="ms-5"><i class="fa-sharp fa-solid fa-xmark"></i></span></li>
                   </div>
                   <div className="col-6 my-2">
 
@@ -84,10 +109,39 @@ const FilterForm = ({ propertyType, setpPropetrtyType }) => {
 
             <p className="name">Price</p>
             <ul className="list-unstyled">
-              <li className="my-2"> below 6000</li>
-              <li className="my-2">6000 to 10000</li>
-              <li className="my-2">10000 to 180000</li>
-              <li className="my-2"></li>
+              <li className="my-2" onClick={() => onPriceFilter(6000)}>
+                {" "}
+                below 6000
+              </li>
+              <li className="my-2" onClick={() => onPriceFilter(10000)}>
+                6000 to 10000
+              </li>
+              <li className="my-2" onClick={() => onPriceFilter(18000)}>
+                10000 to 180000
+              </li>
+              <li className="my-2" onClick={() => onPriceFilter(240000)}>
+                above 240000
+              </li>
+            </ul>
+
+            <p className="name">Pune</p>
+            <ul className="list-unstyled">
+              <li className="my-2" onClick={() => onLocationFilter("Pune")}>
+                {" "}
+                Pune
+              </li>
+              <li className="my-2" onClick={() => onLocationFilter("Mumbai")}>
+                Mumbai
+              </li>
+              <li
+                className="my-2"
+                onClick={() => onLocationFilter("Aurangbad")}
+              >
+                Aurangbad
+              </li>
+              <li className="my-2" onClick={() => onLocationFilter("Nashik")}>
+                Nashik
+              </li>
             </ul>
           </div>
         </div>

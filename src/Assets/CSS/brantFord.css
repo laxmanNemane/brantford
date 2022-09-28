@@ -1155,7 +1155,7 @@ video {
 .appliedtag {
   background-color: #c2255c;
   color: white;
-  padding: 6px 16px;
+  padding: 3px 10px;
   border-radius: 20px;
   cursor: pointer;
 }
