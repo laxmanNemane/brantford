@@ -7,7 +7,9 @@ function HocLandingPage(Component) {
     return (
       <div className="">
         <Navbar />
-        <Component />
+        <div className="postion-relative">
+          <Component />
+        </div>
         <Footer />
       </div>
     );
