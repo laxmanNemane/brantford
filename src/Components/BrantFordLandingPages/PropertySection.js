@@ -9,7 +9,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { usersContext } from "../../Context/UserContext";
 import PropertyOverview from "../../EndUserPanel/PropertyOverview";
-import { fetchAllSpaces } from "../../Redux/enduserSlices/enduserSlice";
+import {
+  fetchAllCategory,
+  fetchAllSpaces,
+} from "../../Redux/enduserSlices/enduserSlice";
 import CompareSidebar from "./CompareSidebar";
 
 const BaseUrl = "http://bantford.prometteur.in";
@@ -34,7 +37,9 @@ const PropertySection = ({ slide, setSlide }) => {
   console.log("values idbfg", selectedProperty);
 
   const data = useSelector((state) => state.enduser.AllSpacesEndUser);
+  const categorydata = useSelector((state) => state.enduser.categoryEndUser);
   console.log(data);
+  console.log("category data ", categorydata);
 
   const [dataCompare, setDatacompare] = useState([]);
   // dispatch(fetchAllSpaces());
@@ -91,6 +96,7 @@ const PropertySection = ({ slide, setSlide }) => {
   useEffect(() => {
     getallCategaries();
     dispatch(fetchAllSpaces());
+    dispatch(fetchAllCategory());
   }, [show, isModalVisible]);
 
   const setProerties = (data) => {
