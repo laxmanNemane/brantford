@@ -11,6 +11,7 @@ import moment from "moment";
 import { DatePicker, Space } from "antd";
 import { DatePickerProps } from "antd/es/date-picker";
 import { RangePickerProps } from "antd/es/date-picker";
+import swal from "sweetalert";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -85,14 +86,45 @@ const AppointmentModel = ({
     }
   };
 
+  const sendAppointment = (appointmentData) => {
+    axios.post(`${BaseUrl}/endUser/book-appointment`, appointmentData,{headers:{
+      Authorization: localStorage.getItem("token")
+    }})
+    .then((res)=> {
+      console.log(res.data)
+      swal("Thank you!", "Your appointment has been added", "success");
+    
+    })
+    .catch((err)=> {
+      console.log(err)
+      swal("Sorry !", "Slot not available", "warning");
+    
+    })
+  }
+
+  // 2022-09-28T10:15:33.661Z
+  // 2022-09-27 09:35:02
+
   const submitAppointment = (e ) => {
     e.preventDefault();
         console.log(title, dateTime);
-        console.log(element)
+        console.log(element.admininfoId)
         const userdetail = localStorage.getItem("user")
         console.log(userdetail);
+      const  dateStr = dateTime;
+    const onlydate =     (new Date(dateStr)).toISOString().slice(0, 10)
+    console.log(onlydate);
+
+  const date= new Date(dateTime);
+const newdate = date.toLocaleString();
+console.log(newdate);
+
+        const appointmentData = {"spaceId":spaceId, "propertyOwnerId":element.admininfoId, "message":title, "appointment_date":dateTime}
+
+        sendAppointment(appointmentData)
         // console.log(userdetail.name);
         // console.log(userdetail.email);
+       
         setshowStatus(false)
 
   }
@@ -132,8 +164,8 @@ const AppointmentModel = ({
         <div className="container text-center">
             <form onSubmit={(e)=>submitAppointment(e)}>
         <div className="p-2 mb-3 w-100">
-            <label className=" me-3">Enter a title:</label>
-            <input type="text" className="w-50" onChange={(e)=>setTitle(e.target.value)}/>
+            <label className=" me-3">Your Message:</label>
+            <input type="text" className="w-50 appointment-input" onChange={(e)=>setTitle(e.target.value)}/>
         </div>
         
         <Space direction="vertical" size={12}>
@@ -142,7 +174,6 @@ const AppointmentModel = ({
         <button type="submit"  className="ms-3 brant-btn-blue">Confirm appointment</button>
         </form>
         </div>
-
       </Modal>
     </>
   );

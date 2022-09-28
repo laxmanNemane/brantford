@@ -4,34 +4,57 @@ import HocComponent from "../../Components/HocComponent";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
+import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
+import axios from "axios";
 
-// import interaction
-// import { DayGridView } from "@fullcalendar/daygrid";
-// import { Interaction } from "@fullcalendar/react";
-import interactionPlugin from "@fullcalendar/interaction" // needed for dayClick
+const BaseUrl = "http://bantford.prometteur.in";
 
 const Appointments = () => {
   const [events, setEvents] = useState([]);
+  const [totalEvents, setTotalEvents] = useState([]);
 
-    const handleDateClick = (arg) => {
-        console.log(arg);
-        console.log(arg.dateStr);
-        setEvents([...events,
-            {
-              title: `event ${arg.dateStr}`,
-              date: arg.dateStr,
-              description: 'Lecture',
-              extendedProps: {
-                department: 'BioChemistry'
-              },
-            }
-          ])
-    }
-    
+  const getAllAppointments = () => {
+  axios
+    .get(`${BaseUrl}/propertyOwner/all-appointments`, {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+    .then((res) => {
+      console.log(res.data);
+      console.log(res.data.appointmentobject);
+      console.log(res.data.appointmentobject);
+      setTotalEvents(res.data.appointmentobject);
+      
+    })
+    .catch((err) => console.log(err));
+  }
 
-  useEffect(() => {
+  // const handleDateClick = (arg) => {
+  //     console.log(arg);
+  //     console.log(arg.dateStr);
+  //     setEvents([...events,
+  //         {
+  //           title: `event ${arg.dateStr}`,
+  //           date: arg.dateStr,
+  //           description: 'Lecture',
+  //         }
+  //       ])
+  // }
 
-  }, []);
+  const confirmAppointment = () => {
+
+  }
+
+  const rejectAppointment = () => {
+
+  }
+
+  console.log(totalEvents)
+
+  useEffect(()=>{
+    getAllAppointments();
+  },[]);
 
   return (
     <div>
@@ -39,7 +62,7 @@ const Appointments = () => {
         className="main-section"
         style={{
           background: "rgb(244, 240, 242)",
-          paddingLeft:"270px"
+          paddingLeft: "270px",
         }}
       >
         <div className="mb-5">
@@ -66,6 +89,40 @@ const Appointments = () => {
                 <div className="brant-card mx-4">
                   <div className="brant-card-body">
                     <div>
+                      <table className="w-100">
+                        <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Date</th>
+                            <th>Message</th>
+                            <th>Status</th>
+                            <th>User Name</th>
+                            <th>Contact</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {totalEvents.map((item, index) => {
+                            return (
+                              <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>{item.appointment.appointment_date}</td>
+                                <td>{item.appointment.message}</td>
+                                <td>{item.appointment.appointment_status}</td>
+                                <td>{item.user_details.name}</td>
+                                <td>{item.user_details.contact}</td>
+                                <td>
+                                  <button onClick={confirmAppointment}>Confirm</button>
+                                  <button onClick={rejectAppointment}>Reject</button>
+                                </td>
+                              </tr>
+                            )
+                          }
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+                    {/* <div>
                       <FullCalendar
                          plugins={[ dayGridPlugin, interactionPlugin ]}
                         initialView="dayGridMonth"
@@ -73,7 +130,7 @@ const Appointments = () => {
                         dateClick={handleDateClick}
                         events={events}
                       />
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
