@@ -42,14 +42,26 @@ const Appointments = () => {
   //       ])
   // }
 
-  const confirmAppointment = () => {
-
+  const confirmAppointment = (id) => {
+ const data = {"id":id,"appointment_status": "confirmed"}
+ appointmentAction(data)
   }
 
-  const rejectAppointment = () => {
-
+  const rejectAppointment = (id) => {
+    const data = {"id":id,"appointment_status": "rejected"}
+    appointmentAction(data)
   }
 
+  const appointmentAction = (data) => {
+    axios.put(`${BaseUrl}/propertyOwner/confirmORreject-appointment`,data, {headers:{
+      Authorization: localStorage.getItem('token')
+    }})
+    .then((res)=> {
+      console.log(res.data)
+      getAllAppointments();
+    })
+    .catch((err)=> {console.log(err)})
+  }
   console.log(totalEvents)
 
   useEffect(()=>{
@@ -106,14 +118,18 @@ const Appointments = () => {
                             return (
                               <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td>{item.appointment.appointment_date}</td>
+                                <td>{ 
+                                (new Date(item.appointment.appointment_date)).toLocaleDateString()
+                                
+                                
+                                }</td>
                                 <td>{item.appointment.message}</td>
                                 <td>{item.appointment.appointment_status}</td>
                                 <td>{item.user_details.name}</td>
                                 <td>{item.user_details.contact}</td>
                                 <td>
-                                  <button onClick={confirmAppointment}>Confirm</button>
-                                  <button onClick={rejectAppointment}>Reject</button>
+                                  <button onClick={()=>confirmAppointment(item.appointment.id)} className="brant-btn-blue" disabled = {item.appointment.appointment_status==='confirmed' ? true : false}>Confirm</button>
+                                  <button onClick={()=>rejectAppointment(item.appointment.id)} className="brant-btn-red ms-2" disabled = {item.appointment.appointment_status==='rejected' ? true : false}>Reject</button>
                                 </td>
                               </tr>
                             )

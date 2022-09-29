@@ -515,8 +515,7 @@ const OfficesDetailPage = () => {
                     <div className="col-lg-4 col-md-4 col-sm-6">
                       <div className="avtar-section">
                         <p className="mt-2">
-                          <FaUserAlt />
-                        </p>
+                          <FaUserAlt />                        </p>
                       </div>
                     </div>
                     <div className="col-lg-8 col-md-8 col-sm-6">
