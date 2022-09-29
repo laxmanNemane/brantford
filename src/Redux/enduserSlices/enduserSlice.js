@@ -12,10 +12,22 @@ export const fetchAllSpaces = createAsyncThunk(
   }
 );
 
+export const fetchAllCategory = createAsyncThunk(
+  "spaces/fetchAllCategory",
+  async () => {
+    const response = await axios.get(
+      `http://bantford.prometteur.in/endUser/all-categaries`
+    );
+
+    return response.data;
+  }
+);
+
 const endUserSliices = createSlice({
   name: "spaces",
   initialState: {
     AllSpacesEndUser: [],
+    categoryEndUser: [],
   },
   extraReducers: {
     [fetchAllSpaces.pending]: (state, action) => {
@@ -26,6 +38,16 @@ const endUserSliices = createSlice({
       state.AllSpacesEndUser = action.payload;
     },
     [fetchAllSpaces.rejected]: (state, action) => {
+      // console.log("rejected error");
+    },
+    [fetchAllCategory.pending]: (state, action) => {
+      // console.log("pending");
+    },
+    [fetchAllCategory.fulfilled]: (state, action) => {
+      // console.log("pending");
+      state.categoryEndUser = action.payload;
+    },
+    [fetchAllCategory.rejected]: (state, action) => {
       // console.log("rejected error");
     },
   },
