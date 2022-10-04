@@ -18,6 +18,7 @@ a{
 .footer_menu_option:hover {
   color: var(--paragraph);
 }
+.footer-inner p{color: #ffff;}
 
 /* ==========================admin privacy policy ==================================== */
 .heading-add-newpolicy {
@@ -782,6 +783,7 @@ table tr td {
 .brant-title p{font-family: sans-serif; font-weight: 500; font-size: 15px;color: #ffff;}
 .brant-btn{padding: 10px 15px; border: none; border-radius: 15px; background-color: #A951A5; color: #fff;}
 .brant-label{padding: 5px 15px !important; border: none; border-radius: 5px; text-align: center;}
+.brant-label.active, .brant-label:hover{background-color:#A951A5 ; color: #ffff;}
 .text-r{color:#A951A5 }
 .bg-r{background-color:#FFF0EB;}
 

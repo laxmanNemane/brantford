@@ -38,6 +38,8 @@ function SignUp() {
       .catch((err) => console.log(err));
     resetForm();
   };
+  
+ 
 
   return (
     <div>

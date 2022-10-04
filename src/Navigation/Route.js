@@ -56,6 +56,7 @@ import PropertyCalc from "../Redux/PropertyOwnerSlices/PropertyCalc";
 import Appointments from "../Redux/PropertyOwnerSlices/Appointments";
 import AdminAppointments from "../AdminPanel/AdminAppointments";
 import SpaceBookings from "../Redux/PropertyOwnerSlices/SpaceBookings";
+import ChatBot from "../Components/ChatBot";
 
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
@@ -81,6 +82,7 @@ const Routing = () => {
         <Route path="/city/:name" element={<CitiWiseProperty />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/contactUs" element={<ContactForm />} />
+        <Route path="" element={<ChatBot/>} />
 
         <Route path="/allSpaces" element={<FilterdPage />} />
         <Route path="/allrentedspaces" element={<ViewAllRentedPage />} />

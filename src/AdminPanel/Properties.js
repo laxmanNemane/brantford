@@ -21,20 +21,14 @@ const BaseUrl = "http://bantford.prometteur.in";
 // const Admin_token = localStorage.getItem("token");
 
 const Properties = () => {
-  const [properties, setProperties] = useState();
+  const [properties, setProperties] = useState([]);
   const [bookedProperties, setBookedProperties] = useState({});
   const [propertyCount, setPropertyCount] = useState(0);
   const [newListedCount, setNewListedCount] = useState();
   const [countAproved, setCountAproved] = useState(0);
 
 
-  const totalApproved = () => {
-    const count = 0;
-    Object.keys(properties).map((item, index)=> {
-      count ++;
-    })
-    console.log(count);
-  }
+ 
 
   console.log("properties", properties);
   // allProperties
@@ -48,14 +42,24 @@ const Properties = () => {
       .then((res) => {
         console.log(res.data);
         setProperties(res.data.spaces);
+        totalApproved(res.data.spaces);
         setPropertyCount(res.data.spaces.length);
-
       })
       .catch((err) => {
         // console.log(err);
       });
-    setCountAproved("");
+    // setCountAproved("");
   };
+
+  const totalApproved = (data) => {
+    // const count=0;
+    console.log(data);
+     let approvecount = data.filter(function(element){
+      return element.approve_status == "approved";
+  }).length
+    console.log(approvecount);
+    setCountAproved(approvecount)
+  }
 
   // allProperties booked properties
   const allbookedProperties = () => {
@@ -91,8 +95,8 @@ const Properties = () => {
   };
 
   useEffect(() => {
-    allbookedProperties();
     allProperties();
+    allbookedProperties();
     newListed();
   }, []);
 
@@ -202,7 +206,7 @@ const Properties = () => {
                     <p className="properties-sectionCard_headeing" style={{}}>
                       Approval
                     </p>
-                    <p className="People_tenant ">15</p>
+                    <p className="People_tenant ">{countAproved}</p>
                   </div>
                 </div>
               </div>
@@ -265,7 +269,7 @@ const Properties = () => {
                 title="All Properties"
                 tabClassName="profile-tabitem"
               >
-                <AllProperty />
+                <AllProperty  />
               </Tab>
             </Tabs>
           </div>
