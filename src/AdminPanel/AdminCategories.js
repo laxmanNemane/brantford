@@ -16,6 +16,7 @@ const AdminCategories = () => {
   const [updateId, setUpdateId] = useState();
   const [updatecategary, setUpdatecategary] = useState();
 
+
   //update category
   const OnupdateMessage = (id, categary) => {
     // console.log("update", id, categary);
@@ -70,7 +71,7 @@ const AdminCategories = () => {
 
   useEffect(() => {
     adminCategory();
-  }, [isModalVisible]);
+  }, [showStatus,isModalVisible ]);
 
   return (
     <div
@@ -118,15 +119,15 @@ const AdminCategories = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {categaries.map((item) => {
+                  {categaries.map((item, index) => {
                     return (
-                      <tr className="" key={item.id}>
+                      <tr className="" key={index}>
                         <td
                           className="table-td px-2 mx-3"
                           style={{ width: "10%" }}
-                          key={item.id}
+                          key={index}
                         >
-                          {item.id}
+                          {index + 1}
                         </td>
                         <td className="table-td " style={{ width: "80%" }}>
                           {item.categary}

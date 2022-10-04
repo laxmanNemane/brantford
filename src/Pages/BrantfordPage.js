@@ -57,6 +57,7 @@ const BrantfordPage = () => {
         </div>
         <div className="">
           <FindsProperty />
+          <ChatBot/>
           <PropertySection />
           <PostAddFree />
           <PromiseSection />
@@ -65,7 +66,7 @@ const BrantfordPage = () => {
           {/* <TestimonialSection /> */}
           <Sponsers />
         </div>
-        <ChatBot/>
+        
       </div>
 
     </>

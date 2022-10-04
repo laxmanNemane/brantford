@@ -15,6 +15,8 @@ import { NavLink } from "react-router-dom";
 import { Dropdown, Menu  } from "antd";
 import { MdNoteAdd } from "react-icons/md";
 import { FaMapMarkedAlt } from "react-icons/fa";
+import { BiCheckCircle } from "react-icons/bi";
+import { BsList } from "react-icons/bs";
 const {SubMenu} = Menu;
 
 
@@ -157,8 +159,17 @@ const UserSidebar = () => {
               <li className="my-3 list-sidebar-menu">
                 <NavLink to="/appointments" className="text-dark">
                   <div className="  align-items-center justify-content-center">
-                    <FaMapMarkedAlt className="Sidebar_icons" />
+                    <BsList className="Sidebar_icons" />
                     <span> Appointments </span>
+                  </div>
+                </NavLink>
+              </li>
+
+              <li className="my-3 list-sidebar-menu">
+                <NavLink to="/spacebookings" className="text-dark">
+                  <div className="  align-items-center justify-content-center">
+                    <BiCheckCircle className="Sidebar_icons" />
+                    <span> Bookings </span>
                   </div>
                 </NavLink>
               </li>

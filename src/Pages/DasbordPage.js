@@ -54,6 +54,7 @@ import Map, {
   ScaleControl,
   GeolocateControl
 } from 'react-map-gl';
+import Barchart from "../AdminPanel/Charts/Barchart";
 
 mapboxgl.accessToken ="pk.eyJ1IjoibmlraGlsYm9yZ2UiLCJhIjoiY2w4Y296eXBwMDR6ajN1bXltb2cxOXoyeCJ9.DgZ7KWKaUNJDltG3weSwEw";
 
@@ -356,65 +357,7 @@ const DasbordPage = () => {
     },
   });
 
-  const [chartData, setChartData] = useState({
-    options: {
-      bar: {
-        horizontal: false,
-        borderRadius: 0,
-        columnWidth: "10%",
-        barHeight: "10%",
-        width: "10%",
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      chart: {
-        width: "20%",
-        // type: 'Line',
-        id: "apexchart-example",
-        toolbar: {
-          show: false,
-        },
-      },
-      xaxis: {
-        show: false,
-
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
-      },
-      fill: {
-        type: "gradient",
-        gradient: {
-          shade: "light",
-          type: "horizontal",
-          shadeIntensity: 0.5,
-          gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
-          inverseColors: true,
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [0, 50, 100],
-          colorStops: [],
-        },
-      },
-      legend: {
-        show: false,
-        // position: '',
-        // width: 400,
-        // position: 'top',
-      },
-    },
-    series: [
-      {
-        name: "Distance Traveled",
-        type: "column",
-        data: [440, 505, 414, 571, 227, 413, 201, 352, 652, 320, 257, 160],
-      },
-      {
-        name: "Time Traveled",
-        type: "line",
-        data: [23, 42, 35, 27, 43, 22, 17, 31, 42, 22, 12, 16],
-      },
-    ],
-  });
+  
   // const [propertyBookedCount, setPropertyBookedCount] = useState(0);
   const navigate = useNavigate();
 
@@ -546,9 +489,11 @@ const DasbordPage = () => {
                   <h6 className="pt-3 me-auto card_heading_dashbord_heading">
                     All Detail
                   </h6>
+                  <NavLink to="/properties" className="">
                   <button className="btn border  Buttons_dashbord btn-view-all-dashbord mt-2">
                     View All
                   </button>
+                  </NavLink>
                 </div>
                 <Divider style={{ margin: "0", padding: "0" }} />
                 <div className="row py-4 px-3">
@@ -718,7 +663,7 @@ const DasbordPage = () => {
 
           <div className="row m-4">
             <div className="col-md-8">
-              <div className="brant-card">
+              {/* <div className="brant-card">
                 <div className="brant-card-body">
                   <div className="d-flex align-items-center justify-content-between">
                     <div>
@@ -737,7 +682,9 @@ const DasbordPage = () => {
                     height={380}
                   />
                 </div>
-              </div>
+              </div> */}
+
+              <Barchart/>
 
               <div className="brant-card mt-4">
                 <div className="brant-card-body">

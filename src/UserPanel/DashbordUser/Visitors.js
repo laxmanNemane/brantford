@@ -1,19 +1,42 @@
+import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import HocComponent from "../../Components/HocComponent";
 import { FetchAllVisitors } from "../../Redux/PropertyOwnerSlices/allVisitors";
 
+const BaseUrl = 'http://bantford.prometteur.in';
+
 const Visitors = () => {
+  const [totalVisitors, setTotalVisitors] = useState([]);
+
   const dispatch = useDispatch();
   const visitors = useSelector((state) => state.allvisitors);
-  console.log(visitors);
+  console.log(visitors.AllVisitors);
+  // setTotalVisitors(visitors.AllVisitors);
+
   const handleSubmit = (values) => {
+    console.log(values.filter);
+    getAllVisitors(values.filter);
+    console.log("selected value",values)
     console.log(values.filter);
     dispatch(FetchAllVisitors(values.filter));
   };
+
+
+  const getAllVisitors = (value) => {
+    axios.get(`${BaseUrl}/propertyOwner/all-visitors?visits=${value}`, {headers:{
+      Authorization: localStorage.getItem("token")
+    }})
+    .then((res)=> {
+      console.log(res.data)
+      setTotalVisitors(res.data)
+    })
+    .catch((err)=> {console.log(err)})
+  }
 
   useEffect(() => {
     dispatch(FetchAllVisitors());
@@ -43,8 +66,8 @@ const Visitors = () => {
                       <thead>
                         <tr>
                           <th>
-                            <div className="filtering ms-auto d-flex ">
-                              Filter By:
+                            <div className="filtering ms-auto d-flex  align-items-center justify-content-start">
+                              <span className="me-3">Filter By:</span>
                               <Formik
                                 initialValues={{
                                   filter: "yesterday",
@@ -101,18 +124,18 @@ const Visitors = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Laxman</td>
-                          <td>+91 7947329747</td>
-                          <td>Pune</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Kunal</td>
-                          <td>+91 7947329747</td>
-                          <td>Pune</td>
-                        </tr>
+{totalVisitors.map((item, index)=>{
+  return(
+    <tr key={index}>
+    <td>{index + 1}</td>
+    <td>{item.amount}</td>
+    <td>+91 7947329747</td>
+    <td>Pune</td>
+  </tr>
+  )
+})}
+                       
+                        
                       </tbody>
                     </Table>
                   </div>

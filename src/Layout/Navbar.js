@@ -4,7 +4,7 @@ import React from "react";
 import { AiOutlineSetting } from "react-icons/ai";
 import { MdNoteAdd } from "react-icons/md";
 
-import React, { useState } from "react";
+import  { useState } from "react";
 
 import { Link, NavLink } from "react-router-dom";
 
@@ -121,6 +121,7 @@ const Navbar = () => {
           </Link>
           {/* )} */}
         </ul>
+        </div>
 
 
       <div className="login-btn-container">

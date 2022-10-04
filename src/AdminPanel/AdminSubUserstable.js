@@ -32,6 +32,29 @@ const AdminUserTable = () => {
     setUserDetails(ele);
   };
 
+  const deleteEnduser = (id) => {
+    axios.delete(`${BaseUrl}/adminDashboard/delete-enduser?id=${id}`, {headers:{
+      Authorization:localStorage.getItem('token')
+    }})
+    .then((res)=>{
+      console.log(res.data)
+      endusers();
+    })
+    .catch((err)=>{console.log(err)})
+  }
+
+  const deleteProperyOwner = (id) => {
+    axios.delete(`${BaseUrl}/adminDashboard/delete-propertyOwner?id=${id}`, {headers:{
+      Authorization:localStorage.getItem('token')
+    }})
+    .then((res)=>{
+      console.log(res.data)
+      propertyOwners();
+    })
+    .catch((err)=>{console.log(err)})
+  }
+  
+
   const getSingleUserDetail = () => {
     axios
       .get(
@@ -213,7 +236,7 @@ const AdminUserTable = () => {
                           {/* */}
                           view
                         </button>
-                        <button className="brant-btn-red ms-3">Delete</button>
+                        <button className="brant-btn-red ms-3" onClick={()=>deleteEnduser(ele.id)}>Delete</button>
                       </td>
                       {/* <td className="table-td">{ele.profile}</td> */}
                     </tr>
@@ -266,7 +289,7 @@ const AdminUserTable = () => {
                               {/* */}
                               view
                             </button>
-                            <button className="brant-btn-red ms-3">Delete</button>
+                            <button className="brant-btn-red ms-3" onClick={()=>deleteProperyOwner(ele.id)}>Delete</button>
                           </td>
                         </td>
                       </tr>
