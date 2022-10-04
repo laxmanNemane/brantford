@@ -114,6 +114,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                   categaryId: element.categaryId,
                 }}
                 validate={(values) => {
+                  
                   let errors = {};
 
                   return errors;
@@ -377,6 +378,72 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                   if (!values.working_days) {
                     errors.working_days = "requires!";
                   }
+                  if (!values.space) {
+                    errors.space = "required!";
+                  }else if(!/^[A-Za-z ]*$/i.test(
+                    values.space
+                    )){
+                      errors.space = "Enter a valid value";
+                    }
+
+                  if (!values.manager_email) {
+                    errors.manager_email = "required!";
+                  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
+                      values.manager_email
+                    )
+                  ){
+                    errors.manager_email = "Enter a valid email";
+                  }
+                  if (!values.seating_capacity) {
+                    errors.seating_capacity = "required!";
+                  }else if(values.seating_capacity<0){
+                    errors.seating_capacity = "Enter a Positive value";
+                  }
+                  if (!values.cabin_capacity) {
+                    errors.cabin_capacity = "required!";
+                  }
+                  if (!values.total_desks) {
+                    errors.total_desks = "required!";
+                  }
+                  if (!values.city) {
+                    errors.city = "required!";
+                  }
+                  if (!values.manager_name) {
+                    errors.manager_name = "required!";
+                  }else if(!/^[A-Za-z ]*$/i.test(
+                    values.manager_name
+                    )){
+                      errors.manager_name = "Enter a valid value";
+                    }
+
+                  if (!values.manager_contactNumber) {
+                    errors.manager_contactNumber = "required!";
+                  }else if (values.manager_contactNumber.length < 9) {
+                    errors.manager_contactNumber = "Please Enter valid mobile number";
+                  }
+                  
+                  else if (!/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/i.test(
+                    values.manager_contactNumber
+                    )
+                    ) {
+                    errors.manager_contactNumber = "Enter valid number";
+                  }
+
+                  if (!values.price) {
+                    errors.price = "required!";
+                  }
+                  if (!values.property_status) {
+                    errors.property_status = "required!";
+                  }
+                  if (!values.working_days) {
+                    errors.working_days = "required!";
+                  }
+                  if (!values.address) {
+                    errors.address = "required!";
+                  }
+                  if (!values.description) {
+                    errors.description = "required!";
+                  }
 
                   return errors;
                 }}
@@ -396,6 +463,11 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="space"
                             className="form-control  mb-3   "
                           />
+                          <span className="text-danger">
+                            <ErrorMessage name="space" />
+                          </span>
+                          <br/>
+
                           <label htmlFor="manager_email" className="label-user">
                             Manager Email:{" "}
                           </label>
@@ -405,6 +477,11 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="manager_email"
                             className="form-control  mb-3 m "
                           />
+                          <span className="text-danger">
+                            <ErrorMessage name="manager_email" />
+                          </span>
+                          <br/>
+
                           <label
                             htmlFor="Seating capacity "
                             className="label-user"
@@ -418,6 +495,11 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="seating_capacity"
                             className="form-control  mb-3  m"
                           />
+                          <span className="text-danger">
+                            <ErrorMessage name="seating_capacity" />
+                          </span>
+                          <br/>
+
                           <label htmlFor="Cabins" className="label-user">
                             Cabin:{" "}
                           </label>
@@ -428,6 +510,11 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="cabin_capacity"
                             className="form-control  mb-3  m"
                           />
+                           <span className="text-danger">
+                            <ErrorMessage name="cabin_capacity" />
+                          </span>
+                          <br/>
+
                           <label htmlFor="desk" className="label-user">
                             Total Desk:{" "}
                           </label>
@@ -438,7 +525,10 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="total_desks"
                             className="form-control  mb-3  m"
                           />
-                         
+                         <span className="text-danger">
+                            <ErrorMessage name="total_desks" />
+                          </span>
+                          <br/>
                          
                           <label htmlFor="city" className="label-user">
                             City:{" "}
@@ -453,7 +543,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="city"
                             className="form-control  mb-3  m"
                           >
-                          <option value="select city">
+                          <option value="">
                                 Select City Name
                               </option>
                               <option value="pune">
@@ -465,7 +555,10 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                               <option value="surat">Surat</option>
                               <option value="hydrabad">Hydrabad</option>
                             </Field>
-
+                            <span className="text-danger">
+                            <ErrorMessage name="city" />
+                          </span>
+                          <br/>
 
 
                         </div>
@@ -491,6 +584,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             <ErrorMessage name="categaryId" />
                           </span>
                           <br />
+
                           <label htmlFor="manager_name" className="label-user">
                             manager name:{" "}
                           </label>
@@ -500,6 +594,11 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="manager_name"
                             className="form-control  mb-3  m"
                           />
+                          <span className="text-danger">
+                            <ErrorMessage name="manager_name" />
+                          </span>
+                          <br/>
+
                           <label
                             htmlFor="manager_contactNumber"
                             className="label-user"
@@ -512,6 +611,11 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="manager_contactNumber"
                             className="form-control  mb-3  m"
                           />
+                          <span className="text-danger">
+                            <ErrorMessage name="manager_contactNumber" />
+                          </span>
+                          <br/>
+
                           <label htmlFor="price" className="label-user">
                             Price :
                           </label>
@@ -520,6 +624,11 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             id="workspace"
                             name="price"
                           ></Field>
+                           <span className="text-danger">
+                            <ErrorMessage name="price" />
+                          </span>
+                          <br/>
+
                           <label htmlFor="price" className="label-user  mt-2">
                             property status :
                           </label>
@@ -573,7 +682,11 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="address"
                             className="form-control  mb-3  m"
                           />
+                           <span className="text-danger">
+                            <ErrorMessage name="working_days" />
+                          </span>
                         </div>
+
 
                         <div className="col-12">
                           <label htmlFor="description" className="label-user">
@@ -587,6 +700,10 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="description"
                             className="form-control mt-3 mb-3  m"
                           />
+                          <span className="text-danger">
+                            <ErrorMessage name="description" />
+                          </span>
+                          <br/>
                         </div>
                       </div>
 

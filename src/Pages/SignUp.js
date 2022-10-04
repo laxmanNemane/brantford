@@ -32,14 +32,13 @@ function SignUp() {
       .then((res) => {
         // if (res.status === "200") {
         console.log(res.data);
-        alert("Registerd Successfully");
+        alert("Registered Successfully");
         // }
       })
       .catch((err) => console.log(err));
     resetForm();
   };
-  
- 
+
 
   return (
     <div>
@@ -84,12 +83,40 @@ function SignUp() {
                     }
                     if (!values.name) {
                       errors.name = "required*";
-                    }
+                    }else if(!/^[A-Za-z ]*$/i.test(
+                      values.name
+                      )){
+                        errors.name = "Enter a valid name";
+                      }
+
                     if (!values.contact) {
                       errors.contact = "required*";
+                    }else if (values.contact.length < 9) {
+                      errors.contact = "Please Enter valid mobile number";
                     }
+                    
+                    else if (!/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/i.test(
+                      values.contact
+                      )
+                      ) {
+                      errors.contact = "Enter valid number";
+                    }
+                    
+                    const passwordRegex = /(?=.*[0-9])/;
                     if (!values.password) {
                       errors.password = "required*";
+                    }else if (values.password.length < 8) {
+                      errors.password = "Password must be 8 characters long.";
+                    } else if (!passwordRegex.test(values.password)) {
+                      errors.password = "Invalid password. Must contain one number.";
+                    }
+
+
+                    if (!values.profile) {
+                      errors.profile = "required*";
+                    }
+                    if (!values.address) {
+                      errors.address = "required*";
                     }
                     return errors;
                   }}
@@ -103,7 +130,7 @@ function SignUp() {
                       <Field
                         type="name"
                         name="name"
-                        placeholder="name"
+                        placeholder="Name"
                         className="form-control w-75 mx-auto my-3"
                       />
                       <p className="ms-5 ps-2 text-danger">
@@ -112,7 +139,7 @@ function SignUp() {
                       <Field
                         type="name"
                         name="contact"
-                        placeholder="contact"
+                        placeholder="Contact"
                         className="form-control w-75 mx-auto my-3"
                       />
                       <p className="ms-5 ps-2 text-danger">
@@ -140,12 +167,12 @@ function SignUp() {
 
                       <Field
                         as="select"
-                        className=" form-control w-75 mx-auto mb-3 "
+                        className="login-profile-dropdown form-control w-75 mx-auto mb-3"
                         component="select"
                         id="workspace"
                         name="profile"
                       >
-                        <option value="select profile " className="py-3">
+                        <option value="" className="py-3">
                           select profile
                         </option>
 
@@ -157,13 +184,20 @@ function SignUp() {
                           end-user
                         </option>
                       </Field>
+                      <p className="ms-5 ps-2 text-danger">
+                        <ErrorMessage name="profile" />
+                      </p>
 
                       <Field
                         type="text"
                         name="address"
-                        placeholder="address"
+                        placeholder="Address"
                         className="form-control w-75 mx-auto my-3"
                       />
+                      <p className="ms-5 ps-2 text-danger">
+                        <ErrorMessage name="address" />
+                      </p>
+
                       <div className="d-flex mx-auto justify-content-between w-75">
                         {/* <label className="  mb-2">
                           <Field type="checkbox" name="remember me" />

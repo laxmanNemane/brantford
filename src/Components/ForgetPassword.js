@@ -2,6 +2,7 @@ import { Modal } from "antd";
 import axios from "axios";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
+import swal from "sweetalert";
 // import "../Styles/forgetmodal.css";
 import ficon from "../Assets/Icons/forgetIcon.svg";
 
@@ -21,9 +22,13 @@ const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
         //   .catch((err) => {console.log(err)})
 
         // }
+        setIsModalVisible(false)
+        swal("Check Your mail", "Link has been sended to your mail","success")
       })
       .catch((err) => {
         console.log(err);
+        setIsModalVisible(false)
+        swal("Email not registered", "Enter valid mail","warning")
       });
     console.log(values);
   };
@@ -47,13 +52,13 @@ const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
         <div className="text-center mt-4">
           <h4 className="fw-bold">Forgot your Password?</h4>
           <p className="forget_password_description">
-            Enter your registerd email below to recive <br />
+            Enter your registered email below to recieve <br />
             password reset instruction
           </p>
           <img src={ficon} alt="" width={230} className="py-3" />
         </div>
         <Formik
-          initialValues={{ email: "" }}
+          initialValues={{ email: ""}}
           validate={(values) => {
             let errors = {};
             if (!values.email) {
@@ -79,14 +84,7 @@ const ForgetPassword = ({ isModalVisible, setIsModalVisible }) => {
               <p className="ps-2 ms-5  text-danger">
                 <ErrorMessage name="email" />
               </p>
-              <label className="ms-5 ps-3 mb-2">
-                <Field
-                  type="checkbox"
-                  name="remember me"
-                  style={{ border: "1px solid black" }}
-                />
-                &nbsp; Remember me
-              </label>
+             
 
               <button
                 type="submit"

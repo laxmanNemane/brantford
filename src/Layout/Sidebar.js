@@ -37,28 +37,28 @@ const Sidebar = () => {
             </NavLink>
           ),
         },
-        // {
-        //   key: "2",
-        //   label: (
-        //     <NavLink to="/" className="fs-5">
-        //       <AiOutlineSetting className="mx-2" />
-        //       Setting
-        //     </NavLink>
-        //   ),
-        // },
+        {
+          key: "2",
+          label: (
+            <NavLink to="/" className="fs-5">
+              <AiOutlineSetting className="mx-2" />
+              Setting
+            </NavLink>
+          ),
+        },
 
         {
           type: "divider",
         },
-        // {
-        //   key: "3",
-        //   label: (
-        //     <NavLink to="/" className="fs-5">
-        //       <AiFillQuestionCircle className="mx-2" />
-        //       Help
-        //     </NavLink>
-        //   ),
-        // },
+        {
+          key: "3",
+          label: (
+            <NavLink to="/" className="fs-5">
+              <AiFillQuestionCircle className="mx-2" />
+              Help
+            </NavLink>
+          ),
+        },
       ]}
     />
   );

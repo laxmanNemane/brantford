@@ -7,6 +7,7 @@ import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
 import axios from "axios";
 
+
 const BaseUrl = "http://bantford.prometteur.in";
 
 const Appointments = () => {
