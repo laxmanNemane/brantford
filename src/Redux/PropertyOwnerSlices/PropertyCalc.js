@@ -46,7 +46,7 @@ const PropertyCals = () => {
                     <h3 className="">Calculator</h3>
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
-                        <a href="#">Home</a>
+                        <a>Home</a>
                       </li>
                       <li className="breadcrumb-item active">Calculator</li>
                     </ol>
@@ -97,14 +97,23 @@ const PropertyCals = () => {
 
                             if (!values.area) {
                               errors.area = "required*";
+                            }else if(values.area){
+                              errors.area = "enter a positive value"
                             }
 
                             if (!values.cabin) {
                               errors.cabin = "required*";
+                            }else if(values.cabin<0){
+                              errors.cabin = "Enter a Positive value"
                             }
 
                             if (!values.age) {
                               errors.age = "required*";
+                            }else if(values.age <0){
+                              errors.age = "Enter a positive value"
+                            }
+                            else if(!(((values.age).toString().length) === 4)){
+                              errors.age = "Enter a valid year"
                             }
 
                             // if (!values.company) {
@@ -113,6 +122,8 @@ const PropertyCals = () => {
 
                             if (!values.seating) {
                               errors.seating = "required*";
+                            } else if(values.seating<0){
+                              errors.seating = "Enter a positive value"
                             }
 
                             return errors;

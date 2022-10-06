@@ -126,7 +126,7 @@ const PropertySection = ({ slide, setSlide }) => {
               <div className="container property-section">
                 <div className="heading-property">
                   <p className="sub-main-heading pr-heading-main">
-                    Handpicked Properties for you
+                    Handpicked properties for you
                   </p>
                   <p className="sub-heading pr-heading-sub ">
                     Featured commercial & co-working properties across India
@@ -179,7 +179,7 @@ const PropertySection = ({ slide, setSlide }) => {
                                 className="btn-first"
                                 onClick={() => setCategary(ele.id, ele)}
                               >
-                                Detail
+                                Details
                               </button>
                               {/* </NavLink> */}
                             </div>

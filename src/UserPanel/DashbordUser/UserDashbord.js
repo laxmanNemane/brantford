@@ -315,7 +315,7 @@ const UserDashbord = () => {
                       >
                         <div className="icons-sections-this">
                           <div className="chart-daily mx-3">
-                            <p className="paragraph fw-bold">Revenu status</p>
+                            <p className="paragraph fw-bold">Revenue status</p>
                             <p></p>
                             <ReactEcharts option={{ ...option1 }} />
                           </div>

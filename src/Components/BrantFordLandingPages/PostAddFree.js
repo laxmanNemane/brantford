@@ -33,7 +33,7 @@ const PostAddFree = () => {
                   className="btn-second"
                   onClick={() => toast.warning("Login with Brantford ")}
                 >
-                  Post Your Property for FREE
+                  Post Your property for free
                 </button>
               </Link>
             </div>

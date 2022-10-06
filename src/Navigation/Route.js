@@ -89,6 +89,7 @@ const Routing = () => {
         <Route path="/salingproperties" element={<ForSale />} />
         <Route path="/searchproperties" element={<SerchProperty />} />
         <Route path="/copareproperty" element={<ComparisonProperty />} />
+        <Route path="/enduserprofile" element={<EndUserProfilePage />} />
 
         {/* =================property owner=================== */}
         <Route element={<PrivateRouteForuser />}>

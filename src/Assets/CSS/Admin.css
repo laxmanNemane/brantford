@@ -924,9 +924,9 @@ table tr td {
 .appointment-input{padding: 10px 5px; border-radius: 5px; border: none; border: 1px solid #567AED;}
 
 .login-profile-dropdown ::after{color: red; background-color: red; content: '^'; position: absolute; top: 0; bottom: 3;}
-
-
-
+.enduser-profile-heading{padding: 20px; background-color: #64C5B1; color: #ffff; font-size:30px; margin-bottom: 20px;}
+.enduser-profile-heading .Analytic_heading{ color: #ffff; font-size:30px;}
+.enduser-profile-heading .overview-user-profile_page{ color: #ffff; font-size:20px;}
 
 
 

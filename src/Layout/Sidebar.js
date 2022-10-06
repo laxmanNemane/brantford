@@ -20,7 +20,7 @@ import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
 import { MdNotes } from "react-icons/md";
-
+import logo from "../Assets/Icons/logo.png";
 
 const Sidebar = () => {
   // this is dropdown option
@@ -68,9 +68,12 @@ const Sidebar = () => {
     style={{overflowY:"scroll"}}
     >
       {/* <div className="sidebar_main shadow "> */}
+      <NavLink to="/">
       <h5 className="Logo_admin fw-bold text-center">
-        <AiOutlineHome />
+        <img src={logo}/>
       </h5>
+      </NavLink>
+
       <div className="Sidebar_otption_section">
         <ul className="list-unstyled">
           <li

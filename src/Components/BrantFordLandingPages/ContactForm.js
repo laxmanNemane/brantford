@@ -16,7 +16,7 @@ function ContactForm() {
         <div className=" container">
           <h3
             className="text-light position-absolute fw-bold"
-            style={{ bottom: "0px" }}
+            style={{ bottom: "0px", fontSize:"35px" }}
           >
             Contact
           </h3>
@@ -28,8 +28,7 @@ function ContactForm() {
             <div className="container w-75 pt-3 card contact_card shadow mt-4 w-100">
               <div className="">
                 <h5>
-                  Fill in your details and we’ll get back to you as soon as
-                  possible
+                  Fill in your details and we’ll get back to you as soon as possible
                 </h5>
                 <Formik
                   enableReinitialize

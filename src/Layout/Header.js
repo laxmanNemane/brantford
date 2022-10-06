@@ -170,8 +170,8 @@ const Header = () => {
   const popovermessages = (
     <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}  style={{ top: 20, left:10 }}>
       <div className="message-box">
-        div
-        <p></p>
+        
+        <p>This is a message model</p>
         <p></p>
         <p></p>
       </div>
@@ -294,7 +294,7 @@ const Header = () => {
                   </Popover>
                 </li>
 
-                <li
+                <li 
                   onClick={() => setOpen(!open)}
                   aria-controls="example-collapse-text"
                   // aria-expanded={open}

@@ -4,6 +4,8 @@ import HocComponent from "../Components/HocComponent";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { Field, Form, Formik } from "formik";
 import axios from "axios";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -11,6 +13,7 @@ const EndUserProfilePage = () => {
   const [profileDetail, setProfileDetail] = useState([]);
   const [initialValues, setIntialvalue] = useState();
   console.log("values", initialValues);
+  const navigate = useNavigate();
 
   const handleSubmit = (values) => {
     // console.log(values);
@@ -23,10 +26,12 @@ const EndUserProfilePage = () => {
       })
       .then((res) => {
         console.log(res);
+       
         setProfileDetail(res.data);
       })
       .catch((err) => console.log(err));
   };
+
   const getadminProfile = () => {
     axios
       .get(`${BaseUrl}/admin/admin-profile`, {
@@ -38,6 +43,7 @@ const EndUserProfilePage = () => {
         console.log(res.data);
         console.log(res.data);
         // console.log(res.data.)
+       
         setProfileDetail(res.data);
         setIntialvalue(res.data);
       })
@@ -45,6 +51,21 @@ const EndUserProfilePage = () => {
         console.log(err);
       });
   };
+
+
+  const logoutHandler = () => {
+      axios.post(`${BaseUrl}/admin/admin-logout`, {headers: {
+        Authorization: localStorage.getItem("token")
+      }})
+      .then((res)=> {
+        
+        console.log(res.data)
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        navigate("/")
+      })
+      .catch((err)=>{console.log(err)})
+  }
 
   useEffect(() => {
     getadminProfile();
@@ -75,17 +96,20 @@ const EndUserProfilePage = () => {
 
   return (
     <div
-      className=""
+      className="mb-5"
       style={{
         background: "rgb(244, 240, 242)",
         padding: "0",
-        height: "100vh",
+        height: "100%",
       }}
     >
+      <div className="enduser-profile-heading">
       <div className="heading-page-profile">
         <p className="overview-user-profile_page">Overview</p>
         <h5 className="Analytic_heading">Your Profile</h5>
       </div>
+      </div>
+
       <div className="row mx-3  ">
         <div className="col-4 gx-5 ">
           <div className="card user-detail-overview px-3">
@@ -99,11 +123,7 @@ const EndUserProfilePage = () => {
               </div>
               <p className="user-name">{profileDetail.name}</p>
               <p className="user-position">{profileDetail.profile}</p>
-              <button className="btn follow-btn">
-                {" "}
-                <AiOutlineUserAdd className="mx-2 follow-user-icon" />
-                Follow
-              </button>
+              
             </div>
             <hr />
             <div className="user-workflow">
@@ -137,8 +157,8 @@ const EndUserProfilePage = () => {
                     lastName: `${profileDetail.name}`,
                     email: `${setinitialValues.email}`,
                     contact: `${profileDetail.contact}`,
-                    password: `${profileDetail.password}`,
-                    profile: `${profileDetail.profile}`,
+                   
+                    
                     description: `${profileDetail.description}`,
                     address: `${profileDetail.address}`,
                     state: `${setinitialValues.state}`,
@@ -154,8 +174,11 @@ const EndUserProfilePage = () => {
                     ) {
                       errors.email = "Invalid email address";
                     }
-                    if (!values.password) {
-                      errors.password = "required*";
+                   
+                    if (!values.contact) {
+                      errors.contact = "required*";
+                    }else if(values.contact<0){
+                      errors.contact = "Enter a positive value"
                     }
                     return errors;
                   }}
@@ -192,32 +215,13 @@ const EndUserProfilePage = () => {
                               Contact{" "}
                             </label>
                             <Field
-                              type="number"
+                              type="text"
                               name="contact"
                               placeholder="contact"
                               className="form-control"
                             />
                           </div>
-                          <div className="col-6">
-                            <label htmlFor="First Name" className="label-user">
-                              Your Profile
-                            </label>
-                            <Field
-                              type="text"
-                              name="profile"
-                              placeholder="profile"
-                              className="form-control"
-                            />
-                            <label htmlFor="Password " className="label-user">
-                              Password{" "}
-                            </label>
-                            <Field
-                              type="password"
-                              name="password"
-                              placeholder="password"
-                              className="form-control "
-                            />
-                          </div>
+                          
                           <div className="col-12">
                             <label htmlFor="Address " className="label-user">
                               Address{" "}
@@ -243,13 +247,14 @@ const EndUserProfilePage = () => {
                             />
                           </div>
                         </div>
-                        <div>
+                        <div className="d-flex align-items-center justify-content-between">
                           <button
                             className="btn update-account-btn mt-5"
                             type="submit"
                           >
                             Update Account
                           </button>
+                          <button onClick={logoutHandler} className="btn-second">Logout</button>
                         </div>
                       </div>
                     </Form>

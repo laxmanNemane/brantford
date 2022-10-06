@@ -8,7 +8,7 @@ const CallToActionSection = () => {
     <div className="call-to-section service-section py-4">
       <div className="container py-5">
         <div className="text-center">
-          <h2 className="main-heading">Why use Brantford offices?</h2>
+          <h2 className="main-heading">Why use brantford offices</h2>
           <p className="description-why-page">
             We ensure the best experience for your office space.
           </p>

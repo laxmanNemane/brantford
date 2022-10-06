@@ -399,12 +399,19 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                   }else if(values.seating_capacity<0){
                     errors.seating_capacity = "Enter a Positive value";
                   }
+
                   if (!values.cabin_capacity) {
                     errors.cabin_capacity = "required!";
+                  }else if(values.cabin_capacity<0){
+                    errors.cabin_capacity = "Enter a Positive value";
                   }
+
                   if (!values.total_desks) {
                     errors.total_desks = "required!";
+                  }else if(values.total_desks<0){
+                    errors.total_desks = "Enter a Positive value";
                   }
+
                   if (!values.city) {
                     errors.city = "required!";
                   }
@@ -431,7 +438,10 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
 
                   if (!values.price) {
                     errors.price = "required!";
+                  }else if(values.price<0){
+                    errors.price = "Enter a Positive value";
                   }
+
                   if (!values.property_status) {
                     errors.property_status = "required!";
                   }
@@ -490,7 +500,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           </label>
 
                           <Field
-                            type="number"
+                            type="text"
                             name="seating_capacity"
                             placeholder="seating_capacity"
                             className="form-control  mb-3  m"
@@ -505,7 +515,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           </label>
 
                           <Field
-                            type="number"
+                            type="text"
                             name="cabin_capacity"
                             placeholder="cabin_capacity"
                             className="form-control  mb-3  m"
@@ -520,7 +530,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           </label>
 
                           <Field
-                            type="Number"
+                            type="text"
                             name="total_desks"
                             placeholder="total_desks"
                             className="form-control  mb-3  m"
