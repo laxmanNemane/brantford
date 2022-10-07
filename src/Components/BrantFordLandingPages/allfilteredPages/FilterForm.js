@@ -71,7 +71,7 @@ const FilterForm = ({ propertyType, setpPropetrtyType, price, setPrice }) => {
                             <li key={index} className="appliedtag my-2">
                               {val.categary}{" "}
                               <i
-                                class="fa-sharp fa-solid fa-xmark"
+                                className="fa-sharp fa-solid fa-xmark"
                                 onClick={() => onDeleteAppliedFilter(val.id)}
                               ></i>
                             </li>
@@ -81,11 +81,11 @@ const FilterForm = ({ propertyType, setpPropetrtyType, price, setPrice }) => {
                   </div>
                   {/* <div className="col-6 my-2">
 
-                    <li >applied tag <span className="ms-5"><i class="fa-sharp fa-solid fa-xmark"></i></span></li>
+                    <li >applied tag <span className="ms-5"><i className="fa-sharp fa-solid fa-xmark"></i></span></li>
                   </div>
                   <div className="col-6 my-2">
 
-                    <li className="appliedtag ">applied tag <span className="ms-5"><i class="fa-sharp fa-solid fa-xmark"></i></span></li>
+                    <li className="appliedtag ">applied tag <span className="ms-5"><i className="fa-sharp fa-solid fa-xmark"></i></span></li>
                   </div>*/}
                 </div>
               </ul>

@@ -66,8 +66,9 @@ const OfficesDetailPage = () => {
       });
   };
 
-  const addvisitor = (countVisitor) => {
-    const visitorcnt = {"spaceId":countVisitor}
+  const addvisitor = () => {
+    console.log(endUserSpace.id);
+    const visitorcnt = {"spaceId":endUserSpace.id}
       axios.post(`${BaseUrl}/endUser/insert-visitor`, visitorcnt, {headers:{
         Authorization:localStorage.getItem("token")
       }})
@@ -124,10 +125,10 @@ const OfficesDetailPage = () => {
     setshowStatus(true);
     setSpaceId(id);
   };
-  // addvisitor();
+  
   useEffect(() => {
     showdetails();
-   
+    addvisitor();
     window.scrollTo(0, 0);
   }, [endUserSpace]);
 
@@ -172,6 +173,8 @@ const OfficesDetailPage = () => {
       });
   };
 
+
+
   useEffect(() => {
     AllSpacesProperties();
   }, []);
@@ -211,7 +214,7 @@ const OfficesDetailPage = () => {
             </div>
             <div className="w-75 ">
               <p className="actual-price fs-3 fw-bold">
-                ₹<span className="price1">{endUserSpace.price}</span>
+                ₹<span className="price1">{endUserSpace.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')  } </span>
                 /Seat/Month
               </p>
               <button
@@ -294,7 +297,7 @@ const OfficesDetailPage = () => {
                           Price :
                         </p>
                         <p className="property-details-value">
-                          {endUserSpace.price}
+                          {endUserSpace.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                         </p>
                       </div>
                     </div>
@@ -315,7 +318,7 @@ const OfficesDetailPage = () => {
               </div>
 
               <div className="additional-detail-property-owner mt-5 ">
-                <h5 className="office-sub-heading">Additional Detail</h5>
+                <h5 className="office-sub-heading">Additional Details</h5>
               </div>
               <hr />
               <div className="additional-property-owner-detail">
@@ -443,7 +446,7 @@ const OfficesDetailPage = () => {
                                   <p className="name me-3">
                                     $
                                     <span className="price1">
-                                      {element.price}
+                                      {element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                     </span>
                                     month/seats
                                   </p>
@@ -552,13 +555,30 @@ const OfficesDetailPage = () => {
                           }
                           if (!values.name) {
                             errors.name = "required*";
-                          }
+                          }else if(!/^[A-Za-z ]*$/i.test(
+                            values.name
+                            )){
+                              errors.name = "Enter a valid name";
+                            }
+
                           if (!values.contact_number) {
                             errors.contact_number = "required*";
-                          }
+                          }else if (values.contact_number.length < 9) {
+                      errors.contact_number = "Please Enter valid mobile number";
+                    }
+                    
+                    else if (!/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/i.test(
+                      values.contact_number
+                      )
+                      ) {
+                      errors.contact_number = "Enter valid number";
+                    }
+                    
 
                           if (!values.number_of_persons) {
                             errors.number_of_persons = "required*";
+                          }else if(values.number_of_persons < 0){
+                              errors.number_of_persons = "Enter a Positive value";
                           }
 
                           // if (!values.company) {
@@ -567,13 +587,24 @@ const OfficesDetailPage = () => {
 
                           if (!values.city_of_workspace) {
                             errors.city_of_workspace = "required*";
-                          }
+                          }else if(!/^[A-Za-z ]*$/i.test(
+                            values.city_of_workspace
+                            )){
+                              errors.city_of_workspace = "Enter a valid City name";
+                            }
+
                           if (!values.company) {
                             errors.company = "required*";
                           }
 
                           if (!values.start_date) {
                             errors.start_date = "required*";
+                          }else if (values.start_date > new Date().getDate()){
+                              errors.start_date = "Enter a valid date.";
+                          }
+
+                          if (!values.categary_of_workspace) {
+                            errors.categary_of_workspace = "required*";
                           }
 
                           if (!values.message) {
@@ -605,7 +636,7 @@ const OfficesDetailPage = () => {
                               className="form-control  mx-auto my-3"
                             />
                             <p className="ms-5 ps-2 text-danger">
-                              <ErrorMessage name="contact" />
+                              <ErrorMessage name="contact_number" />
                             </p>
 
                             <Field
@@ -665,6 +696,9 @@ const OfficesDetailPage = () => {
                               id="workspace"
                               name="categary_of_workspace"
                              >
+                              <option value="">
+                                Select Space Category
+                              </option>
                               <option value="working spaces">
                                 Co working spaces
                               </option>
@@ -675,9 +709,13 @@ const OfficesDetailPage = () => {
                               <option value="free spaces">Free space</option>
                               <option value="others">Other</option>
                             </Field>
+                            <p className="ms-5 ps-2 text-danger">
+                              <ErrorMessage name="categary_of_workspace" />
+                            </p>
 
                             <Field
                               type="date"
+                              min = "2022/02/02"
                               name="start_date"
                               placeholder="start_date"
                               className="form-control  mx-auto my-3"

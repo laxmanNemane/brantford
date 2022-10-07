@@ -86,7 +86,7 @@ const Spaces = () => {
                   <h1 className="heading-second mb-1"> Spaces</h1>
                   
                 </div>
-                <div><button className="btn-first" onClick={OnAddSpacess}>add space</button></div>
+                <div><button className="btn-first" onClick={OnAddSpacess}>Add Space</button></div>
               </div>
             </div>
 

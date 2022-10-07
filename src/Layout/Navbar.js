@@ -81,13 +81,13 @@ let user;
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="list-unstyled d-flex">
           <li className="d-none d-lg-block nav-item pt-2">
-            <i class="fa-brands fa-instagram"></i>
+            <i className="fa-brands fa-instagram"></i>
           </li>
           <li className="d-none d-lg-block nav-item pt-2">
-            <i class="fa-brands fa-linkedin"></i>
+            <i className="fa-brands fa-linkedin"></i>
           </li>
           <li className="d-none d-lg-block nav-item pt-2">
-            <i class="fa-brands fa-google-plus-g"></i>
+            <i className="fa-brands fa-google-plus-g"></i>
           </li>
         </ul>
       </div>

@@ -305,7 +305,7 @@ const UpdateProperty = () => {
                                     type="submit "
                                     className="btn-unique w-25"
                                   >
-                                    Add <i class="fa-solid fa-plus"></i>
+                                    Add <i className="fa-solid fa-plus"></i>
                                   </button>
                                 </div>
                               </div>

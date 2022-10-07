@@ -144,7 +144,7 @@ const Properties = () => {
                   <li className="breadcrumb-item">
                     <NavLink to="/dashboard">Home</NavLink>
                   </li>
-                  <li className="breadcrumb-item active">Quick Staks</li>
+                  <li className="breadcrumb-item active">Quick/stacks</li>
                 </ol>
               </div>
             </div>
@@ -184,7 +184,7 @@ const Properties = () => {
                   </div>
                   <div className="ms-2 " style={{ lineHeight: "0.7" }}>
                     <p className=" properties-sectionCard_headeing" style={{}}>
-                      Total Booking
+                      Total Bookings
                     </p>
                     <p className="People_tenant ">
                       {Object.keys(bookedProperties).length}
@@ -244,7 +244,7 @@ const Properties = () => {
             >
               <Tab
                 eventKey="Booking"
-                title="Booking"
+                title="Bookings"
                 tabClassName="profile-tabitem"
               >
                 <PropertyBookings />

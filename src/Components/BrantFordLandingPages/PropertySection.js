@@ -151,7 +151,7 @@ const PropertySection = ({ slide, setSlide }) => {
                           </div>
                           <div className="price-section d-flex justify-content-between mx-4">
                             <div className="w-75 ">
-                              <p className="price">{ele.price}/sqr</p>
+                              <p className="price">{ele.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}/sqr</p>
                             </div>
                             <div className="d-flex justify-content-between w-25 gx-2 icon-group">
                               <p onClick={() => modalToDetailPage(ele)}>
@@ -194,7 +194,7 @@ const PropertySection = ({ slide, setSlide }) => {
                   <p className="btn-view-all position-relative">
                     View All{" "}
                     <span className="tr-icon position-relative">
-                      <i class="fa-solid fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </span>
                   </p>
                 </Link>

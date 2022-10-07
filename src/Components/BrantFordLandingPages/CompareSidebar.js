@@ -58,7 +58,7 @@ function CompareSidebar({ show, setShow }) {
                                 }}
                                 onClick={() => onDeleteSelectedProperty(ele.id)}
                               >
-                                <i class="fa-sharp fa-solid fa-xmark"></i>
+                                <i className="fa-sharp fa-solid fa-xmark"></i>
                               </p>
                             </div>
                           </li>

@@ -56,6 +56,8 @@ import Map, {
 } from 'react-map-gl';
 import Barchart from "../AdminPanel/Charts/Barchart";
 
+
+
 mapboxgl.accessToken ="pk.eyJ1IjoibmlraGlsYm9yZ2UiLCJhIjoiY2w4Y296eXBwMDR6ajN1bXltb2cxOXoyeCJ9.DgZ7KWKaUNJDltG3weSwEw";
 
 

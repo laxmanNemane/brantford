@@ -226,7 +226,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                         </div>
                         <div className="col-6">
                           <label htmlFor="manager_name" className="label-user">
-                            category{" "}
+                            Category{" "}
                           </label>
                           <Field
                             as="select"
@@ -242,7 +242,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             ))}
                           </Field>
                           <label htmlFor="manager_name" className="label-user">
-                            manager name:{" "}
+                            Manager Name:{" "}
                           </label>
                           <Field
                             type="text"

@@ -115,7 +115,7 @@ const Sidebar = () => {
             <NavLink to="/properties" className="text-dark">
               <div className="  align-items-center justify-content-center">
                 <BsBuilding className="Sidebar_icons" />
-                <span> properties </span>
+                <span> Properties </span>
               </div>
             </NavLink>
           </li>

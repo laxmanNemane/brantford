@@ -218,7 +218,7 @@ const FilterdPage = () => {
                                 For Rent
                               </p>
                               <p className="name me-3">
-                                $<span className="price1">{element.price}</span>
+                                $<span className="price1">{element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
                                 month/seats
                               </p>
                             </div>
@@ -304,7 +304,7 @@ const FilterdPage = () => {
                                 For Rent
                               </p>
                               <p className="name me-3">
-                                $<span className="price1">{element.price}</span>
+                                $<span className="price1">{element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
                                 month/seats
                               </p>
                             </div>

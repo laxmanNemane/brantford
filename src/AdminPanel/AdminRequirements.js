@@ -47,7 +47,7 @@ function AdminRequirements() {
               <div className="brant-card">
                 <div className="card-body">
                   <div className="col-12 my-2 p-4">
-                    <h5 className="Analytic_heading">All requirements</h5>
+                    <h5 className="Analytic_heading">All Requirements</h5>
                   </div>
                   <div
                     className="table req-table table-responsive me-auto ms-2"
@@ -75,8 +75,8 @@ function AdminRequirements() {
                           <th>Name</th>
                           <th>Email</th>
                           <th>Contact</th>
-                          <th>Category of workSpace</th>
-                          <th>City of workSpace</th>
+                          <th>Category of Workspace</th>
+                          <th>City of Workspace</th>
                           <th>No of Person</th>
                           <th>Message</th>
                         </tr>
