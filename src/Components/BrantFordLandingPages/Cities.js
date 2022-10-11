@@ -76,7 +76,7 @@ const Cities = () => {
                       style={{ lineHeight: "0.5", marginTop: "20px" }}
                       onClick={() => getCitiwiseData(city[item])}
                     >
-                      <p className="name">{city[item]}</p>
+                      <p className="name" style={{lineHeight:"20px"}}>{city[item]}</p>
                       {/* <p className="profile">{city[item]} properties</p> */}
                     </div>
                   </div>

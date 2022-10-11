@@ -43,6 +43,7 @@ import { fetchTotalBooking } from "../../Redux/PropertyOwnerSlices/totalBookings
 import { Marker, Map } from "react-map-gl";
 import profilePik from '../../Assets/Icons/logo.png'
 import { GeolocateControl } from "react-map-gl";
+import Example from "../../Pages/Example";
 
 
 
@@ -195,7 +196,6 @@ const UserDashbord = () => {
           latitude: 40,
           zoom: 3.5,
         }}
-        mapStyle="mapbox://styles/mapbox/streets-v11"
       >
         <GeolocateControl
           positionOptions={{ enableHighAccuracy: true }}
@@ -203,6 +203,7 @@ const UserDashbord = () => {
         />
       </Map>
     </div>
+    
 </div>
 
           <div className="col-lg-12">

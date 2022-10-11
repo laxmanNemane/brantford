@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const PostAddFree = () => {
+
+  
+    let user;
+    if (localStorage.getItem("user") === null) {
+        user = ({admin:{profile:null}})
+    }else if(localStorage.getItem("user") != null){
+       user =  JSON.parse(localStorage.getItem("user"));
+    }
+    console.log(user);
+
+ 
+  useEffect(()=>{
+    
+  },[user])
+
   return (
     <div className="property-owner-section">
       <div className="container mb-3 py-5">
@@ -28,14 +43,20 @@ const PostAddFree = () => {
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptatibus enim excepturi facere.
               </p>
-              <Link to="/login" className="text-">
+              {/* {user.admin.profile === 'property-owner' ? (<>
+              <Link to="/spaces">
                 <button
                   className="btn-second"
-                  onClick={() => toast.warning("Login with Brantford ")}
                 >
+                 
                   Post Your property for free
                 </button>
-              </Link>
+                </Link>
+              </>) : (<>
+               
+              </>) } */}
+               
+             
             </div>
           </div>
           <div className="col-lg-6 col-md-6 col-sm-12">

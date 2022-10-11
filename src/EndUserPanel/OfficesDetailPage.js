@@ -23,6 +23,7 @@ import HocLandingPage from "../Components/HocLandingPage";
 import { usersContext } from "../Context/UserContext";
 import swal from "sweetalert";
 import AppointmentModel from "./AppointmentModel";
+import MapInput from "../UserPanel/DashbordUser/ModelPropertyOwner/MapInput";
 
 
 
@@ -217,6 +218,7 @@ const OfficesDetailPage = () => {
                 ₹<span className="price1">{endUserSpace.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')  } </span>
                 /Seat/Month
               </p>
+              <div className="d-flex">
               <button
                 onClick={() =>
                   propertyBooking(endUserSpace.id, endUserSpace.price)
@@ -227,7 +229,7 @@ const OfficesDetailPage = () => {
               </button>
 
               <button className="disable-btn ms-3" onClick={()=>onBookAppointment(endUserSpace.id)}>Book an Appointment</button>
-
+              </div>
             </div>
           </div>
         </div>
@@ -407,6 +409,14 @@ const OfficesDetailPage = () => {
                 </div>
               </div>
             </div>
+
+            <div>
+                <p>Property Location in Map</p>
+                <div>
+                  <MapInput id={endUserSpace.id}/>
+                </div>
+            </div>
+
             <div className="similarties-section mt-5">
               <div className="similarties-heading">
                 <h5 className="office-sub-heading">Similar Listing</h5>

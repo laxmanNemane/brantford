@@ -55,6 +55,7 @@ import Map, {
   GeolocateControl
 } from 'react-map-gl';
 import Barchart from "../AdminPanel/Charts/Barchart";
+import AdminDashboardMap from "../AdminPanel/AdminDashboardMap";
 
 
 
@@ -426,13 +427,7 @@ const DasbordPage = () => {
   console.log(Object.keys(bookedCount).length);
 
   useEffect(() => {
-    if (map.current) return; // initialize map only once
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [lng, lat],
-      zoom: 3,
-    });
+    
 
     console.log(map.current);
 
@@ -1073,11 +1068,7 @@ const DasbordPage = () => {
                     /> */}
 
 
-                    <div
-                      ref={mapContainer}
-                      className="map-container"
-                      style={{ height: "400px" }}
-                    />
+                    <AdminDashboardMap/>
                   </div>
 
                   <div>

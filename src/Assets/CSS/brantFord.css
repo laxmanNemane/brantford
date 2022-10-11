@@ -1094,3 +1094,9 @@ video {
   cursor: pointer;
 }
 
+.cancel-btn{
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: #ffff;
+  background-color: #CF262A;
+}

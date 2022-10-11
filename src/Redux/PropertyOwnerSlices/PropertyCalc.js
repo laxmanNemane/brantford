@@ -176,7 +176,7 @@ const PropertyCals = () => {
                                     id="property_type"
                                     name="property_type"
                                   >
-                                    <option value="co-working">
+                                    <option value="">
                                       select Property type
                                     </option>
                                     <option value="co-working">

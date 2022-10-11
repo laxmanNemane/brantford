@@ -1,58 +1,39 @@
+import React from "react";
+import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import Map, {
+  Marker,
+  Popup,
+  NavigationControl,
+  FullscreenControl,
+  ScaleControl,
+  GeolocateControl
+} from 'react-map-gl';
+import "mapbox-gl/dist/mapbox-gl.css";
 
 
-import React, { Component } from 'react'
-import MapGL from 'react-map-gl'
-import Directions from 'react-map-gl-directions'
+const Example = () => {
 
-function getAccessToken() {
-  var accessToken = null
+  mapboxgl.accessToken = 'pk.eyJ1IjoibmlraGlsYm9yZ2UiLCJhIjoiY2w4Y296eXBwMDR6ajN1bXltb2cxOXoyeCJ9.DgZ7KWKaUNJDltG3weSwEw';
 
-  if (typeof window !== 'undefined' && window.location) {
-    var match = window.location.search.match(/access_token=([^&\/]*)/)
-    accessToken = match && match[1]
-  }
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v10',
+    center: [-77.034084, 38.909671],
+    zoom: 13,
+    scrollZoom: false
+});
 
-  if (!accessToken && typeof process !== 'undefined') {
-    // Note: This depends on bundler plugins (e.g. webpack) inmporting environment correctly
-    accessToken = accessToken || 'pk.eyJ1IjoibmlraGlsYm9yZ2UiLCJhIjoiY2w4Y296eXBwMDR6ajN1bXltb2cxOXoyeCJ9.DgZ7KWKaUNJDltG3weSwEw' // eslint-disable-line
-  }
+  return (
+    <div>
+      <div class="sidebar">
+        <div class="heading">
+          <h1>Our locations</h1>
+        </div>
+        <div id="listings" class="listings"></div>
+      </div>
+      <div id="map" class="map"></div>
+    </div>
+  );
+};
 
-  return accessToken || null
-}
-
-// Ways to set Mapbox token: https://uber.github.io/react-map-gl/#/Documentation/getting-started/about-mapbox-tokens
-const MAPBOX_TOKEN = 'pk.eyJ1IjoibmlraGlsYm9yZ2UiLCJhIjoiY2w4Y296eXBwMDR6ajN1bXltb2cxOXoyeCJ9.DgZ7KWKaUNJDltG3weSwEw'
-
-class Example extends Component {
-  state = {
-    viewport: {
-      latitude: 37.7577,
-      longitude: -122.4376,
-      zoom: 8,
-    },
-  }
-
-  mapRef = React.createRef()
-
-  handleViewportChange = (viewport) => {
-    this.setState({
-      viewport: { ...this.state.viewport, ...viewport },
-    })
-  }
-
-  render() {
-    return (
-      <MapGL
-        ref={this.mapRef}
-        {...this.state.viewport}
-        width="100%"
-        height="100%"
-        onViewportChange={this.handleViewportChange}
-        mapboxApiAccessToken={MAPBOX_TOKEN}>
-        <Directions mapRef={this.mapRef} mapboxApiAccessToken={MAPBOX_TOKEN} />
-      </MapGL>
-    )
-  }
-}
-
-export default Example
+export default Example;

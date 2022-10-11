@@ -6,6 +6,10 @@ import { useEffect } from "react";
 import Collapse from "react-bootstrap/Collapse";
 import HocComponent from "../../../Components/HocComponent";
 import { usersContext } from "../../../Context/UserContext";
+import GetImage from "./GetImage";
+import ImageUpload from "./ImageUpload";
+import MapInput from "./MapInput";
+import MapUpdate from "./MapUpdate";
 
 const UpdateProperty = () => {
   const [open, setOpen] = useState(false);
@@ -58,7 +62,10 @@ const UpdateProperty = () => {
 
   return (
     <>
-      <div className="mx-3 mt-4" style={{paddingLeft:"270px", backgroundColor:"#E7E5E5"}}>
+      <div
+        className="mx-3 mt-4"
+        style={{ paddingLeft: "270px", backgroundColor: "#E7E5E5" }}
+      >
         <div className="row mx-3">
           <div className="col-12 bg-light px-3 py-4 my-2 ">
             <h3 className="fw-bold">Amenities</h3>
@@ -897,92 +904,13 @@ const UpdateProperty = () => {
           </div>
           <div className="col-12 bg-light px-3 py-4  my-2">
             <h3 className="fw-bold">Images</h3>
+            <ImageUpload id={spaceIdsingle} />
+            <GetImage id={spaceIdsingle} />
           </div>
-          <div className="col-12 bg-light px-3 py-4  my-2">
-            <h3 className="fw-bold">Location</h3>
-            {/* ===============================Add Location =========================== */}
-            <button
-              className="btn"
-              onClick={() => setRecreational_Zone(!Recreational_Zone)}
-              aria-controls="example-collapse-text"
-              aria-expanded={Recreational_Zone}
-            >
-              Recreational_Zone<span className="text-danger ms-1">*</span>
-            </button>
-            <br />
-            {/* <Collapse in={Recreational_Zone}> */}
-            <div id="example-collapse-text ">
-              <div className="px-3 ">
-                <div className="col-6 py-2">
-                  <Formik
-                    initialValues={{
-                      latitude: "",
-                      longitude: "",
-                      spaceId: spaceIdsingle,
-                    }}
-                    validate={(values) => {
-                      let errors = {};
+          
 
-                      return errors;
-                    }}
-                    onSubmit={(values, { resetForm }) => {
-                      addLocationSubmit(values, resetForm);
-                    }}
-                  >
-                    {({ values, errors }) => (
-                      <Form className="">
-                        <div className="formGroup">
-                          <div className="row">
-                            <div className="col-12">
-                              <label htmlFor="Space Name" className="label">
-                                Lattitude :{" "}
-                              </label>
-                              <Field
-                                type="text"
-                                name="latitude"
-                                placeholder="latitude"
-                                className="form-control  mb-3   "
-                              />
-                              <label htmlFor="manager_email" className="label">
-                                Longitude:{" "}
-                              </label>
-                              <Field
-                                type="text"
-                                name="longitude"
-                                placeholder="longitude"
-                                className="form-control  mb-3 m "
-                              />
-                              <label
-                                htmlFor="Seating capacity "
-                                className="label"
-                              >
-                                Space Id :{" "}
-                              </label>
 
-                              <Field
-                                type="text"
-                                name="spaceId"
-                                placeholder="spaceId"
-                                className="form-control  mb-3  m"
-                              />
-
-                              <button
-                                type="submit "
-                                className="btn-first pt-2 my-3"
-                              >
-                                Add New Location
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </Form>
-                    )}
-                  </Formik>
-                </div>
-              </div>
-            </div>
-            {/* </Collapse> */}
-          </div>
+          <MapUpdate id={spaceIdsingle}/>
         </div>
       </div>
     </>

@@ -9,6 +9,8 @@ import HocComponent from "../../Components/HocComponent";
 import { usersContext } from "../../Context/UserContext";
 import { FetchAllSpaces } from "../../Redux/PropertyOwnerSlices/allvenuSlice";
 import SpacesModal from "./ModelPropertyOwner/SpacesModal";
+import { useForm } from "react-hook-form";
+import ImageUpload from "./ModelPropertyOwner/ImageUpload";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -18,6 +20,8 @@ const Spaces = () => {
   const dispatch = useDispatch();
   const [spaceId, setSpaceId] = useState();
   const [element, setElement] = useState();
+  const [file, setFile] = useState();
+  const { register, handleSubmit } = useForm();
   const { spaceIdsingle, setSpcesId, setSpaceDetail } =
     useContext(usersContext);
   const navigate = useNavigate();
@@ -25,9 +29,11 @@ const Spaces = () => {
 
   const spaces = useSelector((state) => state.Allvenue.AllSpaces);
   console.log(spaces);
+  
 
-  // const [spacesDisplay, setSpacesDisplay] = useState([]);
+  
 
+  
   const onDeleteSpace = useCallback((id) => {
     // console.log(id);
     axios
@@ -84,9 +90,12 @@ const Spaces = () => {
               <div className="dashbord-section-content d-flex justify-content-between align-items-center   px-4 py-2   rounded">
                 <div className="heading-section-dashbord ">
                   <h1 className="heading-second mb-1"> Spaces</h1>
-                  
                 </div>
-                <div><button className="btn-first" onClick={OnAddSpacess}>Add Space</button></div>
+                <div>
+                  <button className="btn-first" onClick={OnAddSpacess}>
+                    Add Space
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -183,6 +192,8 @@ const Spaces = () => {
               />
             </div>
           </div>
+          <p>this is image uploading</p>
+     <ImageUpload  id={spaceId}/>
         </div>
       </div>
     </>

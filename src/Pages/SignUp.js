@@ -180,7 +180,7 @@ function SignUp() {
                           property-owner
                         </option>
 
-                        <option value="end-user" className="py-3">
+                        <option value="endUser" className="py-3">
                           end-user
                         </option>
                       </Field>
