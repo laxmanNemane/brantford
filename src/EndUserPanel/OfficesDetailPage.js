@@ -411,9 +411,9 @@ const OfficesDetailPage = () => {
             </div>
 
             <div>
-                <p>Property Location in Map</p>
+                
                 <div>
-                  <MapInput id={endUserSpace.id}/>
+                  <MapInput id={endUserSpace.id} data={endUserSpace.space}/>
                 </div>
             </div>
 

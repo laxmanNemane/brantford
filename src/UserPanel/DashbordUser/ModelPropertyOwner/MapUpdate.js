@@ -4,11 +4,14 @@ import { useMapEvents } from "react-leaflet";
 import axios from "axios";
 import { Form, Field } from "formik";
 import { Formik } from "formik";
+// import markericon from "../../../Assets/Icons/marker.png"
+import L from 'leaflet'
 
 const MapUpdate = (props) => {
   const [latlng, setLatlng] = useState();
   const [longitude, setLongitude] = useState();
   const [position, setPosition] = useState(["19.157622", "74.517776"]);
+  const [marker, setMarker] = useState([]);
   // const position = [latlng, longitude];
   const [map, setMap] = useState(null);
 
@@ -22,6 +25,7 @@ const MapUpdate = (props) => {
         setLongitude(e.latlng.lng);
         console.log(e.latlng.lng);
         setPosition([e.latlng.lat, e.latlng.lng]);
+        setMarker([e.latlng.lat, e.latlng.lng]);
       },
     });
     return false;
@@ -30,12 +34,12 @@ console.log(position);
 
 //   location add api 
 const addLocationSubmit = (values, resetForm) => {
-    // axios
-    //   .post(`http://bantford.prometteur.in/admin/add-location`, values, {
-    //     headers: { Authorization: localStorage.getItem("token") },
-    //   })
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
+    axios
+      .post(`http://bantford.prometteur.in/admin/add-location`, values, {
+        headers: { Authorization: localStorage.getItem("token") },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
     console.log(values);
     resetForm();
   };
@@ -54,11 +58,27 @@ const addLocationSubmit = (values, resetForm) => {
   const { lat, lng } = coords;
   console.log(lat, lng);
   console.log(map);
+  console.log(marker);
+
+
+  var markericon = L.icon({
+    iconUrl: 'https://freepngimg.com/download/symbol/62766-map-symbol-computer-location-icons-free-download-png-hd.png',
+    // shadowUrl: 'leaf-shadow.png',
+
+    iconSize:     [40, 40], // size of the icon
+    iconAnchor:   [22, 40], // point of the icon which will correspond to marker's location
+    // shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -40] // point from which the popup should open relative to the iconAnchor
+});
+
+
+ 
 
   return (
     <>
+    <div className="features-setion-offices" >
       <div className="col-12 bg-light px-3 py-4  my-2">
-        <h3 className="fw-bold">Location</h3>
+       
         {/* ===============================Add Location =========================== */}
         {/* <button
           className="btn"
@@ -74,10 +94,12 @@ const addLocationSubmit = (values, resetForm) => {
           <div className="px-3 ">
             <div className="row">
               <div className="col-4 py-2">
+              <h3 className="fw-bold">Location</h3>
                 <Formik
+                 enableReinitialize
                   initialValues={{
-                    latitude: position[0],
-                    longitude: position[1],
+                    latitude: marker[0],
+                    longitude: marker[1],
                     spaceId: props.id,
                   }}
                   validate={(values) => {
@@ -102,7 +124,7 @@ const addLocationSubmit = (values, resetForm) => {
                               name="latitude"
                               placeholder="latitude"
                               className="form-control  mb-3   "
-                              value={position[0]}
+                              value={marker[0]}
                             />
                             <label htmlFor="manager_email" className="label">
                               Longitude:{" "}
@@ -112,7 +134,7 @@ const addLocationSubmit = (values, resetForm) => {
                               name="longitude"
                               placeholder="longitude"
                               className="form-control  mb-3 m "
-                              value={position[1]}
+                              value={marker[1]}
                             />
                             
 
@@ -139,15 +161,18 @@ const addLocationSubmit = (values, resetForm) => {
                   style={{ height: "90vh" }}
                   whenCreated={(map) => setMap(map)}
                 >
+                
                   <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   />
-                  <Marker position={position}>
+                 
+                  <Marker position={position} icon={markericon}>
                     <Popup>
-                      This is a new co space Property <br /> In a Pune Location.
+                      This is a new co space Property <br /> In a Gujarat Location.
                     </Popup>
                   </Marker>
+                
 
                   <MapEvents />
                 </MapContainer>
@@ -156,6 +181,7 @@ const addLocationSubmit = (values, resetForm) => {
           </div>
         </div>
         {/* </Collapse> */}
+      </div>
       </div>
     </>
   );

@@ -142,6 +142,8 @@ const PropertySection = ({ slide, setSlide }) => {
                         <div className="properties">
                           <div className="image-section1 w-100 position-relative">
                             <div className="property-image-in-section">
+                              {/* <h3>{ele.id}</h3> */}
+                              {}
                               <img
                                 src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                                 alt=""
