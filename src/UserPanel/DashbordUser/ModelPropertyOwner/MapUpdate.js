@@ -6,12 +6,17 @@ import { Form, Field } from "formik";
 import { Formik } from "formik";
 // import markericon from "../../../Assets/Icons/marker.png"
 import L from 'leaflet'
+import swal from "sweetalert";
+
+const BaseUrl = "http://bantford.prometteur.in";
 
 const MapUpdate = (props) => {
   const [latlng, setLatlng] = useState();
   const [longitude, setLongitude] = useState();
   const [position, setPosition] = useState(["19.157622", "74.517776"]);
   const [marker, setMarker] = useState([]);
+  const [locationId, setLocationId] = useState();
+  const [locationExist, setLocationExist] = useState(false);
   // const position = [latlng, longitude];
   const [map, setMap] = useState(null);
 
@@ -32,20 +37,72 @@ const MapUpdate = (props) => {
   };
 console.log(position);
 
+// get location api 
+const getLocation = () => {
+  axios.get(`${BaseUrl}/admin/get-location?spaceId=${props.id}`)
+  .then((res)=>{
+    setPosition([res.data.latitude, res.data.longitude])
+    setLocationExist(true)
+    console.log(res.data)
+    setLocationId(res.data.id);
+  })
+  .catch((err)=>{
+    setLocationExist(false)
+    console.log(err)
+  })
+}
+
 //   location add api 
+
+const addLocation = (values) =>{
+  axios
+    .post(`${BaseUrl}/admin/add-location`, values, {
+      headers: { Authorization: localStorage.getItem("token") },
+    })
+    .then((res) => {
+      swal("Done","Location added Successfully","success")  
+      console.log(res)
+    })
+    .catch((err) => {
+      swal("Update Location","Location Already exists","warning")  
+      console.log(err)
+    });
+  }
+
 const addLocationSubmit = (values, resetForm) => {
-    axios
-      .post(`http://bantford.prometteur.in/admin/add-location`, values, {
-        headers: { Authorization: localStorage.getItem("token") },
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+
+  if(locationExist){
+    updateLocation(values);
+  }else{
+    addLocation(values);
+  }
+
+
     console.log(values);
     resetForm();
   };
 
+// location update api 
+  const updateLocation = (values) =>{
+    axios.patch(`${BaseUrl}/admin/update-location?id=${locationId}`,{"latitude":values.latitude,"longitude":values.longitude}, {headers:{
+      Authorization:localStorage.getItem("token")
+    }})
+    .then((res)=>{
+
+      console.log(res.data)
+    swal("Updated","Location update Successfully","success")
+    })
+    .catch((err)=>{
+
+      console.log(err)
+    })
+
+  }
 
   useEffect(() => {
+    getLocation();
+
+    
 
     if (!map) return;
 
@@ -98,8 +155,8 @@ const addLocationSubmit = (values, resetForm) => {
                 <Formik
                  enableReinitialize
                   initialValues={{
-                    latitude: marker[0],
-                    longitude: marker[1],
+                    latitude: marker[0] || position[0],
+                    longitude: marker[1] || position[1],
                     spaceId: props.id,
                   }}
                   validate={(values) => {
@@ -124,7 +181,7 @@ const addLocationSubmit = (values, resetForm) => {
                               name="latitude"
                               placeholder="latitude"
                               className="form-control  mb-3   "
-                              value={marker[0]}
+                              value={marker[0] || position[0]}
                             />
                             <label htmlFor="manager_email" className="label">
                               Longitude:{" "}
@@ -134,7 +191,7 @@ const addLocationSubmit = (values, resetForm) => {
                               name="longitude"
                               placeholder="longitude"
                               className="form-control  mb-3 m "
-                              value={marker[1]}
+                              value={marker[1] || position[1]}
                             />
                             
 
@@ -142,22 +199,26 @@ const addLocationSubmit = (values, resetForm) => {
                               type="submit "
                               className="btn-first pt-2 my-3"
                             >
-                              Add New Location
-                            </button>
+                              {locationExist ? "Update Location": "Add Location"}
+                              
+                            </button>  
                           </div>
                         </div>
                       </div>
                     </Form>
                   )}
                 </Formik>
+                {/* <button onClick={updateLocation} className="btn-first pt-2 ">
+                              Update Location
+                </button> */}
               </div>
 
               <div className="col-8 py-2">
                 {/* <MapInput /> */}
 
                 <MapContainer
-                  center={position}
-                  zoom={7}
+                  center={ position || [marker[0],marker[1]] }
+                  zoom={6}
                   style={{ height: "90vh" }}
                   whenCreated={(map) => setMap(map)}
                 >
@@ -167,13 +228,11 @@ const addLocationSubmit = (values, resetForm) => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   />
                  
-                  <Marker position={position} icon={markericon}>
+                  <Marker position={ position || [marker[0],marker[1]] } icon={markericon}>
                     <Popup>
                       This is a new co space Property <br /> In a Gujarat Location.
                     </Popup>
                   </Marker>
-                
-
                   <MapEvents />
                 </MapContainer>
               </div>

@@ -192,8 +192,8 @@ const Spaces = () => {
               />
             </div>
           </div>
-          <p>this is image uploading</p>
-     <ImageUpload  id={spaceId}/>
+          {/* <p>this is image uploading</p>
+     <ImageUpload  id={spaceId}/> */}
         </div>
       </div>
     </>

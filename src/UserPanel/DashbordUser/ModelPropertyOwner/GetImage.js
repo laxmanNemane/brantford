@@ -31,6 +31,28 @@ const getImage = () => {
     .catch((err)=> {console.log(err)})
 }
 
+const deleteImage = (data) => {
+  console.log(data)
+  let pathname = new URL(data.data).pathname;
+  let path = pathname.substring(17);
+  console.log(path);
+
+  const values = {"main_type":data.main_type,"sub_type":data.sub_type,"path":path, "spaceId":data.id}
+
+  console.log(values);
+
+  
+  axios.delete(`${BaseUrl}/admin/delete-image`,values,{headers:{
+    Authorization:localStorage.getItem("token"),
+  }})
+  .then((res)=> {
+    console.log(res.data)
+    getImage();
+  })
+  .catch((err)=> {console.log(err)})
+}
+
+
 console.log(image);
 
 const getSingleImage = (image) => {
@@ -42,7 +64,8 @@ const getSingleImage = (image) => {
 
 }
 useEffect(()=>{
-  getImage()
+  getImage();
+  
 },[setImage])
 
   return (
@@ -52,7 +75,10 @@ useEffect(()=>{
          <div className='image-contaner row'>
         {image && image.map((item,index)=>
         <div key={index} className='col-md-3'>
+          <div className='img-card'>
           <img className='img-fluid border' key={index} src={item.data} alt="" />
+          <button className='img-delete-btn' onClick={()=>deleteImage(item)}>Delete</button>
+          </div>
           </div>
           )}
           </div>

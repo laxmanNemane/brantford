@@ -1100,3 +1100,12 @@ video {
   color: #ffff;
   background-color: #CF262A;
 }
+.img-delete-btn{
+display: none;
+}
+.img-card{position: relative;}
+.img-card:hover .img-delete-btn{position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+}

@@ -27,6 +27,8 @@ const PropertyOverview = ({ isModalVisible, setIsModalVisible }) => {
   const setNewSpace = (data) => {
     navigate(`/office-detail/${data.space.split(" ").join("-")}`);
   };
+
+  console.log(endUserSpace)
   return (
     <>
       <Modal

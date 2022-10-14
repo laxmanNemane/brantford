@@ -58,7 +58,8 @@ const MapInput = (props) => {
       <div className="d-flex align-items-center justify-content-center">
         {coords &&
           coords.map((item, index) => (
-            <MapContainer
+            <MapContainer 
+              key={index}
               style={{ height: "500px", width: "700px" }}
               center={[item.lat, item.lon]}
               zoom={7}
