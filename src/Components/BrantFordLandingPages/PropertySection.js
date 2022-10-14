@@ -59,6 +59,7 @@ const PropertySection = ({ slide, setSlide }) => {
   const modalToDetailPage = (data) => {
     setIsModalVisible(true);
     setEndUserSpace(data);
+    console.log(data);
   };
 
   const getallCategaries = () => {
@@ -230,7 +231,7 @@ const PropertySection = ({ slide, setSlide }) => {
                               <p>
                                 <BsHeart className="icons-recomanded-property text-white" />
                               </p>
-                              <p onClick={() => setProerties(ele.space)}>
+                              <p onClick={() => setProerties(ele)}>
                                 <BsPlusCircle className="icons-recomanded-property text-white" />
                               </p>
                             </div>

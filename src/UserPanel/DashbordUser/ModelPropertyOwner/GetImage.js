@@ -41,17 +41,42 @@ const deleteImage = (data) => {
 
   console.log(values);
 
+  deleteRequestForImage(values);
   
-  axios.delete(`${BaseUrl}/admin/delete-image`,values,{headers:{
-    Authorization:localStorage.getItem("token"),
-  }})
-  .then((res)=> {
-    console.log(res.data)
-    getImage();
-  })
-  .catch((err)=> {console.log(err)})
 }
 
+
+const deleteRequestForImage = (values) =>{
+  console.log(values);
+
+  // axios.delete(`${BaseUrl}/admin/delete-image`,values,{headers:{
+  //   Authorization:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heG1lbGFuc2hzZGZydHlAZ21haWwuY29tIiwicGFzc3dvcmQiOiJQcm9AODA4NyIsInByb2ZpbGUiOiJwcm9wZXJ0eS1vd25lciIsImlkIjoxLCJpYXQiOjE2NjU3NDc1NTEsImV4cCI6MTY2NTc1NDc1MX0.3AEpFNcn0uvabRtJ7ml5RL1CCEeQNfQ3Odi8R9Co8Dk"
+  // }})
+  // .then((res)=> {console.log(res.data)})
+  // .catch((err)=>{console.log(err)})
+
+
+
+var data =values;
+
+var config = {
+  method: 'delete',
+  url: 'http://bantford.prometteur.in/admin/delete-image',
+  headers: { 
+    'Authorization': localStorage.getItem("token")
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+  getImage();
+})
+.catch(function (error) {
+  console.log(error);
+});
+}
 
 console.log(image);
 

@@ -17,7 +17,7 @@ const ViewAllRentedPage = () => {
   const navigate = useNavigate();
   const spaceManagement = (data) => {
     setEndUserSpace(data);
-    navigate(`/office-detail/${data.space.split(" ").join("-")}`);
+    navigate(`/office-detail/${data.space.space.split(" ").join("-")}`);
   };
   const [items, setItems] = useState(data);
 
@@ -75,7 +75,7 @@ const ViewAllRentedPage = () => {
             </div>
             {items.length !== 0
               ? items.map((element, index) => {
-                if (element.property_status === "rent") {
+                if (element.space.property_status === "rent") {
                   return (
                     <div className="similar-offices" key={index}>
                       <div className="officess mt-3">
@@ -107,18 +107,18 @@ const ViewAllRentedPage = () => {
                                 <p className="name me-3">
                                   $
                                   <span className="price1">
-                                    {element.price}
+                                    {element.space.price}
                                   </span>
                                   month/seats
                                 </p>
                               </div>
                               <div className="ofice-name-type">
                                 <p className="offices-similar-heading">
-                                  {element.space}
+                                  {element.space.space}
                                 </p>
                                 <p className="sub-heading">
                                   <HiOutlineLocationMarker className="me-2" />{" "}
-                                  {element.address}
+                                  {element.space.address}
                                 </p>
 
                                 <p className="name">
@@ -199,18 +199,18 @@ const ViewAllRentedPage = () => {
                                 <p className="name me-3">
                                   $
                                   <span className="price1">
-                                    {element.price}
+                                    {element.space.price}
                                   </span>
                                   month/seats
                                 </p>
                               </div>
                               <div className="ofice-name-type">
                                 <p className="offices-similar-heading">
-                                  {element.space}
+                                  {element.space.space}
                                 </p>
                                 <p className="sub-heading">
                                   <HiOutlineLocationMarker className="me-2" />{" "}
-                                  {element.address}
+                                  {element.space.address}
                                 </p>
 
                                 <p className="name">
