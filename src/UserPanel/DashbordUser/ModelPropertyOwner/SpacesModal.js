@@ -1,5 +1,5 @@
 import { Modal } from "antd";
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -110,7 +110,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                   property_status: element.property_status,
                   description: element.description,
                   working_days: element.working_days,
-                  property_id: element.property_id,
+                  // property_id: element.property_id,
                   categaryId: element.categaryId,
                 }}
                 validate={(values) => {
@@ -141,7 +141,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             type="text"
                             name="manager_email"
                             placeholder="manager_email"
-                            className="form-control  mb-3 m "
+                            className="form-control  mb-3 m"
                           />
                           <label
                             htmlFor="Seating capacity "
@@ -161,7 +161,7 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           </label>
 
                           <Field
-                            type="number"
+                            type="text"
                             name="cabin_capacity"
                             placeholder="cabin_capacity"
                             className="form-control  mb-3  m"
@@ -171,12 +171,13 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           </label>
 
                           <Field
-                            type="Number"
+                            type="text"
                             name="total_desks"
                             placeholder="total_desks"
                             className="form-control  mb-3  m"
                           />
-                          <label htmlFor="Property-id" className="label-user">
+
+                          {/* <label htmlFor="Property-id" className="label-user">
                             Property id:{" "}
                           </label>
 
@@ -185,17 +186,42 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             name="property_id"
                             placeholder="property_id"
                             className="form-control  mb-3  m"
-                          />
+                          /> */}
+
                           <label htmlFor="city" className="label-user">
                             City:{" "}
                           </label>
 
-                          <Field
+                          {/* <Field
                             type="text"
                             name="city"
                             placeholder="city"
                             className="form-control  mb-3  m"
-                          />
+                          /> */}
+
+
+                          <Field
+                          as="select"
+                          component="select"
+                          id="city"
+                            type="text"
+                            name="city"
+                            placeholder="city"
+                            className="form-control  mb-3  m"
+                            >
+                           <option value="city">
+                                select an option
+                              </option>
+                              <option value="pune">
+                                Pune
+                              </option>
+                              <option value="mumbai">Mumbai</option>
+                              <option value="bangolore">Bangolore</option>
+                              <option value="delhi">Delhi</option>
+                              <option value="surat">Surat</option>
+                              <option value="hydrabad">Hydrabad</option>
+                            </Field>
+
                         </div>
                         <div className="col-6">
                           <label htmlFor="manager_name" className="label-user">
@@ -267,8 +293,9 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             as="select"
                             className=" form-control "
                             component="select"
-                            id="workspace"
+                            id="working_days"
                             name="working_days"
+                            value={values.working_days}
                           >
                             <option value="Monday-Friday">Monday-Friday</option>
                             <option value="Hybrid">Hybrid</option>
@@ -337,11 +364,19 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                   property_status: "",
                   description: "",
                   working_days: "",
-                  property_id: "",
                   categaryId: "",
                 }}
                 validate={(values) => {
                   let errors = {};
+                  if (!values.categaryId) {
+                    errors.categaryId = "required!";
+                  }
+                  if (!values.property_status) {
+                    errors.property_status = "required!";
+                  }
+                  if (!values.working_days) {
+                    errors.working_days = "requires!";
+                  }
 
                   return errors;
                 }}
@@ -403,26 +438,36 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             placeholder="total_desks"
                             className="form-control  mb-3  m"
                           />
-                          <label htmlFor="Property-id" className="label-user">
-                            Property id:{" "}
-                          </label>
-
-                          <Field
-                            type="text"
-                            name="property_id"
-                            placeholder="property_id"
-                            className="form-control  mb-3  m"
-                          />
+                         
+                         
                           <label htmlFor="city" className="label-user">
                             City:{" "}
                           </label>
 
                           <Field
+                          as="select"
+                          component="select"
+                          id="city"
                             type="text"
                             name="city"
                             placeholder="city"
                             className="form-control  mb-3  m"
-                          />
+                          >
+                          <option value="select city">
+                                Select City Name
+                              </option>
+                              <option value="pune">
+                                Pune
+                              </option>
+                              <option value="mumbai">Mumbai</option>
+                              <option value="bangolore">Bangolore</option>
+                              <option value="delhi">Delhi</option>
+                              <option value="surat">Surat</option>
+                              <option value="hydrabad">Hydrabad</option>
+                            </Field>
+
+
+
                         </div>
                         <div className="col-6">
                           <label htmlFor="manager_name" className="label-user">
@@ -432,15 +477,20 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             as="select"
                             className=" form-control "
                             component="select"
-                            id="workspace"
+                            id="categaryId"
                             name="categaryId"
                           >
+                            <option value="">Pick a category</option>
                             {categories.map((ele, index) => (
                               <option key={index} value={ele.id}>
                                 {ele.categary}
                               </option>
                             ))}{" "}
                           </Field>
+                          <span className="text-danger">
+                            <ErrorMessage name="categaryId" />
+                          </span>
+                          <br />
                           <label htmlFor="manager_name" className="label-user">
                             manager name:{" "}
                           </label>
@@ -465,7 +515,6 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           <label htmlFor="price" className="label-user">
                             Price :
                           </label>
-
                           <Field
                             className=" form-control "
                             id="workspace"
@@ -474,7 +523,6 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                           <label htmlFor="price" className="label-user  mt-2">
                             property status :
                           </label>
-
                           <Field
                             as="select"
                             className=" form-control mb-2 "
@@ -482,17 +530,21 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             id="workspace"
                             name="property_status"
                           >
+                            <option value="">Pick a Property Status...</option>
                             <option value="Rent">Rent</option>
 
                             <option value="Sale">Sale</option>
                           </Field>
+                          <span className="text-danger">
+                            <ErrorMessage name="property_status" />
+                          </span>{" "}
+                          <br />
                           <label
                             htmlFor="Working Days"
                             className="label-user mt-2"
                           >
                             Working Days:
                           </label>
-
                           <Field
                             as="select"
                             className=" form-control  mb-2"
@@ -500,13 +552,15 @@ const SpacesModal = ({ showStatus, setshowStatus, spaceId, element, cid }) => {
                             id="workspace"
                             name="working_days"
                           >
+                            <option value="">Pick a Working Day..</option>
                             <option value="Monday-Friday">Monday-Friday</option>
-                            <option value="Hybrid">Hybrid</option>
+                            <option value="Sat">Sat</option>
 
-                            <option value="Saturday-Sunday">
-                              Saturday-Sunday
-                            </option>
+                            <option value="Sun">Sun</option>
                           </Field>
+                          <span className="text-danger">
+                            <ErrorMessage name="working_days" />
+                          </span>
                         </div>
 
                         <div className="col-12">

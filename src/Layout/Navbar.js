@@ -1,20 +1,69 @@
+
+import { Dropdown, Menu } from "antd";
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { BiUser } from "react-icons/bi";
+import { AiOutlineSetting } from "react-icons/ai";
+import { MdNoteAdd } from "react-icons/md";
+
+import  { useState } from "react";
+
+import { Link, NavLink } from "react-router-dom";
+
+import logo from "../Assets/Icons/logo.png";
 
 const Navbar = () => {
+
+  // const user = JSON.parse(localStorage.getItem("user"));
+  // console.log("user in navbar section", user.admin.profile);
+  const menu = (
+    <Menu
+      style={{ width: "250px" }}
+      items={[
+        {
+          key: "1",
+          label: (
+            <NavLink to="/dashbord" className="fs-5">
+              <MdNoteAdd className="mx-2" />
+              Dashbord
+            </NavLink>
+          ),
+        },
+        {
+          key: "2",
+          label: (
+            <NavLink to="/" className="fs-5">
+              <AiOutlineSetting className="mx-2" />
+              Logout
+            </NavLink>
+          ),
+        },
+      ]}
+    />
+  );
+
+  const [loginProfile, setLoginProfile] = useState();
+
+  const logindata = localStorage.getItem('user');
+  console.log(logindata);
+
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light ">
-      <div className="container">
-        <NavLink className="navbar-brand " to="/">
-          <img
-            src="https://previews.123rf.com/images/haris99/haris991807/haris99180700198/103850953-simple-pink-house-outline-logo-template-vector.jpg"
-            alt=""
-            width="48"
-            height="40"
-            className="rounded-3 me-2"
-          />
-          BrantFord
+    <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="list-unstyled d-flex">
+          <li className="d-none d-lg-block nav-item pt-2">
+            <i class="fa-brands fa-instagram"></i>
+          </li>
+          <li className="d-none d-lg-block nav-item pt-2">
+            <i class="fa-brands fa-linkedin"></i>
+          </li>
+          <li className="d-none d-lg-block nav-item pt-2">
+            <i class="fa-brands fa-google-plus-g"></i>
+          </li>
+        </ul>
+      </div>
+      <div className="container ">
+        <NavLink className="navbar-brand d-lg-none " to="/">
+          <img src={logo} alt="" className="rounded-2 mx-3" />
         </NavLink>
         <button
           className="navbar-toggler"
@@ -28,22 +77,63 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav mb-1 ms-auto">
-          <NavLink to="/enduser">
-            <li className="nav-item">profile</li>
-            </NavLink>
-            <li className="nav-item">About Us</li>
-            <li className="nav-item">Contact Us</li>
-          </ul>
+          <ul className="navbar-nav mb-1 mx-auto align-items-center">
+            <li className="nav-item">Co-Working</li>
+            <li className="nav-item">Commercial</li>
 
-          <div className="user-icon">
-            <NavLink to="/login">
-              <p className="user-icons-tag">
-                <BiUser className="fs-4 text-light" />
-              </p>
+            <NavLink className="navbar-brand d-none d-lg-block" to="/">
+              <img src={logo} alt="" className="rounded-2 mx-3" />
             </NavLink>
-          </div>
+
+            <li className="nav-item">
+              <Link to="/allrentedspaces" className="text-dark">
+                For Rent
+              </Link>{" "}
+            </li>
+            <li className="nav-item">
+              <Link to="/salingproperties" className="text-dark">
+                For Sale
+              </Link>{" "}
+            </li>
+            <li className="nav-item">
+              <Link to="/contactUs" className="text-dark">
+                Contact Us
+              </Link>{" "}
+            </li>
+          </ul>
         </div>
+      </div>
+
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="list-unstyled  mx-auto">
+          {/* {user.admin === null ? (
+            <Dropdown overlay={menu} placement="topLeft" arrow>
+              <li className="nav-item  d-flex align-items-center pt-2">
+                {/* {user.admin.name} */}
+
+          {/* </li>
+            </Dropdown> */}
+          {/* ) : ( */}
+          <Link to="/login" className="text-dark">
+            <li className="nav-item  d-flex align-items-center pt-2">
+              {/* <BiUser /> jhhg */} <i class="fa-regular fa-user"></i>
+            </li>
+          </Link>
+          {/* )} */}
+        </ul>
+        </div>
+
+
+      <div className="login-btn-container">
+
+        <NavLink to="/login">
+          <button className="navbar-login-btn me-3 btn-second">Login</button>
+        </NavLink>
+        <NavLink to="/signup">
+          <button className="navbar-login-btn me-3 btn-first">Register</button>
+        </NavLink>
+        
+
       </div>
     </nav>
   );

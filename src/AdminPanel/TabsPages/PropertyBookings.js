@@ -1,13 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { AiOutlineDoubleRight } from "react-icons/ai";
+import { AiOutlineDoubleRight, GoLocation } from "react-icons/ai";
 import "./StyleTabs/BookingProperty.css";
+import { FaLocationArrow } from "react-icons/fa";
+import { HiLocationMarker } from "react-icons/hi";
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const admin_token = localStorage.getItem("token");
 
 const PropertyBookings = () => {
-  const [bookedProperties, setBookedProperties] = useState({});
+  const [bookedProperties, setBookedProperties] = useState([]);
 
   const acceptHandler = (bookedProp) => {
     const value = { approve_status: "approved" };
@@ -28,7 +30,7 @@ const PropertyBookings = () => {
       )
       .then((res) => {
         console.log(res.data);
-        setBookedProperties(res.data);
+        // setBookedProperties(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -49,13 +51,15 @@ const PropertyBookings = () => {
         },
       })
       .then((res) => {
-        // console.log(res.data);
+        console.log("all bookings", res.data);
         setBookedProperties(res.data);
       })
       .catch((err) => {
         // console.log(err);
       });
   }, []);
+
+  console.log(bookedProperties);
 
   // console.log(bookedProperties);
   // {bookedProperties.map((item, index)=>{
@@ -71,27 +75,47 @@ const PropertyBookings = () => {
   return (
     <div className=" my-2  ">
       <div className="row">
-        {Object.keys(bookedProperties).map((key, index) => {
+        {bookedProperties.map((item, index) => {
           return (
             <div className="col-3" key={index}>
-              <div className="card booking_card_notification shadow">
-                <div className="mx-1 card-booking">
-                  <h4 className="headinofBookingNotificatonTab">
-                    {bookedProperties[index].manager_name}
+              <div className="brant-card ">
+                <div className="mx-1 brant-card-body">
+                  <h4 className="headinofBookingNotificatonTab mb-4">
+                    {" "}
+                    Name : {item.propertyOwner_details.name}
                   </h4>
                   <p className="status_office-notificaton">
                     {" "}
-                    <span className="status_office"> Status : </span>
-                    {bookedProperties[index].approve_status}
+                    <span className="status_office"> Amount :{item.booking.amount} </span>
+                    {/* <span
+                      className={
+                         "approved"
+                        === "approved"
+                          ? "brant-label btn-delivered"
+                          : "brant-label btn-pending"
+                      }
+                    >
+                      
+                    </span> */}
+                    
                   </p>
+
                   <p className="location_booking-notification">
-                    Location : {bookedProperties[index].address}
+                    <HiLocationMarker style={{ fontSize: "25px" }} />
+                    <span className=""> Location : {item.space.address}</span>
                   </p>
-                </div>
-                <hr />
-                <div className="mb-2 text-">
+
+                  <hr />
+
+                  <p className="status_office-notificaton">
+                    <span className="status_office"> Property name :  </span>
+                  </p>
+
+                  <p>{item.space.space}</p>
+
+                  {/* <div className="mb-2 text-">
                   <button
-                    className="btn px-3 ms-3  border  accept_booking "
+                    className="btn px-3 ms-3  border  brant-label"
                     onClick={() => acceptHandler(bookedProperties)}
                   >
                     Accept
@@ -103,11 +127,12 @@ const PropertyBookings = () => {
                   >
                     Decline
                   </button>
+                </div> */}
                 </div>
               </div>
             </div>
           );
-        })}
+        })} 
       </div>
     </div>
   );

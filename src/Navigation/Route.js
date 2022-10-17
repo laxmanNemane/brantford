@@ -38,6 +38,26 @@ import PrivateRouteForAdmin from "./PrivateRoute";
 import PrivateRouteForuser from "./PrivteRouteForOwner";
 import UpdateProperty from "../UserPanel/DashbordUser/ModelPropertyOwner/UpdateProperty";
 import BookedSpaces from "../UserPanel/DashbordUser/BookedSpaces";
+
+import AdminChat from "../AdminPanel/AdminChat";
+import AdminMail from "../AdminPanel/AdminMail";
+import AdminMarket from "../AdminPanel/AdminMarket";
+import AdminCalendar from "../AdminPanel/AdminCalendar";
+
+import CitiWiseProperty from "../Components/BrantFordLandingPages/CitiWiseProperty";
+import CompareSidebar from "../Components/BrantFordLandingPages/CompareSidebar";
+import FilterdPage from "../Components/BrantFordLandingPages/FilterdPage";
+import ViewAllRentedPage from "../Components/BrantFordLandingPages/allfilteredPages/ViewAllRentedPage";
+import ForSale from "../Components/BrantFordLandingPages/allfilteredPages/ForSale";
+import SerchProperty from "../Components/BrantFordLandingPages/allfilteredPages/SerchProperty";
+import ComparisonProperty from "../Components/BrantFordLandingPages/ComparisonProperty";
+
+import PropertyCalc from "../Redux/PropertyOwnerSlices/PropertyCalc";
+import Appointments from "../Redux/PropertyOwnerSlices/Appointments";
+import AdminAppointments from "../AdminPanel/AdminAppointments";
+import SpaceBookings from "../Redux/PropertyOwnerSlices/SpaceBookings";
+import ChatBot from "../Components/ChatBot";
+
 // import AdminRequirements from "../AdminPanel/AdminRequirements";
 
 // import PrivateRouteForAdmin from "./PrivateRoute";
@@ -56,10 +76,19 @@ const Routing = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route
           exact
-          path="/office-detail/:id"
+          path="/office-detail/:name"
           element={<OfficesDetailPage />}
         />
+        <Route path="/city/:name" element={<CitiWiseProperty />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
+        <Route path="/contactUs" element={<ContactForm />} />
+        <Route path="" element={<ChatBot/>} />
+
+        <Route path="/allSpaces" element={<FilterdPage />} />
+        <Route path="/allrentedspaces" element={<ViewAllRentedPage />} />
+        <Route path="/salingproperties" element={<ForSale />} />
+        <Route path="/searchproperties" element={<SerchProperty />} />
+        <Route path="/copareproperty" element={<ComparisonProperty />} />
 
         {/* =================property owner=================== */}
         <Route element={<PrivateRouteForuser />}>
@@ -73,11 +102,16 @@ const Routing = () => {
           <Route path="/updatePage" element={<UpdateProperty />} />
           <Route path="/profile" element={<AdminProfilePage />} />
           <Route path="/pendingSpaces" element={<BookedSpaces />} />
+          <Route path="/propertycalc" element={<PropertyCalc />} />
+          <Route path="/propertymarket" element={<AdminMarket />} />
+          <Route path="/appointments" element={<Appointments />} />
+          <Route path="/spacebookings" element={<SpaceBookings />} />
+
         </Route>
 
         {/* </Route> */}
         <Route element={<PrivateRouteForAdmin />}>
-          <Route path="/dashbord" element={<DasbordPage />} />
+          <Route path="/dashboard" element={<DasbordPage />} />
           <Route path="/properties" element={<Properties />} />
           <Route path="/revenu" element={<RevenuAdmin />} />
           <Route path="/tenants" element={<AdminTenants />} />
@@ -88,6 +122,11 @@ const Routing = () => {
           <Route path="/detail" element={<PropertyDetailPage />} />
           <Route path="/profile" element={<AdminProfilePage />} />
           <Route path="/requirements" element={<AdminRequirements />} />
+          <Route path="/chat" element={<AdminChat />} />
+          <Route path="/mail" element={<AdminMail />} />
+          <Route path="/market" element={<AdminMarket />} />
+          <Route path="/calendar" element={<AdminCalendar />} />
+          <Route path="/adminappointments" element={<AdminAppointments />} />
         </Route>
       </Routes>
       {/* <Footer /> */}

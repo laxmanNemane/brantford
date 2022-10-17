@@ -11,8 +11,8 @@ import UserSidebar from "../UserPanel/PropertyOwnerSidebar/UserSidebar";
 const HocComponent = (Component) => {
   return (props) => {
     return (
-      <div className="d-flex" style={{ height: "100vh" }}>
-        <div style={{ width: "18%" }}>
+      <div className="" style={{ height: "100vh" }}>
+        <div style={{  }}>
           {JSON.parse(localStorage.getItem("user")).admin.profile ===
           "property-owner" ? (
             <UserSidebar />
@@ -20,7 +20,7 @@ const HocComponent = (Component) => {
             <Sidebar />
           )}
         </div>
-        <div style={{ width: "82%" }}>
+        <div style={{ }}>
           <Header />
           <Component />
         </div>

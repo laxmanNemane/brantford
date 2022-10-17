@@ -160,13 +160,13 @@ const UserDashbord = () => {
   };
 
   return (
-    <div className="position-relative property-owner h-100">
-      <div className="user-dashbord mx-5  pb-5 ">
+    <div className="position-relative property-owner h-100" style={{paddingLeft:"270px"}}>
+      <div className="user-dashbord mx-5  pb-5 " >
         <div className="row py-5">
           <div className="col-12 mb-5">
             <div className="dashbord-section-content d-flex justify-content-between align-items-center   px-4 py-2   rounded">
               <div className="heading-section-dashbord ">
-                <h1 className="heading-second mb-1"> Dashbord</h1>
+                <h1 className="heading-second mb-1"> Dashboard</h1>
                 <p className="paragraph">
                   Welcome to Brantford property portal
                 </p>

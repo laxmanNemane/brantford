@@ -5,6 +5,7 @@ import AddCategoryModel from "./Modals/AddCategoryModel";
 import UpdateCategoryModel from "./Modals/UpdateCategoryModel";
 import axios from "axios";
 import { useEffect } from "react";
+import AdminFooter from "./AdminFooter";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
@@ -14,6 +15,7 @@ const AdminCategories = () => {
   const [isModalVisible, setIsModalVisible] = useState(false, 0);
   const [updateId, setUpdateId] = useState();
   const [updatecategary, setUpdatecategary] = useState();
+
 
   //update category
   const OnupdateMessage = (id, categary) => {
@@ -69,21 +71,25 @@ const AdminCategories = () => {
 
   useEffect(() => {
     adminCategory();
-  }, [isModalVisible]);
+  }, [showStatus,isModalVisible ]);
 
   return (
     <div
       style={{
         background: "rgb(244, 240, 242)",
-        padding: "0",
-        height: "100vh",
+        paddingLeft: "270px",
+        // height: "100vh",
       }}
     >
-      <div className="row  mx-3  ">
+      <div className="top-banner">
+        <div className="dashboard-title">
+
+       
+      <div className="row mx-3">
         <div className="col-12  mx-2 d-flex justify-content-between my-3 mb-5">
           <h5 className="Analytic_heading ">Categories : </h5>
           <button
-            className="btn btn-privacy-policy me-3 mb-3"
+            className="btn btn-privacy-policy Buttons_dashbord me-3 mb-3"
             onClick={() => setshowStatus(true)}
           >
             {" "}
@@ -92,84 +98,91 @@ const AdminCategories = () => {
           </button>
         </div>
 
-        <div
-          className="table table- me-auto ms-2"
-          style={{ width: "99%", margin: "0 20px 0 0" }}
-        >
-          <table
-            id="dtDynamicVerticalScrollExample"
-            className="table  table-bordered table-sm"
-            cellSpacing="0"
-            width="90%"
-            // style={{ overflowY: "auto", height: "400px" }}
-          >
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Category</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {categaries.map((item) => {
-                return (
-                  <tr className="" key={item.id}>
-                    <td
-                      className="table-td px-2 mx-3"
-                      style={{ width: "10%" }}
-                      key={item.id}
-                    >
-                      {item.id}
-                    </td>
-                    <td className="table-td " style={{ width: "80%" }}>
-                      {item.categary}
-                    </td>
-
-                    {/* <td className="table-td w-25" style={{ width: "10%" }}> */}
-                    {/* <AiOutlineMore onClick={() => setshowStatus(true)} /> */}
-                    {/* <AiOutlineMore className="fs-4" />
-                </td> */}
-                    <td>
-                      <div className="action-div dropdown">
-                        <button
-                          className="table-td px-2 mx-3"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                          style={{ border: "none" }}
-                        >
-                          <i className="fas fa-ellipsis-v"></i>
-                        </button>
-                        <ul
-                          className="dropdown-menu"
-                          aria-labelledby="dropdownMenuButton1"
-                        >
-                          <li
-                            style={{ cursor: "pointer" }}
-                            className="my-2 mx-2"
-                            onClick={function (event) {
-                              OnupdateMessage(item.id, item.categary);
-                              setIsModalVisible(true);
-                            }}
-                          >
-                            <i className="fas fa-pencil-alt mx-2"></i> Update
-                          </li>
-                          <li
-                            className="my-2 mx-2"
-                            onClick={() => onDelete(item.id)}
-                            style={{ cursor: "pointer" }}
-                          >
-                            <i className="fas fa-trash-alt mx-2"></i> Delete
-                          </li>
-                        </ul>
-                      </div>
-                    </td>
+        <div className="brant-card mb-4">
+          <div className="brant-card-body">
+            <div
+              className="table table- me-auto ms-2"
+              style={{ width: "99%", margin: "0 20px 0 0" }}
+            >
+              <table
+                id="dtDynamicVerticalScrollExample"
+                className="table  table-bordered table-sm"
+                cellSpacing="0"
+                width="90%"
+                // style={{ overflowY: "auto", height: "400px" }}
+              >
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Category</th>
+                    <th>Status</th>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                </thead>
+                <tbody>
+                  {categaries.map((item, index) => {
+                    return (
+                      <tr className="" key={index}>
+                        <td
+                          className="table-td px-2 mx-3"
+                          style={{ width: "10%" }}
+                          key={index}
+                        >
+                          {index + 1}
+                        </td>
+                        <td className="table-td " style={{ width: "80%" }}>
+                          {item.categary}
+                        </td>
+
+                        {/* <td className="table-td w-25" style={{ width: "10%" }}> */}
+                        {/* <AiOutlineMore onClick={() => setshowStatus(true)} /> */}
+                        {/* <AiOutlineMore className="fs-4" />
+                </td> */}
+                        <td>
+                          <div className="action-div dropdown">
+                            <button
+                              className="table-td px-2 mx-3"
+                              id="dropdownMenuButton1"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                              style={{ border: "none" }}
+                            >
+                              <i className="fas fa-ellipsis-v"></i>
+                            </button>
+                            <ul
+                              className="dropdown-menu"
+                              aria-labelledby="dropdownMenuButton1"
+                            >
+                              <li
+                                style={{ cursor: "pointer" }}
+                                className="my-2 mx-2"
+                                onClick={function (event) {
+                                  OnupdateMessage(item.id, item.categary);
+                                  setIsModalVisible(true);
+                                }}
+                              >
+                                <i className="fas fa-pencil-alt mx-2"></i>{" "}
+                                Update
+                              </li>
+                              <li
+                                className="my-2 mx-2"
+                                onClick={() => onDelete(item.id)}
+                                style={{ cursor: "pointer" }}
+                              >
+                                <i className="fas fa-trash-alt mx-2"></i> Delete
+                              </li>
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
+      </div>
+      </div>
       </div>
       <AddCategoryModel showStatus={showStatus} setshowStatus={setshowStatus} />
       <UpdateCategoryModel
@@ -178,6 +191,7 @@ const AdminCategories = () => {
         id={updateId}
         categary={updatecategary}
       />
+      < AdminFooter/>
     </div>
   );
 };

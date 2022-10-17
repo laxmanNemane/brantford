@@ -32,6 +32,29 @@ const AdminUserTable = () => {
     setUserDetails(ele);
   };
 
+  const deleteEnduser = (id) => {
+    axios.delete(`${BaseUrl}/adminDashboard/delete-enduser?id=${id}`, {headers:{
+      Authorization:localStorage.getItem('token')
+    }})
+    .then((res)=>{
+      console.log(res.data)
+      endusers();
+    })
+    .catch((err)=>{console.log(err)})
+  }
+
+  const deleteProperyOwner = (id) => {
+    axios.delete(`${BaseUrl}/adminDashboard/delete-propertyOwner?id=${id}`, {headers:{
+      Authorization:localStorage.getItem('token')
+    }})
+    .then((res)=>{
+      console.log(res.data)
+      propertyOwners();
+    })
+    .catch((err)=>{console.log(err)})
+  }
+  
+
   const getSingleUserDetail = () => {
     axios
       .get(
@@ -137,127 +160,148 @@ const AdminUserTable = () => {
   return (
     <div>
       <div className="mt-4 ms-2">
-        <h5 className="Analytic_heading">All Users</h5>
-        <div
-          className="table table-responsive me-auto ms-2"
-          style={{ width: "99%", margin: "0 20px 0 0" }}
-        >
-          <table
-            id="dtDynamicVerticalScrollExample"
-            className="table  table-bordered table-sm"
-            cellSpacing="0"
-            width="90%"
-            style={{ overflowY: "auto", height: "400px" }}
-          >
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                {/* <th>Role</th> */}
-              </tr>
-            </thead>
-            <tbody>
-              {post.map((ele, index) => (
-                <tr className="" key={index}>
-                  <td className="table-td">{ele.id}</td>
-                  <td className="table-td">{ele.name}</td>
-                  <td className="table-td">{ele.email}</td>
-                  {/* <td className="table-td">{ele.profile}</td> */}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="brant-card">
+          <div className="brant-card-body">
+            <h5 className="Analytic_heading">All Users</h5>
+            <div
+              className="table table-responsive me-auto ms-2"
+              style={{ width: "99%", margin: "0 20px 0 0" }}
+            >
+              <table
+                id="dtDynamicVerticalScrollExample"
+                className="table  table-bordered table-sm"
+                cellSpacing="0"
+                width="90%"
+                style={{ overflowY: "auto", height: "400px" }}
+              >
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    {/* <th>Action</th> */}
+                  </tr>
+                </thead>
+                <tbody>
+                  {post.map((ele, index) => (
+                    <tr className="" key={index}>
+                      <td className="table-td">{index + 1}</td>
+                      <td className="table-td">{ele.name}</td>
+                      <td className="table-td">{ele.email}</td>
+                      {/* <td className="table-td">{ele.profile}</td> */}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* End User   */}
       <div className="mt-4 ms-2">
-        <h5 className="Analytic_heading">End Users</h5>
-        <div
-          className="table table-responsive me-auto ms-2"
-          style={{ width: "99%", margin: "0 20px 0 0" }}
-        >
-          <table
-            id="dtDynamicVerticalScrollExample"
-            className="table  table-bordered table-sm"
-            cellSpacing="0"
-            width="90%"
-            style={{ overflowY: "auto", height: "400px" }}
-          >
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                {/* <th>profile role</th> */}
-              </tr>
-            </thead>
-            <tbody>
-              {endUser.map((ele, index) => (
-                <tr className="" key={index}>
-                  <td className="table-td">{ele.id}</td>
-                  <td className="table-td">{ele.name}</td>
-                  <td className="table-td">{ele.email}</td>
-                  <td className="table-td">
-                    <button
-                    className="userView-btn" 
-                    onClick={() => getSingleEndUser(ele.id, ele)}>
-                      {/* */}
-                      view
-                    </button>
-                  </td>
-                  {/* <td className="table-td">{ele.profile}</td> */}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="brant-card">
+          <div className="brant-card-body">
+            <h5 className="Analytic_heading">End Users</h5>
+            <div
+              className="table table-responsive me-auto ms-2"
+              style={{ width: "99%", margin: "0 20px 0 0" }}
+            >
+              <table
+                id="dtDynamicVerticalScrollExample"
+                className="table  table-bordered table-sm"
+                cellSpacing="0"
+                width="90%"
+                style={{ overflowY: "auto", height: "400px" }}
+              >
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {endUser.map((ele, index) => (
+                    <tr className="" key={index}>
+                      <td className="table-td">{ index + 1}</td>
+                      <td className="table-td">{ele.name}</td>
+                      <td className="table-td">{ele.email}</td>
+                      <td className="table-td">
+                        <button
+                          className="brant-btn-blue"
+                          onClick={() => getSingleEndUser(ele.id, ele)}
+                        >
+                          {/* */}
+                          view
+                        </button>
+                        <button className="brant-btn-red ms-3" onClick={()=>deleteEnduser(ele.id)}>Delete</button>
+                      </td>
+                      {/* <td className="table-td">{ele.profile}</td> */}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="mt-4 ms-2">
-        <h5 className="Analytic_heading">Property Owners</h5>
-        <div
-          className="table table-responsive me-auto ms-2"
-          style={{ width: "99%", margin: "0 20px 0 0" }}
-        >
-          <table
-            id="dtDynamicVerticalScrollExample"
-            className="table  table-bordered table-sm"
-            cellSpacing="0"
-            width="90%"
-            style={{ overflowY: "auto", height: "400px" }}
-          >
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                {/* <th>Role</th> */}
-              </tr>
-            </thead>
-            <tbody>
-              {propertyOwner.map((ele, index) => (
-                <tr className="" key={index}>
-                  <td className="table-td">{ele.id}</td>
-                  <td className="table-td">{ele.name}</td>
-                  <td className="table-td">{ele.email}</td>
-                  <td>
-                    <td className="table-td">
-                      <button className="userView-btn"
-                        onClick={() => getSinglePropertyOwner(ele.id, ele)}
-                      >
-                        {/* */}
-                        view
-                      </button>
-                    </td>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <div className="mb-5">
+        <div className="mt-4 ms-2">
+          <div className="brant-card">
+            <div className="brant-card-body">
+              <h5 className="Analytic_heading">Property Owners</h5>
+              <div
+                className="table table-responsive me-auto ms-2"
+                style={{ width: "99%", margin: "0 20px 0 0" }}
+              >
+                <table
+                  id="dtDynamicVerticalScrollExample"
+                  className="table  table-bordered table-sm"
+                  cellSpacing="0"
+                  width="90%"
+                  style={{ overflowY: "auto", height: "400px" }}
+                >
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {propertyOwner.map((ele, index) => (
+                      <tr className="" key={index}>
+                        <td className="table-td">{index + 1}</td>
+                        <td className="table-td">{ele.name}</td>
+                        <td className="table-td">{ele.email}</td>
+                        <td>
+                          <td className="table-td">
+                            <button
+                              className="brant-btn-blue"
+                              onClick={() =>
+                                getSinglePropertyOwner(ele.id, ele)
+                              }
+                            >
+                              {/* */}
+                              view
+                            </button>
+                            <button className="brant-btn-red ms-3" onClick={()=>deleteProperyOwner(ele.id)}>Delete</button>
+                          </td>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
       <SingleUserModel
         show={show}
         setShow={setShow}

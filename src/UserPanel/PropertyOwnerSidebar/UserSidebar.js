@@ -12,8 +12,14 @@ import {
   AiFillQuestionCircle,
 } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
-import { Dropdown, Menu } from "antd";
+import { Dropdown, Menu  } from "antd";
 import { MdNoteAdd } from "react-icons/md";
+import { FaMapMarkedAlt } from "react-icons/fa";
+import { BiCheckCircle } from "react-icons/bi";
+import { BsList } from "react-icons/bs";
+const {SubMenu} = Menu;
+
+
 const UserSidebar = () => {
   // this is dropdown option
   const menu = (
@@ -47,55 +53,142 @@ const UserSidebar = () => {
   );
 
   return (
-    <div className="sidebar_main shadow ">
-      <h5 className="Logo_admin fw-bold text-center">
-        <AiOutlineHome />
-      </h5>
-      <div className=" Sidebar_otption_section">
-        <ul className="list-unstyled">
-          <li className="my-3    list-sidebar-menu">
-            <NavLink to="/userdashbord" className="text-dark">
-              <TiChartBar className="Sidebar_icons" />
-              Dashbord
-            </NavLink>
-          </li>
-          {/* <li className="my-3   list-sidebar-menu">
-            <NavLink to="/properties" className="text-dark">
-              <BsBuilding className="Sidebar_icons" /> properties
-            </NavLink>
-          </li>
-          <li className="my-3   list-sidebar-menu">
-            <NavLink to="/tenants" className="text-dark">
-              <AiOutlineUsergroupAdd className="Sidebar_icons" />
-              Tenants
-            </NavLink>
-          </li>
-          <li className="my-3   list-sidebar-menu">
-            <NavLink to="/categories" className="text-dark">
-              <AiOutlineInsurance className="Sidebar_icons" />
-              Categories
-            </NavLink>
-          </li> */}
-          <li className="my-3  list-sidebar-menu">
-            <NavLink to="/spaces" className="text-dark">
-              <AiOutlineCreditCard className="Sidebar_icons" />
-              Spaces
-            </NavLink>
-          </li>
-          <li className="my-3 list-sidebar-menu">
-            <NavLink to="/Visitors" className="text-dark">
-              <AiOutlineWechat className="Sidebar_icons" />
-              Visitors
-            </NavLink>
-          </li>
-        </ul>
-        <p className="sidebar-setting">
-          <Dropdown overlay={menu} placement="topLeft" arrow>
-            <AiOutlineSetting className="setting_icon" />
-          </Dropdown>
-        </p>
+    <div>
+      <div>
+        <nav className="admin-sidebar">
+          <div className="dashboard_logo">
+          <h5 className="Logo_admin fw-bold text-center">
+            <AiOutlineHome />
+          </h5>
+          </div>
+
+          <div className="Sidebar_otption_section">
+            <ul className="list-unstyled">
+              <li
+                className="my-3  list-sidebar-menu"
+                data-bs-toggle="collapse"
+                data-bs-target="#getting-started-collapse2"
+                aria-expanded="false"
+              >
+                <NavLink to="/userdashbord" className="text-dark">
+                  <div className="menu-list align-items-center justify-content-center">
+                    <TiChartBar className="Sidebar_icons" />
+                    <span>Dashboard</span>
+                  </div>
+                </NavLink>
+                <div
+                  className="collapse sub-menu-div"
+                  id="getting-started-collapse2"
+                >
+                  <ul>
+                    <li>
+                      <NavLink to="/properties" className="text-dark">
+                        <span> Spaces </span>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <span>Booked Property</span>
+                    </li>
+                    <li>
+                      <NavLink to="/properties" className="text-dark">
+                        <span>Revenue</span>
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li className="my-3 list-sidebar-menu">
+                <NavLink to="/spaces" className="text-dark">
+                  <div className="  align-items-center justify-content-center">
+                    <AiOutlineCreditCard className="Sidebar_icons" />
+                    <span> Spaces </span>
+                  </div>
+                </NavLink>
+              </li>
+              <li
+                className="my-3   list-sidebar-menu"
+                data-bs-toggle="collapse"
+                data-bs-target="#getting-started-collapse"
+              >
+                <NavLink to="/visitors" className="text-dark">
+                  <div className="menu-list align-items-center justify-content-center">
+                    <AiOutlineWechat className="Sidebar_icons" />
+                    <span>Visitors</span>
+                  </div>
+                </NavLink>
+                <div
+                  className="collapse sub-menu-div"
+                  id="getting-started-collapse"
+                >
+                  <ul>
+                    <li>
+                      <NavLink to="/properties" className="text-dark">
+                        <span>All Users</span>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/properties" className="text-dark">
+                        <span>Property Owner</span>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/properties" className="text-dark">
+                        <span>End Users</span>
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li className="my-3 list-sidebar-menu">
+                <NavLink to="/propertycalc" className="text-dark">
+                  <div className="  align-items-center justify-content-center">
+                    <AiOutlineCreditCard className="Sidebar_icons" />
+                    <span> Calculator </span>
+                  </div>
+                </NavLink>
+              </li>
+              <li className="my-3 list-sidebar-menu">
+                <NavLink to="/propertymarket" className="text-dark">
+                  <div className="  align-items-center justify-content-center">
+                    <FaMapMarkedAlt className="Sidebar_icons" />
+                    <span> Market </span>
+                  </div>
+                </NavLink>
+              </li>
+              <li className="my-3 list-sidebar-menu">
+                <NavLink to="/appointments" className="text-dark">
+                  <div className="  align-items-center justify-content-center">
+                    <BsList className="Sidebar_icons" />
+                    <span> Appointments </span>
+                  </div>
+                </NavLink>
+              </li>
+
+              <li className="my-3 list-sidebar-menu">
+                <NavLink to="/spacebookings" className="text-dark">
+                  <div className="  align-items-center justify-content-center">
+                    <BiCheckCircle className="Sidebar_icons" />
+                    <span> Bookings </span>
+                  </div>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+          <div className="sideScrollBar">
+
+          </div>
+        </nav>
       </div>
-    </div>
+
+           
+
+     <p className="sidebar-setting">
+        <Dropdown overlay={menu} placement="topLeft" arrow>
+           <AiOutlineSetting className="setting_icon" />
+         </Dropdown>
+       </p>
+     </div> 
   );
 };
 

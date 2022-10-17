@@ -7,26 +7,39 @@ import loginPage_image from "../Assets/Images/login.jpg";
 import Navbar from "../Layout/Navbar";
 // import LoginWithGoogle from "./LoginWithGoogle";
 // import LogoutFromGoogle from "./LogoutFromGoogle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const BaseUrl = "http://bantford.prometteur.in";
 
 function SignUp() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const navigate = useNavigate();
+
+  const loginWithGoogle = () => {
+    axios.get(`http://bantford.prometteur.in/auth`)
+    .then((res)=> {
+      console.log(res.data)
+      navigate("/")
+    })
+    .catch((err)=> {console.log(err)})
+  }
+
   const handleSubmit = (values, resetForm) => {
     console.log(values);
     axios
       .post("http://bantford.prometteur.in/admin/create-admin", values)
       .then((res) => {
-        if (res.status === "200") {
-          console.log(res.data);
-          alert("Registerd Successfully");
-        }
+        // if (res.status === "200") {
+        console.log(res.data);
+        alert("Registerd Successfully");
+        // }
       })
       .catch((err) => console.log(err));
     resetForm();
   };
+  
+ 
 
   return (
     <div>
@@ -55,9 +68,6 @@ function SignUp() {
                     email: "",
                     password: "",
                     contact: "",
-
-                    address: "",
-
                     profile: "",
                     address: "",
                   }}
@@ -90,7 +100,6 @@ function SignUp() {
                 >
                   {({ values, errors, handleSubmit }) => (
                     <Form onSubmit={handleSubmit} className="mt-5">
-
                       <Field
                         type="name"
                         name="name"
@@ -101,7 +110,7 @@ function SignUp() {
                         <ErrorMessage name="name" />
                       </p>
                       <Field
-                        type="number"
+                        type="name"
                         name="contact"
                         placeholder="contact"
                         className="form-control w-75 mx-auto my-3"
@@ -178,10 +187,12 @@ function SignUp() {
                         &ndash;&ndash; or sign in with &ndash;&ndash;
                       </p>
 
-                      {/* <p className="form-control w-75  mx-auto  ">
+
+                      <button className="form-control w-75  mx-auto" onClick={loginWithGoogle}>
                         <i className="fab fa-google fa-x mx-5"></i> Continue
                         with Google
-                      </p> */}
+                      </button>
+
                       {/* <LoginWithGoogle /> */}
 
                       {/* <LogoutFromGoogle/> */}
