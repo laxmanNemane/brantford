@@ -16,6 +16,7 @@ import {
 import CompareSidebar from "./CompareSidebar";
 
 const BaseUrl = "http://bantford.prometteur.in";
+const defaultImageUrl = "https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 
 const PropertySection = ({ slide, setSlide }) => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const PropertySection = ({ slide, setSlide }) => {
   const [categaries, setCategories] = useState([]);
   const [singleCategory, setSinglecategory] = useState([]);
   const [ss, SetSs] = useState();
+  const [imagepath, setImagepath] = useState([]);
 
   const {
     endUserSpace,
@@ -46,17 +48,18 @@ const PropertySection = ({ slide, setSlide }) => {
 
   const dispatch = useDispatch();
 
-  const setCategary = (categaryId, data) => {
+  const setCategary = (categaryId, data, ele) => {
     console.log(categaryId);
 
     // localStorage.setItem("singlecategaryId", categaryId);
-    setEndUserSpace(data);
+    setEndUserSpace(ele);
     navigate(`/office-detail/${data.space.split(" ").join("-")}`);
   };
 
   const modalToDetailPage = (data) => {
     setIsModalVisible(true);
     setEndUserSpace(data);
+    console.log(data);
   };
 
   const getallCategaries = () => {
@@ -116,6 +119,9 @@ const PropertySection = ({ slide, setSlide }) => {
     setShow(true);
   };
   console.log("hsgdt", dataCompare);
+  console.log("enduser space data  ", data);
+  console.log(imagepath);
+
 
   return (
     <div>
@@ -126,7 +132,7 @@ const PropertySection = ({ slide, setSlide }) => {
               <div className="container property-section">
                 <div className="heading-property">
                   <p className="sub-main-heading pr-heading-main">
-                    Handpicked Properties for you
+                    Handpicked properties for you
                   </p>
                   <p className="sub-heading pr-heading-sub ">
                     Featured commercial & co-working properties across India
@@ -142,19 +148,84 @@ const PropertySection = ({ slide, setSlide }) => {
                         <div className="properties">
                           <div className="image-section1 w-100 position-relative">
                             <div className="property-image-in-section">
-                              <img
-                                src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                              {/* <h3>{ele.id}</h3> */}
+
+
+                            {/* {ele.images>0 && ele.images.map((item, index)=> {if(item.main_type =="photos" && item.sub_type =="photos_cover"){return (<img key={index} src={item.data[0]} alt="" className="image-find-section"/>)}   else{<img key={index} src={defaultImageUrl} alt="" className="image-find-section"/>}  })} */}
+
+                              {
+                              ele.images.length > 0 && 
+                              // (ele.images.filter(item => {if(item.main_type =="photos" && item.sub_type =="photos_cover") {console.log(item.data); console.log(item.data.indexOf(item.data)); console.log(item.length);  return true}}) ) 
+                              // (ele.main_type =="photos" && ele.sub_type =="photos_cover")
+
+
+
+                              // ele.images.filter(item => {if(item.main_type =="photos" && item.sub_type =="photos_cover"){ return true; }})
+
+
+                              (ele.images.map(function (ele){
+
+                                if( ele.main_type =="photos" &&
+                                 ele.sub_type =="photos_cover"){
+
+                                   console.log(ele.data)
+                                   return true;
+                                   
+                                 }else{
+                                  return false;
+                                 }
+                                
+                                }))
+
+                               ?
+                               ele.images.map(item2 => {if(item2.main_type =="photos" && item2.sub_type =="photos_cover") {  return (<img  src={item2.data} alt="" className="image-find-section"/>)}}) 
+
+
+                               : 
+                               (
+                                <img  src={defaultImageUrl} alt="" className="image-find-section"/>
+                              ) 
+                               }
+
+
+
+
+                              {/* <img
+                                src={ele.images.length>0 
+                                       
+                                   ? 
+                                  //  ele.images.filter(item =>{ if(item.main_type =="photos" && item.sub_type =="photos_cover")  return item.data})
+
+
+                                    ele.images.filter(function (ele){
+
+                                   if( ele.main_type =="photos" &&
+                                    ele.sub_type =="photos_cover"){
+
+                                      console.log(ele.data)
+                                      return ele.data[0].toString()
+                                    }
+
+                                   })
+                                 
+                                    : defaultImageUrl
+                                  
+                                  }
+
+
                                 alt=""
                                 className="image-find-section"
-                              />
+                              /> */}
+
+
                             </div>
                           </div>
                           <div className="price-section d-flex justify-content-between mx-4">
                             <div className="w-75 ">
-                              <p className="price">{ele.price}/sqr</p>
+                              <p className="price">{ele.space.price}/sqr</p>
                             </div>
                             <div className="d-flex justify-content-between w-25 gx-2 icon-group">
-                              <p onClick={() => modalToDetailPage(ele)}>
+                              <p onClick={() => modalToDetailPage(ele.space)}>
                                 <AiOutlineArrowsAlt className="icons-recomanded-property text-white" />
                               </p>
                               <p>
@@ -167,19 +238,23 @@ const PropertySection = ({ slide, setSlide }) => {
                           </div>
                           <div className="properties-description-card mx-2 my-3">
                             <p className="property-name-heading name">
-                              {ele.space}
+                              {ele.space.space}
                             </p>
                             <p className="property-location-card description-why-page">
-                              {ele.address}
+                              {ele.space.address}
                             </p>
                             <div className="button-space d-flex justify-content-between btn-area">
-                              <p className=" fw-bold">{ele.description}</p>
+                              <p className=" fw-bold">
+                                {ele.space.description}
+                              </p>
                               {/* <NavLink to={`/office-detail/${item.id}`}> */}
                               <button
                                 className="btn-first"
-                                onClick={() => setCategary(ele.id, ele)}
+                                onClick={() =>
+                                  setCategary(ele.space.id, ele.space, ele)
+                                }
                               >
-                                Detail
+                                Details
                               </button>
                               {/* </NavLink> */}
                             </div>
@@ -194,7 +269,7 @@ const PropertySection = ({ slide, setSlide }) => {
                   <p className="btn-view-all position-relative">
                     View All{" "}
                     <span className="tr-icon position-relative">
-                      <i class="fa-solid fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </span>
                   </p>
                 </Link>

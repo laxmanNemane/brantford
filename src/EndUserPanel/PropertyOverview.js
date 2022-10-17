@@ -15,7 +15,7 @@ const PropertyOverview = ({ isModalVisible, setIsModalVisible }) => {
   const navigate = useNavigate();
 
   const { setEndUserSpace, endUserSpace } = useContext(usersContext);
-  console.log(endUserSpace);
+  // console.log(endUserSpace);
   const handleOk = () => {
     setIsModalVisible(false);
   };
@@ -25,8 +25,10 @@ const PropertyOverview = ({ isModalVisible, setIsModalVisible }) => {
   };
 
   const setNewSpace = (data) => {
-    navigate(`/office-detail/${data.space.split(" ").join("-")}`);
+    navigate(`/office-detail/${data.space.space.split(" ").join("-")}`);
   };
+
+  console.log(endUserSpace)
   return (
     <>
       <Modal

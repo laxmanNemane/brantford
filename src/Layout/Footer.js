@@ -23,7 +23,7 @@ const Footer = () => {
                 <BsChevronRight /> Our Services
               </li>
               <li>
-                <BsChevronRight /> price trends
+                <BsChevronRight /> Price trends
               </li>
               <li>
                 <BsChevronRight /> Post your Property
@@ -52,11 +52,11 @@ const Footer = () => {
               </li>
               <li>
                 <BsChevronRight /> Coworking Office Space In <br />
-                &nbsp;&nbsp;&nbsp;&nbsp; Hydrabad
+                &nbsp;&nbsp;&nbsp;&nbsp; Hyderabad
               </li>
               <li>
                 <BsChevronRight /> Coworking Office Space In <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;Banglore
+                &nbsp;&nbsp;&nbsp;&nbsp;Bangalore
               </li>
             </ul>
           </div>
@@ -71,17 +71,17 @@ const Footer = () => {
               </li>
               <li>
                 <BsChevronRight /> Conventional Space In <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;Ahemadabad
+                &nbsp;&nbsp;&nbsp;&nbsp;Ahmedabad
               </li>
               <li>
-                <BsChevronRight /> Conventional Space In Banglore
+                <BsChevronRight /> Conventional Space In Bangalore
               </li>
               <li>
                 <BsChevronRight /> Conventional Space In Delhi
               </li>
               <li>
                 <BsChevronRight /> Conventional Space In <br />
-                &nbsp;&nbsp;&nbsp;&nbsp; Hydrabad
+                &nbsp;&nbsp;&nbsp;&nbsp; Hyderabad
               </li>
             </ul>
           </div>
@@ -91,7 +91,7 @@ const Footer = () => {
               <li>
                 Toll Free -0392163876 <br />
                 <span className="timing-footer">
-                  Monday-Saturday(9.00AM to 11.00PM )
+                  Monday-Saturday ( 9:00 AM to 12:00 PM )
                 </span>
               </li>
               <li>

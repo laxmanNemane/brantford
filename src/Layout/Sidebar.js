@@ -20,7 +20,7 @@ import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
 import { MdNotes } from "react-icons/md";
-
+import logo from "../Assets/Icons/logo.png";
 
 const Sidebar = () => {
   // this is dropdown option
@@ -37,28 +37,28 @@ const Sidebar = () => {
             </NavLink>
           ),
         },
-        // {
-        //   key: "2",
-        //   label: (
-        //     <NavLink to="/" className="fs-5">
-        //       <AiOutlineSetting className="mx-2" />
-        //       Setting
-        //     </NavLink>
-        //   ),
-        // },
+        {
+          key: "2",
+          label: (
+            <NavLink to="/" className="fs-5">
+              <AiOutlineSetting className="mx-2" />
+              Setting
+            </NavLink>
+          ),
+        },
 
         {
           type: "divider",
         },
-        // {
-        //   key: "3",
-        //   label: (
-        //     <NavLink to="/" className="fs-5">
-        //       <AiFillQuestionCircle className="mx-2" />
-        //       Help
-        //     </NavLink>
-        //   ),
-        // },
+        {
+          key: "3",
+          label: (
+            <NavLink to="/" className="fs-5">
+              <AiFillQuestionCircle className="mx-2" />
+              Help
+            </NavLink>
+          ),
+        },
       ]}
     />
   );
@@ -68,9 +68,12 @@ const Sidebar = () => {
     style={{overflowY:"scroll"}}
     >
       {/* <div className="sidebar_main shadow "> */}
+      <NavLink to="/">
       <h5 className="Logo_admin fw-bold text-center">
-        <AiOutlineHome />
+        <img src={logo}/>
       </h5>
+      </NavLink>
+
       <div className="Sidebar_otption_section">
         <ul className="list-unstyled">
           <li
@@ -112,7 +115,7 @@ const Sidebar = () => {
             <NavLink to="/properties" className="text-dark">
               <div className="  align-items-center justify-content-center">
                 <BsBuilding className="Sidebar_icons" />
-                <span> properties </span>
+                <span> Properties </span>
               </div>
             </NavLink>
           </li>

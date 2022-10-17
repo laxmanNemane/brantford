@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect, useRef } from 'react';
+import { map, tileLayer, Browser } from 'leaflet';
 import AdminFooter from "./AdminFooter";
 import HocComponent from "../Components/HocComponent";
 import { Link, NavLink } from "react-router-dom";
+import NewMap from './NewMap';
+
 
 const AdminChat = () => {
+  const mapIsReadyCallback = (map) => {
+    console.log(map);
+  };
+
+  var requestOptions = {
+    method: 'GET',
+  };
+  
+  fetch("https://api.geoapify.com/v1/geocode/reverse?lat=51.21709661403662&lon=6.7782883744862374&apiKey=cb370362372745e99afe86fbd8fa42d0", requestOptions)
+    .then(response => response.json())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
+
+
+    
+
   return (
     <div>
       <div
@@ -279,7 +299,21 @@ const AdminChat = () => {
               </div>
             </div>
           </div>
+
         </div>
+
+
+        <div>
+          <p>map api</p>
+        <div id="my-map"></div>
+        {/* <NewMap/> */}
+        <NewMap mapIsReadyCallback={mapIsReadyCallback}/>
+
+        </div>
+
+
+
+
         <AdminFooter />
       </div>
     </div>

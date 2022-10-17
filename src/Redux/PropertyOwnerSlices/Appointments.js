@@ -7,6 +7,7 @@ import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
 import axios from "axios";
 
+
 const BaseUrl = "http://bantford.prometteur.in";
 
 const Appointments = () => {
@@ -86,7 +87,7 @@ const Appointments = () => {
                     <h3 className="">Appointments</h3>
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
-                        <a href="#">Home</a>
+                        <a>Home</a>
                       </li>
                       <li className="breadcrumb-item active">Appopintments</li>
                     </ol>

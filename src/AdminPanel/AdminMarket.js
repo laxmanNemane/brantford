@@ -27,7 +27,7 @@ const AdminMarket = () => {
                     <h3 className="">Market</h3>
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
-                        <a href="#">Home</a>
+                        <a>Home</a>
                       </li>
                       <li className="breadcrumb-item active">Market</li>
                     </ol>
@@ -51,54 +51,56 @@ const AdminMarket = () => {
                 <div className="market-table">
                   <div className="brant-card">
                     <div className="brant-card-body">
-                      <table className="w-100">
-                        <thead>
-                          <tr>
-                            <th>City Name</th>
-                            <th colSpan="2">Rates</th>
-                          </tr>
-                          <tr>
-                            <th></th>
-                            <th>Price Range (Rs./Sq-ft)</th>
-                            <th>Average Price (Rs./Sq-ft)</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Pune</td>
-                            <td>8,653-10,572</td>
-                            <td>9,612</td>
-                          </tr>
-                          <tr>
-                            <td>Mumbai</td>
-                            <td>19,246-31,430 </td>
-                            <td>25,338 </td>
-                          </tr>
-                          <tr>
-                            <td>Bangalore</td>
-                            <td>4,780-7,767 </td>
-                            <td>6,273 </td>
-                          </tr>
-                          <tr>
-                            <td>New Delhi</td>
-                            <td>8,653-10,572</td>
-                            <td>9,612</td>
-                          </tr>
-                          <tr>
-                            <td>Hydrabad</td>
-                            <td>5,653-10,572</td>
-                            <td>1,612</td>
-                          </tr>
-                          <tr>
-                            <td>Pune</td>
-                            <td>8,653-10,572</td>
-                            <td>9,612</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      <div className="market-table">
+                        <table className="w-100">
+                          <thead>
+                            <tr>
+                              <th>City Name</th>
+                              <th colSpan="2">Rates</th>
+                            </tr>
+                            <tr>
+                              <th></th>
+                              <th>Price Range (Rs./Sq-ft)</th>
+                              <th>Average Price (Rs./Sq-ft)</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Pune</td>
+                              <td>8,653-10,572</td>
+                              <td>9,612</td>
+                            </tr>
+                            <tr>
+                              <td>Mumbai</td>
+                              <td>19,246-31,430 </td>
+                              <td>25,338 </td>
+                            </tr>
+                            <tr>
+                              <td>Bangalore</td>
+                              <td>4,780-7,767 </td>
+                              <td>6,273 </td>
+                            </tr>
+                            <tr>
+                              <td>New Delhi</td>
+                              <td>8,653-10,572</td>
+                              <td>9,612</td>
+                            </tr>
+                            <tr>
+                              <td>Hydrabad</td>
+                              <td>5,653-10,572</td>
+                              <td>1,612</td>
+                            </tr>
+                            <tr>
+                              <td>Pune</td>
+                              <td>8,653-10,572</td>
+                              <td>9,612</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div>
                         <Editor
-                        // editorState={state.editorState}
+                          // editorState={state.editorState}
                           toolbarClassName="toolbarClassName"
                           wrapperClassName="wrapperClassName"
                           editorClassName="editorClassName"

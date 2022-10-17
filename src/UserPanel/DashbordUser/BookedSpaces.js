@@ -31,12 +31,12 @@ const BookedSpaces = () => {
               <div className="row align-items-center ">
                 <div className="col-lg-8">
                   <div className="brant-title">
-                    <h3 className="">Market</h3>
+                    <h3 className="">Pending Space</h3>
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
-                        <a href="#">Home</a>
+                        <a >Home</a>
                       </li>
-                      <li className="breadcrumb-item active">Market</li>
+                      <li className="breadcrumb-item active">Pending Space</li>
                     </ol>
                   </div>
                 </div>
@@ -48,7 +48,7 @@ const BookedSpaces = () => {
               <div className="container">
                 <div className="brant-card">
                 <div className="col-12 py-3">
-                    <h5 className="Analytic_heading ">All Pending Spaces</h5>
+                    <h5 className="Analytic_heading  ps-3">All Pending Spaces</h5>
                 </div>
                 </div>
 

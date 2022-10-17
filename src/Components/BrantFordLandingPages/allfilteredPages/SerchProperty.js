@@ -83,19 +83,19 @@ const SerchProperty = () => {
                   className="tag my-2 d-flex align-items-center justify-content-between"
                   style={{ borderRadius: "100px" }}
                 >
-                  Home &nbsp;&nbsp;<i class="fa-solid fa-xmark"></i>
+                  Home &nbsp;&nbsp;<i className="fa-solid fa-xmark"></i>
                 </li>
                 <li
                   className="tag my-2 d-flex align-items-center justify-content-between"
                   style={{ borderRadius: "100px" }}
                 >
-                  soft &nbsp;&nbsp;<i class="fa-solid fa-xmark"></i>
+                  soft &nbsp;&nbsp;<i className="fa-solid fa-xmark"></i>
                 </li>
                 <li
                   className="tag my-2 d-flex align-items-center justify-content-between"
                   style={{ borderRadius: "100px" }}
                 >
-                  git &nbsp;&nbsp;<i class="fa-solid fa-xmark"></i>
+                  git &nbsp;&nbsp;<i className="fa-solid fa-xmark"></i>
                 </li>
               </ul>
             </div>

@@ -35,7 +35,7 @@ const CitiWiseProperty = () => {
 
   const spaceManagement = (data) => {
     setEndUserSpace(data);
-    navigate(`/office-detail/${data.space.split(" ").join("-")}`);
+    navigate(`/office-detail/${data.space.space.split(" ").join("-")}`);
   };
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const CitiWiseProperty = () => {
         </div>
         <div className="col-lg-9 col-md-9 col-sm-12">
           {citiSpace.map((element, index) => {
-            if (element.city === cityName) {
+            if (element.space.city === cityName) {
               return (
                 <div className="similar-offices" key={index}>
                   <div className="officess mt-3">
@@ -79,17 +79,17 @@ const CitiWiseProperty = () => {
                               For Rent
                             </p>
                             <p className="name me-3">
-                              $<span className="price1">{element.price}</span>
+                              $<span className="price1">{element.space.price}</span>
                               month/seats
                             </p>
                           </div>
                           <div className="ofice-name-type">
                             <p className="offices-similar-heading">
-                              {element.space}
+                              {element.space.space}
                             </p>
                             <p className="sub-heading">
                               <HiOutlineLocationMarker className="me-2" />{" "}
-                              {element.address}
+                              {element.space.address}
                             </p>
 
                             <p className="name">

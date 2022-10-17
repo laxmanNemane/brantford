@@ -40,6 +40,12 @@ import { fetchTotalAmount } from "../../Redux/PropertyOwnerSlices/totalAmountSli
 import { FetchAllVisitors } from "../../Redux/PropertyOwnerSlices/allVisitors";
 import { FetchAllSpaces } from "../../Redux/PropertyOwnerSlices/allvenuSlice";
 import { fetchTotalBooking } from "../../Redux/PropertyOwnerSlices/totalBookingslice";
+import { Marker, Map } from "react-map-gl";
+import profilePik from '../../Assets/Icons/logo.png'
+import { GeolocateControl } from "react-map-gl";
+import Example from "../../Pages/Example";
+
+
 
 const UserDashbord = () => {
   // const { users } = useContext(usersContext);
@@ -168,7 +174,7 @@ const UserDashbord = () => {
               <div className="heading-section-dashbord ">
                 <h1 className="heading-second mb-1"> Dashboard</h1>
                 <p className="paragraph">
-                  Welcome to Brantford property portal
+                Welcome to brantford property portal
                 </p>
               </div>
               <div className="heading-buttons-dashbord">
@@ -179,6 +185,26 @@ const UserDashbord = () => {
               </div>
             </div>
           </div>
+
+<div>
+<div>
+  <p>This is a map</p>
+      <Map
+        mapboxAccessToken="pk.eyJ1IjoibmlraGlsYm9yZ2UiLCJhIjoiY2w4Y296eXBwMDR6ajN1bXltb2cxOXoyeCJ9.DgZ7KWKaUNJDltG3weSwEw"
+        initialViewState={{
+          longitude: -100,
+          latitude: 40,
+          zoom: 3.5,
+        }}
+      >
+        <GeolocateControl
+          positionOptions={{ enableHighAccuracy: true }}
+          trackUserLocation={true}
+        />
+      </Map>
+    </div>
+    
+</div>
 
           <div className="col-lg-12">
             <div className="user-right-esction">
@@ -315,7 +341,7 @@ const UserDashbord = () => {
                       >
                         <div className="icons-sections-this">
                           <div className="chart-daily mx-3">
-                            <p className="paragraph fw-bold">Revenu status</p>
+                            <p className="paragraph fw-bold">Revenue status</p>
                             <p></p>
                             <ReactEcharts option={{ ...option1 }} />
                           </div>

@@ -12,13 +12,15 @@ import {
   AiFillQuestionCircle,
 } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
-import { Dropdown, Menu  } from "antd";
+import { Dropdown, Menu } from "antd";
 import { MdNoteAdd } from "react-icons/md";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { BiCheckCircle } from "react-icons/bi";
 import { BsList } from "react-icons/bs";
-const {SubMenu} = Menu;
+import logo from "../../Assets/Icons/logo.png";
 
+
+const { SubMenu } = Menu;
 
 const UserSidebar = () => {
   // this is dropdown option
@@ -55,11 +57,13 @@ const UserSidebar = () => {
   return (
     <div>
       <div>
-        <nav className="admin-sidebar">
+        <nav className="admin-sidebar" style={{overflowY:"scroll"}}>
           <div className="dashboard_logo">
-          <h5 className="Logo_admin fw-bold text-center">
-            <AiOutlineHome />
-          </h5>
+            <NavLink to="/">
+              <h5 className="Logo_admin fw-bold text-center">
+                <img src={logo} />
+              </h5>
+            </NavLink>
           </div>
 
           <div className="Sidebar_otption_section">
@@ -175,20 +179,16 @@ const UserSidebar = () => {
               </li>
             </ul>
           </div>
-          <div className="sideScrollBar">
-
-          </div>
+          <div className="sideScrollBar"></div>
         </nav>
       </div>
 
-           
-
-     <p className="sidebar-setting">
+      <p className="sidebar-setting">
         <Dropdown overlay={menu} placement="topLeft" arrow>
-           <AiOutlineSetting className="setting_icon" />
-         </Dropdown>
-       </p>
-     </div> 
+          <AiOutlineSetting className="setting_icon" />
+        </Dropdown>
+      </p>
+    </div>
   );
 };
 

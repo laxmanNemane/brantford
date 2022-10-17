@@ -153,7 +153,7 @@ const HeroSection = () => {
           <div className="row justify-content-center">
             <div className="col col-xl-8 col-md-10 col-12">
               <div className="title-landPage">
-                <h2 className="title">Let's Find your office!</h2>
+                <h2 className="title">Let's Find Your Office!</h2>
               </div>
               {/* <p className="expant-paragraph">Expand. Renew. Relocate</p> */}
               <div
@@ -242,7 +242,7 @@ const HeroSection = () => {
                               ></i>
                               <input
                                 type="text"
-                                placeholder="Search By Location"
+                                placeholder="Search by location"
                                 className="input-serchboox"
                                 onChange={(e) => onchangeHandlear(e)}
                               />

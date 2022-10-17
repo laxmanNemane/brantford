@@ -24,14 +24,13 @@ const AppointmentModel = ({
   element,
   cid,
 }) => {
-
-    const [title, setTitle] = useState("");
-    const [dateTime, setDateTime] = useState();
+  const [title, setTitle] = useState("");
+  const [dateTime, setDateTime] = useState();
 
   const categories = useSelector(
     (state) => state.POCategories.AllPropertyOwnerCategories
   );
-//   console.log(categories);
+  //   console.log(categories);
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
@@ -87,53 +86,60 @@ const AppointmentModel = ({
   };
 
   const sendAppointment = (appointmentData) => {
-    axios.post(`${BaseUrl}/endUser/book-appointment`, appointmentData,{headers:{
-      Authorization: localStorage.getItem("token")
-    }})
-    .then((res)=> {
-      console.log(res.data)
-      swal("Thank you!", "Your appointment has been added", "success");
-    
-    })
-    .catch((err)=> {
-      console.log(err)
-      swal("Sorry !", "Slot not available", "warning");
-    
-    })
-  }
+    axios
+      .post(`${BaseUrl}/endUser/book-appointment`, appointmentData, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        swal("Thank you!", "Your appointment has been added", "success");
+      })
+      .catch((err) => {
+        console.log(err);
+        swal("Sorry !", "Slot not available", "warning");
+      });
+  };
 
   // 2022-09-28T10:15:33.661Z
   // 2022-09-27 09:35:02
 
-  const submitAppointment = (e ) => {
+  const submitAppointment = (e) => {
     e.preventDefault();
-        console.log(title, dateTime);
-        console.log(element.admininfoId)
-        const userdetail = localStorage.getItem("user")
-        console.log(userdetail);
-      const  dateStr = dateTime;
-    const onlydate =     (new Date(dateStr)).toISOString().slice(0, 10)
+    console.log(title, dateTime);
+    if (title === "") {
+      console.log("null title");
+    }
+    console.log(element.admininfoId);
+    const userdetail = localStorage.getItem("user");
+    console.log(userdetail);
+    const dateStr = dateTime;
+    const onlydate = new Date(dateStr).toISOString().slice(0, 10);
     console.log(onlydate);
 
-  const date= new Date(dateTime);
-const newdate = date.toLocaleString();
-console.log(newdate);
+    const date = new Date(dateTime);
+    const newdate = date.toLocaleString();
+    console.log(newdate);
 
-        const appointmentData = {"spaceId":spaceId, "propertyOwnerId":element.admininfoId, "message":title, "appointment_date":dateTime}
+    const appointmentData = {
+      spaceId: spaceId,
+      propertyOwnerId: element.admininfoId,
+      message: title,
+      appointment_date: dateTime,
+    };
 
-        sendAppointment(appointmentData)
-        // console.log(userdetail.name);
-        // console.log(userdetail.email);
-       
-        setshowStatus(false)
+    sendAppointment(appointmentData);
+    // console.log(userdetail.name);
+    // console.log(userdetail.email);
 
-  }
+    setshowStatus(false);
+  };
 
   const onChange = (value) => {
     console.log(value);
     console.log(value._d);
-    setDateTime(value._d)
-
+    setDateTime(value._d);
   };
   const onOk = (values) => {
     console.log("onOk: ", values);
@@ -162,17 +168,32 @@ console.log(newdate);
         destroyOnClose
       >
         <div className="container text-center">
-            <form onSubmit={(e)=>submitAppointment(e)}>
-        <div className="p-2 mb-3 w-100">
-            <label className=" me-3">Your Message:</label>
-            <input type="text" className="w-50 appointment-input" onChange={(e)=>setTitle(e.target.value)}/>
-        </div>
-        
-        <Space direction="vertical" size={12}>
-          <DatePicker showTime onChange={onChange} onOk={onOk} />
-        </Space>
-        <button type="submit"  className="ms-3 brant-btn-blue">Confirm appointment</button>
-        </form>
+          <form onSubmit={(e) => submitAppointment(e)}>
+            <div className="p-2 mb-3 w-100">
+              <label className=" me-3">Your Message:</label>
+              <input
+                type="text"
+                className="w-50 appointment-input"
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+
+            <Space direction="vertical" size={12}>
+              <DatePicker
+                disabledDate={(d) =>
+                  !d ||
+                  d.isAfter("2030-12-31") ||
+                  d.isSameOrBefore(moment(new Date()))
+                }
+                showTime
+                onChange={onChange}
+                onOk={onOk}
+              />
+            </Space>
+            <button type="submit" className="ms-3 brant-btn-blue">
+              Confirm appointment
+            </button>
+          </form>
         </div>
       </Modal>
     </>

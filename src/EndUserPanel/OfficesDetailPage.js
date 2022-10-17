@@ -23,8 +23,7 @@ import HocLandingPage from "../Components/HocLandingPage";
 import { usersContext } from "../Context/UserContext";
 import swal from "sweetalert";
 import AppointmentModel from "./AppointmentModel";
-
-
+import MapInput from "../UserPanel/DashbordUser/ModelPropertyOwner/MapInput";
 
 const BaseUrl = "http://bantford.prometteur.in";
 // const token = localStorage.getItem("endUser_token");
@@ -37,12 +36,15 @@ const OfficesDetailPage = () => {
   const [showStatus, setshowStatus] = useState(false);
   const [spaceId, setSpaceId] = useState();
   const [countVisitor, setCountVisitor] = useState();
+  const [images, setImages] = useState([]);
 
   const { endUserSpace, setEndUserSpace } = useContext(usersContext);
 
   const [categaryDetails, setCategaryDetails] = useState({});
 
   const navigate = useNavigate();
+
+  // setImages(endUserSpace.images);
 
   const showdetails = (id) => {
     console.log(id);
@@ -66,17 +68,23 @@ const OfficesDetailPage = () => {
       });
   };
 
-  const addvisitor = (countVisitor) => {
-    const visitorcnt = {"spaceId":countVisitor}
-      axios.post(`${BaseUrl}/endUser/insert-visitor`, visitorcnt, {headers:{
-        Authorization:localStorage.getItem("token")
-      }})
-      .then((res)=> {console.log(res.data)})
-      .catch((err)=>console.log(err))
-  }
+  const addvisitor = () => {
+    console.log(endUserSpace.id);
+
+    const visitorcnt = { spaceId: endUserSpace.id };
+    axios
+      .post(`${BaseUrl}/endUser/insert-visitor`, visitorcnt, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const propertyBooking = (id, price) => {
-
     console.log(id, price);
     const propertyPrice = Number(price);
     const amount = {
@@ -124,10 +132,10 @@ const OfficesDetailPage = () => {
     setshowStatus(true);
     setSpaceId(id);
   };
-  // addvisitor();
+
   useEffect(() => {
     showdetails();
-   
+    addvisitor();
     window.scrollTo(0, 0);
   }, [endUserSpace]);
 
@@ -172,11 +180,18 @@ const OfficesDetailPage = () => {
       });
   };
 
+  const filteredSlideImages = endUserSpace.images.filter((item) => {
+    return item.main_type == "photos" && item.sub_type == "photos_images";
+  });
+
+  console.log(filteredSlideImages);
+
   useEffect(() => {
     AllSpacesProperties();
   }, []);
 
   console.log(categaryDetails.space);
+  console.log(endUserSpace);
 
   return (
     <div className="office-detail-section hj py-5 position-relative">
@@ -185,13 +200,13 @@ const OfficesDetailPage = () => {
           <div className="col-lg-8 col-md-8 col-sm-12 mb-4">
             <div className="office-detail">
               {/* {setCountVisitor(endUserSpace.id)} */}
-              <p className="fs-3 fw-bold">{endUserSpace.space}</p>
+              <p className="fs-3 fw-bold">{endUserSpace.space.space}</p>
               <p className="tag pb-2 rounded-2">
-                {endUserSpace.property_status}
+                {endUserSpace.space.property_status}
               </p>
               <p className="sub-heading">
                 <HiOutlineLocationMarker className="me-2" />{" "}
-                {endUserSpace.address}
+                {endUserSpace.space.address}
               </p>
             </div>
           </div>
@@ -211,20 +226,29 @@ const OfficesDetailPage = () => {
             </div>
             <div className="w-75 ">
               <p className="actual-price fs-3 fw-bold">
-                ₹<span className="price1">{endUserSpace.price}</span>
+                ₹<span className="price1">{endUserSpace.space.price} </span>
                 /Seat/Month
               </p>
-              <button
-                onClick={() =>
-                  propertyBooking(endUserSpace.id, endUserSpace.price)
-                }
-                className={alreadyBooked ? "disable-btn" : "show-btn"}
-              >
-                Book Property
-              </button>
+              <div className="d-flex">
+                <button
+                  onClick={() =>
+                    propertyBooking(
+                      endUserSpace.space.id,
+                      endUserSpace.space.price
+                    )
+                  }
+                  className={alreadyBooked ? "disable-btn" : "show-btn"}
+                >
+                  Book Property
+                </button>
 
-              <button className="disable-btn ms-3" onClick={()=>onBookAppointment(endUserSpace.id)}>Book an Appointment</button>
-
+                <button
+                  className="disable-btn ms-3"
+                  onClick={() => onBookAppointment(endUserSpace.space.id)}
+                >
+                  Book an Appointment
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -233,26 +257,68 @@ const OfficesDetailPage = () => {
             <div className="office-view-named-carousel">
               <div className="carousel-group">
                 <Carousel>
-                  <div>
-                    <img src={office1} alt="" className="main-image" />
+
+                  {filteredSlideImages.length > 0 ? (
+                    filteredSlideImages.map((item, index) => (
+                      <div key={index}>
+                        <img
+                          src={item.data || office1}
+                          alt=""
+                          className="main-image"
+                        />
+                        <p className="legend">Office </p>
+                      </div>
+                    ))
+                  ) : (
+                    <Carousel>
+                      <div>
+                        <img src={office1} alt="" className="main-image" />
+                        <p className="legend">Office </p>
+                      </div>
+                      <div>
+                        <img src={office2} alt="" className="main-image" />
+                        <p className="legend">Office </p>
+                      </div>
+                      <div>
+                        <img src={office3} alt="" className="main-image" />
+                        <p className="legend">Office </p>
+                      </div>
+                      <div>
+                        <img src={meetingRoom} alt="" className="main-image" />
+                        <p className="legend">Meeting Room </p>
+                      </div>
+                      <div>
+                        <img
+                          src={canteenOffice}
+                          alt=""
+                          className="main-image"
+                        />
+                        <p className="legend">Canteen </p>
+                      </div>
+                    </Carousel>
+                  )}
+
+
+                  {/* <div>
+                    <img src={endUserSpace.images.length > 0 ? endUserSpace.images[0].data : office1} alt="" className="main-image" />
                     <p className="legend">Office </p>
                   </div>
                   <div>
-                    <img src={office2} alt="" className="main-image" />
+                    <img src={endUserSpace.images.length > 0 ? endUserSpace.images[1].data : office2} alt="" className="main-image" />
                     <p className="legend">Office </p>
                   </div>
                   <div>
-                    <img src={office3} alt="" className="main-image" />
+                    <img src={endUserSpace.images.length > 0 ? endUserSpace.images[2].data : office3} alt="" className="main-image" />
                     <p className="legend">Office </p>
                   </div>
                   <div>
-                    <img src={meetingRoom} alt="" className="main-image" />
+                    <img src={endUserSpace.images.length > 0 ? endUserSpace.images[3].data : meetingRoom} alt="" className="main-image" />
                     <p className="legend">Meeting Room </p>
                   </div>
                   <div>
-                    <img src={canteenOffice} alt="" className="main-image" />
+                    <img src={endUserSpace.images.length > 0 ? endUserSpace.images[4].data : canteenOffice} alt="" className="main-image" />
                     <p className="legend">Canteen </p>
-                  </div>
+                  </div> */}
                 </Carousel>
               </div>
             </div>
@@ -262,7 +328,7 @@ const OfficesDetailPage = () => {
               </div>
               <hr />
               <div className="decription-paragraph">
-                <p>{endUserSpace.description}</p>
+                <p>{endUserSpace.space.description}</p>
               </div>
             </div>
             <div className="detail-property-owner">
@@ -272,7 +338,7 @@ const OfficesDetailPage = () => {
                 <p>
                   {" "}
                   <BiCalendar className="fs-5 me-2 icon-featured" />
-                  Updated on {endUserSpace.updatedAt}
+                  Updated on {endUserSpace.space.updatedAt}
                 </p>
               </div>
               <hr />
@@ -285,7 +351,7 @@ const OfficesDetailPage = () => {
                           Working Days :
                         </p>
                         <p className="property-details-value">
-                          {endUserSpace.working_days}
+                          {endUserSpace.space.working_days}
                         </p>
                       </div>
 
@@ -294,7 +360,7 @@ const OfficesDetailPage = () => {
                           Price :
                         </p>
                         <p className="property-details-value">
-                          {endUserSpace.price}
+                          {endUserSpace.space.price}
                         </p>
                       </div>
                     </div>
@@ -306,7 +372,7 @@ const OfficesDetailPage = () => {
                           Property Status :
                         </p>
                         <p className="property-details-value">
-                          {endUserSpace.property_status}
+                          {endUserSpace.space.property_status}
                         </p>
                       </div>
                     </div>
@@ -315,7 +381,7 @@ const OfficesDetailPage = () => {
               </div>
 
               <div className="additional-detail-property-owner mt-5 ">
-                <h5 className="office-sub-heading">Additional Detail</h5>
+                <h5 className="office-sub-heading">Additional Details</h5>
               </div>
               <hr />
               <div className="additional-property-owner-detail">
@@ -327,7 +393,7 @@ const OfficesDetailPage = () => {
                           Cabin Capacity :
                         </p>
                         <p className="property-details-value">
-                          {endUserSpace.cabin_capacity}
+                          {endUserSpace.space.cabin_capacity}
                         </p>
                       </div>
 
@@ -336,7 +402,7 @@ const OfficesDetailPage = () => {
                           seating Capacity :
                         </p>
                         <p className="property-details-value">
-                          :{endUserSpace.seating_capacity}
+                          :{endUserSpace.space.seating_capacity}
                         </p>
                       </div>
                     </div>
@@ -348,7 +414,7 @@ const OfficesDetailPage = () => {
                           Total Desk :
                         </p>
                         <p className="property-details-value">
-                          {endUserSpace.total_desks}{" "}
+                          {endUserSpace.space.total_desks}{" "}
                         </p>
                       </div>
 
@@ -357,7 +423,7 @@ const OfficesDetailPage = () => {
                           working Days :
                         </p>
                         <p className="property-details-value">
-                          {endUserSpace.working_days}
+                          {endUserSpace.space.working_days}
                         </p>
                       </div>
                     </div>
@@ -376,7 +442,7 @@ const OfficesDetailPage = () => {
                     <div className="f-one">
                       <p>
                         <span className="fw-bold">Name : </span>{" "}
-                        {endUserSpace.manager_name}
+                        {endUserSpace.space.manager_name}
                       </p>
                     </div>
                   </div>
@@ -384,7 +450,7 @@ const OfficesDetailPage = () => {
                     <div className="f-one">
                       <p>
                         <span className="fw-bold">Email : </span>{" "}
-                        {endUserSpace.manager_email}
+                        {endUserSpace.space.manager_email}
                       </p>
                     </div>
                   </div>
@@ -392,7 +458,7 @@ const OfficesDetailPage = () => {
                     <div className="f-one">
                       <p>
                         <span className="fw-bold">Contact No : </span>{" "}
-                        {endUserSpace.manager_contactNumber}
+                        {endUserSpace.space.manager_contactNumber}
                       </p>
                     </div>
                   </div>
@@ -404,6 +470,16 @@ const OfficesDetailPage = () => {
                 </div>
               </div>
             </div>
+
+            <div>
+              <div>
+                <MapInput
+                  id={endUserSpace.space.id}
+                  data={endUserSpace.space.space}
+                />
+              </div>
+            </div>
+
             <div className="similarties-section mt-5">
               <div className="similarties-heading">
                 <h5 className="office-sub-heading">Similar Listing</h5>
@@ -411,7 +487,9 @@ const OfficesDetailPage = () => {
               <hr />
               {allspace.map(
                 (element, index) => {
-                  if (element.categaryId === endUserSpace.categaryId) {
+                  if (
+                    element.space.categaryId === endUserSpace.space.categaryId
+                  ) {
                     return (
                       <div className="similar-offices" key={index}>
                         <div className="officess mt-3">
@@ -443,18 +521,18 @@ const OfficesDetailPage = () => {
                                   <p className="name me-3">
                                     $
                                     <span className="price1">
-                                      {element.price}
+                                      {element.space.price}
                                     </span>
                                     month/seats
                                   </p>
                                 </div>
                                 <div className="ofice-name-type">
                                   <p className="offices-similar-heading">
-                                    {element.space}
+                                    {element.space.space}
                                   </p>
                                   <p className="sub-heading">
                                     <HiOutlineLocationMarker className="me-2" />{" "}
-                                    {element.address}
+                                    {element.space.address}
                                   </p>
 
                                   <p className="name">
@@ -515,13 +593,16 @@ const OfficesDetailPage = () => {
                     <div className="col-lg-4 col-md-4 col-sm-6">
                       <div className="avtar-section">
                         <p className="mt-2">
-                          <FaUserAlt />                        </p>
+                          <FaUserAlt />{" "}
+                        </p>
                       </div>
                     </div>
                     <div className="col-lg-8 col-md-8 col-sm-6">
                       <div className="brantford-team">
                         <p className="team fs-5">Requirement</p>
-                        <p className="view-listing fw-bold ">Send your requirement</p>
+                        <p className="view-listing fw-bold ">
+                          Send your requirement
+                        </p>
                       </div>
                     </div>
 
@@ -552,13 +633,27 @@ const OfficesDetailPage = () => {
                           }
                           if (!values.name) {
                             errors.name = "required*";
+                          } else if (!/^[A-Za-z ]*$/i.test(values.name)) {
+                            errors.name = "Enter a valid name";
                           }
+
                           if (!values.contact_number) {
                             errors.contact_number = "required*";
+                          } else if (values.contact_number.length < 9) {
+                            errors.contact_number =
+                              "Please Enter valid mobile number";
+                          } else if (
+                            !/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/i.test(
+                              values.contact_number
+                            )
+                          ) {
+                            errors.contact_number = "Enter valid number";
                           }
 
                           if (!values.number_of_persons) {
                             errors.number_of_persons = "required*";
+                          } else if (values.number_of_persons < 0) {
+                            errors.number_of_persons = "Enter a Positive value";
                           }
 
                           // if (!values.company) {
@@ -567,13 +662,25 @@ const OfficesDetailPage = () => {
 
                           if (!values.city_of_workspace) {
                             errors.city_of_workspace = "required*";
+                          } else if (
+                            !/^[A-Za-z ]*$/i.test(values.city_of_workspace)
+                          ) {
+                            errors.city_of_workspace =
+                              "Enter a valid City name";
                           }
+
                           if (!values.company) {
                             errors.company = "required*";
                           }
 
                           if (!values.start_date) {
                             errors.start_date = "required*";
+                          } else if (values.start_date > new Date().getDate()) {
+                            errors.start_date = "Enter a valid date.";
+                          }
+
+                          if (!values.categary_of_workspace) {
+                            errors.categary_of_workspace = "required*";
                           }
 
                           if (!values.message) {
@@ -605,7 +712,7 @@ const OfficesDetailPage = () => {
                               className="form-control  mx-auto my-3"
                             />
                             <p className="ms-5 ps-2 text-danger">
-                              <ErrorMessage name="contact" />
+                              <ErrorMessage name="contact_number" />
                             </p>
 
                             <Field
@@ -664,7 +771,8 @@ const OfficesDetailPage = () => {
                               component="select"
                               id="workspace"
                               name="categary_of_workspace"
-                             >
+                            >
+                              <option value="">Select Space Category</option>
                               <option value="working spaces">
                                 Co working spaces
                               </option>
@@ -675,9 +783,13 @@ const OfficesDetailPage = () => {
                               <option value="free spaces">Free space</option>
                               <option value="others">Other</option>
                             </Field>
+                            <p className="ms-5 ps-2 text-danger">
+                              <ErrorMessage name="categary_of_workspace" />
+                            </p>
 
                             <Field
                               type="date"
+                              min="2022/02/02"
                               name="start_date"
                               placeholder="start_date"
                               className="form-control  mx-auto my-3"
@@ -715,11 +827,11 @@ const OfficesDetailPage = () => {
           </div>
         </div>
         <AppointmentModel
-                setshowStatus={setshowStatus}
-                showStatus={showStatus}
-                spaceId={endUserSpace.id}
-                element={endUserSpace}
-              />
+          setshowStatus={setshowStatus}
+          showStatus={showStatus}
+          spaceId={endUserSpace.space.id}
+          element={endUserSpace.space}
+        />
       </div>
       {/* );
       })} */}
@@ -728,4 +840,3 @@ const OfficesDetailPage = () => {
 };
 
 export default HocLandingPage(OfficesDetailPage);
-

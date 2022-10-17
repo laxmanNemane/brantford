@@ -9,7 +9,7 @@ const PromiseSection = () => {
     <div className="service-section pt-2">
       <div className="container py-5">
         <div className="text-center">
-          <h2 className="main-heading"> Our Services for you</h2>
+          <h2 className="main-heading"> Our services for you</h2>
           <p className="description-why-page">
             Make your life easier with our services.
           </p>
@@ -22,7 +22,7 @@ const PromiseSection = () => {
                 <IoDocumentTextOutline className=" " />
               </p>
 
-              <h5 className="name">Rentel Aggrement</h5>
+              <h5 className="name">Rental Aggreement</h5>
               <p className="desciption-why-brantford">
                 Share basic details online and get doorstep delivery of your
                 rental agreement

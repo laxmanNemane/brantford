@@ -796,25 +796,23 @@ table tr td {
   /* padding: 15px; */
 }
 .dashbord_section_page::before{position: absolute;left: 0;top: 0;right: 0;height: 160px;z-index: -1;background: #64c5b1;content: '';border-radius: 0;left: 0;}
-.Analytic_heading{}
-/* .transaction-list ul li::after{content: ''; height: 2px; color: #0f0f0f; background-color: #0f0f0f; width: 100%;} */
+
+
 .transaction-list ul {list-style: none; padding: 0;}
 .transaction-list ul li{    border-bottom: 1px solid #f3f4f3; padding: 15px 10px;}
-.transaction-list ul li{}
+
 .total-balance{background: #f8faff;border-radius: 5px;padding: 18px 30px;}
 .calendar{border: none;}
 .react-calendar button{border: none; padding: 5px;}
 .footer{text-align: center;padding-bottom: 0;padding-top: 6px;background: 0 0;  left: 0; right: 0; bottom: 0; background: #f3f4f3;background: #64c5b1;
-  /* position: absolute; */
-  /* position: fixed;
-  padding-left: 270px; */
+
 }
 .footer-inner{padding: 30px;}
 .top-scroller{position: fixed;right: 20px; bottom: 30px;cursor: pointer;z-index: 9999999;display: none;}
 .top-scroller a{ height: 50px; width: 50px; background-color: #f6f6f6;box-shadow: 0 10px 20px 0 rgb(76 110 248 / 40%); border-radius: 50%; display: flex; justify-content: center; align-items: center; }
 
 /* sidebar style  */
-/* .list-unstyled li::after{content:">"; color: #fff;transform: rotate(-90deg) translate(0,-50%); opacity: 1;font-size: 10px;right: 15px;color: #a1a4b9;} */
+
 .brant-card-body table tr td{padding:15px !important;}
 .brant-card-body table thead{border-radius: 30px; background-color: #F8FAFF; padding: 10px 15px; color: #A951A5;}
 .viewAll-btn{padding: 10px 70px; background-color: #567aed; color: #ffff; border: none; border-radius: 5px;}
@@ -856,13 +854,13 @@ table tr td {
 .progress-bar{background-color:"#FFBF43"!important;}
 
 
-/* //properties page  */
+/* properties page  */
 .bg-gray{background-color: #323246; color: #ffff;}
 .sales h3{font-weight: 700; font-size: 28px; color: #ffff;}
 .sales2 h3{font-weight: 700; font-size: 28px; color: #72727F;}
 
 /* sidebar menu  */
-/* .sub-menu-div{padding-left: 85px;} */
+
 .sub-menu-div ul{list-style: none;}
 .Sidebar_otption_section ul .active{background-color: #34a853 !important; color: #4285f4 !important;}
 .Sidebar_otption_section ul{padding-left: 35px;}
@@ -889,10 +887,10 @@ table tr td {
   background-color: green;
 }
 .ant-select.ant-select-single.ant-select-show-arrow.ant-select-show-search{background-color: #E4FFFA !important; color: #34a853; width: 120px !important;}
-/* .ant-select-item-option-content{background-color: #34a853; color: #ffff; padding: 20px;} */
+
 .ant-select-item.ant-select-item-option.ant-select-item-option-active{background-color: #FBFBFB; color: #707070; }
 .ant-select-selector{background-color: #E4FFFA !important; color: #34a853; }
-/* .select-options{width: 80px !important;} */
+
 .react-calendar__month-view__weekdays__weekday.react-calendar__month-view__weekdays__weekday--weekend{
   color: red;
   text-decoration: none;
@@ -908,9 +906,6 @@ table tr td {
 .react-calendar__navigation{text-align: center;}
 
 
-/* .user-details{font-size: 15px; font-weight: 500; color: #34a853;}
-.ant-popover-inner-content{background-color: #34a853; padding: 0px !important;}
-.ant-popover-arrow{color: #34a853 !important;} */
 
 .notification-list{padding: 20px;}
 .notification-list ul{list-style: none; padding: 0px;}
@@ -928,9 +923,10 @@ table tr td {
 
 .appointment-input{padding: 10px 5px; border-radius: 5px; border: none; border: 1px solid #567AED;}
 
-
-
-
+.login-profile-dropdown ::after{color: red; background-color: red; content: '^'; position: absolute; top: 0; bottom: 3;}
+.enduser-profile-heading{padding: 20px; background-color: #64C5B1; color: #ffff; font-size:30px; margin-bottom: 20px;}
+.enduser-profile-heading .Analytic_heading{ color: #ffff; font-size:30px;}
+.enduser-profile-heading .overview-user-profile_page{ color: #ffff; font-size:20px;}
 
 
 
